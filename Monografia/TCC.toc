@@ -1,0 +1,63 @@
+\changetocdepth {4}
+\babel@toc {brazil}{}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {1}\MakeTextUppercase {INTRODUÇÃO}}{13}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Objetivos}{14}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Objetivo geral}{14}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Objetivos específicos}{14}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Estrutura do trabalho}{15}{section.1.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase {REVISÃO BIBLIOGRÁFICA}}{16}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Turbinas hidrocinéticas}{16}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Princípios de funcionamento, classificação e principais componentes}{16}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Modelos de predição de performance hidrodinâmica}{17}{subsection.2.1.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase {FUNDAMENTAÇÃO TEÓRICA}}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Double-multiple streamtube model - DMST}{18}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Modelagem dinâmica}{18}{section.3.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {METODOLOGIA}}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Análise modal numérica}{20}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Double-multiple streamtube model}{20}{section.4.2}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {RESULTADOS}}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Análise modal numérica}{21}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Double-multiple streamtube model}{21}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Próximas etapas}{21}{section.5.3}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase {CONCLUSÃO}}{24}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Trabalhos Futuros}{24}{section.6.1}%
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\contentsline {chapter}{\MakeTextUppercase {REFER\^{E}NCIAS}}{25}{section*.26}%
+\vspace {\cftbeforechapterskip }
+\renewcommand *{\cftappendixname }{AP\^ENDICE \space }
+\setlength {\cftpartindent }{\cftlastnumwidth } \setlength {\cftpartnumwidth }{2em}
+\cftinsert {A}
+\contentsline {part}{\uppercase {Ap\^endices}}{26}{section*.27}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase {Nome do apêndice}}{27}{appendix.A}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {B}\MakeTextUppercase {Nome do outro apêndice}}{28}{appendix.B}%
+\cftinsert {AAA}
+\renewcommand *{\cftappendixname }{ANEXO \space }
+\setlength {\cftpartindent }{\cftlastnumwidth } \setlength {\cftpartnumwidth }{2em}
+\cftinsert {A}
+\contentsline {part}{\uppercase {Anexos}}{29}{section*.28}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase {Nome do anexo}}{30}{appendix.anexochapback.1}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {B}\MakeTextUppercase {Nome do outro anexo}}{31}{appendix.anexochapback.2}%

@@ -1,0 +1,60 @@
+% ----------------------------------------------------------------------------------------------
+% TEMPLATE PARA TRABALHO DE CONCLUSÃO DE CURSO
+% Universidade Federal do Pará
+% Modelo da Faculdade de Engenharia Elétrica
+% Idealizado por Sérgio Custódio e Kelvin Pinheiro
+% Baseado no projeto: http://tcc.tsi.gp.utfpr.edu.br/paginas/modelos-latex-da-utfpr
+% Baseado na modificação de :       Diego Marczal e 
+% 	          						Michael Vornes 
+% ----------------------------------------------------------------------------------------------
+% CARREGA CLASSE PERSONALIZADA DA FEEM/UFPA-----------------------------------------------------
+\documentclass[%twoside,                   % Impressão em frente e verso
+oneside,                                   % Impressão apenas frente
+]{ufpa-fem-abntex2}
+
+
+%INCLUI ARQUIVOS DO TRABALHO DE CONCLUSÃO DE CURSO (PRÉ-TEXTUAIS, TEXTUAIS, PÓS-TEXTUAIS)----------------------------------------------------------------------------------
+%%%%%
+
+% INSERE CAPA E FOLHA DE ROSTO
+\include{pre-textuais/capa}
+\include{pre-textuais/naomexapretext/folha-rosto}
+\include{pre-textuais/folha-aprovacao}
+
+\begin{document}
+	
+	\pretextual
+	\imprimircapa                                  
+	\imprimirfolhaderosto{}                           
+	\imprimirfolhadeaprovacao{}                       
+	\include{pre-textuais/dedicatoria}          			
+	\include{pre-textuais/agradecimentos}
+	\include{pre-textuais/epigrafe}
+	\include{pre-textuais/resumo} 								% Resumo em Português
+	\include{pre-textuais/abstract} 							% Resumo em Inglês
+	\include{pre-textuais/naomexapretext/lista-figuras}
+	%\include{pre-textuais/naomexapretext/lista-quadros}
+	\include{pre-textuais/naomexapretext/lista-tabelas} 		% Lista de Tabelas
+	\include{pre-textuais/lista-siglas}          		
+	\include{pre-textuais/lista-simbolos}
+	%\include{pre-textuais/naomexapretext/lista-algoritmos}
+	\include{pre-textuais/sumario} 								% Sumário              			   
+	%Verificar folha de Aprovação e Catalogação Bibliográfica
+	
+	\textual
+	% INSERE ELEMENTOS TEXTUAIS
+	\include{textuais/introducao}
+	\include{textuais/revisao-de-literatura}
+	\include{textuais/fundamentacao-teorica}
+	\include{textuais/metodologia}
+	\include{textuais/resultados}
+	%\include{textuais/orientacoes}                  			% Capítulo com Orientações de uso do Template, depois pode-se ocultar com o símbolo de porcentagem
+	\include{textuais/conclusao}                 			 	% Conclusão
+	
+	\postextual
+	% INSERE ELEMENTOS PÓS-TEXTUAIS
+	\include{pos-textuais/naomexapostext/referencias}           % Referências
+	\include{pos-textuais/apendices}							% Apêndices
+	\include{pos-textuais/anexos}								% Anexos
+	
+\end{document}
