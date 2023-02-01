@@ -1,0 +1,48 @@
+\documentclass[12pt,openright,oneside,english,brazil]{abntex2}
+
+%Preamblo
+\input{PreTextual/Preamblo.tex}
+
+\begin{document}
+	
+	\setcounter{page}{1}
+	\input{PreTextual/CapaContracapa}
+	\newpage
+	
+	\input{PreTextual/FolhaBancaAprovacao}
+	\newpage
+	
+	\addcontentsline{toc}{chapter}{Resumo}
+	\input{PreTextual/Resumo}
+	\newpage
+	
+	\addcontentsline{toc}{chapter}{Abstract}
+	\input{PreTextual/Abstract}
+	\newpage
+	
+	%\renewcommand{\listofsimblos}{Lista de símbolos}
+	%\addcontentsline{toc}{chapter}{Lista de símbolos}
+	%\imprimirlistadesimbolos
+	%\renewcommand{\listfigurename}{Lista de figuras}
+	%\listoffigures
+
+	\newpage
+	\tableofcontents 
+	\newpage
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\textual
+	\input{Capitulos/Capitulo1.tex}
+	\input{Capitulos/Capitulo2.tex}
+
+    
+	% \renewcommand{\appendixtocname}{APÊNDICES}
+	% \renewcommand{\appendixpagename}{Apêndices}
+	% \begin{appendices}
+	% \addappheadtotoc
+	% \clearpage
+	% \input{Capitulos/Ap1.tex}
+	
+	\bibliography{Capitulos/Referencias}
+
+\end{document}
