@@ -1,61 +1,85 @@
 import vpython as vp
 
-scene = vp.canvas(width=450, height=650, align="right",
-                  background=vp.vector(0.95, 0.95, 0.95))
-scene.range = 25
-titulo = "Gráficos dos estados do Pêndulo Simples"
-grafico = vp.graph(title=titulo, align="left", xtitle='tempo (s)',
-                   fast=True, width=800, height=450,
-                   center=vp.vector(0, 12, 0), scroll=True,
-                   xmin=0, xmax=20, ymin=-1, ymax=1, dot=True,
-                   background=vp.vector(0.95, 0.95, 0.95))
+# Parâmetros do Aeropêndulo
+comprimento_braco = 4.4
 
-curva1 = vp.gcurve(color=vp.color.blue, width=3,
-                   markers=False, label="Posição Angular do Pêndulo",
-                   dot=True, dot_color=vp.color.blue)
+scene = vp.canvas(title="<center><h1>Aeropêndulo</h1><center/>", width=650,
+                  height=580, align="left", autoscale=0, range=5,
+                  center=vp.vec(0, 3, 0),
+                  background=vp.vector(0.7, 0.7, 0.9),
+                  color=vp.vec(1, 0.6, 0.6),
+                  forward=vp.vec(-0.3, 0, -1))
 
-curva2 = vp.gcurve(color=vp.color.red, width=3,
-                   markers=False, label="Velocidade Angular do Pêndulo",
-                   dot=True, dot_color=vp.color.red)
+# Ambiente de sinulação.
+base = vp.box(pos=vp.vec(0, -0.85, 0), size=vp.vec(30, 0.2, 15),
+              texture=vp.textures.wood)
+parede = vp.box(pos=vp.vec(0, 7.1, -7.55), size=vp.vec(30, 16, 0.2),
+                color=vp.vec(0.1, 0.1, 0.1), shininess=0.05)
+sitio = vp.text(pos=vp.vec(0, 8.1, -7.45), text="AEROPÊNDULO",
+                color=vp.vec(1, 0.6, 0.6), align='center', depth=0)
 
-curva3 = vp.gcurve(color=vp.color.orange, width=3,
-                   markers=False, label="Aceleração Angular do Pêndulo",
-                   dot=True, dot_color=vp.color.orange)
+# Braço do Aeropêndulo.
+barra = vp.box(pos=vp.vec(0, -1.4, 0),
+               size=vp.vec(0.2, comprimento_braco, 0.2),
+               color=vp.vec(0.5, 0.5, 0.95))
 
-motor = vp.box(pos=vp.vector(-20, -20, 0),
-               size=vp.vector(2, 2, 2), color=vp.color.blue)
-# motor_p2 = vp.box(pos=vp.vector(motor.pos.x, motor.pos.y, motor.pos.z),
-#                  size=vp.vector(3, 1, 1), color=vp.color.blue)
-pivot = vp.vector(0, 0, 0)
-base = vp.box(pos=pivot, size=vp.vec(20, 50, 0), color=vp.color.green)
-# roof1 = box(pos=pivot1, size=vector(10, 0.5, 10), color=color.green)
-rod = vp.cylinder(pos=pivot, axis=motor.pos-pivot,
-                  radius=0.3, color=vp.color.red)
+# Base que acopla o motor ao braço.
+base_motor = vp.cylinder(pos=vp.vec(-0.2, -4, 0), radius=0.4,
+                         axis=vp.vec(0.4, 0, 0),
+                         color=vp.vec(0.5, 0.5, 0.95))
+# Armadura do motor.
+base2_motor = vp.box(pos=vp.vec(-0.4, -4, 0), size=vp.vec(0.4, 0.4, 0.4),
+                     color=vp.vec(1, 1, 0))
 
-vp.wtext(text="Pêndulo Simple")
+# Eixo que da hélice do motor.
+base_helice = vp.cylinder(pos=vp.vec(-0.8, -4, 0), radius=0.05,
+                          axis=vp.vec(0.4, 0, 0),
+                          color=vp.vec(0.5, 0.5, 0.8))
+
+# Hélice.
+helice = vp.box(pos=vp.vec(-0.8, -4, 0), size=vp.vec(0.05, 0.2, 2),
+                color=vp.vec(1, 1, 0))
+
+# Motor completo.
+motor = vp.compound([base_motor, base2_motor, base_helice])
+
+# Motor + Hélice.
+motor_helice = vp.compound([motor, helice])
+
+# Aeropêndulo
+pendulo = vp.compound([barra, motor_helice])
+pendulo.pos = vp.vec(-0.31, 2.7, 0)
+
+# Eixo de sustentação.
+eixo = vp.cylinder(pos=vp.vec(0, 5.2, 0.3), radius=0.09,
+                   axis=vp.vec(0, 0, -2),
+                   color=vp.vec(0.7, 0.4, 0.1))
+
+# Estrutura de sustentação do aeropêndulo.
+# b1 = vp.box(pos=vp.vec(0, 1.7, -2), size=vp.vec(1, 4.2, 0.6),
+#             color=vp.vec(0.7, 0.4, 0.1))
+# b2 = vp.box(pos=vp.vec(0, -0.6, -1.5), size=vp.vec(3, 0.4, 1.6),
+#             color=vp.vec(0.7, 0.4, 0.1))
+b1 = vp.box(pos=vp.vec(0, 1.7, -2), size=vp.vec(3, 8, 0.6),
+            dcolor=vp.vec(0.8, 0.8, 0.8))
+b2 = vp.box(pos=vp.vec(0, -0.6, -1.5), size=vp.vec(4.5, 0.4, 2.5),
+            color=vp.vec(0.8, 0.8, 0.8))
+logo = vp.box(pos=vp.vec(0, 2.5, -1.7),
+              texture="logoufpa.png", size=vp.vec(2, 2, 0.2))
+ufpa = vp.text(pos=vp.vec(0, 3.7, -1.7), text="UFPA",
+               color=vp.vec(1, 0.6, 0.6), height=0.5,
+               align='center', depth=0)
 
 
-g = 9.8
-t = 0  # time
-dt = 0.01  # time interval
-l = vp.mag(motor.pos-pivot)  # length of pendulum
-cs = (pivot.y-motor.pos.y)/l  # calculation of cos(theta)
-theta = vp.acos(cs)  # angle with vertical direction
-vel = 0.0  # angular velocity
+pendulo.w = 10
+pendulo.angulo = 0
+pendulo.l = 3
+dt = 0.01
 
 while True:
-    vp.rate(100)  # maximum 100 calculations per second
-    acc = -g/l*vp.sin(theta)  # updating of angular acceleration
-    theta = theta+vel*dt  # updating of angular position
-    vel = vel+acc*dt  # updating of angular velocity
-    # calculating position
-    pos_motor = vp.vector(l*vp.sin(theta), pivot.y-l*vp.cos(theta), 0)
-    axis_motor = vp.vector(vp.cos(theta), vp.sin(theta), 0)
-    motor.pos = pos_motor
-    motor.axis = axis_motor
-    # motor_p2.axis = axis_motor
-    rod.axis = motor.pos  # updating other end of rod of pendulum
-    t = t + dt  # updating time
-    curva1.plot(t, theta)
-    curva2.plot(t, vel)
-    curva3.plot(t, acc)
+    vp.rate(20)
+    pendulo.a = -98*vp.sin(pendulo.angulo)/pendulo.l
+    pendulo.w = pendulo.w + pendulo.a*dt
+    pendulo.angulo = pendulo.angulo + pendulo.w*dt
+    pendulo.rotate(axis=vp.vec(0, 0, 1), angle=pendulo.w*dt,
+                   origin=vp.vec(0, 5.2, 0))
