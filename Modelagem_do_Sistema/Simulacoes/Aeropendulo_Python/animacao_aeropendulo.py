@@ -1,8 +1,8 @@
 import vpython as vp
-from graficos_aeropendulo import graficos
+from graficos_aeropendulo import Graficos
 
 
-class Aeropendulo:
+class AnimacaoAeropendulo:
     """Classe que implementa a aminação do Aeropêndulo."""
     def __init__(self, comprimento_braco=4.4):
         # Parâmetros do Aeropêndulo
@@ -89,9 +89,9 @@ class Aeropendulo:
 
 if __name__ == "__main__":
 
-    aeropendulo = Aeropendulo()
-    graf, plot1, plot2, plot3 = graficos()
-
+    aeropendulo = AnimacaoAeropendulo()
+    g = Graficos()
+    graf, plot1, plot2, plot3 = g.graficos()
     aeropendulo.w = 10
     aeropendulo.angulo = 0
     aeropendulo.l = 3
