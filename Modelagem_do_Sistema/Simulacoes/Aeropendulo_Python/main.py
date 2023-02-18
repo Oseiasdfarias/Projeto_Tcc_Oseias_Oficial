@@ -23,7 +23,7 @@ animacao_aeropendulo = AnimacaoAeropendulo()
 # Instanciando um objeto para plotagem dos gráficos dinâmicos dos
 # estados do Aeropêndulo
 g = Graficos()
-graf, plot1, plot2, plot3 = g.graficos()
+graf, plot1, plot2 = g.graficos()
 
 # Instânciando um objeto para solução matemática do sistema Aeropêndulo.
 mma = ModeloMatAeropendulo()
@@ -48,4 +48,3 @@ while True:
                                             origin=vp.vec(0, 5.2, 0))
     plot1.plot(t, x[0])
     plot2.plot(t, x[1])
-    # plot3.plot(t, animacao_aeropendulo.angulo)
