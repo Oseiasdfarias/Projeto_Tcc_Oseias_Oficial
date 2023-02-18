@@ -35,7 +35,7 @@ class ModeloMatAeropendulo(object):
 
         # Função de estado dx2 = f(x,u)
         dx2 = -(self.m*self.g*self.d / self.J) * x1 - (self.c / self.J) * \
-        x2 + (self.K_m / self.J) * -4
+        x2 + (self.K_m / self.J) * 4
         dx = np.array([dx1, dx2])      # Derivada do vetor de estados
         return dx                      # Retorna a derivada do vetor de estados
 
