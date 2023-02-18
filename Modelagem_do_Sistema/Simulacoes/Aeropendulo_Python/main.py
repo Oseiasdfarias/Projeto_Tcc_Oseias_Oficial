@@ -13,7 +13,7 @@
 #
 import vpython as vp
 from graficos_aeropendulo import Graficos
-from animacao_aeropendulo1 import AnimacaoAeropendulo
+from animacao_aeropendulo import AnimacaoAeropendulo
 from modelo_mat_aeropendulo import ModeloMatAeropendulo
 import time
 
