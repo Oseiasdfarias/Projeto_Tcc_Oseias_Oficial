@@ -1,5 +1,4 @@
 import vpython as vp
-from graficos_aeropendulo import Graficos
 
 
 class AnimacaoAeropendulo:
@@ -85,28 +84,3 @@ class AnimacaoAeropendulo:
                             align='center', depth=0)
 
         return self.pendulo
-
-
-if __name__ == "__main__":
-
-    aeropendulo = AnimacaoAeropendulo()
-    g = Graficos()
-    graf, plot1, plot2, plot3 = g.graficos()
-    aeropendulo.w = 10
-    aeropendulo.angulo = 0
-    aeropendulo.l = 3
-    dt = 0.01
-    t = 0
-
-    while True:
-        vp.rate(20)
-        t += dt
-        aeropendulo.a = -98*vp.sin(aeropendulo.angulo)/aeropendulo.l
-        aeropendulo.w = aeropendulo.w + aeropendulo.a*dt
-        aeropendulo.angulo = aeropendulo.angulo + aeropendulo.w*dt
-        aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
-                                       angle=aeropendulo.w*dt,
-                                       origin=vp.vec(0, 5.2, 0))
-        plot1.plot(t, aeropendulo.a)
-        plot2.plot(t, aeropendulo.w)
-        plot3.plot(t, aeropendulo.angulo)
