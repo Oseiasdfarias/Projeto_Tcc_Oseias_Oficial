@@ -1,6 +1,5 @@
 import vpython as vp
 from graficos_aeropendulo import Graficos
-import os
 
 
 class AnimacaoAeropendulo:
@@ -39,17 +38,17 @@ class AnimacaoAeropendulo:
                                       axis=vp.vec(0.4, 0, 0),
                                       color=vp.vec(0.5, 0.5, 0.95))
         # Armadura do motor.
-        self.base2_motor = vp.box(pos=vp.vec(-0.4, -4, 0),
+        self.base2_motor = vp.box(pos=vp.vec(0.4, -4, 0),
                                   size=vp.vec(0.4, 0.4, 0.4),
                                   color=vp.vec(1, 1, 0))
 
-        # Eixo que da hélice do motor.
-        self.base_helice = vp.cylinder(pos=vp.vec(-0.8, -4, 0), radius=0.05,
+        # Eixo que da hélice do motor
+        self.base_helice = vp.cylinder(pos=vp.vec(0.4, -4, 0), radius=0.05,
                                        axis=vp.vec(0.4, 0, 0),
                                        color=vp.vec(0.5, 0.5, 0.8))
 
         # Hélice.
-        self.helice = vp.box(pos=vp.vec(-0.8, -4, 0),
+        self.helice = vp.box(pos=vp.vec(0.8, -4, 0),
                              size=vp.vec(0.05, 0.2, 2),
                              color=vp.vec(1, 1, 0))
 
@@ -63,7 +62,7 @@ class AnimacaoAeropendulo:
 
         # Aeropêndulo
         self.pendulo = vp.compound([self.barra, self.motor_helice])
-        self.pendulo.pos = vp.vec(-0.31, 2.7, 0)
+        self.pendulo.pos = vp.vec(0.31, 2.7, 0)
 
         # Eixo de sustentação.
         self.eixo = vp.cylinder(pos=vp.vec(0, 5.2, 0.3), radius=0.09,
