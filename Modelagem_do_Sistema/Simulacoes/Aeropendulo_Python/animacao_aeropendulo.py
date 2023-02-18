@@ -1,5 +1,6 @@
 import vpython as vp
 from graficos_aeropendulo import Graficos
+import os
 
 
 class AnimacaoAeropendulo:
@@ -77,7 +78,7 @@ class AnimacaoAeropendulo:
                          color=vp.vec(0.8, 0.8, 0.8))
 
         self.logo = vp.box(pos=vp.vec(0, 2.5, -1.7),
-                           texture="./utils/logoufpa.png",
+                           texture="https://i.imgur.com/odcLHxB.png",
                            size=vp.vec(2, 2, 0.2))
 
         self.ufpa = vp.text(pos=vp.vec(0, 3.7, -1.7), text="UFPA",

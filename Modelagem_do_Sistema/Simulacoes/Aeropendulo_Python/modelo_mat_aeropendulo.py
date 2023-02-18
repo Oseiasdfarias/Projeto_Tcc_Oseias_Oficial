@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 plt.style.use("ggplot")
 
 
-class ModeloMatAeropendulo:
+class ModeloMatAeropendulo(object):
     def __init__(self, t_simu=100, ts=0.1, x_0=[0.1, -0.5],
                  K_m=0.0296, m=0.36, d=0.03,
                  J=0.0106, g=9.8, c=0.0076):
@@ -23,6 +23,10 @@ class ModeloMatAeropendulo:
         self.x = x_0
         self.x1 = [[], []]
 
+        # Sinulação
+        self.simu = False
+        self.simu_dinamic = False
+
     def get_estados(self):
         pass
     # Define o nome da função que modela o sistema;
@@ -37,6 +41,7 @@ class ModeloMatAeropendulo:
         return dx                      # Retorna a derivada do vetor de estados
 
     def simular(self, t_simu=100, ts=0.1, x_0=[0.1, -0.5]):
+        self.simu = True
         self.t_simu = t_simu
         self.ts = ts
         self.t = ts*np.arange(0, t_simu+ts, ts)
@@ -53,6 +58,7 @@ class ModeloMatAeropendulo:
     """
 
     def simulacao_dinamica(self, t_simu=100, ts=0.1, x_0=[0.1, -0.5]):
+        self.simu_dinamic = True
         self.t_simu = t_simu
         self.ts = ts
         self.t = ts*np.arange(0, t_simu+ts, ts)
@@ -60,7 +66,7 @@ class ModeloMatAeropendulo:
         for j, i in enumerate(self.t):
             dx = self.modelo_aeropendulo(self.x, self.t)
             try:
-                dt = (self.t[j+1]-self.t[j])
+                dt = (self.t[j+1]-i)
             except Exception:
                 pass
             self.x = self.x + dt * dx
@@ -72,13 +78,18 @@ class ModeloMatAeropendulo:
         plt.suptitle("Gráficos dos estados do Aeropêndulo")
 
         plt.subplot(211)
-        # plt.plot(self.t, self.x_[:, 0], lw=3.5)
-        plt.plot(self.t, self.x1[0])
+        if self.simu:
+            plt.plot(self.t, self.x_[:, 0], lw=3.5)
+        if self.simu_dinamic:
+            plt.plot(self.t, self.x1[0])
 
         plt.subplot(212)
-        # plt.plot(self.t, self.x_[:, 1], lw=3.5)
-        plt.plot(self.t, self.x1[1])
-        plt.show()
+        if self.simu:
+            plt.plot(self.t, self.x_[:, 1], lw=3.5)
+        if self.simu_dinamic:
+            plt.plot(self.t, self.x1[1])
+        if self.simu or self.simu_dinamic:
+            plt.show()
 
 
 if __name__ == "__main__":
