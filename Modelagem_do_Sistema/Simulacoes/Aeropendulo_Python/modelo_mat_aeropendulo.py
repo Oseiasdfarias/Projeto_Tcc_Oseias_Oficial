@@ -6,6 +6,7 @@ plt.style.use("ggplot")
 
 
 class ModeloMatAeropendulo(object):
+    """Modelo Matemático do Aeropêndulo para simulação dinâmica"""
     def __init__(self, t_simu=100, ts=0.1, x_0=[0.1, -0.5],
                  K_m=0.0296, m=0.36, d=0.03,
                  J=0.0106, g=9.8, c=0.0076):
@@ -27,16 +28,14 @@ class ModeloMatAeropendulo(object):
         self.simu = False
         self.simu_dinamic = False
 
-    def get_estados(self):
-        pass
     # Define o nome da função que modela o sistema;
-
     def modelo_aeropendulo(self, x, t):
         x1, x2 = x        # Variáveis de estado a partir do vetor de estados;
         dx1 = x2          # Função de estado dx1 = f(x,u)
 
         # Função de estado dx2 = f(x,u)
-        dx2 = -(self.m*self.g*self.d / self.J) * x1 - (self.c / self.J) * x2 + (self.K_m / self.J) * 0
+        dx2 = -(self.m*self.g*self.d / self.J) * x1 - (self.c / self.J) * \
+        x2 + (self.K_m / self.J) * -4
         dx = np.array([dx1, dx2])      # Derivada do vetor de estados
         return dx                      # Retorna a derivada do vetor de estados
 
@@ -50,12 +49,6 @@ class ModeloMatAeropendulo(object):
         # Integração com método odeint() da biblioteca scipy.integrate
         self.x_ = odeint(self.modelo_aeropendulo, self.x_0, self.t)
         return self.x_
-
-    """
-        def atualiza_estados(self, dt):
-            dx = self.modelo_aeropendulo(self.x, self.t)
-            self.x = self.x + dt * dx
-    """
 
     def simulacao_dinamica(self, t_simu=100, ts=0.1, x_0=[0.1, -0.5]):
         self.simu_dinamic = True
