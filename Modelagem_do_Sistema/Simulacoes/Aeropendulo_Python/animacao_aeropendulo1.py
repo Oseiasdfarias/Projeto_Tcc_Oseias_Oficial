@@ -61,7 +61,7 @@ class AnimacaoAeropendulo:
         self.motor_helice = vp.compound([self.motor, self.helice])
 
         # Aeropêndulo
-        self.pendulo = vp.compound([self.barra, self.motor_helice])
+        self.pendulo = self.barra# vp.compound([self.barra, self.motor_helice])
         self.pendulo.pos = vp.vec(0.31, 2.7, 0)
 
         # Eixo de sustentação.
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
     aeropendulo = AnimacaoAeropendulo()
     g = Graficos()
-    graf, plot1, plot2, plot3 = g.graficos()
+    graf, plot1, plot2 = g.graficos()
     aeropendulo.w = 10
     aeropendulo.angulo = 0
     aeropendulo.l = 3
@@ -107,6 +107,10 @@ if __name__ == "__main__":
         aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
                                        angle=aeropendulo.w*dt,
                                        origin=vp.vec(0, 5.2, 0))
+        aeropendulo.motor_helice.pos = aeropendulo.aeropendulo.pos
+        aeropendulo.motor_helice.axis = aeropendulo.aeropendulo.axis
+        aeropendulo.motor_helice.rotate(axis=vp.vec(1, 0, 0),
+                                 angle=0.1)
+        print(aeropendulo.helice.pos)
         plot1.plot(t, aeropendulo.a)
         plot2.plot(t, aeropendulo.w)
-        plot3.plot(t, aeropendulo.angulo)
