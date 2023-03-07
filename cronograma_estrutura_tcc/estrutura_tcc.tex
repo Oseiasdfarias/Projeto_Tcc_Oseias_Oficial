@@ -1,10 +1,18 @@
-\documentclass[12pt,oneside,a4paper,brazil]{abntex2}
+\documentclass[12pt,oneside,a4paper,brazil]{article}
 % pacotes
 \usepackage[utf8]{inputenc}
 \usepackage{color}
 \usepackage{graphicx}
 % \usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
+\usepackage{blindtext}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=10mm,
+}
 % cores
 \definecolor{normal}{RGB}{ 50, 50, 50 }
 \definecolor{green}{RGB}{ 43, 180, 54 }
@@ -15,7 +23,7 @@
 	\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
 	\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
 	\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
-	\chapter*{Estrutura do Tcc}
+	\section*{Estrutura do Tcc}
 	\color{normal}
 	
 	\begin{enumerate}
@@ -36,15 +44,22 @@
 				\item Transformada Z
 			\end{enumerate}
 			\item Identificação de Sistemas
+			\item Eletrônica
+			\begin{enumerate}
+				\item Eletrônica Analógica
+				\item Eletrônica Digital
+				\item Eletrônica de Potência
+			\end{enumerate}
 		\end{enumerate}
 	
 	
-		\item \textbf{Simulador e Prototipo do Aeropêndulo}
+		\item \textbf{Simulador e Protótipo do Aeropêndulo}
 		\begin{enumerate}
-			\item Protótipagem
+			\item Prototipagem
 			\begin{enumerate}
 				\item Parte estrutural do sistema
 				\item Parte Elétrica do sistema
+				\item Montagem do Protótipo
 			\end{enumerate}
 			\item Simulador usando Python
 		\end{enumerate}
@@ -76,7 +91,7 @@
 		
 			\item Implementação do Sistema de Controle e Interface Gráfica
 			\begin{enumerate}
-				\item Desenvolvimento do Fimware do Microcontrolador
+				\item Desenvolvimento do Firmware do Microcontrolador (Implementação do Controlador)
 				\item Desenvolvimento do software de visualização gráfica dos dados
 			\end{enumerate}
 		\end{enumerate}
