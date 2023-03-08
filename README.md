@@ -1,10 +1,9 @@
-# Trabalho de Conclusão de Curso [ Oseias Farias ]
+# Trabalho de Conclusão de Curso [ Oséias Farias ]
 
-## Modelagem e Prototipagem de Braço de Helicóptero para estudos de Projetos de Controle
+### Identificação de Sistemas e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
 
 <center>
-  <img src="Modelagem_do_Sistema/Modelos_Matematicos/Modelagem_MotorCC_Serie/utils/propeller_levitated_arm.png"
-       width="400"> 
-  <p>Figura 1 - Motor CC Série.</p>
+  <img src="Modelagem_do_Sistema/Simulacoes/Aeropendulo_Python/aeropendulo.png"
+       width="600"> 
 <center/>
 
