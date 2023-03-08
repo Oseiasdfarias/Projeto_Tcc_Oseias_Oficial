@@ -3,7 +3,6 @@
 ### Identificação de Sistemas e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
 
 <center>
-  <img src="Modelagem_do_Sistema/Simulacoes/Aeropendulo_Python/Simulacao.png"
-       width="900"> 
+  <img src="Modelagem_do_Sistema/Simulacoes/Aeropendulo_Python/simulacao.png"> 
 <center/>
 
