@@ -15,7 +15,6 @@ import vpython as vp
 from graficos_aeropendulo import Graficos
 from animacao_aeropendulo import AnimacaoAeropendulo
 from modelo_mat_aeropendulo import ModeloMatAeropendulo
-import time
 
 # Instanciando um objeto AeropenduloAaeropendulo = Aeropendulo()
 animacao_aeropendulo = AnimacaoAeropendulo()
@@ -34,7 +33,6 @@ x = [0.0, -0.5]
 t = 0.0
 t_ant = 0.0
 
-time.sleep(1)
 while True:
     vp.rate(70)
     dx = mma.modelo_aeropendulo(x, t)
