@@ -31,8 +31,8 @@ mma = ModeloMatAeropendulo()
 ts = 1e-2
 # Condições Iniciais dos estados
 x = [0.0, -0.5]
-t = 0
-t_ant = 0
+t = 0.0
+t_ant = 0.0
 
 time.sleep(1)
 while True:
