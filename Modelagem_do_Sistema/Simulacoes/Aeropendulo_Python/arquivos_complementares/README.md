@@ -121,7 +121,7 @@ $$
 K_m     &   0,0296                                        \\ \hline
 d       &   0,03m                                         \\ \hline
 J       &   0,0106 Kgm^2                                  \\ \hline
-m       &   0,36 m                                  \\ \hline
+m       &   0,36 m                                        \\ \hline
 g       &   9,8 m/s^2                                     \\ \hline
 c       &   0,0076 Nms/rad                                \\ \hline
 \end{array}
