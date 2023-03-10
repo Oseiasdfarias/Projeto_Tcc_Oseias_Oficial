@@ -28,19 +28,13 @@ class ModeloMatAeropendulo(object):
     """
     Modelo Matemático do Aeropêndulo para simulação dinâmica
 
-    Atributos
-    ----------
-    x_0 : list [x, y]
-        Condições iniciais para simulação.
-    K_m : float
-    m : float
-        Massa total do Aeroèndulo (braço + Motor + Hélices).
-    d : float
-        Tamanho do Braço do Aeropêndulo
-    J : float
-        Momento de Inércia do Aeropêndulo.
-    c : float
-        coeficente de atrito do Aeropêndulo.
+    Args:
+        x_0: Condições iniciais para simulação.
+        K_m: float
+        m: Massa total do Aeroèndulo (braço + Motor + Hélices).
+        d: Tamanho do Braço do Aeropêndulo.
+        J: Momento de Inércia do Aeropêndulo.
+        c: coeficente de atrito do Aeropêndulo.
     """
 
     def __init__(self, x_0: List[float] = [0.1, -0.5], K_m: float = 0.0296,
@@ -67,11 +61,10 @@ class ModeloMatAeropendulo(object):
         """
         Método que implementa o modelo matemático do aeropêndulo.
         Args:
-            :param x : (:obj:`list`): Estados atuais do sistema.
-            :param t :(:obj:`list`): necessário caso use scipy.integrate.odeint
+            x: Estados atuais do sistema.
+            t: necessário caso use scipy.integrate.odeint
         Returns:
-            :return dx: (:obj:`nparray`): Retorna um array numpy contendo a
-            derivada dos estados.
+            Retorna um array numpy contendo a derivada dos estados.
         """
         x1, x2 = x        # Variáveis de estado a partir do vetor de estados;
         dx1 = x2          # Função de estado dx1 = f(x,u)
@@ -89,8 +82,9 @@ class ModeloMatAeropendulo(object):
         no final plota os gráficos dos estados do sistema para a dada
         simulação.
         Args:
-            :param t_simu : (:obj:`int`): tempo de simulação, Padrão: 100.
-            :param ts :(:obj:`float`): Período de amostragem, Padrão: 0.1
+            t_simu: tempo de simulação, Padrão: 100.
+            ts: Período de amostragem, Padrão: 0.1
+            x_0: Condições iniciais para simulação
         """
         self.simu = True
         self.t_simu = t_simu
@@ -109,10 +103,9 @@ class ModeloMatAeropendulo(object):
         no final plota os gráficos dos estados do sistema para a dada
         simulação.
         Args:
-            :param t_simu : (:obj:`int`): tempo de simulação, Padrão: 100.
-            :param ts :(:obj:`float`): Período de amostragem, Padrão: 0.1
-            :param x_0 :(:obj:`list`): Condições iniciais do sistema,
-            Padrão: [0.1, -0.5]).
+            t_simu: tempo de simulação, Padrão: 100.
+            ts: Período de amostragem, Padrão: 0.1
+            x_0: Condições iniciais do sistema.
         """
         self.simu_dinamic = True
         self.t_simu = t_simu
