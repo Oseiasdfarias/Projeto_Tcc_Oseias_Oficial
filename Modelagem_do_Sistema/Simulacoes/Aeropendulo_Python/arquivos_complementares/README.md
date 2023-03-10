@@ -116,7 +116,7 @@ $$
 #### Parâmetros para Simulação
 
 $$
-\begin{array}{|c|c|} \hline
+\begin{array}{|c|c|}                                         \hline
 \text { Parâmetros do Aeropêndulo } & \text{Valores}      \\ \hline
 K_m     &   0,0296                                        \\ \hline
 d       &   0,03m                                         \\ \hline
