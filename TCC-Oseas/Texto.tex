@@ -1,25 +1,21 @@
 \documentclass[12pt,openright,oneside,english,brazil]{abntex2}
-
+\usepackage{lipsum}
 %Preamblo
 \input{PreTextual/Preamblo.tex}
 
 \begin{document}
-	
+		
 	\setcounter{page}{1}
 	\input{PreTextual/CapaContracapa}
 	\newpage
-	
-	\input{PreTextual/FolhaBancaAprovacao}
+	\input{PreTextual/FolhaBancaAprovacao}	
 	\newpage
-	
 	\addcontentsline{toc}{chapter}{Resumo}
 	\input{PreTextual/Resumo}
 	\newpage
-	
 	\addcontentsline{toc}{chapter}{Abstract}
 	\input{PreTextual/Abstract}
 	\newpage
-	
 	%\renewcommand{\listofsimblos}{Lista de símbolos}
 	%\addcontentsline{toc}{chapter}{Lista de símbolos}
 	%\imprimirlistadesimbolos
@@ -32,9 +28,13 @@
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
 	\textual
-	\input{Capitulos/Capitulo1.tex}
-	\input{Capitulos/Capitulo2.tex}
-	\input{Capitulos/Capitulo3.tex}
+	\input{Capitulos/Cap1_introducao.tex}
+        \input{Capitulos/Cap2_revisao_bibliografica.tex}
+        \input{Capitulos/Cap3_simulador_e_prototipo_do_Aeropendulo}
+        \input{Capitulos/Cap4_Desenvolvimento}
+        \input{Capitulos/Cap5_Projeto_de_Controle}
+        \input{Capitulos/Cap6_Resultados_e_Discussoes}
+        \input{Capitulos/Cap7_ Conclusao}
 
     
 	% \renewcommand{\appendixtocname}{APÊNDICES}
