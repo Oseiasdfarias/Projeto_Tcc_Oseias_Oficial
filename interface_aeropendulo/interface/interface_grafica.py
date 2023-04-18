@@ -82,13 +82,13 @@ class InterfaceAeropendulo:
     def start_gui(self):
         # GUI
         self.root = ctk.CTk()
-        self.root.title("Gráficos Aeropêndulo")
+        self.root.title("Interface Aeropêndulo")
         # root.iconbitmap("mpu6050.ico")
         self.root.geometry("1270x660+30+45")
         self.root.minsize(1270, 660)
         self.root.maxsize(1270, 660)
         self.label = ctk.CTkLabel(
-            self.root, text="Gráficos Aeropêndulo",
+            self.root, text="Interface Aeropêndulo",
             font=ctk.CTkFont(size=20,
                              weight="bold")).grid(column=1, row=0)
         self.espaco = ctk.CTkLabel(master=self.root, text=" ",
