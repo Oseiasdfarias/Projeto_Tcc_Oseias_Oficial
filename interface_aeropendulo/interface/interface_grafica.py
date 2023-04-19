@@ -83,7 +83,6 @@ class InterfaceAeropendulo:
         # GUI
         self.root = ctk.CTk()
         self.root.title("Interface Aeropêndulo")
-        # root.iconbitmap("mpu6050.ico")
         self.root.geometry("1270x660+30+45")
         self.root.minsize(1270, 660)
         self.root.maxsize(1270, 660)
@@ -96,7 +95,6 @@ class InterfaceAeropendulo:
         self.espaco.grid(row=0, column=0, padx=20, pady=10)
         self.label_nemu = ctk.CTkLabel(master=self.root, text="Menu",
                                        width=110,
-                                       # image="./test_images/CustomTkinter_logo_single.png",
                                        font=ctk.CTkFont(size=25,
                                                         weight="bold"))
         self.label_nemu.grid(row=0, column=0, padx=20, pady=10)
@@ -153,8 +151,3 @@ class InterfaceAeropendulo:
         button.place(rely=0.90)
 
         self.root.mainloop()
-
-
-if __name__ == "__main__":
-    graph = InterfaceAeropendulo()
-    graph.start_gui()
