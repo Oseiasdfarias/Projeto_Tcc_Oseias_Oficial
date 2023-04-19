@@ -28,7 +28,7 @@ class InterfaceAeropendulo:
         # tx = []
 
     def init(self):
-        for i in range(6):
+        for i in range(4):
             """tx.append(ax[i].text(40, int(fila[i][-1])+2, f"{fila[i][-1]}",
                                 color=[0.3, 0.3, 0.5],
                                 fontsize=9,
