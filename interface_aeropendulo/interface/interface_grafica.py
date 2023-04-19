@@ -1,5 +1,7 @@
 import numpy as np
 from matplotlib.animation import FuncAnimation
+import os
+from PIL import Image
 
 # import tkinter as tk
 import customtkinter as ctk
@@ -12,9 +14,6 @@ from interface import Graphs
 
 class InterfaceAeropendulo:
     def __init__(self):
-        # Themes: blue (default), dark-blue, green
-        ctk.set_default_color_theme("green")
-
         # Objeto para coletar dados do sensor
         self.usb_port = "/dev/ttyUSB0"
         self.baud_rate = 115200
@@ -23,6 +22,8 @@ class InterfaceAeropendulo:
         self.executar = True
         graphs = Graphs()
         self.fig, self.ax, self.ln = graphs.get_fig_axes_ln()
+
+        self.start_gui()
         # self.fila = self.coleta_dados.get_dados()
 
         # tx = []
@@ -59,9 +60,8 @@ class InterfaceAeropendulo:
         self.root.quit()
         self.root.destroy()
 
-    def get_usb_port(self):
-        port = self.textbox.get("0.0", "end")
-        self.usb_port = port.strip(" ").replace("\n", "")
+    def get_usb_port(self, port):
+        self.usb_port = port
         # self.textbox.delete("0.0", "end")
         print(self.usb_port)
 
@@ -80,6 +80,13 @@ class InterfaceAeropendulo:
         self.executar = False
 
     def start_gui(self):
+        # Themes: blue (default), dark-blue, green
+        ctk.set_default_color_theme("green")
+        # image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+        #                           "utils")
+        # self.logo_image = ctk.CTkImage(Image.open(
+        #     os.path.join(image_path, "favicon_aeropendulo_png.png")),
+        #     size=(26, 26))
         # GUI
         self.root = ctk.CTk()
         self.root.title("Interface Aeropêndulo")
@@ -104,6 +111,7 @@ class InterfaceAeropendulo:
         self.espaco.grid(row=0, column=0, padx=10, pady=10)
 
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
+                                       # image=self.logo_image,
                                        width=90,
                                        font=ctk.CTkFont(size=25,
                                                         weight="bold"))
@@ -129,30 +137,41 @@ class InterfaceAeropendulo:
                         padx=10, pady=10,
                         sticky="s")
 
-        self.textbox = ctk.CTkTextbox(master=self.frame_menu, height=27,
-                                      width=140,
-                                      font=ctk.CTkFont(size=15,
-                                                       weight="bold"),
-                                      corner_radius=10,
-                                      border_width=1)
-        self.textbox.grid(row=4, padx=10, pady=10, column=0, sticky="s")
-        self.textbox.insert("0.0", "/dev/ttyUSB0")
-        self.textbox.focus_set()
+        # self.textbox = ctk.CTkTextbox(master=self.frame_menu, height=27,
+        #                               width=140,
+        #                               font=ctk.CTkFont(size=15,
+        #                                                weight="bold"),
+        #                               corner_radius=10,
+        #                               border_width=1)
+        # self.textbox.grid(row=4, padx=10, pady=10, column=0, sticky="s")
+        # self.textbox.insert("0.0", "/dev/ttyUSB0")
+        # self.textbox.focus_set()
+
+        self.usb_menu = ctk.CTkOptionMenu(
+            master=self.frame_menu,
+            height=30,
+            font=ctk.CTkFont(
+                size=15,
+                weight="bold"),
+            values=["/dev/ttyUSB0", "/dev/ttyUSB1"],
+            command=self.get_usb_port)
+        self.usb_menu.grid(row=5, column=0, padx=10, pady=5, sticky="s")
 
         self.aparencia_menu = ctk.CTkOptionMenu(master=self.frame_menu,
+                                                height=30,
                                                 font=ctk.CTkFont(
                                                      size=15,
                                                      weight="bold"),
                                                 values=["Light", "Dark"],
                                                 command=self.aparencia_event)
 
-        self.aparencia_menu.grid(row=5, column=0, padx=10, pady=5, sticky="s")
+        self.aparencia_menu.grid(row=6, column=0, padx=10, pady=5, sticky="s")
 
         button = ctk.CTkButton(master=self.frame_menu, height=30,
                                font=ctk.CTkFont(size=15, weight="bold"),
                                text="Quit", border_width=1,
                                text_color="red", command=self.quit)
-        button.grid(row=6, column=0,
+        button.grid(row=7, column=0,
                     padx=10, pady=10,
                     sticky="s")
 

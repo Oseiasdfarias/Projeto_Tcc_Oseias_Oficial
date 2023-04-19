@@ -2,8 +2,7 @@ from interface import InterfaceAeropendulo
 
 
 def runinterface():
-    graph = InterfaceAeropendulo()
-    graph.start_gui()
+    InterfaceAeropendulo()
 
 
 if __name__ == "__main__":
