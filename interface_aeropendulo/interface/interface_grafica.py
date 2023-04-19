@@ -86,68 +86,74 @@ class InterfaceAeropendulo:
         self.root.geometry("1270x660+30+45")
         self.root.minsize(1270, 660)
         self.root.maxsize(1270, 660)
+
+        self.frame_menu = ctk.CTkFrame(master=self.root, width=5, height=5)
+        self.frame_menu.grid(row=0, column=0, padx=10, pady=10)
+
+        self.frame_graficos = ctk.CTkFrame(master=self.root,
+                                           width=5, height=5)
+        self.frame_graficos.grid(row=0, column=1, padx=5, pady=10)
+
         self.label = ctk.CTkLabel(
-            self.root, text="Interface Aeropêndulo",
-            font=ctk.CTkFont(size=20,
-                             weight="bold")).grid(column=1, row=0)
-        self.espaco = ctk.CTkLabel(master=self.root, text=" ",
-                                   width=110)
-        self.espaco.grid(row=0, column=0, padx=20, pady=10)
-        self.label_nemu = ctk.CTkLabel(master=self.root, text="Menu",
-                                       width=110,
+            self.frame_graficos, text="Interface Aeropêndulo",
+            font=ctk.CTkFont(
+                size=20, weight="bold")).grid(column=1, row=0)
+
+        self.espaco = ctk.CTkLabel(master=self.frame_menu, text=" ",
+                                   width=90)
+        self.espaco.grid(row=0, column=0, padx=10, pady=10)
+
+        self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
+                                       width=90,
                                        font=ctk.CTkFont(size=25,
                                                         weight="bold"))
-        self.label_nemu.grid(row=0, column=0, padx=20, pady=10)
-        self.label_nemu.place(rely=0.08)
+        self.label_nemu.grid(row=0, column=0, padx=10, pady=10)
 
-        canvas = FigureCanvasTkAgg(self.fig, master=self.root)
-        canvas.get_tk_widget().grid(column=1, row=1)
+        canvas = FigureCanvasTkAgg(self.fig, master=self.frame_graficos)
+        canvas.get_tk_widget().grid(column=1, row=1,
+                                    padx=5, pady=5)
 
-        button_run = ctk.CTkButton(master=self.root, height=30,
+        button_run = ctk.CTkButton(master=self.frame_menu, height=30,
                                    font=ctk.CTkFont(size=15, weight="bold"),
                                    text="Executar", border_width=1,
                                    command=self.run_graph)
         button_run.grid(row=2, column=0,
-                        padx=40, pady=10,
+                        padx=10, pady=10,
                         sticky="s")
-        button_run.place(rely=0.2)
 
-        button_usb = ctk.CTkButton(master=self.root, height=30,
+        button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
                                    font=ctk.CTkFont(size=15, weight="bold"),
                                    text="Get USB", border_width=1,
                                    command=self.get_usb_port)
         button_usb.grid(row=3, column=0,
-                        padx=40, pady=10,
+                        padx=10, pady=10,
                         sticky="s")
-        button_usb.place(rely=0.3)
 
-        self.textbox = ctk.CTkTextbox(master=self.root, height=27, width=140,
+        self.textbox = ctk.CTkTextbox(master=self.frame_menu, height=27,
+                                      width=140,
                                       font=ctk.CTkFont(size=15,
                                                        weight="bold"),
                                       corner_radius=10,
                                       border_width=1)
-        self.textbox.grid(row=4, padx=40, pady=10, column=0, sticky="s")
+        self.textbox.grid(row=4, padx=10, pady=10, column=0, sticky="s")
         self.textbox.insert("0.0", "/dev/ttyUSB0")
-        self.textbox.place(rely=0.36)
         self.textbox.focus_set()
 
-        self.aparencia_menu = ctk.CTkOptionMenu(master=self.root,
+        self.aparencia_menu = ctk.CTkOptionMenu(master=self.frame_menu,
                                                 font=ctk.CTkFont(
                                                      size=15,
                                                      weight="bold"),
                                                 values=["Light", "Dark"],
                                                 command=self.aparencia_event)
 
-        self.aparencia_menu.grid(row=5, column=0, padx=20, pady=5, sticky="s")
-        self.aparencia_menu.place(rely=0.45)
+        self.aparencia_menu.grid(row=5, column=0, padx=10, pady=5, sticky="s")
 
-        button = ctk.CTkButton(master=self.root, height=30,
+        button = ctk.CTkButton(master=self.frame_menu, height=30,
                                font=ctk.CTkFont(size=15, weight="bold"),
                                text="Quit", border_width=1,
                                text_color="red", command=self.quit)
         button.grid(row=6, column=0,
-                    padx=20, pady=10,
+                    padx=10, pady=10,
                     sticky="s")
-        button.place(rely=0.90)
 
         self.root.mainloop()

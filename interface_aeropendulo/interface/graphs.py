@@ -11,7 +11,7 @@ class Graphs(object):
 
         self.fig, ((self.ax1, self.ax2),
                    (self.ax3, self.ax4)) =\
-                    plt.subplots(2, 2, figsize=(11, 6))
+                    plt.subplots(2, 2, figsize=(10.65, 6))
 
         # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)
         self.fig.subplots_adjust(wspace=0.32, hspace=0.44, left=0.076,
