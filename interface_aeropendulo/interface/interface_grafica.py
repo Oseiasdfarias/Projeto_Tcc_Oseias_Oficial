@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib.animation import FuncAnimation
-import os
-from PIL import Image
+# import os
+# from PIL import Image
 
 # import tkinter as tk
 import customtkinter as ctk
@@ -82,7 +82,8 @@ class InterfaceAeropendulo:
     def start_gui(self):
         # Themes: blue (default), dark-blue, green
         ctk.set_default_color_theme("green")
-        # image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+        # image_path = os.path.join(os.path.dirname(
+        #                           os.path.realpath(__file__)),
         #                           "utils")
         # self.logo_image = ctk.CTkImage(Image.open(
         #     os.path.join(image_path, "favicon_aeropendulo_png.png")),
