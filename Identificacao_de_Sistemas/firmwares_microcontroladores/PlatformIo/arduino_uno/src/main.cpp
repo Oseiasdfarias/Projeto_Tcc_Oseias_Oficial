@@ -15,7 +15,6 @@
 
 #include "Arduino.h"
 
-
 int pinoAD_POT = A3;        // Valor do potenciômetro
 int pinoAD_CONTROL = A1;    // Sinal de Controle
 int pinoPWM = 10;           // pino para sinal PWM
@@ -41,6 +40,7 @@ void setup() {
   pinMode(pinoSentido2, OUTPUT);
   pinMode(LED, OUTPUT);
   pinMode(pinoPWM, OUTPUT);
+  digitalWrite(LED, HIGH);
   Serial.begin(115200);
   Serial.setTimeout(5);
 }
@@ -50,7 +50,6 @@ void loop() {
     // valor_pwm = Serial.parseFloat();
     digitalWrite(pinoSentido1, LOW);
     digitalWrite(pinoSentido2, HIGH);
-    digitalWrite(LED, HIGH);
     analogWrite(pinoPWM, valor_pwm);
 
     // Sinal de tensão no potenciômetro.
