@@ -1,0 +1,22 @@
+LABORATÓRIO DE SISTEMAS DE CONTROLE
+
+Ensaio Experimental: Coleta do sinal de saída da bancada Motor-Gerador
+                     para entrada PRBS.
+
+
+Para abrir os arquivos consulte a função read_csv, da biblioteca pandas.
+
+Exemplo:
+_______________________________________________________________________
+import pandas as pd
+
+dados = pd.read_csv('arquivo.csv',header=None).values
+
+tempo = dados[0,:]
+entrada = dados[1,:]
+saida = dados[2,:]
+____________________________________________________________________
+
+Se estiver utilizando o Google Colab, pesquise sobre como fazer integração
+com o Google Drive e coloque o arquivo em alguma pasta do seu drive.
+

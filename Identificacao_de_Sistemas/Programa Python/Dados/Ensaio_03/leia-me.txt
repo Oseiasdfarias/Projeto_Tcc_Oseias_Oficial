@@ -1,0 +1,34 @@
+LABORATÓRIO DE SISTEMAS DE CONTROLE
+
+Ensaio Experimental: Coleta do sinal de saída da bancada Motor-Gerador
+                     para entrada PRBS.
+
+Arquivo referente: "ensaio_03.csv"
+
+O arquivo contém 3 vetores: tempo, entrada e saída.
+
+Informações do Experimento
+
+Ponto de operação: 2,25V
+Amplitude: 0,5V
+Faixa de Excursão: 1.75V ~ 2,75V
+Período de amostragem: 0.015s (Critério: mínimo de 10 amostras para o 
+                               tempo de subida)
+Quantidade de amostras: 1000
+
+Para abrir os arquivos consulte a função read_csv, da biblioteca pandas.
+
+Exemplo:
+_______________________________________________________________________
+import pandas as pd
+
+dados = pd.read_csv('ensaio_03.csv',header=None).values
+
+tempo = dados[0,:]
+entrada = dados[1,:]
+saida = dados[2,:]
+____________________________________________________________________
+
+Se estiver utilizando o Google Colab, pesquise sobre como fazer integração
+com o Google Drive e coloque o arquivo em alguma pasta do seu drive.
+
