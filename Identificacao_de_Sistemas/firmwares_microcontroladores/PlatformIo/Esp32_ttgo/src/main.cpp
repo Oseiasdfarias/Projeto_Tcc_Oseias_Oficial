@@ -20,10 +20,10 @@ const int pinoAD_CONTROL = 13;    // Sinal de Controle
 
 // Configurações do Sinal PWM
 const int pinoPWM = 25;           // pino para sinal PWM
-//const int freq = 500;
-//const int pwmChannel = 0;
-//const int resolution = 10;
-//int dutyCycle = 1023;
+const int freq = 500;
+const int pwmChannel = 0;
+const int resolution = 8;
+int dutyCycle = 120;
 float ref = 0.0;                  // Setpoint
 
 // Variáveis usadas no código
@@ -47,8 +47,8 @@ void setup() {
   digitalWrite(pinoSentido1, HIGH);
   digitalWrite(pinoSentido2, LOW);
 
-  //ledcSetup(pwmChannel, freq, resolution);
-  //ledcAttachPin(pinoPWM, pwmChannel);
+  ledcSetup(pwmChannel, freq, resolution);
+  ledcAttachPin(pinoPWM, pwmChannel);
 
   Serial.begin(115200);
 }
@@ -56,14 +56,13 @@ void setup() {
 void loop() {
   if (!Serial.available()) {
     // valor_pwm = Serial.parseFloat();
-    analogWrite(pinoPWM, 130);
-    //ledcWrite(pwmChannel, dutyCycle); 
+    ledcWrite(pwmChannel, dutyCycle); 
 
     // Sinal de tensão no potenciômetro.
     valorAD_POT = analogRead(pinoAD_POT);
     Serial.print(valorAD_POT);
     Serial.print("  |  ");
-    theta = map(valorAD_POT, 508., 3273., 0., 180.);
+    theta = map(valorAD_POT, 1085., 4095., 0., 180.);
     Serial.print(theta);
     Serial.print("° | ");
 
