@@ -18,26 +18,26 @@
 const int pinoAD_POT = 2;         // Valor do potenciômetro
 const int pinoAD_CONTROL = 13;    // Sinal de Controle
 
+// Define a direção de rotação do motor
+const int pinoSentido1 = 32;
+const int pinoSentido2 = 33;
+
 // Configurações do Sinal PWM
-const int pinoPWM = 25;           // pino para sinal PWM
+const int pinoPWM = 25;        // pino para sinal PWM
 const int freq = 500;
 const int pwmChannel = 0;
 const int resolution = 8;
 int dutyCycle = 120;
-float ref = 0.0;                  // Setpoint
+float ref = 0.0;               // Setpoint
 
 // Variáveis usadas no código
 int valorAD_POT = 0;
 float tensao_pot = 0.0;
 
-float theta = 0.0;           // Ângulo theta
-float tensao_control = 0.0;  // Sinal de controle em tensão
+float theta = 0.0;             // Ângulo theta
+float tensao_control = 0.0;    // Sinal de controle em tensão
 // Variável para salvar o sinal de controle, obtido pelo conversor AD.
 int valorAD_CONTROL = 0;
-
-// Define a direção de rotação do motor
-const int pinoSentido1 = 32;
-const int pinoSentido2 = 33;
 
 void setup() {
   pinMode(pinoSentido1, OUTPUT);
