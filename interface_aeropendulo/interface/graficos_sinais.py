@@ -9,9 +9,7 @@ class GraficosSinais(object):
 
     def __init__(self):
 
-        self.fig, ((self.ax1, self.ax2),
-                   (self.ax3, self.ax4)) =\
-                    plt.subplots(2, 2, figsize=(10.65, 6))
+        self.fig = plt.figure(figsize=(10.65, 6))
 
         # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)
         self.fig.subplots_adjust(wspace=0.32, hspace=0.44, left=0.076,
@@ -28,6 +26,7 @@ class GraficosSinais(object):
         self.ax1.set_xlabel("Tempo")
         self.ax1.set_ylabel("Amplitude")
         self.ln1, = self.ax1.plot([], [], lw=1.5, color="sienna")
+        self.ln_1, = self.ax1.plot([], [], "--", lw=1.5, color="red")
 
         self.ax2 = self.fig.add_subplot(222)
         self.ax2.set_title("Sinal de Erro (Graus)",
@@ -51,5 +50,5 @@ class GraficosSinais(object):
         self.ln4, = self.ax4.plot([], [], lw=1.5, color="blue")
 
         # Axis que para plotar os gráficos
-        self.ln = [self.ln1, self.ln2, self.ln3, self.ln4]
+        self.ln = [self.ln_1, self.ln1, self.ln2, self.ln3, self.ln4]
         self.ax = [self.ax1, self.ax2, self.ax3, self.ax4]
