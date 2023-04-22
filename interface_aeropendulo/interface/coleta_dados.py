@@ -27,6 +27,7 @@ class ColetaDados:
 
     def __coleta_dados(self):
         self.disp = serial.Serial(self.porta, self.baud_rate)
+        print(f"Disp. conectado: {self.porta}, BaudRate: {self.baud_rate}")
         self.disp.reset_input_buffer()
         while self.disp.is_open:
             try:
@@ -44,7 +45,7 @@ class ColetaDados:
                     sleep(0.03)
             except serial.SerialException:
                 print("Erro de leitura ...")
-                self.disp.reset_input_buffer()
+                # self.disp.reset_input_buffer()
                 break
 
 

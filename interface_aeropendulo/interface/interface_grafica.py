@@ -8,20 +8,20 @@ import customtkinter as ctk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # Modulos criados
-from interface import ColetaDados
-from interface import Graphs
+from interface import (ColetaDados, GraficosSinais)
+from interface.lista_portas_usb import ListaPortasUsb
 
 
 class InterfaceAeropendulo:
     def __init__(self):
         # Objeto para coletar dados do sensor
-        self.usb_port = "/dev/ttyUSB0"
+        self.usb_port = None
         self.baud_rate = 115200
 
         # Graficos
         self.executar = True
-        graphs = Graphs()
-        self.fig, self.ax, self.ln = graphs.get_fig_axes_ln()
+        graficos_sinais = GraficosSinais()
+        self.fig, self.ax, self.ln = graficos_sinais.get_fig_axes_ln()
 
         self.start_gui()
         # self.fila = self.coleta_dados.get_dados()
@@ -60,10 +60,8 @@ class InterfaceAeropendulo:
         self.root.quit()
         self.root.destroy()
 
-    def get_usb_port(self, port):
-        self.usb_port = port
-        # self.textbox.delete("0.0", "end")
-        print(self.usb_port)
+    def set_usb_port(self, porta_atual):
+        self.usb_port = porta_atual
 
     @staticmethod
     def aparencia_event(new_appearance_mode):
@@ -71,13 +69,14 @@ class InterfaceAeropendulo:
 
     def run_graph(self):
         if self.executar:
-            self.coleta_dados = ColetaDados(porta=self.usb_port,
-                                            baud_rate=self.baud_rate)
-            self.ani = FuncAnimation(self.fig, self.update,
-                                     init_func=self.init,
-                                     cache_frame_data=False,
-                                     interval=20, blit=True)
-        self.executar = False
+            if self.usb_port:
+                self.coleta_dados = ColetaDados(porta=self.usb_port,
+                                                baud_rate=self.baud_rate)
+                self.ani = FuncAnimation(self.fig, self.update,
+                                         init_func=self.init,
+                                         cache_frame_data=False,
+                                         interval=20, blit=True)
+                self.executar = False
 
     def start_gui(self):
         # Themes: blue (default), dark-blue, green
@@ -132,21 +131,11 @@ class InterfaceAeropendulo:
 
         button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
                                    font=ctk.CTkFont(size=15, weight="bold"),
-                                   text="Get USB", border_width=1,
-                                   command=self.get_usb_port)
+                                   text="Outra Ação", border_width=1,
+                                   command=self.set_usb_port)
         button_usb.grid(row=3, column=0,
                         padx=10, pady=10,
                         sticky="s")
-
-        # self.textbox = ctk.CTkTextbox(master=self.frame_menu, height=27,
-        #                               width=140,
-        #                               font=ctk.CTkFont(size=15,
-        #                                                weight="bold"),
-        #                               corner_radius=10,
-        #                               border_width=1)
-        # self.textbox.grid(row=4, padx=10, pady=10, column=0, sticky="s")
-        # self.textbox.insert("0.0", "/dev/ttyUSB0")
-        # self.textbox.focus_set()
 
         self.usb_menu = ctk.CTkOptionMenu(
             master=self.frame_menu,
@@ -154,8 +143,8 @@ class InterfaceAeropendulo:
             font=ctk.CTkFont(
                 size=15,
                 weight="bold"),
-            values=["/dev/ttyUSB0", "/dev/ttyUSB1"],
-            command=self.get_usb_port)
+            values=["None"],
+            command=self.set_usb_port)
         self.usb_menu.grid(row=5, column=0, padx=10, pady=5, sticky="s")
 
         self.aparencia_menu = ctk.CTkOptionMenu(master=self.frame_menu,
@@ -176,4 +165,5 @@ class InterfaceAeropendulo:
                     padx=10, pady=10,
                     sticky="s")
 
+        self.lista_usb = ListaPortasUsb(self.usb_menu, self.set_usb_port)
         self.root.mainloop()

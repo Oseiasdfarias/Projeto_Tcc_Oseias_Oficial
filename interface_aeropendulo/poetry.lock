@@ -479,6 +479,18 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "pyudev"
+version = "0.24.1"
+description = "A libudev binding"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pyudev-0.24.1-py3-none-any.whl", hash = "sha256:da7e977be15fb5eccf8797b8e2176cd5b4f39288707cdcb39d1cabe7c8793e2b"},
+    {file = "pyudev-0.24.1.tar.gz", hash = "sha256:75e54d37218f5ac45b0da1f0fd9cc5e526a3cac3ef1cfad410cf7ab338b01471"},
+]
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -509,4 +521,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "66e07f47885292c2e8289dcc887bc093362042a566a620fe607a066918b0f4c2"
+content-hash = "24f4359c489ef9a5cc38f33d482a272bb1bf86ed8ad32e191417a26f19cb21f9"

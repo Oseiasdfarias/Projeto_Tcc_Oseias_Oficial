@@ -5,7 +5,7 @@ matplotlib.style.use("ggplot")
 matplotlib.use('TkAgg')
 
 
-class Graphs(object):
+class GraficosSinais(object):
 
     def __init__(self):
 
