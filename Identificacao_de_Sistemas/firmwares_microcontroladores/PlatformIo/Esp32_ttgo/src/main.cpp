@@ -28,8 +28,8 @@ const int freq = 500;          // Frequência do sinal PWM
 const int pwmChannel = 0;      // Canal para o sinal PWM (0-15)
 const int resolution = 8;      // Resolução do sinal PWM
 int dutyCycle = 120;           // Ciclo de trabalho
-float ref = 0.0;               // Setpoint
-float erro = 0.0;              // Erro do sistema
+float ref = 90.0;               // Setpoint
+float erro = 7.0;              // Erro do sistema
 
 // Variáveis usadas no código
 int valorAD_POT = 0;           // Valor de tensão (potenciômetro) lido pela conversor ADC
@@ -88,9 +88,9 @@ void loop() {
     Serial.print(",");
 
     // Estruturas reservas de envio de dados
-    Serial.print(0.0);
+    Serial.print(10.0);
     Serial.print(",");
-    Serial.print(0.0);
+    Serial.print(10.0);
     Serial.println(" ");
 
     delay(20);

@@ -5,7 +5,7 @@ from threading import Thread
 
 
 class ColetaDados:
-    """Coleta os dados do sensor mpu6050 e salva em um buffer
+    """Coleta os dados do Aeropêndulo para plotagem.
 
     param: porta='/dev/ttyUSB0'
     param: baud_rate=115200

@@ -23,10 +23,21 @@ class InterfaceAeropendulo:
         graficos_sinais = GraficosSinais()
         self.fig, self.ax, self.ln = graficos_sinais.get_fig_axes_ln()
 
-        self.start_gui()
-        # self.fila = self.coleta_dados.get_dados()
-
         # tx = []
+
+        # Inicializa a interface gráfica
+        self.start_gui()
+
+    def quit(self):
+        self.root.quit()
+        self.root.destroy()
+
+    def set_usb_port(self, porta_atual):
+        self.usb_port = porta_atual
+
+    @staticmethod
+    def aparencia_event(new_appearance_mode):
+        ctk.set_appearance_mode(new_appearance_mode)
 
     def init(self):
         for i in range(4):
@@ -34,11 +45,12 @@ class InterfaceAeropendulo:
                                 color=[0.3, 0.3, 0.5],
                                 fontsize=9,
                                 fontweight="bold"))"""
-            self.ax[i].set_xlim(0, 50)
-            self.ax[i].set_ylim(-15, 15)
-            if i > 2:
+            if i < 1:
                 self.ax[i].set_xlim(0, 50)
-                self.ax[i].set_ylim(-10, 10)
+                self.ax[i].set_ylim(-5, 180)
+            if i > 1:
+                self.ax[i].set_xlim(0, 50)
+                self.ax[i].set_ylim(-15, 15)
             self.ax[i].axhline(0, color="dimgray", lw=1.2)
             self.ax[i].axvline(0.5, color="dimgray", lw=1.2)
         return self.ln
@@ -51,21 +63,11 @@ class InterfaceAeropendulo:
             if (i <= 2):
                 tx[i].set_text(f"{dados[i][-1]:.2f}\nm/s^2")
             else:
-                tx[i].set_text(f"{dados[i][-1]:.2f}\nrad/s")"""
+                tx[i].set_text(f"{dados[i][-1]:.2f}\nrad/s")
+            """
             ax.set_xdata(t)
             ax.set_ydata(dados[i])
         return self.ln
-
-    def quit(self):
-        self.root.quit()
-        self.root.destroy()
-
-    def set_usb_port(self, porta_atual):
-        self.usb_port = porta_atual
-
-    @staticmethod
-    def aparencia_event(new_appearance_mode):
-        ctk.set_appearance_mode(new_appearance_mode)
 
     def run_graph(self):
         if self.executar:
