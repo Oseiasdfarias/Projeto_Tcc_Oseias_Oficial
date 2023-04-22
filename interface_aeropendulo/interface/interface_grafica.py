@@ -48,7 +48,7 @@ class InterfaceAeropendulo:
             if i < 1:
                 self.ax[i].set_xlim(0, 50)
                 self.ax[i].set_ylim(-5, 180)
-            if i > 1:
+            if i >= 1:
                 self.ax[i].set_xlim(0, 50)
                 self.ax[i].set_ylim(-15, 15)
             self.ax[i].axhline(0, color="dimgray", lw=1.2)

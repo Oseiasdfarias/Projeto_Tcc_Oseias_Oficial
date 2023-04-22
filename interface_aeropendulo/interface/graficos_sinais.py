@@ -10,11 +10,11 @@ class GraficosSinais(object):
     def __init__(self):
 
         self.fig = plt.figure(figsize=(10.65, 6))
+        self.config_axes()
 
         # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)
         self.fig.subplots_adjust(wspace=0.32, hspace=0.44, left=0.076,
                                  top=0.894, right=0.971, bottom=0.098)
-        self.config_axes()
 
     def get_fig_axes_ln(self):
         return self.fig, self.ax, self.ln
@@ -40,14 +40,14 @@ class GraficosSinais(object):
                            color="#3B4252", fontsize=12)
         self.ax3.set_xlabel("Tempo")
         self.ax3.set_ylabel("Amplitude")
-        self.ln3, = self.ax3.plot([], [], lw=1.5, color="red")
+        self.ln3, = self.ax3.plot([], [], lw=1.5, color="purple")
 
         self.ax4 = self.fig.add_subplot(224)
         self.ax4.set_title("Sinal de Controle PWM (Volts RMS)",
                            color="#3B4252", fontsize=12)
         self.ax4.set_xlabel("Tempo")
         self.ax4.set_ylabel("Amplitude")
-        self.ln4, = self.ax4.plot([], [], lw=1.5, color="blue")
+        self.ln4, = self.ax4.plot([], [], lw=1.5, color="orange")
 
         # Axis que para plotar os gráficos
         self.ln = [self.ln_1, self.ln1, self.ln2, self.ln3, self.ln4]
