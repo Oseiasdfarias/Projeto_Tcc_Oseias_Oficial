@@ -9,11 +9,11 @@ class GraficosSinais(object):
 
     def __init__(self):
 
-        self.fig = plt.figure(figsize=(10.3, 6))
+        self.fig = plt.figure(figsize=(10., 6.45))
         self.config_axes()
 
         # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)
-        self.fig.subplots_adjust(wspace=0.32, hspace=0.44, left=0.086,
+        self.fig.subplots_adjust(wspace=0.25, hspace=0.44, left=0.09,
                                  top=0.894, right=0.971, bottom=0.098)
 
     def get_fig_axes_ln(self):

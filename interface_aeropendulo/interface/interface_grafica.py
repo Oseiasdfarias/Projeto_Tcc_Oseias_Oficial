@@ -92,60 +92,58 @@ class InterfaceAeropendulo:
         # GUI
         self.root = ctk.CTk()
         self.root.title("Interface Aeropêndulo")
-        self.root.geometry("1270x660+30+45")
-        self.root.minsize(1270, 660)
-        self.root.maxsize(1270, 660)
+        self.root.geometry("1270x700+40+5")
+        # self.root.minsize(1270, 700)
+        # self.root.maxsize(1270, 700)
+        self.root.state("normal")
 
         self.frame_menus = ctk.CTkFrame(master=self.root, width=5, height=5)
         self.frame_menus.grid(row=0, column=0, padx=10, pady=10, sticky="sn")
 
         self.frame_menu = ctk.CTkFrame(master=self.frame_menus,
                                        width=5, height=5)
-        self.frame_menu.grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        self.frame_menu.grid(row=2, column=0, padx=10, pady=10, sticky="s")
 
         self.frame_dados = ctk.CTkFrame(master=self.frame_menus,
                                         width=5, height=10)
-        self.frame_dados.grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        self.frame_dados.grid(row=1, column=0, padx=10, pady=10, sticky="w")
+
+        self.frame_controle = ctk.CTkFrame(master=self.frame_menus,
+                                           width=5, height=10)
+        self.frame_controle.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
         self.frame_graficos = ctk.CTkFrame(master=self.root,
                                            width=5, height=5)
-        self.frame_graficos.grid(row=0, column=1, padx=5, pady=10)
+        self.frame_graficos.grid(row=0, column=1, padx=5, pady=10, sticky="s")
 
         self.label = ctk.CTkLabel(
             self.frame_graficos, text="Interface Aeropêndulo",
             font=ctk.CTkFont(
                 size=25, weight="bold")).grid(column=1, row=0)
 
-        self.espaco = ctk.CTkLabel(master=self.frame_menu, text=" ",
-                                   width=90)
-        self.espaco.grid(row=0, column=0, padx=10, pady=10)
-
+        # Widgets Frame de Menu
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
                                        # image=self.logo_image,
-                                       width=150,
+                                       width=188,
                                        font=ctk.CTkFont(size=25,
                                                         weight="bold"))
-        self.label_nemu.grid(row=0, column=0, padx=10, pady=10)
+        self.label_nemu.grid(row=0, column=0, padx=10, pady=5, sticky="w")
 
         canvas = FigureCanvasTkAgg(self.fig, master=self.frame_graficos)
         canvas.get_tk_widget().grid(column=1, row=1,
-                                    padx=5, pady=5)
+                                    padx=5, pady=5, sticky="sn")
 
         button_run = ctk.CTkButton(master=self.frame_menu, height=30,
                                    font=ctk.CTkFont(size=17, weight="bold"),
                                    text="Executar", border_width=1,
                                    command=self.run_graph)
-        button_run.grid(row=2, column=0,
-                        padx=10, pady=10,
-                        sticky="s")
+        button_run.grid(row=2, column=0, padx=10, pady=5, sticky="w")
 
         button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
                                    font=ctk.CTkFont(size=17, weight="bold"),
                                    text="Outra Ação", border_width=1,
                                    command=self.set_usb_port)
-        button_usb.grid(row=3, column=0,
-                        padx=10, pady=10,
-                        sticky="s")
+        button_usb.grid(row=3, column=0, padx=10, pady=5, sticky="w")
 
         self.usb_menu = ctk.CTkOptionMenu(
             master=self.frame_menu,
@@ -155,7 +153,7 @@ class InterfaceAeropendulo:
                 weight="bold"),
             values=["None"],
             command=self.set_usb_port)
-        self.usb_menu.grid(row=5, column=0, padx=10, pady=5, sticky="s")
+        self.usb_menu.grid(row=5, column=0, padx=10, pady=5, sticky="w")
 
         self.aparencia_menu = ctk.CTkOptionMenu(master=self.frame_menu,
                                                 height=30,
@@ -165,7 +163,7 @@ class InterfaceAeropendulo:
                                                 values=["Light", "Dark"],
                                                 command=self.aparencia_event)
 
-        self.aparencia_menu.grid(row=6, column=0, padx=10, pady=5, sticky="s")
+        self.aparencia_menu.grid(row=6, column=0, padx=10, pady=5, sticky="w")
 
         button = ctk.CTkButton(master=self.frame_menu, height=30,
                                font=ctk.CTkFont(size=17, weight="bold"),
@@ -173,16 +171,16 @@ class InterfaceAeropendulo:
                                text_color=("white", "white"),
                                command=self.quit)
         button.grid(row=7, column=0,
-                    padx=10, pady=10,
-                    sticky="s")
+                    padx=10, pady=5, sticky="w")
 
+        # Widgets Frame de Sinais
         self.label_sinais = ctk.CTkLabel(
             master=self.frame_dados,
             text="Informações",
             width=150,
             font=ctk.CTkFont(size=25,
                              weight="bold"))
-        self.label_sinais.grid(row=0, column=0, padx=10, pady=3)
+        self.label_sinais.grid(row=0, column=0, padx=5, pady=3, sticky="s")
 
         self.label_referencia = ctk.CTkLabel(
             master=self.frame_dados,
@@ -198,10 +196,10 @@ class InterfaceAeropendulo:
         self.label_referencia1 = ctk.CTkLabel(
             master=self.frame_dados,
             text="20°",
-            width=140,
+            width=50,
             font=ctk.CTkFont(size=20,
                              weight="bold"))
-        self.label_referencia1.grid(row=2, column=0, padx=0, pady=0)
+        self.label_referencia1.grid(row=1, column=1, padx=0, pady=0)
 
         self.label_angulo = ctk.CTkLabel(
             master=self.frame_dados,
@@ -212,15 +210,15 @@ class InterfaceAeropendulo:
             corner_radius=5,
             font=ctk.CTkFont(size=17,
                              weight="normal"))
-        self.label_angulo.grid(row=3, column=0, padx=0, pady=4)
+        self.label_angulo.grid(row=2, column=0, padx=0, pady=4)
 
         self.label_angulo1 = ctk.CTkLabel(
             master=self.frame_dados,
             text="23°",
-            width=140,
+            width=50,
             font=ctk.CTkFont(size=20,
                              weight="bold"))
-        self.label_angulo1.grid(row=4, column=0, padx=0, pady=0)
+        self.label_angulo1.grid(row=2, column=1, padx=0, pady=0)
 
         self.label_controle = ctk.CTkLabel(
             master=self.frame_dados,
@@ -231,15 +229,15 @@ class InterfaceAeropendulo:
             corner_radius=5,
             font=ctk.CTkFont(size=17,
                              weight="normal"))
-        self.label_controle.grid(row=5, column=0, padx=0, pady=4)
+        self.label_controle.grid(row=3, column=0, padx=0, pady=4)
 
         self.label_controle1 = ctk.CTkLabel(
             master=self.frame_dados,
             text="23V",
-            width=140,
+            width=50,
             font=ctk.CTkFont(size=20,
                              weight="bold"))
-        self.label_controle1.grid(row=6, column=0, padx=0, pady=0)
+        self.label_controle1.grid(row=3, column=1, padx=0, pady=0)
 
         self.label_erro = ctk.CTkLabel(
             master=self.frame_dados,
@@ -250,7 +248,7 @@ class InterfaceAeropendulo:
             corner_radius=5,
             font=ctk.CTkFont(size=17,
                              weight="normal"))
-        self.label_erro.grid(row=7, column=0, padx=0, pady=4)
+        self.label_erro.grid(row=4, column=0, padx=0, pady=4)
 
         self.label_erro1 = ctk.CTkLabel(
             master=self.frame_dados,
@@ -258,7 +256,33 @@ class InterfaceAeropendulo:
             width=50,
             font=ctk.CTkFont(size=20,
                              weight="bold"))
-        self.label_erro1.grid(row=8, column=0, padx=0, pady=2)
+        self.label_erro1.grid(row=4, column=1, padx=0, pady=2)
+
+        # Widgets Frame de Sinais
+        self.label_nemu = ctk.CTkLabel(master=self.frame_controle, text="Sinal de Ref.",
+                                       # image=self.logo_image,
+                                       width=150,
+                                       font=ctk.CTkFont(size=25,
+                                                        weight="bold"))
+        self.label_nemu.grid(row=0, column=0, padx=5, pady=5)
+        self.teste = ctk.CTkLabel(
+            master=self.frame_controle,
+            text="Sinal de Erro: ",
+            text_color=("white", "white"),
+            fg_color=("blue", "orange"),
+            width=140,
+            corner_radius=5,
+            font=ctk.CTkFont(size=17,
+                             weight="normal"))
+        self.teste.grid(row=1, column=0, padx=0, pady=4)
+
+        self.teste1 = ctk.CTkLabel(
+            master=self.frame_controle,
+            text="15°",
+            width=50,
+            font=ctk.CTkFont(size=20,
+                             weight="bold"))
+        self.teste1.grid(row=1, column=1, padx=0, pady=2)
 
         self.lista_usb = ListaPortasUsb(self.usb_menu, self.set_usb_port)
         self.root.mainloop()
