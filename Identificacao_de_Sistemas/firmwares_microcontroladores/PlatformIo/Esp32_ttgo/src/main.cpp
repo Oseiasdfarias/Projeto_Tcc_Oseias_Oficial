@@ -85,6 +85,12 @@ void loop() {
     valorAD_CONTROL = analogRead(pinoAD_CONTROL);
     tensao_control = valorAD_CONTROL * 3.3 / 4095.;
     Serial.print(tensao_control);
+    Serial.print(",");
+
+    // Estruturas reservas de envio de dados
+    Serial.print(0.0);
+    Serial.print(",");
+    Serial.print(0.0);
     Serial.println(" ");
 
     delay(20);
