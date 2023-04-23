@@ -126,9 +126,11 @@ class InterfaceAeropendulo:
                 size=25, weight="bold")).grid(column=1, row=0)
 
         # ------- Widgets Frame de Menu -------
+        _ = ctk.CTkLabel(master=self.frame_menu, text=" ", width=208)
+        _.grid(row=7, column=0, padx=0, pady=0)
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
                                        # image=self.logo_image,
-                                       width=188,
+                                       width=50,
                                        font=ctk.CTkFont(size=25,
                                                         weight="bold"))
         self.label_nemu.grid(row=0, column=0, padx=10, pady=5, sticky="w")
@@ -263,12 +265,12 @@ class InterfaceAeropendulo:
         self.label_erro1.grid(row=4, column=1, padx=0, pady=2)
 
         # ------- Widgets Frame de Sinais -------
-        self.label_nemu = ctk.CTkLabel(master=self.frame_controle,
-                                       text="Sinal de Ref.",
-                                       width=150,
-                                       font=ctk.CTkFont(size=25,
-                                                        weight="bold"))
-        self.label_nemu.grid(row=0, column=0, padx=5, pady=5)
+        self.label_nemu1 = ctk.CTkLabel(master=self.frame_controle,
+                                        text="Sinal de ref.",
+                                        width=150,
+                                        font=ctk.CTkFont(size=25,
+                                                         weight="bold"))
+        self.label_nemu1.grid(row=0, column=0, padx=5, pady=5)
         self.teste = ctk.CTkLabel(
             master=self.frame_controle,
             text="Sinal de Erro: ",
