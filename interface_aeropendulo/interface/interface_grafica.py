@@ -52,8 +52,8 @@ class InterfaceAeropendulo:
             if i >= 1:
                 self.ax[i].set_xlim(0, 50)
                 self.ax[i].set_ylim(-15, 15)
-            self.ax[i].axhline(0, color="dimgray", lw=1.2)
-            self.ax[i].axvline(0.5, color="dimgray", lw=1.2)
+            self.ax[i].axhline(0, color="black", lw=1.2)
+            self.ax[i].axvline(0.5, color="black", lw=1.2)
         return self.ln
 
     def update(self, frame):
