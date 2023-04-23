@@ -13,7 +13,8 @@ from interface.lista_portas_usb import ListaPortasUsb
 
 
 class InterfaceAeropendulo:
-    def __init__(self):
+    def __init__(self, tela_fixa=False):
+        self.tela_fixa = tela_fixa
         # Objeto para coletar dados do sensor
         self.usb_port = None
         self.baud_rate = 115200
@@ -93,10 +94,12 @@ class InterfaceAeropendulo:
         self.root = ctk.CTk()
         self.root.title("Interface Aeropêndulo")
         self.root.geometry("1270x700+40+5")
-        # self.root.minsize(1270, 700)
-        # self.root.maxsize(1270, 700)
+        if self.tela_fixa:
+            self.root.minsize(1270, 700)
+            self.root.maxsize(1270, 700)
         self.root.state("normal")
 
+        # ------- Frame para adicionar os Menus -------
         self.frame_menus = ctk.CTkFrame(master=self.root, width=5, height=5)
         self.frame_menus.grid(row=0, column=0, padx=10, pady=10, sticky="sn")
 
@@ -112,6 +115,7 @@ class InterfaceAeropendulo:
                                            width=5, height=10)
         self.frame_controle.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
+        # ------- Frame para adicionar os gráficos -------
         self.frame_graficos = ctk.CTkFrame(master=self.root,
                                            width=5, height=5)
         self.frame_graficos.grid(row=0, column=1, padx=5, pady=10, sticky="s")
@@ -121,7 +125,7 @@ class InterfaceAeropendulo:
             font=ctk.CTkFont(
                 size=25, weight="bold")).grid(column=1, row=0)
 
-        # Widgets Frame de Menu
+        # ------- Widgets Frame de Menu -------
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
                                        # image=self.logo_image,
                                        width=188,
@@ -173,7 +177,7 @@ class InterfaceAeropendulo:
         button.grid(row=7, column=0,
                     padx=10, pady=5, sticky="w")
 
-        # Widgets Frame de Sinais
+        # ------- Widgets Frame de Sinais -------
         self.label_sinais = ctk.CTkLabel(
             master=self.frame_dados,
             text="Informações",
@@ -258,9 +262,9 @@ class InterfaceAeropendulo:
                              weight="bold"))
         self.label_erro1.grid(row=4, column=1, padx=0, pady=2)
 
-        # Widgets Frame de Sinais
-        self.label_nemu = ctk.CTkLabel(master=self.frame_controle, text="Sinal de Ref.",
-                                       # image=self.logo_image,
+        # ------- Widgets Frame de Sinais -------
+        self.label_nemu = ctk.CTkLabel(master=self.frame_controle,
+                                       text="Sinal de Ref.",
                                        width=150,
                                        font=ctk.CTkFont(size=25,
                                                         weight="bold"))
