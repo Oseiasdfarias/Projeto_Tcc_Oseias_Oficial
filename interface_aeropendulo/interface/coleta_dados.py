@@ -2,6 +2,9 @@ import serial
 from time import sleep
 import numpy as np
 from threading import Thread
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ColetaDados:
@@ -27,9 +30,13 @@ class ColetaDados:
 
     def __coleta_dados(self):
         self.disp = serial.Serial(self.porta, self.baud_rate)
-        print(f"Disp. conectado: {self.porta}, BaudRate: {self.baud_rate}")
-        self.disp.reset_input_buffer()
-        while self.disp.is_open:
+        print(f"\nConectando! >> ID: {self.porta}, BaudRate: {self.baud_rate}")
+        if self.disp.isOpen():
+            print(f"Conectado com Sucesso!!! >> ID: {self.porta}\n")
+        self.disp.parity = "O"
+        self.disp.bytesize = 7
+
+        while True:
             try:
                 dado = self.disp.readline()
                 dados1 = str(dado.decode('utf8')).rstrip("\n")
@@ -37,16 +44,25 @@ class ColetaDados:
                 try:
                     dados_float = np.array([dados1], dtype="float64").T
                     if len(self.fila[0]) <= 50:
-                        self.fila = np.append(self.fila, dados_float, axis=1)
+                        self.fila = np.append(self.fila,
+                                              dados_float, axis=1)
                     else:
                         self.fila = np.delete(self.fila, np.s_[:1], 1)
                 except Exception as erro:
                     print(f"Erro: {erro}")
                     sleep(0.03)
             except serial.SerialException:
-                print("Erro de leitura ...")
-                # self.disp.reset_input_buffer()
-                break
+                try:
+                    self.disp.close()
+                    self.disp = serial.Serial(self.porta, self.baud_rate)
+                    print(f"\nReconectando >> ID: {self.porta}")
+                    self.disp.reset_input_buffer()
+                    if self.disp.isOpen():
+                        print(f"Reconectado!!! >> ID: {self.porta}\n")
+                    sleep(1)
+                except serial.SerialException:
+                    pass
+                    # logger.exception(e)
 
 
 if __name__ == "__main__":
