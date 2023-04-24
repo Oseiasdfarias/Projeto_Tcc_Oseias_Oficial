@@ -306,14 +306,13 @@ class InterfaceAeropendulo:
                              weight="normal"))
         self.label_ampl.grid(row=1, column=0, padx=10, pady=4, sticky="w")
 
-        self.label_ampl1 = ctk.CTkLabel(
-            master=self.frame_controle,
-            text="23V",
-            width=50,
-            font=ctk.CTkFont(size=17,
-                             weight="bold"))
+        self.label_ampl1 = ctk.CTkEntry(master=self.frame_controle,
+                                        width=45,
+                                        font=ctk.CTkFont(size=17,
+                                                         weight="bold"),
+                                        placeholder_text="05")
         self.label_ampl1.grid(row=1, column=1,
-                              padx=0, pady=4, sticky="s")
+                              padx=(0, 5), pady=4, sticky="s")
 
         self.label_freq = ctk.CTkLabel(
             master=self.frame_controle,
@@ -326,14 +325,13 @@ class InterfaceAeropendulo:
                              weight="normal"))
         self.label_freq.grid(row=2, column=0, padx=10, pady=4, sticky="w")
 
-        self.label_freq1 = ctk.CTkLabel(
-            master=self.frame_controle,
-            text="23V",
-            width=50,
-            font=ctk.CTkFont(size=17,
-                             weight="bold"))
+        self.label_freq1 = ctk.CTkEntry(master=self.frame_controle,
+                                        width=45,
+                                        font=ctk.CTkFont(size=17,
+                                                         weight="bold"),
+                                        placeholder_text="10")
         self.label_freq1.grid(row=2, column=1,
-                              padx=0, pady=4, sticky="s")
+                              padx=(0, 5), pady=4, sticky="s")
 
         self.switch_var_deg = ctk.StringVar(value="on")
         self.switch_deg = ctk.CTkSwitch(master=self.frame_controle,
