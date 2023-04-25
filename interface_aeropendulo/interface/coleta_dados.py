@@ -56,6 +56,8 @@ class ColetaDados:
         self.disp.parity = "O"
         self.disp.bytesize = 7
 
+        self.disp.reset_input_buffer()
+
         while True:
             try:
                 # if (self.disp.inWaiting() > 0):
@@ -81,8 +83,8 @@ class ColetaDados:
                     self.disp.close()
                     self.disp = serial.Serial(self.porta, self.baud_rate)
                     print(f"\nReconectando!!! >> ID: {self.porta}")
-                    self.disp.reset_input_buffer()
                     if self.disp.isOpen():
+                        self.disp.reset_input_buffer()
                         print(f"Reconectado!!! >> ID: {self.porta}\n")
                     sleep(1)
                 except serial.SerialException:
