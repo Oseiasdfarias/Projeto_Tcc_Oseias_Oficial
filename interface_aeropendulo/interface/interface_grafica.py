@@ -81,10 +81,21 @@ class InterfaceAeropendulo:
                                          interval=20, blit=True)
                 self.executar = False
 
+    def switch_event_deg(self):
+        if self.switch_var_deg.get() == "on":
+            self.switch_quad.deselect(0)
+            self.switch_seno.deselect(0)
+            if not self.executar:
+                self.coleta_dados.set_sinal(f"deg:{1.0}")
+        else:
+            self.switch_deg.select(1)
+
     def switch_event_seno(self):
         if self.switch_var_seno.get() == "on":
             self.switch_deg.deselect(0)
             self.switch_quad.deselect(0)
+            if not self.executar:
+                self.coleta_dados.set_sinal(f"seno:{2.0}")
         else:
             self.switch_seno.select(1)
 
@@ -92,15 +103,24 @@ class InterfaceAeropendulo:
         if self.switch_var_quad.get() == "on":
             self.switch_deg.deselect(0)
             self.switch_seno.deselect(0)
+            if not self.executar:
+                self.coleta_dados.set_sinal("quad:3.0}")
         else:
             self.switch_quad.select(1)
 
-    def switch_event_deg(self):
-        if self.switch_var_deg.get() == "on":
-            self.switch_quad.deselect(0)
-            self.switch_seno.deselect(0)
-        else:
-            self.switch_deg.select(1)
+    def get_data_emtry_ampl1(self):
+        data = self.emtry_ampl1.get()
+        if not self.executar and data.isnumeric():
+            self.coleta_dados.set_amplitude(data)
+        print(data)
+        self.emtry_ampl1.delete(0, len(data))
+
+    def get_data_emtry_freq1(self):
+        data = self.emtry_freq1.get()
+        if not self.executar and data.isnumeric():
+            self.coleta_dados.set_frequencia(data)
+        print(data)
+        self.emtry_freq1.delete(0, len(data))
 
     def start_gui(self):
         # Themes: blue (default), dark-blue, green
@@ -120,7 +140,7 @@ class InterfaceAeropendulo:
             self.root.maxsize(1270, 700)
         self.root.state("normal")
 
-        # ------- Frame para adicionar os Menus -------
+        # ------- Frame para adicionar os Menus ----------------------
         self.frame_menus = ctk.CTkFrame(master=self.root, width=5, height=5)
         self.frame_menus.grid(row=0, column=0, padx=10, pady=10, sticky="sn")
 
@@ -136,7 +156,7 @@ class InterfaceAeropendulo:
                                            width=5, height=10)
         self.frame_controle.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
-        # ------- Frame para adicionar os gráficos -------
+        # --------------- Frame para adicionar os gráficos -------------------
         self.frame_graficos = ctk.CTkFrame(master=self.root,
                                            width=5, height=5)
         self.frame_graficos.grid(row=0, column=1, padx=0, pady=10, sticky="sn")
@@ -146,7 +166,7 @@ class InterfaceAeropendulo:
             font=ctk.CTkFont(
                 size=20, weight="bold")).grid(column=1, row=0)
 
-        # ------- Widgets Frame de Menu -------
+        # ----------------------- Widgets Frame de Menu ----------------------
         _ = ctk.CTkLabel(master=self.frame_menu, text=" ", width=208)
         _.grid(row=7, column=0, padx=0, pady=0)
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
@@ -200,7 +220,7 @@ class InterfaceAeropendulo:
         button.grid(row=7, column=0,
                     padx=10, pady=5, sticky="w")
 
-        # ------- Widgets Frame de Sinais -------
+        # ----------------------- Widgets Frame de Sinais ---------------------
         self.label_sinais = ctk.CTkLabel(
             master=self.frame_dados,
             text="Informações",
@@ -295,42 +315,36 @@ class InterfaceAeropendulo:
                                                          weight="bold"))
         self.label_nemu1.grid(row=0, column=0, padx=5, pady=5)
 
-        self.label_ampl = ctk.CTkLabel(
-            master=self.frame_controle,
-            text="Add Amplitude: ",
-            text_color=("white", "white"),
-            fg_color=("red", "purple"),
-            width=140,
-            corner_radius=5,
-            font=ctk.CTkFont(size=15,
-                             weight="normal"))
-        self.label_ampl.grid(row=1, column=0, padx=10, pady=4, sticky="w")
+        self.btn_ampl = ctk.CTkButton(master=self.frame_controle, height=30,
+                                      font=ctk.CTkFont(size=15, weight="bold"),
+                                      fg_color=("red", "purple"),
+                                      text_color=("white", "white"),
+                                      text="Add Amplitude:", border_width=1,
+                                      command=self.get_data_emtry_ampl1)
+        self.btn_ampl.grid(row=1, column=0, padx=10, pady=4, sticky="w")
 
-        self.label_ampl1 = ctk.CTkEntry(master=self.frame_controle,
+        self.emtry_ampl1 = ctk.CTkEntry(master=self.frame_controle,
                                         width=45,
                                         font=ctk.CTkFont(size=17,
                                                          weight="bold"),
                                         placeholder_text="05")
-        self.label_ampl1.grid(row=1, column=1,
+        self.emtry_ampl1.grid(row=1, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
-        self.label_freq = ctk.CTkLabel(
-            master=self.frame_controle,
-            text="Add frequência: ",
-            text_color=("white", "white"),
-            fg_color=("red", "purple"),
-            width=140,
-            corner_radius=5,
-            font=ctk.CTkFont(size=15,
-                             weight="normal"))
-        self.label_freq.grid(row=2, column=0, padx=10, pady=4, sticky="w")
+        self.btn_freq = ctk.CTkButton(master=self.frame_controle, height=30,
+                                      font=ctk.CTkFont(size=15, weight="bold"),
+                                      fg_color=("red", "purple"),
+                                      text_color=("white", "white"),
+                                      text="Add Frequência:", border_width=1,
+                                      command=self.get_data_emtry_freq1)
+        self.btn_freq.grid(row=2, column=0, padx=10, pady=4, sticky="w")
 
-        self.label_freq1 = ctk.CTkEntry(master=self.frame_controle,
+        self.emtry_freq1 = ctk.CTkEntry(master=self.frame_controle,
                                         width=45,
                                         font=ctk.CTkFont(size=17,
                                                          weight="bold"),
                                         placeholder_text="10")
-        self.label_freq1.grid(row=2, column=1,
+        self.emtry_freq1.grid(row=2, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
         self.switch_var_deg = ctk.StringVar(value="on")
