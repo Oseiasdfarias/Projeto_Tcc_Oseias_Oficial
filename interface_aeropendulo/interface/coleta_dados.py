@@ -27,18 +27,22 @@ class ColetaDados:
         data = f"ampl:{amplitude}"
         print(data)
         self.disp.write(data.encode("utf8"))
+        self.disp.flush()
 
     def set_frequencia(self, frequencia):
         data = f"freq:{frequencia}"
         print(data)
         self.disp.write(data.encode("utf8"))
+        self.disp.flush()
 
     def set_offset(self, offset):
         data = f"offset:{offset}"
         self.disp.write(data.encode("utf8"))
+        self.disp.flush()
 
     def set_sinal(self, sinal):
         self.disp.write(sinal.encode("utf8"))
+        self.disp.flush()
         print(f"Sinal Configurado: {sinal}")
 
     def __init_thread(self):
@@ -62,6 +66,7 @@ class ColetaDados:
             try:
                 # if (self.disp.inWaiting() > 0):
                 dado = self.disp.readline()
+                self.disp.flush()
                 dados1 = str(dado.decode('utf8')).rstrip("\n")
                 dados1 = dados1.split(",")
 
@@ -85,6 +90,7 @@ class ColetaDados:
                     print(f"\nReconectando!!! >> ID: {self.porta}")
                     if self.disp.isOpen():
                         self.disp.reset_input_buffer()
+                        self.disp.flush()
                         print(f"Reconectado!!! >> ID: {self.porta}\n")
                     sleep(1)
                 except serial.SerialException:

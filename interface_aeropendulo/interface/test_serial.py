@@ -4,6 +4,7 @@ from queue import Queue
 
 queue_: Queue = Queue(maxsize=3)
 
+
 def serialRead(serialPort, queue):
     """Adds serial port input to a queue."""
 
@@ -11,7 +12,7 @@ def serialRead(serialPort, queue):
     data = f"ampl,{n}"
 
     ser = serial.Serial(serialPort, 115200)
-
+    ser.reset_input_buffer()
     ser.parity = "O"
     ser.bytesize = 7
 
@@ -21,14 +22,16 @@ def serialRead(serialPort, queue):
                 print("Desconectado!!!")
                 ser = serial.Serial(serialPort, 115200)
 
-                # ser.parity = "O"
-                # ser.bytesize = 7
+                ser.parity = "O"
+                ser.bytesize = 7
 
                 print("Reconnecting")
             # data = input("Digite o dado:")
-            #ser.write(data.encode("utf8"))
-            sleep(0.5)
+            ser.write(data.encode("utf8"))
+            # ser.flush()
+            sleep(0.2)
             dados = ser.readline()
+            ser.flush()
             print(str(dados.decode('utf8')).rstrip("\n"))
             n += 1.0
             data = f"ampl,{n}"
@@ -43,4 +46,4 @@ def serialRead(serialPort, queue):
 
 
 if __name__ == "__main__":
-    serialRead("/dev/ttyUSB1", queue_)
+    serialRead("/dev/ttyUSB0", queue_)
