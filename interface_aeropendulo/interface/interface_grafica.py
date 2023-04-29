@@ -322,7 +322,7 @@ class InterfaceAeropendulo:
                                                          weight="bold"))
         self.label_nemu1.grid(row=0, column=0, padx=5, pady=4)
 
-        self.btn_ampl = ctk.CTkButton(master=self.frame_controle, width=120,
+        self.btn_ampl = ctk.CTkButton(master=self.frame_controle, width=130,
                                       height=30, font=ctk.CTkFont(
                                                     size=15, weight="bold"),
                                       fg_color=("red", "purple"),
@@ -330,7 +330,7 @@ class InterfaceAeropendulo:
                                       hover_color=("#C11C1C", "#4A0255"),
                                       text="Add Amplitude:", border_width=1,
                                       command=self.get_data_emtry_ampl1)
-        self.btn_ampl.grid(row=1, column=0, padx=10, pady=4, sticky="w")
+        self.btn_ampl.grid(row=1, column=0, padx=5, pady=4, sticky="w")
 
         self.emtry_ampl1 = ctk.CTkEntry(master=self.frame_controle,
                                         width=65,
@@ -340,7 +340,7 @@ class InterfaceAeropendulo:
         self.emtry_ampl1.grid(row=1, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
-        self.btn_freq = ctk.CTkButton(master=self.frame_controle, width=120,
+        self.btn_freq = ctk.CTkButton(master=self.frame_controle, width=130,
                                       height=30, font=ctk.CTkFont(
                                                     size=15, weight="bold"),
                                       fg_color=("red", "purple"),
@@ -348,7 +348,7 @@ class InterfaceAeropendulo:
                                       hover_color=("#C11C1C", "#4A0255"),
                                       text="Add Frequência:", border_width=1,
                                       command=self.get_data_emtry_freq1)
-        self.btn_freq.grid(row=2, column=0, padx=10, pady=4, sticky="w")
+        self.btn_freq.grid(row=2, column=0, padx=5, pady=4, sticky="w")
 
         self.emtry_freq1 = ctk.CTkEntry(master=self.frame_controle,
                                         width=65,
@@ -358,15 +358,15 @@ class InterfaceAeropendulo:
         self.emtry_freq1.grid(row=2, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
-        self.btn_offset = ctk.CTkButton(master=self.frame_controle, width=120,
+        self.btn_offset = ctk.CTkButton(master=self.frame_controle, width=130,
                                         height=30, font=ctk.CTkFont(
                                                     size=15, weight="bold"),
                                         fg_color=("red", "purple"),
                                         text_color=("white", "white"),
                                         hover_color=("#C11C1C", "#4A0255"),
-                                        text="Add Frequência:", border_width=1,
+                                        text="Add Offset:", border_width=1,
                                         command=self.get_data_emtry_freq1)
-        self.btn_offset.grid(row=3, column=0, padx=10, pady=4, sticky="w")
+        self.btn_offset.grid(row=3, column=0, padx=5, pady=4, sticky="w")
 
         self.emtry_offset1 = ctk.CTkEntry(master=self.frame_controle,
                                           width=65,
@@ -378,7 +378,7 @@ class InterfaceAeropendulo:
 
         self.switch_var_deg = ctk.StringVar(value="on")
         self.switch_deg = ctk.CTkSwitch(master=self.frame_controle,
-                                        text="Si. Degrau",
+                                        text="Sin. Degrau",
                                         width=40,
                                         switch_height=25,
                                         switch_width=40,
@@ -389,11 +389,11 @@ class InterfaceAeropendulo:
                                         variable=self.switch_var_deg,
                                         onvalue="on", offvalue="off")
 
-        self.switch_deg.grid(row=4, column=0, padx=5, pady=4, sticky="s")
+        self.switch_deg.grid(row=4, column=0, padx=5, pady=4, sticky="w")
 
         self.switch_var_quad = ctk.StringVar(value="off")
         self.switch_quad = ctk.CTkSwitch(master=self.frame_controle,
-                                         text="Quadrada",
+                                         text="Ond. Quad.",
                                          width=40,
                                          switch_height=25,
                                          switch_width=40,
@@ -404,11 +404,11 @@ class InterfaceAeropendulo:
                                          variable=self.switch_var_quad,
                                          onvalue="on", offvalue="off")
 
-        self.switch_quad.grid(row=5, column=0, padx=5, pady=4, sticky="s")
+        self.switch_quad.grid(row=5, column=0, padx=5, pady=4, sticky="w")
 
         self.switch_var_seno = ctk.StringVar(value="off")
         self.switch_seno = ctk.CTkSwitch(master=self.frame_controle,
-                                         text="Senoide",
+                                         text="Ond. Seno",
                                          width=40,
                                          switch_height=25,
                                          switch_width=40,
@@ -418,8 +418,7 @@ class InterfaceAeropendulo:
                                                           weight="normal"),
                                          variable=self.switch_var_seno,
                                          onvalue="on", offvalue="off")
-
-        self.switch_seno.grid(row=6, column=0, padx=5, pady=4, sticky="s")
+        self.switch_seno.grid(row=6, column=0, padx=5, pady=4, sticky="w")
 
         self.lista_usb = ListaPortasUsb(self.usb_menu, self.set_usb_port)
         self.root.mainloop()
