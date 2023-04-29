@@ -8,15 +8,18 @@ queue_: Queue = Queue(maxsize=3)
 def serialRead(serialPort, queue):
     """Adds serial port input to a queue."""
 
-    n = 1990.0
-    data = f"{round(n)}"
-
+    n = 990.23
+    # data = f"{round(n)}"
+    data = f"{n:.2f}"
+    ser = serial.Serial(serialPort, baudrate=115200, timeout=0.005)
+    """
     ser = serial.Serial(serialPort,
                         baudrate=115200,
                         timeout=0.005,
                         parity=serial.PARITY_ODD,
                         stopbits=serial.STOPBITS_ONE,
                         bytesize=serial.EIGHTBITS)
+    """
     ser.reset_input_buffer()
     sleep(1)
 
@@ -24,29 +27,22 @@ def serialRead(serialPort, queue):
         try:
             if not ser.isOpen():
                 print("Desconectado!!!")
-                ser = serial.Serial(serialPort,
-                                    baudrate=115200,
-                                    timeout=0.005,
-                                    parity=serial.PARITY_ODD,
-                                    stopbits=serial.STOPBITS_ONE,
-                                    bytesize=serial.EIGHTBITS)
+                ser = serial.Serial(serialPort, baudrate=115200, timeout=0.005)
 
-                # ser.parity = "O"
-                # ser.bytesize = 7
                 ser.reset_input_buffer()
                 ser.flush()
 
                 print("Reconnecting")
-            # data = input("Digite o dado:")
             ser.write(data.encode("utf-8"))
             ser.flush()
-            sleep(0.02)
+            sleep(0.01)
             dados = ser.readline()
             ser.flush()
-            sleep(0.02)
+            sleep(0.01)
             print(str(dados.decode('utf-8')).rstrip("\n"))
             n += 1.2
-            data = f"{round(n)}"
+            # data = f"{round(n)}"
+            data = f"{n:.2f}"
         except Exception:
             try:
                 print("testestestsert")
