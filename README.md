@@ -8,9 +8,9 @@
 
 ## Interface Aeropêndulo
 
-<img src="file:///home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/utils/demo_interface_dark.png" title="" alt="" data-align="center">
+<img src="utils/demo_interface_dark.png" title="" alt="" data-align="center">
 
-<img src="file:///home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/utils/demo_interface_light.png" title="" alt="" data-align="center">
+<img src="utils/demo_interface_light.png" title="" alt="" data-align="center">
 
 
 
