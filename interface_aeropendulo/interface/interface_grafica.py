@@ -186,11 +186,11 @@ class InterfaceAeropendulo:
                                    command=self.run_graph)
         button_run.grid(row=2, column=0, padx=10, pady=4, sticky="w")
 
-        button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
-                                   font=ctk.CTkFont(size=15, weight="bold"),
-                                   text="Outra Ação", border_width=1,
-                                   command=self.set_usb_port)
-        button_usb.grid(row=3, column=0, padx=10, pady=4, sticky="w")
+        # button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
+        #                            font=ctk.CTkFont(size=15, weight="bold"),
+        #                            text="Outra Ação", border_width=1,
+        #                            command=self.set_usb_port)
+        # button_usb.grid(row=3, column=0, padx=10, pady=4, sticky="w")
 
         self.usb_menu = ctk.CTkOptionMenu(
                             master=self.frame_menu,
@@ -216,6 +216,7 @@ class InterfaceAeropendulo:
                                font=ctk.CTkFont(size=15, weight="bold"),
                                text="Quit", border_width=1,
                                text_color=("white", "white"),
+                               hover_color=("red", "red"),
                                command=self.quit)
         button.grid(row=7, column=0,
                     padx=10, pady=4, sticky="w")
@@ -328,6 +329,7 @@ class InterfaceAeropendulo:
                                                     size=15, weight="bold"),
                                       fg_color=("red", "purple"),
                                       text_color=("white", "white"),
+                                      hover_color=("#C11C1C", "#4A0255"),
                                       text="Add Amplitude:", border_width=1,
                                       command=self.get_data_emtry_ampl1)
         self.btn_ampl.grid(row=1, column=0, padx=10, pady=4, sticky="w")
@@ -345,6 +347,7 @@ class InterfaceAeropendulo:
                                                     size=15, weight="bold"),
                                       fg_color=("red", "purple"),
                                       text_color=("white", "white"),
+                                      hover_color=("#C11C1C", "#4A0255"),
                                       text="Add Frequência:", border_width=1,
                                       command=self.get_data_emtry_freq1)
         self.btn_freq.grid(row=2, column=0, padx=10, pady=4, sticky="w")
@@ -362,6 +365,7 @@ class InterfaceAeropendulo:
                                                     size=15, weight="bold"),
                                         fg_color=("red", "purple"),
                                         text_color=("white", "white"),
+                                        hover_color=("#C11C1C", "#4A0255"),
                                         text="Add Frequência:", border_width=1,
                                         command=self.get_data_emtry_freq1)
         self.btn_offset.grid(row=3, column=0, padx=10, pady=4, sticky="w")
