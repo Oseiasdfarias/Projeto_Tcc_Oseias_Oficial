@@ -2,6 +2,9 @@ import serial
 from time import sleep
 import numpy as np
 from threading import Thread
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ColetaDados:
@@ -20,37 +23,86 @@ class ColetaDados:
     def get_dados(self):
         return self.fila
 
+    def set_amplitude(self, amplitude):
+        data = f"ampl:{amplitude}"
+        print(data)
+        self.disp.write(data.encode("utf-8"))
+        self.disp.flush()
+
+    def set_frequencia(self, frequencia):
+        data = f"freq:{frequencia}"
+        print(data)
+        self.disp.write(data.encode("utf-8"))
+        self.disp.flush()
+
+    def set_offset(self, offset):
+        data = f"offset:{offset}"
+        self.disp.write(data.encode("utf-8"))
+        self.disp.flush()
+
+    def set_sinal(self, sinal):
+        self.disp.write(sinal.encode("utf-8"))
+        self.disp.flush()
+        print(f"Sinal Configurado: {sinal}")
+
     def __init_thread(self):
         self.new_thread = Thread(target=self.__coleta_dados)
         self.new_thread.daemon = True
         self.new_thread.start()
 
     def __coleta_dados(self):
-        self.disp = serial.Serial(self.porta, self.baud_rate)
-        print(f"Disp. conectado: {self.porta}, BaudRate: {self.baud_rate}")
+        self.disp = serial.Serial(self.porta,
+                                  self.baud_rate,
+                                  timeout=0.005,
+                                  parity=serial.PARITY_ODD,
+                                  stopbits=serial.STOPBITS_ONE,
+                                  bytesize=serial.EIGHTBITS)
+        con1 = f"\nConectando!!! >> ID: {self.porta}, "
+        con2 = f"BaudRate: {self.baud_rate}"
+        print(con1 + con2)
+        if self.disp.isOpen():
+            print(f"Conectado com Sucesso!!! >> ID: {self.porta}\n")
+        self.disp.parity = "O"
+        self.disp.bytesize = 7
+
         self.disp.reset_input_buffer()
-        while self.disp.is_open:
+
+        while True:
             try:
+                # if (self.disp.inWaiting() > 0):
                 dado = self.disp.readline()
-                dados1 = str(dado.decode('utf8')).rstrip("\n")
+                self.disp.flush()
+                dados1 = str(dado.decode('utf-8')).rstrip("\n")
                 dados1 = dados1.split(",")
+
                 try:
                     dados_float = np.array([dados1], dtype="float64").T
                     if len(self.fila[0]) <= 50:
-                        self.fila = np.append(self.fila, dados_float, axis=1)
+                        self.fila = np.append(self.fila,
+                                              dados_float, axis=1)
                     else:
                         self.fila = np.delete(self.fila, np.s_[:1], 1)
-                except Exception as erro:
-                    print(f"Erro: {erro}")
+                except Exception as erro1:
+                    print(f"Erro: {erro1}")
                     sleep(0.03)
             except serial.SerialException:
-                print("Erro de leitura ...")
-                # self.disp.reset_input_buffer()
-                break
+                print("erro de leitura")
 
-
-if __name__ == "__main__":
-    coleta_dados = ColetaDados()
-    while True:
-        dados = coleta_dados.get_dados()
-        print(dados)
+            if not self.disp.isOpen():
+                try:
+                    self.disp.close()
+                    self.disp = serial.Serial(self.porta,
+                                              self.baud_rate,
+                                              timeout=0.005,
+                                              parity=serial.PARITY_ODD,
+                                              stopbits=serial.STOPBITS_ONE,
+                                              bytesize=serial.EIGHTBITS)
+                    print(f"\nReconectando!!! >> ID: {self.porta}")
+                    if self.disp.isOpen():
+                        self.disp.reset_input_buffer()
+                        self.disp.flush()
+                        print(f"Reconectado!!! >> ID: {self.porta}\n")
+                    sleep(1)
+                except serial.SerialException:
+                    pass
+                    # logger.exception(e)

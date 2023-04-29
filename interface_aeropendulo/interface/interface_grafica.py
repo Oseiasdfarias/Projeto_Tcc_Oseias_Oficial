@@ -13,7 +13,8 @@ from interface.lista_portas_usb import ListaPortasUsb
 
 
 class InterfaceAeropendulo:
-    def __init__(self):
+    def __init__(self, tela_fixa=False):
+        self.tela_fixa = tela_fixa
         # Objeto para coletar dados do sensor
         self.usb_port = None
         self.baud_rate = 115200
@@ -48,11 +49,11 @@ class InterfaceAeropendulo:
             if i < 1:
                 self.ax[i].set_xlim(0, 50)
                 self.ax[i].set_ylim(-5, 180)
-            if i > 1:
+            if i >= 1:
                 self.ax[i].set_xlim(0, 50)
                 self.ax[i].set_ylim(-15, 15)
-            self.ax[i].axhline(0, color="dimgray", lw=1.2)
-            self.ax[i].axvline(0.5, color="dimgray", lw=1.2)
+            self.ax[i].axhline(0, color="black", lw=1.2)
+            self.ax[i].axvline(0.5, color="black", lw=1.2)
         return self.ln
 
     def update(self, frame):
@@ -80,6 +81,47 @@ class InterfaceAeropendulo:
                                          interval=20, blit=True)
                 self.executar = False
 
+    def switch_event_deg(self):
+        if self.switch_var_deg.get() == "on":
+            self.switch_quad.deselect(0)
+            self.switch_seno.deselect(0)
+            if not self.executar:
+                self.coleta_dados.set_sinal(f"deg:{1.0}")
+        else:
+            self.switch_deg.select(1)
+
+    def switch_event_seno(self):
+        if self.switch_var_seno.get() == "on":
+            self.switch_deg.deselect(0)
+            self.switch_quad.deselect(0)
+            if not self.executar:
+                self.coleta_dados.set_sinal(f"seno:{2.0}")
+        else:
+            self.switch_seno.select(1)
+
+    def switch_event_quad(self):
+        if self.switch_var_quad.get() == "on":
+            self.switch_deg.deselect(0)
+            self.switch_seno.deselect(0)
+            if not self.executar:
+                self.coleta_dados.set_sinal("quad:3.0}")
+        else:
+            self.switch_quad.select(1)
+
+    def get_data_emtry_ampl1(self):
+        data = self.emtry_ampl1.get()
+        if not self.executar and data.isnumeric():
+            self.coleta_dados.set_amplitude(data)
+        print(data)
+        self.emtry_ampl1.delete(0, len(data))
+
+    def get_data_emtry_freq1(self):
+        data = self.emtry_freq1.get()
+        if not self.executar and data.isnumeric():
+            self.coleta_dados.set_frequencia(data)
+        print(data)
+        self.emtry_freq1.delete(0, len(data))
+
     def start_gui(self):
         # Themes: blue (default), dark-blue, green
         ctk.set_default_color_theme("green")
@@ -92,80 +134,294 @@ class InterfaceAeropendulo:
         # GUI
         self.root = ctk.CTk()
         self.root.title("Interface Aeropêndulo")
-        self.root.geometry("1270x660+30+45")
-        self.root.minsize(1270, 660)
-        self.root.maxsize(1270, 660)
+        self.root.geometry("1270x700+40+5")
+        if self.tela_fixa:
+            self.root.minsize(1270, 700)
+            self.root.maxsize(1270, 700)
+        self.root.state("normal")
 
-        self.frame_menu = ctk.CTkFrame(master=self.root, width=5, height=5)
-        self.frame_menu.grid(row=0, column=0, padx=10, pady=10)
+        # ------- Frame para adicionar os Menus ----------------------
+        self.frame_menus = ctk.CTkFrame(master=self.root, width=5, height=5)
+        self.frame_menus.grid(row=0, column=0, padx=10, pady=5, sticky="sn")
 
+        self.frame_menu = ctk.CTkFrame(master=self.frame_menus,
+                                       width=5, height=5)
+        self.frame_menu.grid(row=2, column=0, padx=10, pady=5, sticky="s")
+
+        self.frame_dados = ctk.CTkFrame(master=self.frame_menus,
+                                        width=5, height=10)
+        self.frame_dados.grid(row=1, column=0, padx=10, pady=5, sticky="w")
+
+        self.frame_controle = ctk.CTkFrame(master=self.frame_menus,
+                                           width=5, height=10)
+        self.frame_controle.grid(row=0, column=0, padx=10, pady=5, sticky="w")
+
+        # --------------- Frame para adicionar os gráficos -------------------
         self.frame_graficos = ctk.CTkFrame(master=self.root,
                                            width=5, height=5)
-        self.frame_graficos.grid(row=0, column=1, padx=5, pady=10)
+        self.frame_graficos.grid(row=0, column=1, padx=0, pady=5, sticky="sn")
 
         self.label = ctk.CTkLabel(
             self.frame_graficos, text="Interface Aeropêndulo",
             font=ctk.CTkFont(
                 size=20, weight="bold")).grid(column=1, row=0)
 
-        self.espaco = ctk.CTkLabel(master=self.frame_menu, text=" ",
-                                   width=90)
-        self.espaco.grid(row=0, column=0, padx=10, pady=10)
-
+        # ----------------------- Widgets Frame de Menu ----------------------
+        _ = ctk.CTkLabel(master=self.frame_menu, text=" ", width=208)
+        _.grid(row=7, column=0, padx=0, pady=0)
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
                                        # image=self.logo_image,
-                                       width=90,
-                                       font=ctk.CTkFont(size=25,
+                                       width=50,
+                                       font=ctk.CTkFont(size=20,
                                                         weight="bold"))
-        self.label_nemu.grid(row=0, column=0, padx=10, pady=10)
+        self.label_nemu.grid(row=0, column=0, padx=10, pady=4, sticky="w")
 
         canvas = FigureCanvasTkAgg(self.fig, master=self.frame_graficos)
         canvas.get_tk_widget().grid(column=1, row=1,
-                                    padx=5, pady=5)
+                                    padx=5, pady=4, sticky="sn")
 
         button_run = ctk.CTkButton(master=self.frame_menu, height=30,
                                    font=ctk.CTkFont(size=15, weight="bold"),
                                    text="Executar", border_width=1,
                                    command=self.run_graph)
-        button_run.grid(row=2, column=0,
-                        padx=10, pady=10,
-                        sticky="s")
+        button_run.grid(row=2, column=0, padx=10, pady=4, sticky="w")
 
-        button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
-                                   font=ctk.CTkFont(size=15, weight="bold"),
-                                   text="Outra Ação", border_width=1,
-                                   command=self.set_usb_port)
-        button_usb.grid(row=3, column=0,
-                        padx=10, pady=10,
-                        sticky="s")
+        # button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
+        #                            font=ctk.CTkFont(size=15, weight="bold"),
+        #                            text="Outra Ação", border_width=1,
+        #                            command=self.set_usb_port)
+        # button_usb.grid(row=3, column=0, padx=10, pady=4, sticky="w")
 
         self.usb_menu = ctk.CTkOptionMenu(
-            master=self.frame_menu,
-            height=30,
-            font=ctk.CTkFont(
-                size=15,
-                weight="bold"),
-            values=["None"],
-            command=self.set_usb_port)
-        self.usb_menu.grid(row=5, column=0, padx=10, pady=5, sticky="s")
+                            master=self.frame_menu,
+                            height=25,
+                            font=ctk.CTkFont(
+                                size=15,
+                                weight="bold"),
+                            values=["None"],
+                            command=self.set_usb_port)
+        self.usb_menu.grid(row=5, column=0, padx=10, pady=4, sticky="w")
 
         self.aparencia_menu = ctk.CTkOptionMenu(master=self.frame_menu,
-                                                height=30,
+                                                height=25,
                                                 font=ctk.CTkFont(
                                                      size=15,
                                                      weight="bold"),
                                                 values=["Light", "Dark"],
                                                 command=self.aparencia_event)
 
-        self.aparencia_menu.grid(row=6, column=0, padx=10, pady=5, sticky="s")
+        self.aparencia_menu.grid(row=6, column=0, padx=10, pady=4, sticky="w")
 
         button = ctk.CTkButton(master=self.frame_menu, height=30,
                                font=ctk.CTkFont(size=15, weight="bold"),
                                text="Quit", border_width=1,
-                               text_color="red", command=self.quit)
+                               text_color=("white", "white"),
+                               hover_color=("red", "red"),
+                               command=self.quit)
         button.grid(row=7, column=0,
-                    padx=10, pady=10,
-                    sticky="s")
+                    padx=10, pady=4, sticky="w")
+
+        # ----------------------- Widgets Frame de Sinais ---------------------
+        self.label_sinais = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="Informações",
+            width=150,
+            font=ctk.CTkFont(size=20,
+                             weight="bold"))
+        self.label_sinais.grid(row=0, column=0, padx=5, pady=3, sticky="s")
+
+        self.label_referencia = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="Referências: ",
+            text_color=("white", "white"),
+            fg_color=("purple", "red"),
+            width=140,
+            height=25,
+            corner_radius=5,
+            font=ctk.CTkFont(size=15,
+                             weight="normal"))
+        self.label_referencia.grid(row=1, column=0, padx=0, pady=4)
+
+        self.label_referencia1 = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="20°",
+            width=50,
+            height=25,
+            font=ctk.CTkFont(size=17,
+                             weight="bold"))
+        self.label_referencia1.grid(row=1, column=1, padx=0, pady=0)
+
+        self.label_angulo = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="Ângulo: ",
+            text_color=("white", "white"),
+            fg_color=("purple", "red"),
+            width=140,
+            height=25,
+            corner_radius=5,
+            font=ctk.CTkFont(size=15,
+                             weight="normal"))
+        self.label_angulo.grid(row=2, column=0, padx=0, pady=4)
+
+        self.label_angulo1 = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="23°",
+            width=50,
+            height=25,
+            font=ctk.CTkFont(size=17,
+                             weight="bold"))
+        self.label_angulo1.grid(row=2, column=1, padx=0, pady=0)
+
+        self.label_controle = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="Sinal Controle: ",
+            text_color=("white", "white"),
+            fg_color=("purple", "red"),
+            width=140,
+            height=25,
+            corner_radius=5,
+            font=ctk.CTkFont(size=15,
+                             weight="normal"))
+        self.label_controle.grid(row=3, column=0, padx=0, pady=4)
+
+        self.label_controle1 = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="23V",
+            width=50,
+            height=25,
+            font=ctk.CTkFont(size=17,
+                             weight="bold"))
+        self.label_controle1.grid(row=3, column=1, padx=0, pady=0)
+
+        self.label_erro = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="Sinal de Erro: ",
+            text_color=("white", "white"),
+            fg_color=("purple", "red"),
+            width=140,
+            height=25,
+            corner_radius=5,
+            font=ctk.CTkFont(size=15,
+                             weight="normal"))
+        self.label_erro.grid(row=4, column=0, padx=0, pady=4)
+
+        self.label_erro1 = ctk.CTkLabel(
+            master=self.frame_dados,
+            text="15°",
+            width=50,
+            height=25,
+            font=ctk.CTkFont(size=17,
+                             weight="bold"))
+        self.label_erro1.grid(row=4, column=1, padx=0, pady=2)
+
+        # ------- Widgets Frame de Sinais -------
+        # _ = ctk.CTkLabel(master=self.frame_controle, text=" ", width=208)
+        # _.grid(row=10, column=0, padx=0, pady=0)
+        self.label_nemu1 = ctk.CTkLabel(master=self.frame_controle,
+                                        text="Sinal de ref.",
+                                        width=120,
+                                        font=ctk.CTkFont(size=20,
+                                                         weight="bold"))
+        self.label_nemu1.grid(row=0, column=0, padx=5, pady=4)
+
+        self.btn_ampl = ctk.CTkButton(master=self.frame_controle, width=120,
+                                      height=30, font=ctk.CTkFont(
+                                                    size=15, weight="bold"),
+                                      fg_color=("red", "purple"),
+                                      text_color=("white", "white"),
+                                      hover_color=("#C11C1C", "#4A0255"),
+                                      text="Add Amplitude:", border_width=1,
+                                      command=self.get_data_emtry_ampl1)
+        self.btn_ampl.grid(row=1, column=0, padx=10, pady=4, sticky="w")
+
+        self.emtry_ampl1 = ctk.CTkEntry(master=self.frame_controle,
+                                        width=65,
+                                        font=ctk.CTkFont(size=17,
+                                                         weight="bold"),
+                                        placeholder_text="(0 à 5)")
+        self.emtry_ampl1.grid(row=1, column=1,
+                              padx=(0, 5), pady=4, sticky="s")
+
+        self.btn_freq = ctk.CTkButton(master=self.frame_controle, width=120,
+                                      height=30, font=ctk.CTkFont(
+                                                    size=15, weight="bold"),
+                                      fg_color=("red", "purple"),
+                                      text_color=("white", "white"),
+                                      hover_color=("#C11C1C", "#4A0255"),
+                                      text="Add Frequência:", border_width=1,
+                                      command=self.get_data_emtry_freq1)
+        self.btn_freq.grid(row=2, column=0, padx=10, pady=4, sticky="w")
+
+        self.emtry_freq1 = ctk.CTkEntry(master=self.frame_controle,
+                                        width=65,
+                                        font=ctk.CTkFont(size=17,
+                                                         weight="bold"),
+                                        placeholder_text="0 à 5")
+        self.emtry_freq1.grid(row=2, column=1,
+                              padx=(0, 5), pady=4, sticky="s")
+
+        self.btn_offset = ctk.CTkButton(master=self.frame_controle, width=120,
+                                        height=30, font=ctk.CTkFont(
+                                                    size=15, weight="bold"),
+                                        fg_color=("red", "purple"),
+                                        text_color=("white", "white"),
+                                        hover_color=("#C11C1C", "#4A0255"),
+                                        text="Add Frequência:", border_width=1,
+                                        command=self.get_data_emtry_freq1)
+        self.btn_offset.grid(row=3, column=0, padx=10, pady=4, sticky="w")
+
+        self.emtry_offset1 = ctk.CTkEntry(master=self.frame_controle,
+                                          width=65,
+                                          font=ctk.CTkFont(size=17,
+                                                           weight="bold"),
+                                          placeholder_text="0 à 5")
+        self.emtry_offset1.grid(row=3, column=1,
+                                padx=(0, 5), pady=4, sticky="s")
+
+        self.switch_var_deg = ctk.StringVar(value="on")
+        self.switch_deg = ctk.CTkSwitch(master=self.frame_controle,
+                                        text="Si. Degrau",
+                                        width=40,
+                                        switch_height=25,
+                                        switch_width=40,
+                                        progress_color=("#2CC985", "orange"),
+                                        command=self.switch_event_deg,
+                                        font=ctk.CTkFont(size=15,
+                                                         weight="normal"),
+                                        variable=self.switch_var_deg,
+                                        onvalue="on", offvalue="off")
+
+        self.switch_deg.grid(row=4, column=0, padx=5, pady=4, sticky="s")
+
+        self.switch_var_quad = ctk.StringVar(value="off")
+        self.switch_quad = ctk.CTkSwitch(master=self.frame_controle,
+                                         text="Quadrada",
+                                         width=40,
+                                         switch_height=25,
+                                         switch_width=40,
+                                         progress_color=("#2CC985", "orange"),
+                                         command=self.switch_event_quad,
+                                         font=ctk.CTkFont(size=15,
+                                                          weight="normal"),
+                                         variable=self.switch_var_quad,
+                                         onvalue="on", offvalue="off")
+
+        self.switch_quad.grid(row=5, column=0, padx=5, pady=4, sticky="s")
+
+        self.switch_var_seno = ctk.StringVar(value="off")
+        self.switch_seno = ctk.CTkSwitch(master=self.frame_controle,
+                                         text="Senoide",
+                                         width=40,
+                                         switch_height=25,
+                                         switch_width=40,
+                                         progress_color=("#2CC985", "orange"),
+                                         command=self.switch_event_seno,
+                                         font=ctk.CTkFont(size=15,
+                                                          weight="normal"),
+                                         variable=self.switch_var_seno,
+                                         onvalue="on", offvalue="off")
+
+        self.switch_seno.grid(row=6, column=0, padx=5, pady=4, sticky="s")
 
         self.lista_usb = ListaPortasUsb(self.usb_menu, self.set_usb_port)
         self.root.mainloop()

@@ -1,16 +1,20 @@
 /*
+************************       ****************************
+
       * Universidade Federal do Pará
       * Campus Universitário de Tucuruí
       * Faculdade de Engenharia Elétrica
       * Trabalho de Conclusão de Curso
-      *
+
       * Título : Firmware Potótipo Aeropêndulo
       * Professor Orientador: Raphael Teixeira
       * Autor  : Oséias Farias
-      * 
+
       * Arquivo: main.cpp
-      *
+
       * Data: 2023
+           
+           ***************       **************
 */
 
 #include "Arduino.h"
@@ -23,20 +27,20 @@ const int pinoSentido1 = 32;
 const int pinoSentido2 = 33;
 
 // Configurações do Sinal PWM
-const int pinoPWM = 25;        // pino para sinal PWM
-const int freq = 500;          // Frequência do sinal PWM
-const int pwmChannel = 0;      // Canal para o sinal PWM (0-15)
-const int resolution = 8;      // Resolução do sinal PWM
-int dutyCycle = 120;           // Ciclo de trabalho
-float ref = 90.0;               // Setpoint
-float erro = 7.0;              // Erro do sistema
+const int pinoPWM = 25;           // pino para sinal PWM
+const int freq = 500;             // Frequência do sinal PWM
+const int pwmChannel = 0;         // Canal para o sinal PWM (0-15)
+const int resolution = 8;         // Resolução do sinal PWM
+int dutyCycle = 120;              // Ciclo de trabalho
+float ref1 = 90.0;                // Setpoint
+float erro = 7.0;                 // Erro do sistema
 
 // Variáveis usadas no código
-int valorAD_POT = 0;           // Valor de tensão (potenciômetro) lido pela conversor ADC
-float tensao_pot = 0.0;        // Tensão no potenciômetro.
+int valorAD_POT = 0;              // Valor de tensão (potenciômetro) lido pela conversor ADC
+float tensao_pot = 0.0;           // Tensão no potenciômetro.
 
-float theta = 0.0;             // Ângulo theta
-float tensao_control = 0.0;    // Sinal de controle em tensão
+float theta = 0.0;                // Ângulo theta
+float tensao_control = 0.0;       // Sinal de controle em tensão
 // Variável para salvar o sinal de controle, obtido pelo conversor AD.
 int valorAD_CONTROL = 0;
 
@@ -67,7 +71,7 @@ void loop() {
     ledcWrite(pwmChannel, dutyCycle);
 
     // Sinal de Referência
-    Serial.print(ref);
+    Serial.print(ref1);
     Serial.print(",");
 
     // Sinal de tensão no potenciômetro.
@@ -95,4 +99,5 @@ void loop() {
 
     delay(20);
   }
+
 }
