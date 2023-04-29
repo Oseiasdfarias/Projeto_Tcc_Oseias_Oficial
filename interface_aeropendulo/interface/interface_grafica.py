@@ -140,7 +140,7 @@ class InterfaceAeropendulo:
             self.root.maxsize(1270, 700)
         self.root.state("normal")
 
-        # ------- Frame para adicionar os Menus ----------------------
+        # +++++++++++++++++++ Frame para adicionar os Menus +++++++++++++++++++
         self.frame_menus = ctk.CTkFrame(master=self.root, width=5, height=5)
         self.frame_menus.grid(row=0, column=0, padx=10, pady=5, sticky="sn")
 
@@ -156,7 +156,7 @@ class InterfaceAeropendulo:
                                            width=5, height=10)
         self.frame_controle.grid(row=0, column=0, padx=10, pady=5, sticky="w")
 
-        # --------------- Frame para adicionar os gráficos -------------------
+        # +++++++++++++++++ Frame para adicionar os gráficos ++++++++++++++++++
         self.frame_graficos = ctk.CTkFrame(master=self.root,
                                            width=5, height=5)
         self.frame_graficos.grid(row=0, column=1, padx=0, pady=5, sticky="sn")
@@ -166,7 +166,7 @@ class InterfaceAeropendulo:
             font=ctk.CTkFont(
                 size=20, weight="bold")).grid(column=1, row=0)
 
-        # ----------------------- Widgets Frame de Menu ----------------------
+        # ++++++++++++++++++++++ Widgets Frame de Menu ++++++++++++++++++++++
         _ = ctk.CTkLabel(master=self.frame_menu, text=" ", width=208)
         _.grid(row=7, column=0, padx=0, pady=0)
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
@@ -221,7 +221,7 @@ class InterfaceAeropendulo:
         button.grid(row=7, column=0,
                     padx=10, pady=4, sticky="w")
 
-        # ----------------------- Widgets Frame de Sinais ---------------------
+        # +++++++++++++++++ Widgets Frame de Sinais ++++++++++++++++++++++
         self.label_sinais = ctk.CTkLabel(
             master=self.frame_dados,
             text="Informações",
@@ -314,9 +314,7 @@ class InterfaceAeropendulo:
                              weight="bold"))
         self.label_erro1.grid(row=4, column=1, padx=0, pady=2)
 
-        # ------- Widgets Frame de Sinais -------
-        # _ = ctk.CTkLabel(master=self.frame_controle, text=" ", width=208)
-        # _.grid(row=10, column=0, padx=0, pady=0)
+        # ++++++++++++++++++++ Widgets Frame de Sinais ++++++++++++++++++++++
         self.label_nemu1 = ctk.CTkLabel(master=self.frame_controle,
                                         text="Sinal de ref.",
                                         width=120,
