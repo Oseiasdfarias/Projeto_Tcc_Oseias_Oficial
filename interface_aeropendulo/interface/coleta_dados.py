@@ -26,22 +26,22 @@ class ColetaDados:
     def set_amplitude(self, amplitude):
         data = f"ampl:{amplitude}"
         print(data)
-        self.disp.write(data.encode("utf8"))
+        self.disp.write(data.encode("utf-8"))
         self.disp.flush()
 
     def set_frequencia(self, frequencia):
         data = f"freq:{frequencia}"
         print(data)
-        self.disp.write(data.encode("utf8"))
+        self.disp.write(data.encode("utf-8"))
         self.disp.flush()
 
     def set_offset(self, offset):
         data = f"offset:{offset}"
-        self.disp.write(data.encode("utf8"))
+        self.disp.write(data.encode("utf-8"))
         self.disp.flush()
 
     def set_sinal(self, sinal):
-        self.disp.write(sinal.encode("utf8"))
+        self.disp.write(sinal.encode("utf-8"))
         self.disp.flush()
         print(f"Sinal Configurado: {sinal}")
 
@@ -51,7 +51,12 @@ class ColetaDados:
         self.new_thread.start()
 
     def __coleta_dados(self):
-        self.disp = serial.Serial(self.porta, self.baud_rate)
+        self.disp = serial.Serial(self.porta,
+                                  self.baud_rate,
+                                  timeout=0.005,
+                                  parity=serial.PARITY_ODD,
+                                  stopbits=serial.STOPBITS_ONE,
+                                  bytesize=serial.EIGHTBITS)
         con1 = f"\nConectando!!! >> ID: {self.porta}, "
         con2 = f"BaudRate: {self.baud_rate}"
         print(con1 + con2)
@@ -67,7 +72,7 @@ class ColetaDados:
                 # if (self.disp.inWaiting() > 0):
                 dado = self.disp.readline()
                 self.disp.flush()
-                dados1 = str(dado.decode('utf8')).rstrip("\n")
+                dados1 = str(dado.decode('utf-8')).rstrip("\n")
                 dados1 = dados1.split(",")
 
                 try:
@@ -86,7 +91,12 @@ class ColetaDados:
             if not self.disp.isOpen():
                 try:
                     self.disp.close()
-                    self.disp = serial.Serial(self.porta, self.baud_rate)
+                    self.disp = serial.Serial(self.porta,
+                                              self.baud_rate,
+                                              timeout=0.005,
+                                              parity=serial.PARITY_ODD,
+                                              stopbits=serial.STOPBITS_ONE,
+                                              bytesize=serial.EIGHTBITS)
                     print(f"\nReconectando!!! >> ID: {self.porta}")
                     if self.disp.isOpen():
                         self.disp.reset_input_buffer()
