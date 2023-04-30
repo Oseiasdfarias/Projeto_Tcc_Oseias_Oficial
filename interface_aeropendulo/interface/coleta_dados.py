@@ -28,7 +28,7 @@ class ColetaDados:
         data = f"{int(data)}"
         print(f"Ampl.: {data}")
         self.disp.reset_input_buffer()
-        for i in range(10):
+        for i in range(100):
             self.disp.write(data.encode("utf-8"))
             sleep(0.01)
             self.disp.flush()
@@ -38,7 +38,7 @@ class ColetaDados:
         data = f"{int(data)}"
         print(f"Freq.: {data}")
         self.disp.reset_input_buffer()
-        for i in range(10):
+        for i in range(100):
             self.disp.write(data.encode("utf-8"))
             sleep(0.01)
             self.disp.flush()
