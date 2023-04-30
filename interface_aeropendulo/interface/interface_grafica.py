@@ -209,11 +209,12 @@ class InterfaceAeropendulo:
         button = ctk.CTkButton(master=self.frame_menu, height=30,
                                font=ctk.CTkFont(size=15, weight="bold"),
                                text="Quit", border_width=1,
+                               fg_color=("red", "red"),
                                text_color=("white", "white"),
-                               hover_color=("red", "red"),
+                               hover_color=("#C11C1C", "#C11C1C"),
                                command=self.quit)
-        button.grid(row=7, column=0,
-                    padx=10, pady=4, sticky="w")
+        button.grid(row=14, column=0,
+                    padx=10, pady=10, sticky="w")
 
         # +++++++++++++++++ Widgets Frame de Sinais ++++++++++++++++++++++
         self.label_sinais = ctk.CTkLabel(
