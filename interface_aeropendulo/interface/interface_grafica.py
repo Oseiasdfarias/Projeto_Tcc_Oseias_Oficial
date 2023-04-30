@@ -42,10 +42,6 @@ class InterfaceAeropendulo:
 
     def init(self):
         for i in range(4):
-            """tx.append(ax[i].text(40, int(fila[i][-1])+2, f"{fila[i][-1]}",
-                                color=[0.3, 0.3, 0.5],
-                                fontsize=9,
-                                fontweight="bold"))"""
             if i < 1:
                 self.ax[i].set_xlim(0, 50)
                 self.ax[i].set_ylim(-5, 180)
@@ -60,12 +56,6 @@ class InterfaceAeropendulo:
         dados = self.coleta_dados.get_dados()
         t = np.arange(0, len(dados[0]))
         for i, ax in enumerate(self.ln):
-            """tx[i].set_y(int(dados[i][-1]+2))
-            if (i <= 2):
-                tx[i].set_text(f"{dados[i][-1]:.2f}\nm/s^2")
-            else:
-                tx[i].set_text(f"{dados[i][-1]:.2f}\nrad/s")
-            """
             ax.set_xdata(t)
             ax.set_ydata(dados[i])
         return self.ln

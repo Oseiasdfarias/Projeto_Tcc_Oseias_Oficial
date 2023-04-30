@@ -12,14 +12,7 @@ def serialRead(serialPort, queue):
     # data = f"{round(n)}"
     data = f"{n:.2f}"
     ser = serial.Serial(serialPort, baudrate=115200, timeout=0.005)
-    """
-    ser = serial.Serial(serialPort,
-                        baudrate=115200,
-                        timeout=0.005,
-                        parity=serial.PARITY_ODD,
-                        stopbits=serial.STOPBITS_ONE,
-                        bytesize=serial.EIGHTBITS)
-    """
+
     ser.reset_input_buffer()
     sleep(1)
 
