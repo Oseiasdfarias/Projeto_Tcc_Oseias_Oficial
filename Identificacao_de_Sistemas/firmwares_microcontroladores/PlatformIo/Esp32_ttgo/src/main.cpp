@@ -71,7 +71,7 @@ void loop() {
 
   enviar_dados_serial();
   delay(10);
-
+  
   ler_dados_serial();
   delay(10);
 }
@@ -101,29 +101,24 @@ void enviar_dados_serial(){
     Serial.print(",");
 
     /* Estruturas reservas de envio de dados. */
-    Serial.print(10.0);
-    Serial.print(",ampl");
-    Serial.print(ampl);
-    Serial.print(",offset");
-    Serial.print(offset);
-    Serial.print(",freq");
     Serial.print(freq_ref);
-    Serial.println(" ");
-}
+    Serial.print(",");
+    Serial.println(ampl);
+  }
 
 void ler_dados_serial(){
-      float rlen = Serial.parseFloat();
+    float rlen = Serial.parseFloat();
 
     /* Dados do Amplitude. */
     if (1000.0 < rlen && rlen < 2001.0){
-      ampl = rlen;
+      erro = (((rlen * 15.0) / 1000.0) - 15.0);
 
     /* Dados do Frequência. */
     } else if(2001.0 < rlen && rlen < 3001.0){
-      freq_ref = rlen;
+      freq_ref = (((rlen * 15.0) / 1000.0) - 30.0);
 
     /* Dados do offset. */
     }else if(3001.0 < rlen && rlen < 4001.0){
-      offset = rlen;
+      offset = (((rlen * 15.0) / 1000.0) - 45.0);
     }
 }

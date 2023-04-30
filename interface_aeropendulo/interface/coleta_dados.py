@@ -24,20 +24,33 @@ class ColetaDados:
         return self.fila
 
     def set_amplitude(self, amplitude):
-        data = f"ampl:{amplitude}"
-        print(data)
-        self.disp.write(data.encode("utf-8"))
-        self.disp.flush()
+        data = ((float(amplitude)*1000.)/15.) + 1000.
+        data = f"{int(data)}"
+        print(f"Ampl.: {data}")
+        self.disp.reset_input_buffer()
+        for i in range(10):
+            self.disp.write(data.encode("utf-8"))
+            sleep(0.01)
+            self.disp.flush()
 
     def set_frequencia(self, frequencia):
-        data = f"freq:{frequencia}"
-        print(data)
-        self.disp.write(data.encode("utf-8"))
-        self.disp.flush()
+        data = ((float(frequencia)*1000.)/15.) + 2000.
+        data = f"{int(data)}"
+        print(f"Freq.: {data}")
+        self.disp.reset_input_buffer()
+        for i in range(10):
+            self.disp.write(data.encode("utf-8"))
+            sleep(0.01)
+            self.disp.flush()
 
     def set_offset(self, offset):
-        data = f"offset:{offset}"
-        self.disp.write(data.encode("utf-8"))
+        data = ((float(offset)*1000.)/15.) + 3000.
+        data = f"{int(data)}"
+        print(f"Offset: {data}")
+        self.disp.reset_input_buffer()
+        for i in range(100):
+            self.disp.write(data.encode("utf-8"))
+            sleep(0.01)
         self.disp.flush()
 
     def set_sinal(self, sinal):
@@ -53,27 +66,23 @@ class ColetaDados:
     def __coleta_dados(self):
         self.disp = serial.Serial(self.porta,
                                   self.baud_rate,
-                                  timeout=0.005,
-                                  parity=serial.PARITY_ODD,
-                                  stopbits=serial.STOPBITS_ONE,
-                                  bytesize=serial.EIGHTBITS)
+                                  timeout=0.005)
         con1 = f"\nConectando!!! >> ID: {self.porta}, "
         con2 = f"BaudRate: {self.baud_rate}"
         print(con1 + con2)
         if self.disp.isOpen():
             print(f"Conectado com Sucesso!!! >> ID: {self.porta}\n")
-        self.disp.parity = "O"
-        self.disp.bytesize = 7
-
-        self.disp.reset_input_buffer()
+        # self.disp.reset_input_buffer()
 
         while True:
             try:
                 # if (self.disp.inWaiting() > 0):
                 dado = self.disp.readline()
-                self.disp.flush()
+                # self.disp.flush()
                 dados1 = str(dado.decode('utf-8')).rstrip("\n")
                 dados1 = dados1.split(",")
+                if dados1 == ['']:
+                    continue
 
                 try:
                     dados_float = np.array([dados1], dtype="float64").T
@@ -82,9 +91,10 @@ class ColetaDados:
                                               dados_float, axis=1)
                     else:
                         self.fila = np.delete(self.fila, np.s_[:1], 1)
+                    sleep(0.02)
                 except Exception as erro1:
                     print(f"Erro: {erro1}")
-                    sleep(0.03)
+                    sleep(0.02)
             except serial.SerialException:
                 print("erro de leitura")
 
@@ -93,13 +103,9 @@ class ColetaDados:
                     self.disp.close()
                     self.disp = serial.Serial(self.porta,
                                               self.baud_rate,
-                                              timeout=0.005,
-                                              parity=serial.PARITY_ODD,
-                                              stopbits=serial.STOPBITS_ONE,
-                                              bytesize=serial.EIGHTBITS)
+                                              timeout=0.005)
                     print(f"\nReconectando!!! >> ID: {self.porta}")
                     if self.disp.isOpen():
-                        self.disp.reset_input_buffer()
                         self.disp.flush()
                         print(f"Reconectado!!! >> ID: {self.porta}\n")
                     sleep(1)

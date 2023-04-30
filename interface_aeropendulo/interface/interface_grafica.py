@@ -112,15 +112,19 @@ class InterfaceAeropendulo:
         data = self.emtry_ampl1.get()
         if not self.executar and data.isnumeric():
             self.coleta_dados.set_amplitude(data)
-        print(data)
         self.emtry_ampl1.delete(0, len(data))
 
     def get_data_emtry_freq1(self):
         data = self.emtry_freq1.get()
         if not self.executar and data.isnumeric():
             self.coleta_dados.set_frequencia(data)
-        print(data)
         self.emtry_freq1.delete(0, len(data))
+
+    def get_data_emtry_offset1(self):
+        data = self.emtry_offset1.get()
+        if not self.executar and data.isnumeric():
+            self.coleta_dados.set_offset(data)
+        self.emtry_offset1.delete(0, len(data))
 
     def start_gui(self):
         # Themes: blue (default), dark-blue, green
@@ -336,7 +340,7 @@ class InterfaceAeropendulo:
                                         width=65,
                                         font=ctk.CTkFont(size=17,
                                                          weight="bold"),
-                                        placeholder_text="(0 à 5)")
+                                        placeholder_text="[0 à 5]")
         self.emtry_ampl1.grid(row=1, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
@@ -354,7 +358,7 @@ class InterfaceAeropendulo:
                                         width=65,
                                         font=ctk.CTkFont(size=17,
                                                          weight="bold"),
-                                        placeholder_text="0 à 5")
+                                        placeholder_text="[0 à 5]")
         self.emtry_freq1.grid(row=2, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
@@ -365,14 +369,14 @@ class InterfaceAeropendulo:
                                         text_color=("white", "white"),
                                         hover_color=("#C11C1C", "#4A0255"),
                                         text="Add Offset:", border_width=1,
-                                        command=self.get_data_emtry_freq1)
+                                        command=self.get_data_emtry_offset1)
         self.btn_offset.grid(row=3, column=0, padx=5, pady=4, sticky="w")
 
         self.emtry_offset1 = ctk.CTkEntry(master=self.frame_controle,
                                           width=65,
                                           font=ctk.CTkFont(size=17,
                                                            weight="bold"),
-                                          placeholder_text="0 à 5")
+                                          placeholder_text="[0 à 5]")
         self.emtry_offset1.grid(row=3, column=1,
                                 padx=(0, 5), pady=4, sticky="s")
 
