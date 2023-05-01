@@ -25,7 +25,7 @@ const int pinoPWM = 25;           // pino para sinal PWM.
 const int freq_pwm = 500;         // Frequência do sinal PWM.
 const int canal_pwm = 0;          // Canal para o sinal PWM (0-15).
 const int resolucao = 8;          // Resolução do sinal PWM.
-int ciclo_trabalho = 120;         // Ciclo de trabalho.
+int ciclo_trabalho = 140;         // Ciclo de trabalho.
 float ref1 = 90.0;                // Setpoint.
 float erro = 7.0;                 // Erro do sistema.
 
