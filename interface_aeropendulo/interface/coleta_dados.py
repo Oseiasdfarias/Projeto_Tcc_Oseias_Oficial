@@ -1,3 +1,16 @@
+"""*************************  | |  ****************************
+      * Universidade Federal do Pará
+      * Campus Universitário de Tucuruí
+      * Faculdade de Engenharia Elétrica
+      * Trabalho de Conclusão de Curso - Aeropêndulo
+
+      * Título : Firmware Potótipo Aeropêndulo
+      * Professor Orientador: Raphael Teixeira
+      * Autor  : Oséias Farias
+
+      * Arquivo: main.cpp    |   Data: 2023
+           ***************   |   ***************"""
+
 import serial
 from time import sleep
 import numpy as np
@@ -63,6 +76,22 @@ class ColetaDados:
         self.new_thread.daemon = True
         self.new_thread.start()
 
+    def reconectar(self):
+        try:
+            self.disp.close()
+            self.disp = serial.Serial(self.porta,
+                                      self.baud_rate,
+                                      timeout=0.005)
+            print(f"\nReconectando!!! >> ID: {self.porta}")
+            if self.disp.isOpen():
+                self.disp.reset_input_buffer()
+                self.disp.flush()
+                print(f"Reconectado!!! >> ID: {self.porta}\n")
+            sleep(1)
+        except serial.SerialException:
+            pass
+            # logger.exception(e)
+
     def __coleta_dados(self):
         self.disp = serial.Serial(self.porta,
                                   self.baud_rate,
@@ -97,18 +126,7 @@ class ColetaDados:
                     sleep(0.02)
             except serial.SerialException:
                 print("erro de leitura")
+                self.reconectar()
 
             if not self.disp.isOpen():
-                try:
-                    self.disp.close()
-                    self.disp = serial.Serial(self.porta,
-                                              self.baud_rate,
-                                              timeout=0.005)
-                    print(f"\nReconectando!!! >> ID: {self.porta}")
-                    if self.disp.isOpen():
-                        self.disp.flush()
-                        print(f"Reconectado!!! >> ID: {self.porta}\n")
-                    sleep(1)
-                except serial.SerialException:
-                    pass
-                    # logger.exception(e)
+                self.reconectar()
