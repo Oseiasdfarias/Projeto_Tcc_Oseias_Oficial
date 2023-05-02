@@ -1,10 +1,10 @@
-"""*************************  | |  ****************************
+"""**********************  | |  *************************
       * Universidade Federal do Pará
       * Campus Universitário de Tucuruí
       * Faculdade de Engenharia Elétrica
       * Trabalho de Conclusão de Curso - Aeropêndulo
 
-      * Título : Firmware Potótipo Aeropêndulo
+      * Título : Script usado para testar a interface USB
       * Professor Orientador: Raphael Teixeira
       * Autor  : Oséias Farias
 

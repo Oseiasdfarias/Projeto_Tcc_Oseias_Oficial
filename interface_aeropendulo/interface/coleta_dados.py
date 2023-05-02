@@ -1,10 +1,10 @@
-"""*************************  | |  ****************************
+"""**********************  | |  *************************
       * Universidade Federal do Pará
       * Campus Universitário de Tucuruí
       * Faculdade de Engenharia Elétrica
       * Trabalho de Conclusão de Curso - Aeropêndulo
 
-      * Título : Firmware Potótipo Aeropêndulo
+      * Título : Classe para obter os dados do Microcontrolador via USB
       * Professor Orientador: Raphael Teixeira
       * Autor  : Oséias Farias
 

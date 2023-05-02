@@ -1,10 +1,10 @@
-"""*************************  | |  ****************************
+"""**********************  | |  *************************
       * Universidade Federal do Pará
       * Campus Universitário de Tucuruí
       * Faculdade de Engenharia Elétrica
       * Trabalho de Conclusão de Curso - Aeropêndulo
 
-      * Título : Firmware Potótipo Aeropêndulo
+      * Título : Classe para listagem de Portas USB Disponíveis
       * Professor Orientador: Raphael Teixeira
       * Autor  : Oséias Farias
 

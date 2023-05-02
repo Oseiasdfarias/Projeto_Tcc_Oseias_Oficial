@@ -4,7 +4,7 @@
       * Faculdade de Engenharia Elétrica
       * Trabalho de Conclusão de Curso - Aeropêndulo
 
-      * Título : Firmware Potótipo Aeropêndulo
+      * Título : Classe para criar os gráficos da aplicação
       * Professor Orientador: Raphael Teixeira
       * Autor  : Oséias Farias
 
