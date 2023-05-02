@@ -28,6 +28,7 @@ from interface.lista_portas_usb import ListaPortasUsb
 class InterfaceAeropendulo:
     def __init__(self, tela_fixa=False):
         self.tela_fixa = tela_fixa
+
         # Objeto para coletar dados do sensor
         self.usb_port = None
         self.baud_rate = 115200
@@ -36,8 +37,6 @@ class InterfaceAeropendulo:
         self.executar = True
         graficos_sinais = GraficosSinais()
         self.fig, self.ax, self.ln = graficos_sinais.get_fig_axes_ln()
-
-        # tx = []
 
         # Inicializa a interface gráfica
         self.start_gui()
