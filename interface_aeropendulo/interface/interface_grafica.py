@@ -196,11 +196,11 @@ class InterfaceAeropendulo:
                                    command=self.run_graph)
         button_run.grid(row=2, column=0, padx=10, pady=4, sticky="w")
 
-        # button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
-        #                            font=ctk.CTkFont(size=15, weight="bold"),
-        #                            text="Outra Ação", border_width=1,
-        #                            command=self.set_usb_port)
-        # button_usb.grid(row=3, column=0, padx=10, pady=4, sticky="w")
+        button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
+                                   font=ctk.CTkFont(size=15, weight="bold"),
+                                   text="Salvar Dados", border_width=1,
+                                   command=self.set_usb_port)
+        button_usb.grid(row=3, column=0, padx=10, pady=4, sticky="w")
 
         self.usb_menu = ctk.CTkOptionMenu(
                             master=self.frame_menu,
