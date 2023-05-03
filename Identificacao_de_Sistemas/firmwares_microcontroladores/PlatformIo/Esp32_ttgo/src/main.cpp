@@ -13,8 +13,7 @@
 
 #include "Arduino.h"
 
-const int pinAD_POT = 2;           // Valor do potenciômetro.
-const int pinAD_CONTROL = 15;       // Sinal de Controle.
+const int pinAD_POT = 2;            // Valor do potenciômetro.
 
 // Define a direção de rotação do motor.
 const int pinSentido1 = 32;
@@ -50,6 +49,7 @@ void ler_dados_serial();
 void setup() {
   Serial.begin(115200);
   Serial.setTimeout(5);
+
   while (!Serial)
     delay(10);
 
@@ -78,31 +78,30 @@ void loop() {
 
 void enviar_dados_serial(){
     ledcWrite(canal_pwm, ciclo_trabalho);
-
+    
     /* Sinal de Referência. */
-    Serial.print(ref1);
+    Serial.print(ref1, 3);
     Serial.print(",");
 
     /* Sinal de tensão no potenciômetro. */
     valorAD_POT = analogRead(pinAD_POT);
     theta = map(valorAD_POT, 528., 3235., 0., 180.);
-    Serial.print(theta);
+    Serial.print(theta, 3);
     Serial.print(",");
 
     /* Sinal de Erro. */
-    Serial.print(erro);
+    Serial.print(erro, 3);
     Serial.print(",");
 
     /* Sinal de tensão aplicado ao motor cc. */
-    valorAD_CONTROL = analogRead(pinAD_CONTROL);
-    tensao_control = (valorAD_CONTROL * 3.3 / 4095.0);
-    Serial.print(tensao_control);
+    tensao_control = (ciclo_trabalho * 3.3 / 255.0);
+    Serial.print(tensao_control, 3);
     Serial.print(",");
 
     /* Estruturas reservas de envio de dados. */
-    Serial.print(freq_ref);
+    Serial.print(freq_ref, 3);
     Serial.print(",");
-    Serial.println(ampl);
+    Serial.println(ampl, 3);
   }
 
 void ler_dados_serial(){

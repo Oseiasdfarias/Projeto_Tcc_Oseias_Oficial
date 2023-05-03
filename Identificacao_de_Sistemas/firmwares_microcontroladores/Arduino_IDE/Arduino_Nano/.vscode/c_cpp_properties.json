@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_Nano/include",
-                "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_Nano/src",
+                "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_IDE/Arduino_Nano/include",
+                "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_IDE/Arduino_Nano/src",
                 "/home/bits/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/home/bits/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                 "/home/bits/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
@@ -22,8 +22,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_Nano/include",
-                    "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_Nano/src",
+                    "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_IDE/Arduino_Nano/include",
+                    "/home/bits/workspace/ElectricalEngineering/Projeto_Tcc_Oseias_Oficial/Identificacao_de_Sistemas/firmwares_microcontroladores/Arduino_IDE/Arduino_Nano/src",
                     "/home/bits/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/home/bits/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                     "/home/bits/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
