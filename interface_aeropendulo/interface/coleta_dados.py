@@ -1,15 +1,17 @@
-"""**********************  | |  *************************
-      * Universidade Federal do Pará
-      * Campus Universitário de Tucuruí
-      * Faculdade de Engenharia Elétrica
-      * Trabalho de Conclusão de Curso - Aeropêndulo
-
-      * Título : Classe para obter os dados do Microcontrolador via USB
-      * Professor Orientador: Raphael Teixeira
-      * Autor  : Oséias Farias
-
-      * Arquivo: main.cpp    |   Data: 2023
-           ***************   |   ***************"""
+# -----------------------------------------------------
+# Universidade Federal do Pará
+# Campus Universitário de Tucuruí
+# Faculdade de Engenharia Elétrica
+# Trabalho de Conclusão de Curso - Aeropêndulo
+# -----------------------------------------------------
+#
+# Título : Classe para obter os dados do Microcontrolador via USB
+# Professor Orientador: Raphael Teixeira
+# Autor: Oséias Farias
+#
+# Data: 2023
+#  ----------------------------------------------------
+#
 
 import serial
 from time import sleep

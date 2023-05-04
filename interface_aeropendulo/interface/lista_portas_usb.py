@@ -1,15 +1,17 @@
-"""**********************  | |  *************************
-      * Universidade Federal do Pará
-      * Campus Universitário de Tucuruí
-      * Faculdade de Engenharia Elétrica
-      * Trabalho de Conclusão de Curso - Aeropêndulo
-
-      * Título : Classe para listagem de Portas USB Disponíveis
-      * Professor Orientador: Raphael Teixeira
-      * Autor  : Oséias Farias
-
-      * Arquivo: main.cpp    |   Data: 2023
-           ***************   |   ***************"""
+# -----------------------------------------------------
+# Universidade Federal do Pará
+# Campus Universitário de Tucuruí
+# Faculdade de Engenharia Elétrica
+# Trabalho de Conclusão de Curso - Aeropêndulo
+# -----------------------------------------------------
+#
+# Título : Classe para listagem de Portas USB Disponíveis
+# Professor Orientador: Raphael Teixeira
+# Autor: Oséias Farias
+#
+# Data: 2023
+#  ----------------------------------------------------
+#
 
 import serial.tools.list_ports as ports_usb
 from pyudev import Context, Monitor

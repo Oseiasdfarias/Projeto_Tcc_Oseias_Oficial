@@ -1,15 +1,17 @@
-"""**********************  | |  *************************
-      * Universidade Federal do Pará
-      * Campus Universitário de Tucuruí
-      * Faculdade de Engenharia Elétrica
-      * Trabalho de Conclusão de Curso - Aeropêndulo
-
-      * Título : Script usado para testar a interface USB
-      * Professor Orientador: Raphael Teixeira
-      * Autor  : Oséias Farias
-
-      * Arquivo: main.cpp    |   Data: 2023
-           ***************   |   ***************"""
+# -----------------------------------------------------
+# Universidade Federal do Pará
+# Campus Universitário de Tucuruí
+# Faculdade de Engenharia Elétrica
+# Trabalho de Conclusão de Curso - Aeropêndulo
+# -----------------------------------------------------
+#
+# Título : Script usado para testar a interface USB
+# Professor Orientador: Raphael Teixeira
+# Autor: Oséias Farias
+#
+# Data: 2023
+#  ----------------------------------------------------
+#
 
 import serial
 from time import sleep

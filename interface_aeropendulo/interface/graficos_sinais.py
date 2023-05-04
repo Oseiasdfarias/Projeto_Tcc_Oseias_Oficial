@@ -1,15 +1,17 @@
-"""*************************  | |  ****************************
-      * Universidade Federal do Pará
-      * Campus Universitário de Tucuruí
-      * Faculdade de Engenharia Elétrica
-      * Trabalho de Conclusão de Curso - Aeropêndulo
-
-      * Título : Classe para criar os gráficos da aplicação
-      * Professor Orientador: Raphael Teixeira
-      * Autor  : Oséias Farias
-
-      * Arquivo: main.cpp    |   Data: 2023
-           ***************   |   ***************"""
+# -----------------------------------------------------
+# Universidade Federal do Pará
+# Campus Universitário de Tucuruí
+# Faculdade de Engenharia Elétrica
+# Trabalho de Conclusão de Curso - Aeropêndulo
+# -----------------------------------------------------
+#
+# Título : Classe para criar os gráficos da aplicação
+# Professor Orientador: Raphael Teixeira
+# Autor: Oséias Farias
+#
+# Data: 2023
+#  ----------------------------------------------------
+#
 
 import matplotlib
 import matplotlib.pyplot as plt
