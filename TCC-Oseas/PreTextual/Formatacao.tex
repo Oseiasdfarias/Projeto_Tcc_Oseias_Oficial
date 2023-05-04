@@ -36,18 +36,24 @@
      \renewcommand{\ABNTEXchapterfontsize}{\LARGE}
 
     %\renewcommand{\ABNTEXchapter}{\sffamily\bfseries}  %alteração da fonte dos capítulos, seções e subseções
-    \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\bfseries\ABNTEXchapterfontsize}
+    % \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\bfseries\ABNTEXchapterfontsize}
    }
 
   \renewcommand{\chapnumfont}{\chaptitlefont}
   \renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
   \renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
   \renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+  
+  % Modifica a Fonte das sessões etc para time new roma;
+  % \renewcommand{\ABNTEXsectionfont}{\fontfamily{ptm}\selectfont\bfseries}
+  
 
   % tamanhos de fontes de section, subsection, subsubsection e subsubsubsection
   \setsecheadstyle{\ABNTEXsectionfont\ABNTEXsectionfontsize\bfseries\ABNTEXsectionupperifneeded}
-  \setsubsecheadstyle{\ABNTEXsubsectionfont\ABNTEXsubsectionfontsize\bfseries\itshape\ABNTEXsubsectionupperifneeded}
-  \setsubsubsecheadstyle{\ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize\itshape\ABNTEXsubsubsectionupperifneeded}
+  \setsubsecheadstyle{\ABNTEXsubsectionfont\ABNTEXsubsectionfontsize\bfseries\ABNTEXsubsectionupperifneeded}
+  \setsubsubsecheadstyle{\ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize\ABNTEXsubsubsectionupperifneeded}
+  % \setsubsecheadstyle{\ABNTEXsubsectionfont\ABNTEXsubsectionfontsize\bfseries\itshape\ABNTEXsubsectionupperifneeded}
+  % \setsubsubsecheadstyle{\ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize\itshape\ABNTEXsubsubsectionupperifneeded}
   \setsubsubsubsecheadstyle{\ABNTEXsubsubsubsectionfont\ABNTEXsubsubsubsectionfontsize\ABNTEXsubsubsubsectionupperifneeded}
 
   % impressao do numero do capitulo
@@ -104,4 +110,7 @@
 \chapterstyle{icmc}
 
 % Modifica a fonte para Times New Roma
-\usepackage{mathptmx}
+% \usepackage{newtxtext}
+% \usepackage{newtxmath}
+
+
