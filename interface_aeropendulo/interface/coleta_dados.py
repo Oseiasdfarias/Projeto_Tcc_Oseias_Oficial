@@ -102,6 +102,9 @@ class ColetaDados:
         self.listar_dir()
         dt_dados_obtidos = pd.DataFrame(self.salvar_dados.T)
         dt_dados_obtidos.to_csv(self.nome_arquivo)
+        dt_dados_obtidos = None
+        self.disp.flush()
+        self.disp.reset_input_buffer()
 
     def __init_thread(self):
         self.new_thread = Thread(target=self.__coleta_dados)
