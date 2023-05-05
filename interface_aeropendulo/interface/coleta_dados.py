@@ -16,7 +16,10 @@
 import serial
 from time import sleep
 import numpy as np
+import pandas as pd
 from threading import Thread
+import datetime as dt
+import os
 import logging
 
 logger = logging.getLogger(__name__)
@@ -30,9 +33,12 @@ class ColetaDados:
 
     """
     def __init__(self, porta="/dev/ttyUSB0", baud_rate=115200):
+        self.flag_salvar_dados = False
+        os.chdir("interface")
         self.porta = porta
         self.baud_rate = baud_rate
         self.fila = np.array([[], [], [], [], [], []]).astype(object)
+        self.salvar_dados = np.array([[], [], [], [], [], []]).astype(object)
         self.dados_atuais = None
         self.__init_thread()
 
@@ -73,6 +79,29 @@ class ColetaDados:
         self.disp.write(sinal.encode("utf-8"))
         self.disp.flush()
         print(f"Sinal Configurado: {sinal}")
+
+    def listar_dir(self):
+        pastas = os.listdir()
+        diretorio = "dados_de_ensaio"
+        file = False
+        if not (os.getcwd().split("/")[-1] == diretorio):
+            for i in pastas:
+                if (i == diretorio):
+                    file = True
+            if file:
+                os.chdir(diretorio)
+            else:
+                os.mkdir(diretorio)
+                os.chdir(diretorio)
+
+    def salvar_dados_colhidos(self):
+        data = dt.datetime.now()
+        nome1 = f"{data.day}_{data.month}_{data.year}"
+        nome2 = f"_{data.hour}_{data.minute}_{data.second}"
+        self.nome_arquivo = f"arquivo_{nome1 + nome2}.csv"
+        self.listar_dir()
+        dt_dados_obtidos = pd.DataFrame(self.salvar_dados.T)
+        dt_dados_obtidos.to_csv(self.nome_arquivo)
 
     def __init_thread(self):
         self.new_thread = Thread(target=self.__coleta_dados)
@@ -123,6 +152,9 @@ class ColetaDados:
                                               dados_float, axis=1)
                     else:
                         self.fila = np.delete(self.fila, np.s_[:1], 1)
+                    if self.flag_salvar_dados:
+                        self.salvar_dados = np.append(self.salvar_dados,
+                                                      dados_float, axis=1)
                     self.dados_atuais = dados_float
                     # print(self.dados_atuais)
                     sleep(0.02)

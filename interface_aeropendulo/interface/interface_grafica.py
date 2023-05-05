@@ -120,6 +120,19 @@ class InterfaceAeropendulo:
         else:
             self.switch_quad.select(1)
 
+    def switch_event_sdados(self):
+        if self.executar:
+            self.switch_salve.deselect(0)
+            return
+
+        if self.switch_var_sdados.get() == "on":
+            self.coleta_dados.flag_salvar_dados = True
+        else:
+            self.coleta_dados.flag_salvar_dados = False
+            self.coleta_dados.salvar_dados_colhidos()
+            self.salvar_dados = np.array([[], [], [],
+                                          [], [], []]).astype(object)
+
     def get_data_emtry_ampl1(self):
         data = self.emtry_ampl1.get()
         if not self.executar and data.isnumeric():
@@ -202,17 +215,17 @@ class InterfaceAeropendulo:
                                    command=self.run_graph)
         button_run.grid(row=2, column=0, padx=10, pady=4, sticky="w")
 
-        self.switch_var_salve = ctk.StringVar(value="off")
+        self.switch_var_sdados = ctk.StringVar(value="off")
         self.switch_salve = ctk.CTkSwitch(master=self.frame_menu,
                                           text="Salvar Dados",
                                           width=40,
                                           switch_height=25,
                                           switch_width=40,
                                           progress_color=("#2CC985", "orange"),
-                                          command=self.switch_event_deg,
+                                          command=self.switch_event_sdados,
                                           font=ctk.CTkFont(size=15,
                                                            weight="normal"),
-                                          variable=self.switch_var_salve,
+                                          variable=self.switch_var_sdados,
                                           onvalue="on", offvalue="off")
 
         self.switch_salve.grid(row=3, column=0, padx=10, pady=4, sticky="w")
