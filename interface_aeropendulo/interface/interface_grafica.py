@@ -15,6 +15,8 @@
 
 import numpy as np
 from matplotlib.animation import FuncAnimation
+from threading import Thread
+from time import sleep
 # import os
 # from PIL import Image
 
@@ -87,6 +89,8 @@ class InterfaceAeropendulo:
                                          init_func=self.init,
                                          cache_frame_data=False,
                                          interval=20, blit=True)
+                sleep(2)
+                self.__init_thread_att_label()
                 self.executar = False
 
     def switch_event_deg(self):
@@ -416,7 +420,6 @@ class InterfaceAeropendulo:
                                                          weight="normal"),
                                         variable=self.switch_var_deg,
                                         onvalue="on", offvalue="off")
-
         self.switch_deg.grid(row=4, column=0, padx=5, pady=4, sticky="w")
 
         self.switch_var_quad = ctk.StringVar(value="off")
@@ -431,7 +434,6 @@ class InterfaceAeropendulo:
                                                           weight="normal"),
                                          variable=self.switch_var_quad,
                                          onvalue="on", offvalue="off")
-
         self.switch_quad.grid(row=5, column=0, padx=5, pady=4, sticky="w")
 
         self.switch_var_seno = ctk.StringVar(value="off")
@@ -449,4 +451,23 @@ class InterfaceAeropendulo:
         self.switch_seno.grid(row=6, column=0, padx=5, pady=4, sticky="w")
 
         self.lista_usb = ListaPortasUsb(self.usb_menu, self.set_usb_port)
-        self.root.mainloop()
+        self.root.mainloop()  # Loop infinito da interface
+
+    def atualiza_labels(self):
+        self.lista_label = [self.label_referencia1, self.label_angulo1,
+                            self.label_controle1, self.label_erro1]
+        while True:
+            self.label_referencia1.configure(
+                text=f"{self.coleta_dados.dados_atuais[0][0]:.1f}°")
+            self.label_angulo1.configure(
+                text=f"{self.coleta_dados.dados_atuais[1][0]:.1f}º")
+            self.label_controle1.configure(
+                text=f"{self.coleta_dados.dados_atuais[2][0]:.1f}V")
+            self.label_erro1.configure(
+                text=f"{self.coleta_dados.dados_atuais[3][0]:.1f}°")
+            sleep(0.04)
+
+    def __init_thread_att_label(self):
+        self.thread_att_labels = Thread(target=self.atualiza_labels)
+        self.thread_att_labels.daemon = True
+        self.thread_att_labels.start()

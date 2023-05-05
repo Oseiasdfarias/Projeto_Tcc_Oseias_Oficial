@@ -33,6 +33,7 @@ class ColetaDados:
         self.porta = porta
         self.baud_rate = baud_rate
         self.fila = np.array([[], [], [], [], [], []]).astype(object)
+        self.dados_atuais = None
         self.__init_thread()
 
     def get_dados(self):
@@ -122,6 +123,8 @@ class ColetaDados:
                                               dados_float, axis=1)
                     else:
                         self.fila = np.delete(self.fila, np.s_[:1], 1)
+                    self.dados_atuais = dados_float
+                    # print(self.dados_atuais)
                     sleep(0.02)
                 except Exception as erro1:
                     print(f"Erro: {erro1}")
