@@ -48,7 +48,7 @@ void ler_dados_serial();
 
 void setup() {
   Serial.begin(115200);
-  Serial.setTimeout(5);
+  Serial.setTimeout(2);
 
   while (!Serial)
     delay(10);
@@ -70,10 +70,12 @@ void setup() {
 void loop() {
 
   enviar_dados_serial();
-  delay(10);
+  delay(20);
 
-  ler_dados_serial();
-  delay(10);
+  if (Serial.available() > 0){
+    ler_dados_serial();
+  }
+  //delay(10);
 }
 
 void enviar_dados_serial(){

@@ -50,7 +50,7 @@ class ColetaDados:
         data = f"{int(data)}"
         print(f"Ampl.: {data}")
         self.disp.reset_input_buffer()
-        for i in range(100):
+        for _ in range(10):
             self.disp.write(data.encode("utf-8"))
             sleep(0.01)
             self.disp.flush()
@@ -60,7 +60,7 @@ class ColetaDados:
         data = f"{int(data)}"
         print(f"Freq.: {data}")
         self.disp.reset_input_buffer()
-        for i in range(100):
+        for _ in range(10):
             self.disp.write(data.encode("utf-8"))
             sleep(0.01)
             self.disp.flush()
@@ -70,12 +70,13 @@ class ColetaDados:
         data = f"{int(data)}"
         print(f"Offset: {data}")
         self.disp.reset_input_buffer()
-        for i in range(100):
+        for _ in range(100):
             self.disp.write(data.encode("utf-8"))
             sleep(0.01)
-        self.disp.flush()
+            self.disp.flush()
 
     def set_sinal(self, sinal):
+        self.disp.reset_input_buffer()
         self.disp.write(sinal.encode("utf-8"))
         self.disp.flush()
         print(f"Sinal Configurado: {sinal}")
@@ -118,7 +119,7 @@ class ColetaDados:
                                       self.baud_rate,
                                       timeout=0.005)
             print(f"\nReconectando!!! >> ID: {self.porta}")
-            if self.disp.isOpen():
+            if self.disp.is_open:
                 self.disp.reset_input_buffer()
                 self.disp.flush()
                 print(f"Reconectado!!! >> ID: {self.porta}\n")
@@ -131,18 +132,20 @@ class ColetaDados:
         self.disp = serial.Serial(self.porta,
                                   self.baud_rate,
                                   timeout=0.005)
+                                  # write_timeout=0.005)
         con1 = f"\nConectando!!! >> ID: {self.porta}, "
         con2 = f"BaudRate: {self.baud_rate}"
         print(con1 + con2)
-        if self.disp.isOpen():
+        if self.disp.is_open:
             print(f"Conectado com Sucesso!!! >> ID: {self.porta}\n")
         # self.disp.reset_input_buffer()
-
+        print(f"Configurações:\n{self.disp.get_settings()}")
         while True:
             try:
                 # if (self.disp.inWaiting() > 0):
                 dado = self.disp.readline()
-                # self.disp.flush()
+                self.disp.reset_output_buffer()
+                self.disp.flush()
                 dados1 = str(dado.decode('utf-8')).rstrip("\n")
                 dados1 = dados1.split(",")
                 if dados1 == ['']:
@@ -160,7 +163,7 @@ class ColetaDados:
                                                       dados_float, axis=1)
                     self.dados_atuais = dados_float
                     # print(self.dados_atuais)
-                    sleep(0.02)
+                    # sleep(0.02)
                 except Exception as erro1:
                     print(f"Erro: {erro1}")
                     sleep(0.02)
@@ -168,5 +171,5 @@ class ColetaDados:
                 print("erro de leitura")
                 self.reconectar()
 
-            if not self.disp.isOpen():
+            if not self.disp.is_open:
                 self.reconectar()
