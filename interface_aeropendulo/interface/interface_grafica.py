@@ -17,7 +17,7 @@ import numpy as np
 from matplotlib.animation import FuncAnimation
 from threading import Thread
 from time import sleep
-# import os
+import os
 # from PIL import Image
 
 # import tkinter as tk
@@ -48,6 +48,11 @@ class InterfaceAeropendulo:
     def quit(self):
         self.root.quit()
         self.root.destroy()
+        if os.name == "nt":
+            _ = os.system("cls")
+        # for mac and linux(here, os.name is 'posix')
+        else:
+            _ = os.system("clear")
 
     def set_usb_port(self, porta_atual):
         self.usb_port = porta_atual
@@ -465,6 +470,12 @@ class InterfaceAeropendulo:
 
         self.lista_usb = ListaPortasUsb(self.usb_menu, self.set_usb_port)
         self.root.mainloop()  # Loop infinito da interface
+        # for windows
+        if os.name == "nt":
+            _ = os.system("cls")
+        # for mac and linux(here, os.name is 'posix')
+        else:
+            _ = os.system("clear")
 
     def atualiza_labels(self):
         self.lista_label = [self.label_referencia1, self.label_angulo1,
