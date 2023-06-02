@@ -46,38 +46,44 @@ class ColetaDados:
         return self.fila
 
     def set_amplitude(self, amplitude):
-        if (0 <= float(amplitude) <= 30):
-            data = ((float(amplitude)*1000.)/30.) + 1000.
-            data = f"{int(data)}"
-            print(f"Ampl.: {data}")
-            self.disp.reset_input_buffer()
-            for _ in range(10):
-                self.disp.write(data.encode("utf-8"))
-                sleep(0.01)
-                self.disp.flush()
+        data = ((float(amplitude)*1000.)/30.) + 1000.
+        data = f"{int(data)}"
+        print(f"Ampl.: {data}")
+        self.disp.reset_input_buffer()
+        if self.disp.write(data.encode("utf-8")):
+            self.disp.flush()
+            return
+        else:
+            sleep(0.01)
+            self.disp.flush()
+            self.set_amplitude(amplitude)
 
     def set_frequencia(self, frequencia):
-        if (0.0 <= float(frequencia) <= 5.0):
-            print(f"Dado entrada freq: {float(frequencia)}")
-            data = ((float(frequencia)*1000.)/5.) + 2000.
-            data = f"{int(data)}"
-            print(f"Freq.: {data}")
-            self.disp.reset_input_buffer()
-            for _ in range(10):
-                self.disp.write(data.encode("utf-8"))
-                sleep(0.01)
-                self.disp.flush()
+        print(f"Dado entrada freq: {float(frequencia)}")
+        data = ((float(frequencia)*1000.)/5.) + 2000.
+        data = f"{int(data)}"
+        print(f"Freq.: {data}")
+        self.disp.reset_input_buffer()
+        if self.disp.write(data.encode("utf-8")):
+            self.disp.flush()
+            return
+        else:
+            sleep(0.01)
+            self.disp.flush()
+            self.set_frequencia(frequencia)
 
     def set_offset(self, offset):
-        if (0 <= float(offset) <= 120.):
-            data = ((float(offset)*1000.)/120.) + 3000.
-            data = f"{int(data)}"
-            print(f"Offset: {data}")
-            self.disp.reset_input_buffer()
-            for _ in range(10):
-                self.disp.write(data.encode("utf-8"))
-                sleep(0.01)
-                self.disp.flush()
+        data = ((float(offset)*1000.)/120.) + 3000.
+        data = f"{int(data)}"
+        print(f"Offset: {data}")
+        self.disp.reset_input_buffer()
+        if self.disp.write(data.encode("utf-8")):
+            self.disp.flush()
+            return
+        else:
+            sleep(0.01)
+            self.disp.flush()
+            self.set_offset(offset)
 
     def set_sinal(self, sinal):
         self.disp.reset_input_buffer()

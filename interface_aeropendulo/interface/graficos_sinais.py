@@ -15,21 +15,23 @@
 
 import matplotlib
 import matplotlib.pyplot as plt
+import scienceplots  # noqa: F401
 
-matplotlib.style.use("Solarize_Light2")
+plt.style.use('science')
+# matplotlib.style.use("Solarize_Light2")
 matplotlib.use('TkAgg')
 
 
 class GraficosSinais(object):
 
-    def __init__(self):
-
+    def __init__(self, grid=True):
+        self.grid = grid
         self.fig = plt.figure(figsize=(10., 6.45))
         self.config_axes()
 
         # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)
-        self.fig.subplots_adjust(wspace=0.25, hspace=0.44, left=0.09,
-                                 top=0.894, right=0.971, bottom=0.098)
+        self.fig.subplots_adjust(wspace=0.25, hspace=0.3, left=0.08,
+                                 top=0.93, right=0.971, bottom=0.08)
 
     def get_fig_axes_ln(self):
         return self.fig, self.ax, self.ln
@@ -40,8 +42,12 @@ class GraficosSinais(object):
                            color="#3B4252", fontsize=12)
         self.ax1.set_xlabel("Tempo")
         self.ax1.set_ylabel("Amplitude")
-        self.ln1, = self.ax1.plot([], [], ".-", lw=1.2, color="sienna")
-        self.ln_1, = self.ax1.plot([], [], "--", lw=1.2, color="red")
+        self.ln_1, = self.ax1.plot([], [], ".-", lw=1.5,
+                                   label="Ref.", color="red")
+        self.ln1, = self.ax1.plot([], [], ".-", lw=1.5,
+                                  label="Saída", color="sienna")
+        self.ax1.grid(self.grid)
+        plt.legend()
 
         self.ax2 = self.fig.add_subplot(222)
         self.ax2.set_title("Sinal de Erro (Graus)",
@@ -49,6 +55,7 @@ class GraficosSinais(object):
         self.ax2.set_xlabel("Tempo")
         self.ax2.set_ylabel("Amplitude")
         self.ln2, = self.ax2.plot([], [], ".-", lw=1.5, color="green")
+        self.ax2.grid(self.grid)
 
         self.ax3 = self.fig.add_subplot(223)
         self.ax3.set_title("Sinal de Controle (Volts)",
@@ -56,6 +63,7 @@ class GraficosSinais(object):
         self.ax3.set_xlabel("Tempo")
         self.ax3.set_ylabel("Amplitude")
         self.ln3, = self.ax3.plot([], [], ".-", lw=1.5, color="purple")
+        self.ax3.grid(self.grid)
 
         self.ax4 = self.fig.add_subplot(224)
         self.ax4.set_title("Sinal de Controle PWM (Volts RMS)",
@@ -63,6 +71,7 @@ class GraficosSinais(object):
         self.ax4.set_xlabel("Tempo")
         self.ax4.set_ylabel("Amplitude")
         self.ln4, = self.ax4.plot([], [], ".-", lw=1.5, color="orange")
+        self.ax4.grid(self.grid)
 
         # Axis que para plotar os gráficos
         self.ln = [self.ln_1, self.ln1, self.ln2, self.ln3, self.ln4]

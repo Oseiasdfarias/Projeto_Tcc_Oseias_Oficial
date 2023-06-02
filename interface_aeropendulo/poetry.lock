@@ -571,6 +571,21 @@ files = [
 ]
 
 [[package]]
+name = "scienceplots"
+version = "2.1.0"
+description = "Format Matplotlib for scientific plotting"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "SciencePlots-2.1.0-py3-none-any.whl", hash = "sha256:8c09b4cd407ecdb4c959e8891ffa8f90845d9ec597a558892ed137d5ae3df3b9"},
+    {file = "SciencePlots-2.1.0.tar.gz", hash = "sha256:66fcc689d2b5cafbada7372ff9d0a53fbc10f857b3cbda0ab432c7d78acd768b"},
+]
+
+[package.dependencies]
+matplotlib = "*"
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -613,4 +628,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "97e9a06d09e5353f44c2f4c0f92d2652d34324661cf13d0de1c3d23cc69d96f2"
+content-hash = "8bdd79d1964057435e380af4ec838dcad96a964b8bc58396ba1cdd41495c8582"

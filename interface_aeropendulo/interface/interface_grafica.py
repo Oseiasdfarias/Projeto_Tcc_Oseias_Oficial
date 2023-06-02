@@ -64,22 +64,22 @@ class InterfaceAeropendulo:
     def init(self):
         for i in range(4):
             if i < 1:
-                self.ax[i].set_xlim(0, 50)
+                self.ax[i].set_xlim(0, 50*0.02)
                 self.ax[i].set_ylim(-5, 180)
             if i >= 1:
                 if i == 2:
-                    self.ax[i].set_xlim(0, 50)
+                    self.ax[i].set_xlim(0, 50*0.02)
                     self.ax[i].set_ylim(-0.5, 4)
                 else:
-                    self.ax[i].set_xlim(0, 50)
+                    self.ax[i].set_xlim(0, 50*0.02)
                     self.ax[i].set_ylim(-15, 15)
-            self.ax[i].axhline(0, color="black", lw=1.2)
-            self.ax[i].axvline(0.5, color="black", lw=1.2)
+            self.ax[i].axhline(0.0, color="black", lw=1.2)
+            self.ax[i].axvline(0.01, color="black", lw=1.2)
         return self.ln
 
     def update(self, frame):
         dados = self.coleta_dados.get_dados()
-        t = np.arange(0, len(dados[0]))
+        t = np.arange(0, 0.02*len(dados[0]), 0.02)
         for i, ax in enumerate(self.ln):
             ax.set_xdata(t)
             ax.set_ydata(dados[i])
@@ -95,7 +95,7 @@ class InterfaceAeropendulo:
                                          cache_frame_data=False,
                                          interval=20, blit=True)
                 sleep(2)
-                self.__init_thread_att_label()
+                # self.__init_thread_att_label()
                 self.executar = False
 
     def switch_event_deg(self):
@@ -142,7 +142,10 @@ class InterfaceAeropendulo:
         data = self.emtry_ampl1.get()
         isnum = data.replace('.', '', 1).isdigit()
         if not self.executar and isnum:
-            self.coleta_dados.set_amplitude(data)
+            if (0 <= float(data) <= 30):
+                self.ampl_label1.configure(
+                    text=f"{data}°")
+                self.coleta_dados.set_amplitude(data)
         self.emtry_ampl1.delete(0, len(data))
 
     def get_data_emtry_freq1(self):
@@ -150,14 +153,20 @@ class InterfaceAeropendulo:
         print(f"Dado entrada freq 1: {data.isdigit()}")
         isnum = data.replace('.', '', 1).isdigit()
         if not self.executar and isnum:
-            self.coleta_dados.set_frequencia(data)
+            if (0.0 <= float(data) <= 5.0):
+                self.freq_label1.configure(
+                    text=f"{data} rad/s")
+                self.coleta_dados.set_frequencia(data)
         self.emtry_freq1.delete(0, len(data))
 
     def get_data_emtry_offset1(self):
         data = self.emtry_offset1.get()
         isnum = data.replace('.', '', 1).isdigit()
         if not self.executar and isnum:
-            self.coleta_dados.set_offset(data)
+            if (0 <= float(data) <= 120.):
+                self.offset_label1.configure(
+                    text=f"{data}°")
+                self.coleta_dados.set_offset(data)
         self.emtry_offset1.delete(0, len(data))
 
     def start_gui(self):
@@ -284,9 +293,9 @@ class InterfaceAeropendulo:
                              weight="bold"))
         self.label_sinais.grid(row=0, column=0, padx=5, pady=3, sticky="s")
 
-        self.label_referencia = ctk.CTkLabel(
+        self.ampl_label = ctk.CTkLabel(
             master=self.frame_dados,
-            text="Referências: ",
+            text="Amplitude: ",
             text_color=("white", "white"),
             fg_color=("purple", "red"),
             width=140,
@@ -294,20 +303,20 @@ class InterfaceAeropendulo:
             corner_radius=5,
             font=ctk.CTkFont(size=15,
                              weight="normal"))
-        self.label_referencia.grid(row=1, column=0, padx=0, pady=4)
+        self.ampl_label.grid(row=1, column=0, padx=0, pady=4)
 
-        self.label_referencia1 = ctk.CTkLabel(
+        self.ampl_label1 = ctk.CTkLabel(
             master=self.frame_dados,
             text="20°",
             width=50,
             height=25,
             font=ctk.CTkFont(size=17,
                              weight="bold"))
-        self.label_referencia1.grid(row=1, column=1, padx=0, pady=0)
+        self.ampl_label1.grid(row=1, column=1, padx=0, pady=0)
 
-        self.label_angulo = ctk.CTkLabel(
+        self.freq_label = ctk.CTkLabel(
             master=self.frame_dados,
-            text="Ângulo: ",
+            text="Frequência: ",
             text_color=("white", "white"),
             fg_color=("purple", "red"),
             width=140,
@@ -315,20 +324,20 @@ class InterfaceAeropendulo:
             corner_radius=5,
             font=ctk.CTkFont(size=15,
                              weight="normal"))
-        self.label_angulo.grid(row=2, column=0, padx=0, pady=4)
+        self.freq_label.grid(row=2, column=0, padx=0, pady=4)
 
-        self.label_angulo1 = ctk.CTkLabel(
+        self.freq_label1 = ctk.CTkLabel(
             master=self.frame_dados,
-            text="23°",
+            text="1 rad/s",
             width=50,
             height=25,
             font=ctk.CTkFont(size=17,
                              weight="bold"))
-        self.label_angulo1.grid(row=2, column=1, padx=0, pady=0)
+        self.freq_label1.grid(row=2, column=1, padx=0, pady=0)
 
-        self.label_controle = ctk.CTkLabel(
+        self.offset_label = ctk.CTkLabel(
             master=self.frame_dados,
-            text="Sinal Controle: ",
+            text="Offset: ",
             text_color=("white", "white"),
             fg_color=("purple", "red"),
             width=140,
@@ -336,16 +345,16 @@ class InterfaceAeropendulo:
             corner_radius=5,
             font=ctk.CTkFont(size=15,
                              weight="normal"))
-        self.label_controle.grid(row=3, column=0, padx=0, pady=4)
+        self.offset_label.grid(row=3, column=0, padx=0, pady=4)
 
-        self.label_controle1 = ctk.CTkLabel(
+        self.offset_label1 = ctk.CTkLabel(
             master=self.frame_dados,
             text="23V",
             width=50,
             height=25,
             font=ctk.CTkFont(size=17,
                              weight="bold"))
-        self.label_controle1.grid(row=3, column=1, padx=0, pady=0)
+        self.offset_label1.grid(row=3, column=1, padx=0, pady=0)
 
         self.label_erro = ctk.CTkLabel(
             master=self.frame_dados,
@@ -482,14 +491,14 @@ class InterfaceAeropendulo:
             _ = os.system("clear")
 
     def atualiza_labels(self):
-        self.lista_label = [self.label_referencia1, self.label_angulo1,
-                            self.label_controle1, self.label_erro1]
+        self.lista_label = [self.ampl_label1, self.freq_label1,
+                            self.offset_label1, self.label_erro1]
         while True:
-            self.label_referencia1.configure(
+            self.ampl_label1.configure(
                 text=f"{self.coleta_dados.dados_atuais[0][0]:.1f}°")
-            self.label_angulo1.configure(
+            self.freq_label1.configure(
                 text=f"{self.coleta_dados.dados_atuais[1][0]:.1f}º")
-            self.label_controle1.configure(
+            self.offset_label1.configure(
                 text=f"{self.coleta_dados.dados_atuais[2][0]:.1f}V")
             self.label_erro1.configure(
                 text=f"{self.coleta_dados.dados_atuais[3][0]:.1f}°")
