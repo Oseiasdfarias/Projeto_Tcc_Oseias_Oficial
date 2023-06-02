@@ -57,7 +57,8 @@ class ColetaDados:
                 self.disp.flush()
 
     def set_frequencia(self, frequencia):
-        if (0 <= float(frequencia) <= 5):
+        if (0.0 <= float(frequencia) <= 5.0):
+            print(f"Dado entrada freq: {float(frequencia)}")
             data = ((float(frequencia)*1000.)/5.) + 2000.
             data = f"{int(data)}"
             print(f"Freq.: {data}")

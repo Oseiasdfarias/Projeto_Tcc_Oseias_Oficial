@@ -140,19 +140,23 @@ class InterfaceAeropendulo:
 
     def get_data_emtry_ampl1(self):
         data = self.emtry_ampl1.get()
-        if not self.executar and data.isnumeric():
+        isnum = data.replace('.', '', 1).isdigit()
+        if not self.executar and isnum:
             self.coleta_dados.set_amplitude(data)
         self.emtry_ampl1.delete(0, len(data))
 
     def get_data_emtry_freq1(self):
         data = self.emtry_freq1.get()
-        if not self.executar and data.isnumeric():
+        print(f"Dado entrada freq 1: {data.isdigit()}")
+        isnum = data.replace('.', '', 1).isdigit()
+        if not self.executar and isnum:
             self.coleta_dados.set_frequencia(data)
         self.emtry_freq1.delete(0, len(data))
 
     def get_data_emtry_offset1(self):
         data = self.emtry_offset1.get()
-        if not self.executar and data.isnumeric():
+        isnum = data.replace('.', '', 1).isdigit()
+        if not self.executar and isnum:
             self.coleta_dados.set_offset(data)
         self.emtry_offset1.delete(0, len(data))
 
