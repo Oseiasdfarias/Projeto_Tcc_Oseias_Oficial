@@ -13,6 +13,7 @@
 
 #include "Arduino.h"
 #include "ler_escrever_serial.h"
+#include "referencia.h"
 
 const int pinAD_POT = 2;            // Valor do potenciômetro.
 
@@ -26,7 +27,7 @@ const int freq_pwm = 500;           // Frequência do sinal PWM.
 const int canal_pwm = 0;            // Canal para o sinal PWM (0-15).
 const int resolucao = 8;            // Resolução do sinal PWM.
 int ciclo_trabalho = 140;           // Ciclo de trabalho.
-float ref1 = 90.0;                  // Setpoint.
+float ref_controle = 0.0;                  // Setpoint.
 float erro = 7.0;                   // Erro do sistema.
 
 float theta = 0.0;                  // Ângulo theta.
@@ -34,9 +35,12 @@ float theta = 0.0;                  // Ângulo theta.
 int valorAD_CONTROL = 0;
 
 /* Parâmetros do sinal de referência */
-float ampl = 0.4;
-float freq_ref;
-float offset;
+float ampl = 20.0;
+float freq_ref = 1.0;
+float offset = 60.0;
+
+float t = 0;
+float Ts = 0.02;  // 20ms
 
 
 void setup() {
@@ -61,10 +65,12 @@ void setup() {
 }
 
 void loop() {
+  ref_controle = referencia_seno(freq_ref, ampl, offset, t);
   enviar_dados_serial(canal_pwm, pinAD_POT, &ciclo_trabalho,
-                      &ref1, &theta, &erro, &freq_ref, &ampl);
-  delay(20);
+                      &ref_controle, &theta, &erro, &freq_ref, &ampl);
+  delay(1000*Ts);
   if (Serial.available() > 0){
-    ler_dados_serial(&erro, &freq_ref, &offset);
+    ler_dados_serial(&ampl, &freq_ref, &offset);
   }
+  t += Ts;
 }

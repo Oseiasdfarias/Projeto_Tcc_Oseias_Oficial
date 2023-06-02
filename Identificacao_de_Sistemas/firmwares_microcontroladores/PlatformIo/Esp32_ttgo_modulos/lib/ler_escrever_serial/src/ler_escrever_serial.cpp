@@ -48,18 +48,18 @@ void enviar_dados_serial(int canal_pwm, int pinAD_POT, int *ciclo_trabalho, floa
     Serial.println(*ampl, 3);
 }
 
-void ler_dados_serial(float *erro, float *freq_ref, float *offset){
+void ler_dados_serial(float *ampl, float *freq_ref, float *offset){
     /* Leitura dos dados da porta serial. */
     float rlen = Serial.parseFloat();
     
     /* Dados do Amplitude. */
     if (1000.0 < rlen && rlen < 2001.0){
-        *erro = (((rlen * 15.0) / 1000.0) - 15.0);
+        *ampl = (((rlen * 30.0) / 1000.0) - 30.0);
         /* Dados do Frequência. */
     } else if (2001.0 < rlen && rlen < 3001.0){
-        *freq_ref = (((rlen * 15.0) / 1000.0) - 30.0);
+        *freq_ref = (((rlen * 5.0) / 1000.0) - 10.0);
         /* Dados do offset. */
     } else if (3001.0 < rlen && rlen < 4001.0){
-        *offset = (((rlen * 15.0) / 1000.0) - 45.0);
+        *offset = (((rlen * 120.0) / 1000.0) - 360.0);
     }
 }

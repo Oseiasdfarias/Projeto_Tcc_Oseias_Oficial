@@ -15,6 +15,6 @@
 #ifndef REFERENCIA_H_INCLUDED
 #define REFERENCIA_H_INCLUDED
 
-
+float referencia_seno(float freq, float ampl, float offset, float t);
 
 #endif // REFERENCIA_H_INCLUDED

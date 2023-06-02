@@ -46,34 +46,37 @@ class ColetaDados:
         return self.fila
 
     def set_amplitude(self, amplitude):
-        data = ((float(amplitude)*1000.)/15.) + 1000.
-        data = f"{int(data)}"
-        print(f"Ampl.: {data}")
-        self.disp.reset_input_buffer()
-        for _ in range(10):
-            self.disp.write(data.encode("utf-8"))
-            sleep(0.01)
-            self.disp.flush()
+        if (0 <= float(amplitude) <= 30):
+            data = ((float(amplitude)*1000.)/30.) + 1000.
+            data = f"{int(data)}"
+            print(f"Ampl.: {data}")
+            self.disp.reset_input_buffer()
+            for _ in range(10):
+                self.disp.write(data.encode("utf-8"))
+                sleep(0.01)
+                self.disp.flush()
 
     def set_frequencia(self, frequencia):
-        data = ((float(frequencia)*1000.)/15.) + 2000.
-        data = f"{int(data)}"
-        print(f"Freq.: {data}")
-        self.disp.reset_input_buffer()
-        for _ in range(10):
-            self.disp.write(data.encode("utf-8"))
-            sleep(0.01)
-            self.disp.flush()
+        if (0 <= float(frequencia) <= 5):
+            data = ((float(frequencia)*1000.)/5.) + 2000.
+            data = f"{int(data)}"
+            print(f"Freq.: {data}")
+            self.disp.reset_input_buffer()
+            for _ in range(10):
+                self.disp.write(data.encode("utf-8"))
+                sleep(0.01)
+                self.disp.flush()
 
     def set_offset(self, offset):
-        data = ((float(offset)*1000.)/15.) + 3000.
-        data = f"{int(data)}"
-        print(f"Offset: {data}")
-        self.disp.reset_input_buffer()
-        for _ in range(100):
-            self.disp.write(data.encode("utf-8"))
-            sleep(0.01)
-            self.disp.flush()
+        if (0 <= float(offset) <= 120.):
+            data = ((float(offset)*1000.)/120.) + 3000.
+            data = f"{int(data)}"
+            print(f"Offset: {data}")
+            self.disp.reset_input_buffer()
+            for _ in range(10):
+                self.disp.write(data.encode("utf-8"))
+                sleep(0.01)
+                self.disp.flush()
 
     def set_sinal(self, sinal):
         self.disp.reset_input_buffer()
@@ -132,7 +135,6 @@ class ColetaDados:
         self.disp = serial.Serial(self.porta,
                                   self.baud_rate,
                                   timeout=0.005)
-                                  # write_timeout=0.005)
         con1 = f"\nConectando!!! >> ID: {self.porta}, "
         con2 = f"BaudRate: {self.baud_rate}"
         print(con1 + con2)
@@ -142,7 +144,6 @@ class ColetaDados:
         print(f"Configurações:\n{self.disp.get_settings()}")
         while True:
             try:
-                # if (self.disp.inWaiting() > 0):
                 dado = self.disp.readline()
                 self.disp.reset_output_buffer()
                 self.disp.flush()
@@ -150,7 +151,6 @@ class ColetaDados:
                 dados1 = dados1.split(",")
                 if dados1 == ['']:
                     continue
-
                 try:
                     dados_float = np.array([dados1], dtype="float64").T
                     if len(self.fila[0]) <= 50:
@@ -162,8 +162,6 @@ class ColetaDados:
                         self.salvar_dados = np.append(self.salvar_dados,
                                                       dados_float, axis=1)
                     self.dados_atuais = dados_float
-                    # print(self.dados_atuais)
-                    # sleep(0.02)
                 except Exception as erro1:
                     print(f"Erro: {erro1}")
                     sleep(0.02)
