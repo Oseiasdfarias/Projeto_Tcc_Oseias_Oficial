@@ -26,7 +26,7 @@ class GraficosSinais(object):
 
     def __init__(self, grid=True):
         self.grid = grid
-        self.fig = plt.figure(figsize=(10., 6.45))
+        self.fig = plt.figure(figsize=(9.85, 6.45))
         self.config_axes()
 
         # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)

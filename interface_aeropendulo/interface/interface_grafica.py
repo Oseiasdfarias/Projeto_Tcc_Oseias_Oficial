@@ -214,7 +214,7 @@ class InterfaceAeropendulo:
                 size=20, weight="bold")).grid(column=1, row=0)
 
         # ++++++++++++++++++++++ Widgets Frame de Menu ++++++++++++++++++++++
-        _ = ctk.CTkLabel(master=self.frame_menu, text=" ", width=208)
+        _ = ctk.CTkLabel(master=self.frame_menu, text=" ", width=230)
         _.grid(row=7, column=0, padx=0, pady=0)
         self.label_nemu = ctk.CTkLabel(master=self.frame_menu, text="Menu",
                                        # image=self.logo_image,
@@ -307,8 +307,8 @@ class InterfaceAeropendulo:
 
         self.ampl_label1 = ctk.CTkLabel(
             master=self.frame_dados,
-            text="20°",
-            width=50,
+            text="15°",
+            width=70,
             height=25,
             font=ctk.CTkFont(size=17,
                              weight="bold"))
@@ -329,7 +329,7 @@ class InterfaceAeropendulo:
         self.freq_label1 = ctk.CTkLabel(
             master=self.frame_dados,
             text="1 rad/s",
-            width=50,
+            width=60,
             height=25,
             font=ctk.CTkFont(size=17,
                              weight="bold"))
@@ -349,8 +349,8 @@ class InterfaceAeropendulo:
 
         self.offset_label1 = ctk.CTkLabel(
             master=self.frame_dados,
-            text="23V",
-            width=50,
+            text="40°",
+            width=60,
             height=25,
             font=ctk.CTkFont(size=17,
                              weight="bold"))
@@ -396,10 +396,10 @@ class InterfaceAeropendulo:
         self.btn_ampl.grid(row=1, column=0, padx=5, pady=4, sticky="w")
 
         self.emtry_ampl1 = ctk.CTkEntry(master=self.frame_controle,
-                                        width=65,
+                                        width=85,
                                         font=ctk.CTkFont(size=17,
                                                          weight="bold"),
-                                        placeholder_text="[0 à 5]")
+                                        placeholder_text="[0 à 30]")
         self.emtry_ampl1.grid(row=1, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
@@ -414,7 +414,7 @@ class InterfaceAeropendulo:
         self.btn_freq.grid(row=2, column=0, padx=5, pady=4, sticky="w")
 
         self.emtry_freq1 = ctk.CTkEntry(master=self.frame_controle,
-                                        width=65,
+                                        width=85,
                                         font=ctk.CTkFont(size=17,
                                                          weight="bold"),
                                         placeholder_text="[0 à 5]")
@@ -432,10 +432,10 @@ class InterfaceAeropendulo:
         self.btn_offset.grid(row=3, column=0, padx=5, pady=4, sticky="w")
 
         self.emtry_offset1 = ctk.CTkEntry(master=self.frame_controle,
-                                          width=65,
+                                          width=85,
                                           font=ctk.CTkFont(size=17,
                                                            weight="bold"),
-                                          placeholder_text="[0 à 5]")
+                                          placeholder_text="[0 à 120]")
         self.emtry_offset1.grid(row=3, column=1,
                                 padx=(0, 5), pady=4, sticky="s")
 
