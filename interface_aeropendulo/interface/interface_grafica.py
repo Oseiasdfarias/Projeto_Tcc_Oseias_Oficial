@@ -30,12 +30,16 @@ from interface.lista_portas_usb import ListaPortasUsb
 
 
 class InterfaceAeropendulo:
-    def __init__(self, tela_fixa=False):
+    def __init__(self, baud_rate: int = 115200, amostras: float = 50.0,
+                 Ts: float = 0.02, tela_fixa: bool = False):
         self.tela_fixa = tela_fixa
 
         # Objeto para coletar dados do sensor
         self.usb_port = None
-        self.baud_rate = 115200
+        self.baud_rate = baud_rate
+
+        self.amostras = amostras
+        self.Ts = Ts
 
         # Graficos
         self.executar = True
@@ -64,14 +68,14 @@ class InterfaceAeropendulo:
     def init(self):
         for i in range(4):
             if i < 1:
-                self.ax[i].set_xlim(0, 50*0.02)
+                self.ax[i].set_xlim(0, self.amostras*self.Ts)
                 self.ax[i].set_ylim(-5, 180)
             if i >= 1:
                 if i == 2:
-                    self.ax[i].set_xlim(0, 50*0.02)
+                    self.ax[i].set_xlim(0, self.amostras*self.Ts)
                     self.ax[i].set_ylim(-0.5, 4)
                 else:
-                    self.ax[i].set_xlim(0, 50*0.02)
+                    self.ax[i].set_xlim(0, self.amostras*self.Ts)
                     self.ax[i].set_ylim(-15, 15)
             self.ax[i].axhline(0.0, color="black", lw=1.2)
             self.ax[i].axvline(0.01, color="black", lw=1.2)
@@ -88,8 +92,9 @@ class InterfaceAeropendulo:
     def run_graph(self):
         if self.executar:
             if self.usb_port:
-                self.coleta_dados = ColetaDados(porta=self.usb_port,
-                                                baud_rate=self.baud_rate)
+                self.coleta_dados = ColetaDados(
+                    self.amostras, porta=self.usb_port,
+                    baud_rate=self.baud_rate)
                 self.ani = FuncAnimation(self.fig, self.update,
                                          init_func=self.init,
                                          cache_frame_data=False,

@@ -26,6 +26,7 @@ class GraficosSinais(object):
 
     def __init__(self, grid=True):
         self.grid = grid
+        self.markersize = 2.5
         self.fig = plt.figure(figsize=(9.85, 6.45))
         self.config_axes()
 
@@ -42,9 +43,11 @@ class GraficosSinais(object):
                            color="#3B4252", fontsize=12)
         self.ax1.set_xlabel("Tempo")
         self.ax1.set_ylabel("Amplitude")
-        self.ln_1, = self.ax1.plot([], [], ".-", lw=1.5,
-                                   label="Ref.", color="red")
-        self.ln1, = self.ax1.plot([], [], ".-", lw=1.5,
+        self.ln_1, = self.ax1.plot([], [], marker=".",
+                                   markersize=self.markersize,
+                                   lw=1.2, label="Ref.", color="red")
+        self.ln1, = self.ax1.plot([], [], lw=1.2, marker=".",
+                                  markersize=self.markersize,
                                   label="Saída", color="sienna")
         self.ax1.grid(self.grid)
         plt.legend()
@@ -54,7 +57,8 @@ class GraficosSinais(object):
                            color="#3B4252", fontsize=12)
         self.ax2.set_xlabel("Tempo")
         self.ax2.set_ylabel("Amplitude")
-        self.ln2, = self.ax2.plot([], [], ".-", lw=1.5, color="green")
+        self.ln2, = self.ax2.plot([], [], lw=1.2, marker=".",
+                                  markersize=self.markersize, color="green")
         self.ax2.grid(self.grid)
 
         self.ax3 = self.fig.add_subplot(223)
@@ -62,7 +66,8 @@ class GraficosSinais(object):
                            color="#3B4252", fontsize=12)
         self.ax3.set_xlabel("Tempo")
         self.ax3.set_ylabel("Amplitude")
-        self.ln3, = self.ax3.plot([], [], ".-", lw=1.5, color="purple")
+        self.ln3, = self.ax3.plot([], [], lw=1.2, marker=".",
+                                  markersize=self.markersize, color="purple")
         self.ax3.grid(self.grid)
 
         self.ax4 = self.fig.add_subplot(224)
@@ -70,7 +75,9 @@ class GraficosSinais(object):
                            color="#3B4252", fontsize=12)
         self.ax4.set_xlabel("Tempo")
         self.ax4.set_ylabel("Amplitude")
-        self.ln4, = self.ax4.plot([], [], ".-", lw=1.5, color="orange")
+        self.ln4, = self.ax4.plot([], [], marker=".",
+                                  markersize=self.markersize,
+                                  lw=1.2, color="orange")
         self.ax4.grid(self.grid)
 
         # Axis que para plotar os gráficos

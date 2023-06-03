@@ -17,7 +17,8 @@ from interface import InterfaceAeropendulo
 
 
 def runinterface():
-    InterfaceAeropendulo(tela_fixa=True)
+    InterfaceAeropendulo(baud_rate=115200,
+                         amostras=100.0, tela_fixa=True)
 
 
 if __name__ == "__main__":

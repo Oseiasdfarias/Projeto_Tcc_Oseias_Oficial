@@ -32,7 +32,8 @@ class ColetaDados:
     param: baud_rate=115200
 
     """
-    def __init__(self, porta="/dev/ttyUSB0", baud_rate=115200):
+    def __init__(self, amostras, porta="/dev/ttyUSB0", baud_rate=115200):
+        self.amostras = amostras
         self.flag_salvar_dados = False
         os.chdir("interface")
         self.porta = porta
@@ -147,7 +148,6 @@ class ColetaDados:
         print(con1 + con2)
         if self.disp.is_open:
             print(f"Conectado com Sucesso!!! >> ID: {self.porta}\n")
-        # self.disp.reset_input_buffer()
         print(f"Configurações:\n{self.disp.get_settings()}")
         while True:
             try:
@@ -160,7 +160,7 @@ class ColetaDados:
                     continue
                 try:
                     dados_float = np.array([dados1], dtype="float64").T
-                    if len(self.fila[0]) <= 50:
+                    if len(self.fila[0]) <= self.amostras:
                         self.fila = np.append(self.fila,
                                               dados_float, axis=1)
                     else:
