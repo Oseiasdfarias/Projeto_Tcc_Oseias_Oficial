@@ -26,7 +26,6 @@ float referencia_seno(float freq, float ampl, float offset, float t)
     return sinal;
 }
 
-
 /* Gráfico de uma Onda Quadrada */
 float referencia_onda_quadrada(float freq, float ampl,
                                float offset, float Ts)
@@ -43,7 +42,6 @@ float referencia_onda_quadrada(float freq, float ampl,
         TEMP += Ts;
         return sinal;
     }
-
 
 /* Gráfico de uma Onda Dente de Serra */
 float referencia_onda_dente_serra(float freq, float ampl,
