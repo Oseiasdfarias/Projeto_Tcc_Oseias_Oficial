@@ -14,9 +14,10 @@
 #include "Arduino.h"
 #include "ler_escrever_serial.h"
 #include "referencia.h"
+#include "controlador_pid.h"
 
 const int pinAD_POT = 2; // Valor do potenciômetro.
-int valorAD_POT = 0;      // Valor de tensão (potenciômetro) lido pela conversor ADC.
+int valorAD_POT = 0;     // Valor de tensão (potenciômetro) lido pela conversor ADC.
 
 // Define a direção de rotação do motor.
 const int pinSentido1 = 32;
@@ -29,18 +30,21 @@ const int canal_pwm = 0;  // Canal para o sinal PWM (0-15).
 const int resolucao = 8;  // Resolução do sinal PWM.
 int ciclo_trabalho = 0.0; // Ciclo de trabalho.
 
-float sinal_ref = 0.0;    // Setpoint.
-float erro = 0.0;         // Sinal de Erro do sistema em Malha Fechada.
-float theta_saida = 0.0;  // Ângulo theta.
+float sinal_ref = 0.0;   // Setpoint.
+float erro = 0.0;        // Sinal de Erro do sistema em Malha Fechada.
+float theta_saida = 0.0; // Ângulo theta.
 /* Variável para salvar o sinal de controle, obtido pelo conversor AD. */
 float sinal_controle = 0.0;
-float Kp = 0.2;           // Ganho do controlador Proporcional.
+float Kp = 0.2; // Ganho do controlador Proporcional.
 
 /* Parâmetros do sinal de referência */
 float ampl = 0.0, freq_ref = 0.5, offset = 30.0;
 
 /* Tempo de amostragem e Período.  */
 float t = 0, Ts = 0.02; // ms
+
+// Iniciando uma instáncia do controlador PID.
+PID mypid(0.02, 0.025, 0.4);
 
 void setup()
 {
@@ -79,22 +83,15 @@ void loop()
   // Sinal de erro calculado, caso seja menor que zero, desliga o Motor.
   erro = sinal_ref - theta_saida;
 
-  if (erro < 0)
-  {
-    digitalWrite(pinSentido1, LOW);
-    digitalWrite(pinSentido2, LOW);
-  }
-  else
-  {
-    digitalWrite(pinSentido1, HIGH);
-    digitalWrite(pinSentido2, LOW);
-  }
+//  if (erro < 0)
+//    erro = 0.0;
 
   // Sinal de Controle calculado.
-  sinal_controle = Kp*erro;  
+  // sinal_controle = Kp*erro;
+  sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
 
   if (0.0 <= sinal_controle <= 3.3)
-    ciclo_trabalho = (sinal_controle*255.0)/3.3;
+    ciclo_trabalho = (sinal_controle * 255.0) / 3.3;
   else if (sinal_controle > 3.3)
     ciclo_trabalho = 255;
 
