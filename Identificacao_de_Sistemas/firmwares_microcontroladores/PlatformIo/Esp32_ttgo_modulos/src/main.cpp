@@ -27,8 +27,8 @@ const int freq_pwm = 500;           // Frequência do sinal PWM.
 const int canal_pwm = 0;            // Canal para o sinal PWM (0-15).
 const int resolucao = 8;            // Resolução do sinal PWM.
 int ciclo_trabalho = 140;           // Ciclo de trabalho.
-float ref_controle = 0.0;                  // Setpoint.
-float erro = 7.0;                   // Erro do sistema.
+float ref_controle = 0.0;           // Setpoint.
+float erro = 0.0;                   // Erro do sistema.
 
 float theta = 0.0;                  // Ângulo theta.
 /* Variável para salvar o sinal de controle, obtido pelo conversor AD. */
