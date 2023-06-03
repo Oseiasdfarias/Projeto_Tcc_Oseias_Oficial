@@ -1,6 +1,6 @@
 {
     "name": "LerEscreverSerial",
-    "version": "0.1.0",
+    "version": "0.1.5",
     "description": "Uma simples biblioteca para escrever e ler dados do projeto Aeropendulo",
     "keywords": "serial, esp32",
     "authors":

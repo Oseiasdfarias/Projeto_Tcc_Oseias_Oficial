@@ -65,7 +65,9 @@ void setup() {
 }
 
 void loop() {
-  ref_controle = referencia_seno(freq_ref, ampl, offset, t);
+  // ref_controle = referencia_seno(freq_ref, ampl, offset, t);
+  // ref_controle = referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
+  ref_controle = referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
   enviar_dados_serial(canal_pwm, pinAD_POT, &ciclo_trabalho,
                       &ref_controle, &theta, &erro, &freq_ref, &ampl);
   delay(1000*Ts);
