@@ -24,7 +24,7 @@ matplotlib.use('TkAgg')
 
 class GraficosSinais(object):
 
-    def __init__(self, markersize: float = 2.5, grid: bool = True):
+    def __init__(self, markersize: float = 3.0, grid: bool = True):
         self.grid = grid
         self.markersize = markersize
         self.fig = plt.figure(figsize=(9.85, 6.45))

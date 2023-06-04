@@ -69,14 +69,14 @@ class InterfaceAeropendulo:
         for i in range(4):
             if i < 1:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                self.ax[i].set_ylim(-5, 180)
+                self.ax[i].set_ylim(-60, 180)
             if i >= 1:
                 if i == 2:
                     self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                    self.ax[i].set_ylim(-0.5, 4)
+                    self.ax[i].set_ylim(-5, 5)
                 else:
                     self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                    self.ax[i].set_ylim(-15, 15)
+                    self.ax[i].set_ylim(-60, 60)
             self.ax[i].axhline(0.0, color="black", lw=1.2)
             self.ax[i].axvline(0.01, color="black", lw=1.2)
         return self.ln
