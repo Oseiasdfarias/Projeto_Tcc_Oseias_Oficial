@@ -38,8 +38,10 @@ class ColetaDados:
         os.chdir("interface")
         self.porta = porta
         self.baud_rate = baud_rate
-        self.fila = np.array([[], [], [], [], [], []]).astype(object)
-        self.salvar_dados = np.array([[], [], [], [], [], []]).astype(object)
+        self.fila = np.array(
+            [[], [], [], [], [], [], []]).astype(object)
+        self.salvar_dados = np.array(
+            [[], [], [], [], [], [], []]).astype(object)
         self.dados_atuais = None
         self.__init_thread()
 
@@ -160,6 +162,7 @@ class ColetaDados:
                     continue
                 try:
                     dados_float = np.array([dados1], dtype="float64").T
+                    # print(dados_float)
                     if len(self.fila[0]) <= self.amostras:
                         self.fila = np.append(self.fila,
                                               dados_float, axis=1)

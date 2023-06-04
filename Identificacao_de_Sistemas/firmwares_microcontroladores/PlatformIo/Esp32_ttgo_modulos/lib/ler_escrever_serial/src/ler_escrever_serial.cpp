@@ -15,7 +15,7 @@
 #include "ler_escrever_serial.h"
 
 void enviar_dados_serial(int *valorAD_POT, float *sinal_ref, float *theta_saida,
-                         float *erro, float *sinal_controle, float *ampl)
+                         float *erro, float *sinal_controle, float *ampl, float *t)
 {
     /* Sinal de Referência. */
     Serial.print(*sinal_ref, 3);
@@ -36,7 +36,9 @@ void enviar_dados_serial(int *valorAD_POT, float *sinal_ref, float *theta_saida,
     /* Estruturas reservas de envio de dados. */
     Serial.print(*ampl, 3);
     Serial.print(",");
-    Serial.println(*ampl, 3);
+    Serial.print(*ampl, 3);
+    Serial.print(",");
+    Serial.println(*t, 3);
 }
 
 void ler_dados_serial(float *ampl, float *freq_ref, float *offset)

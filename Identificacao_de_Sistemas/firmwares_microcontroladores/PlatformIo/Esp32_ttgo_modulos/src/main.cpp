@@ -35,16 +35,15 @@ float erro = 0.0;        // Sinal de Erro do sistema em Malha Fechada.
 float theta_saida = 0.0; // Ângulo theta.
 /* Variável para salvar o sinal de controle, obtido pelo conversor AD. */
 float sinal_controle = 0.0;
-float Kp = 0.2; // Ganho do controlador Proporcional.
 
 /* Parâmetros do sinal de referência */
 float ampl = 0.0, freq_ref = 0.5, offset = 30.0;
 
 /* Tempo de amostragem e Período.  */
-float t = 0, Ts = 0.02; // ms
+float t = 0.0, Ts = 0.02; // ms
 
 // Iniciando uma instáncia do controlador PID.
-SinaisRefs sref;
+SinaisRefs gerar_ref;
 PID mypid(0.02, 0.025, 0.4);
 
 void setup()
@@ -74,7 +73,7 @@ void loop()
   /* Sinal de referência */
   // ref_controle = sref.referencia_seno(freq_ref, ampl, offset, t);
   // ref_controle = sref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
-  sinal_ref = sref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
+  sinal_ref = gerar_ref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
 
   /* Sinal de tensão no potenciômetro. */
   valorAD_POT = analogRead(pinAD_POT);
@@ -84,11 +83,7 @@ void loop()
   // Sinal de erro calculado, caso seja menor que zero, desliga o Motor.
   erro = sinal_ref - theta_saida;
 
-  //  if (erro < 0)
-  //    erro = 0.0;
-
   // Sinal de Controle calculado.
-  // sinal_controle = Kp*erro;
   sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
 
   if (0.0 <= sinal_controle <= 3.3)
@@ -99,7 +94,7 @@ void loop()
   ledcWrite(canal_pwm, ciclo_trabalho);
 
   enviar_dados_serial(&valorAD_POT, &sinal_ref,
-                      &theta_saida, &erro, &sinal_controle, &ampl);
+                      &theta_saida, &erro, &sinal_controle, &ampl, &t);
   delay(1000 * Ts);
   if (Serial.available() > 0)
   {
