@@ -44,6 +44,7 @@ float ampl = 0.0, freq_ref = 0.5, offset = 30.0;
 float t = 0, Ts = 0.02; // ms
 
 // Iniciando uma instáncia do controlador PID.
+SinaisRefs sref;
 PID mypid(0.02, 0.025, 0.4);
 
 void setup()
@@ -71,9 +72,9 @@ void setup()
 void loop()
 {
   /* Sinal de referência */
-  // ref_controle = referencia_seno(freq_ref, ampl, offset, t);
-  // ref_controle = referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
-  sinal_ref = referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
+  // ref_controle = sref.referencia_seno(freq_ref, ampl, offset, t);
+  // ref_controle = sref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
+  sinal_ref = sref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
 
   /* Sinal de tensão no potenciômetro. */
   valorAD_POT = analogRead(pinAD_POT);
@@ -83,8 +84,8 @@ void loop()
   // Sinal de erro calculado, caso seja menor que zero, desliga o Motor.
   erro = sinal_ref - theta_saida;
 
-//  if (erro < 0)
-//    erro = 0.0;
+  //  if (erro < 0)
+  //    erro = 0.0;
 
   // Sinal de Controle calculado.
   // sinal_controle = Kp*erro;

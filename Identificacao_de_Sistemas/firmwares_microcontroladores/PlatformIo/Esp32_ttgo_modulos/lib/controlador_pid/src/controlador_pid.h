@@ -18,14 +18,14 @@
 
 class PID
 {
-public:
-      // long lastProcess = 0;
-      float lastTheta, theta;
-      float Kp, Ki, Kd;
-      float P, I, D;
+      public:
+            // long lastProcess = 0;
+            float lastTheta, theta;
+            float Kp, Ki, Kd;
+            float P, I, D;
 
-      PID(float _Kp, float _Ki, float _Kd);
-      float atualiza_pid(float erro, float theta, float Ts);
-};
+            PID(float _Kp, float _Ki, float _Kd);
+            float atualiza_pid(float erro, float theta, float Ts);
+      };
 
 #endif // CONTROLADOR_PID_H_INCLUDED
