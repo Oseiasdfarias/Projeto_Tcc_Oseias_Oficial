@@ -141,7 +141,7 @@ class InterfaceAeropendulo:
             self.coleta_dados.flag_salvar_dados = False
             self.coleta_dados.salvar_dados_colhidos()
             self.salvar_dados = np.array([[], [], [],
-                                          [], [], []]).astype(object)
+                                          [], [], [], []]).astype(object)
 
     def get_data_emtry_ampl1(self):
         data = self.emtry_ampl1.get()
