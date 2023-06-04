@@ -15,6 +15,7 @@
 #include "ler_escrever_serial.h"
 #include "referencia.h"
 #include "controlador_pid.h"
+#include "conversor.h"
 
 const int pinAD_POT = 2; // Valor do potenciômetro.
 int valorAD_POT = 0;     // Valor de tensão (potenciômetro) lido pela conversor ADC.
@@ -24,27 +25,27 @@ const int pinSentido1 = 32;
 const int pinSentido2 = 33;
 
 // Configurações do Sinal PWM
-const int pinPWM = 25;    // pino para sinal PWM.
-const int freq_pwm = 500; // Frequência do sinal PWM.
+const int pinPWM    = 25;    // pino para sinal PWM.
+const int freq_pwm  = 500; // Frequência do sinal PWM.
 const int canal_pwm = 0;  // Canal para o sinal PWM (0-15).
 const int resolucao = 8;  // Resolução do sinal PWM.
-int ciclo_trabalho = 0.0; // Ciclo de trabalho.
+int ciclo_trabalho  = 0; // Ciclo de trabalho.
 
-float sinal_ref = 0.0;   // Setpoint.
-float erro = 0.0;        // Sinal de Erro do sistema em Malha Fechada.
-float theta_saida = 0.0; // Ângulo theta.
-/* Variável para salvar o sinal de controle, obtido pelo conversor AD. */
-float sinal_controle = 0.0;
+float sinal_ref = 0.0,   // Setpoint.
+      erro = 0.0,        // Sinal de Erro do sistema em Malha Fechada.
+      theta_saida = 0.0, // Ângulo theta.
+      sinal_controle = 0.0;
 
 /* Parâmetros do sinal de referência */
 float ampl = 0.0, freq_ref = 0.5, offset = 30.0;
 
-/* Tempo de amostragem e Período.  */
+/* Tempo de amostragem e Período. */
 float t = 0.0, Ts = 0.02; // ms
 
-// Iniciando uma instáncia do controlador PID.
+/* Iniciando uma instáncia do gerador de sinais e do controlador PID. */
 SinaisRefs gerar_ref;
 PID mypid(0.02, 0.025, 0.4);
+Conversor conv(0.0, 4095., 0.0, 270.0, 528.0);
 
 void setup()
 {
@@ -71,14 +72,15 @@ void setup()
 void loop()
 {
   /* Sinal de referência */
-  // ref_controle = sref.referencia_seno(freq_ref, ampl, offset, t);
-  // ref_controle = sref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
+  // sinal_ref = sref.referencia_seno(freq_ref, ampl, offset, t);
+  // sinal_ref = sref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
   sinal_ref = gerar_ref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
 
   /* Sinal de tensão no potenciômetro. */
   valorAD_POT = analogRead(pinAD_POT);
   /* Sinal de tensão no potenciômetro. */
-  theta_saida = map(valorAD_POT, 528., 3235., 0., 180.);
+  theta_saida = conv.converte_escala(valorAD_POT);
+  //theta_saida = map(valorAD_POT, 528., 3235., 0., 180.);
 
   // Sinal de erro calculado, caso seja menor que zero, desliga o Motor.
   erro = sinal_ref - theta_saida;

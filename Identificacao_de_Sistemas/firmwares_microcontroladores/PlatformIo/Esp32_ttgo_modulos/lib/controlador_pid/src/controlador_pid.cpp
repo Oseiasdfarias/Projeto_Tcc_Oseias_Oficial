@@ -30,19 +30,19 @@ class PID
 
 PID::PID(float _Kp, float _Ki, float _Kd)
 {
-      this->Kp = _Kp;
-      this->Ki = _Ki;
-      this->Kd = _Kd;
+      this -> Kp = _Kp;
+      this -> Ki = _Ki;
+      this -> Kd = _Kd;
 }
 
 float PID::atualiza_pid(float erro, float theta, float Ts)
 {
       // double deltaTime = 0.02;
       // lastProcess = millis();
-      this->P = erro * this->Kp;
-      this->I += (erro * this->Ki) * Ts;
-      this->D = this->Kd * erro* (this->lastTheta - theta) * Ts;
-      this->lastTheta = theta;
+      this -> P = erro * this -> Kp;
+      this -> I += (erro * this -> Ki) * Ts;
+      this -> D = this -> Kd * erro* (this -> lastTheta - theta) * Ts;
+      this -> lastTheta = theta;
 
-      return (this->P + this->I + this->D);
+      return (this -> P + this -> I + this -> D);
 }
