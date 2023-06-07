@@ -90,9 +90,13 @@ class ColetaDados:
 
     def set_sinal(self, sinal):
         self.disp.reset_input_buffer()
-        self.disp.write(sinal.encode("utf-8"))
-        self.disp.flush()
-        print(f"Sinal Configurado: {sinal}")
+        if self.disp.write(sinal.encode("utf-8")):
+            self.disp.flush()
+            print(f"Sinal Configurado: {sinal}")
+        else:
+            sleep(0.01)
+            self.disp.flush()
+            self.set_sinal(sinal)
 
     def listar_dir(self):
         pastas = os.listdir()

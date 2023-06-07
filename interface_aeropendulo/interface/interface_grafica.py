@@ -103,30 +103,30 @@ class InterfaceAeropendulo:
                 # self.__init_thread_att_label()
                 self.executar = False
 
-    def switch_event_deg(self):
-        if self.switch_var_deg.get() == "on":
+    def switch_event_den_serra(self):
+        if self.switch_var_den_serra.get() == "on":
             self.switch_quad.deselect(0)
             self.switch_seno.deselect(0)
             if not self.executar:
-                self.coleta_dados.set_sinal(f"deg:{1.0}")
+                self.coleta_dados.set_sinal("7000")
         else:
-            self.switch_deg.select(1)
+            self.switch_den_serra.select(1)
 
     def switch_event_seno(self):
         if self.switch_var_seno.get() == "on":
-            self.switch_deg.deselect(0)
+            self.switch_den_serra.deselect(0)
             self.switch_quad.deselect(0)
             if not self.executar:
-                self.coleta_dados.set_sinal(f"seno:{2.0}")
+                self.coleta_dados.set_sinal("8000")
         else:
             self.switch_seno.select(1)
 
     def switch_event_quad(self):
         if self.switch_var_quad.get() == "on":
-            self.switch_deg.deselect(0)
+            self.switch_den_serra.deselect(0)
             self.switch_seno.deselect(0)
             if not self.executar:
-                self.coleta_dados.set_sinal("quad:3.0}")
+                self.coleta_dados.set_sinal("9000")
         else:
             self.switch_quad.select(1)
 
@@ -429,64 +429,68 @@ class InterfaceAeropendulo:
         self.emtry_freq1.grid(row=2, column=1,
                               padx=(0, 5), pady=4, sticky="s")
 
-        self.btn_offset = ctk.CTkButton(master=self.frame_controle, width=130,
-                                        height=30, font=ctk.CTkFont(
-                                                    size=15, weight="bold"),
-                                        fg_color=("red", "purple"),
-                                        text_color=("white", "white"),
-                                        hover_color=("#C11C1C", "#4A0255"),
-                                        text="Add Offset:", border_width=1,
-                                        command=self.get_data_emtry_offset1)
+        self.btn_offset = ctk.CTkButton(
+            master=self.frame_controle, width=130,
+            height=30, font=ctk.CTkFont(
+                size=15, weight="bold"),
+            fg_color=("red", "purple"),
+            text_color=("white", "white"),
+            hover_color=("#C11C1C", "#4A0255"),
+            text="Add Offset:", border_width=1,
+            command=self.get_data_emtry_offset1)
         self.btn_offset.grid(row=3, column=0, padx=5, pady=4, sticky="w")
 
-        self.emtry_offset1 = ctk.CTkEntry(master=self.frame_controle,
-                                          width=85,
-                                          font=ctk.CTkFont(size=17,
-                                                           weight="bold"),
-                                          placeholder_text="[0 à 120]")
+        self.emtry_offset1 = ctk.CTkEntry(
+            master=self.frame_controle,
+            width=85, font=ctk.CTkFont(size=17,
+                                       weight="bold"),
+            placeholder_text="[0 à 120]")
         self.emtry_offset1.grid(row=3, column=1,
                                 padx=(0, 5), pady=4, sticky="s")
 
-        self.switch_var_deg = ctk.StringVar(value="on")
-        self.switch_deg = ctk.CTkSwitch(master=self.frame_controle,
-                                        text="Sin. Degrau",
-                                        width=40,
-                                        switch_height=25,
-                                        switch_width=40,
-                                        progress_color=("#2CC985", "orange"),
-                                        command=self.switch_event_deg,
-                                        font=ctk.CTkFont(size=15,
-                                                         weight="normal"),
-                                        variable=self.switch_var_deg,
-                                        onvalue="on", offvalue="off")
-        self.switch_deg.grid(row=4, column=0, padx=5, pady=4, sticky="w")
+        self.switch_var_den_serra = ctk.StringVar(value="on")
+        self.switch_den_serra = ctk.CTkSwitch(
+            master=self.frame_controle,
+            text="Onda Dente Serra",
+            width=40,
+            switch_height=25,
+            switch_width=40,
+            progress_color=("#2CC985", "orange"),
+            command=self.switch_event_den_serra,
+            font=ctk.CTkFont(size=15,
+                             weight="normal"),
+            variable=self.switch_var_den_serra,
+            onvalue="on", offvalue="off")
+        self.switch_den_serra.grid(row=4, column=0, padx=5, pady=4, sticky="w")
 
         self.switch_var_quad = ctk.StringVar(value="off")
-        self.switch_quad = ctk.CTkSwitch(master=self.frame_controle,
-                                         text="Ond. Quad.",
-                                         width=40,
-                                         switch_height=25,
-                                         switch_width=40,
-                                         progress_color=("#2CC985", "orange"),
-                                         command=self.switch_event_quad,
-                                         font=ctk.CTkFont(size=15,
-                                                          weight="normal"),
-                                         variable=self.switch_var_quad,
-                                         onvalue="on", offvalue="off")
+        self.switch_quad = ctk.CTkSwitch(
+            master=self.frame_controle,
+            text="Onda Quadrada",
+            width=40,
+            switch_height=25,
+            switch_width=40,
+            progress_color=("#2CC985", "orange"),
+            command=self.switch_event_quad,
+            font=ctk.CTkFont(size=15,
+                             weight="normal"),
+            variable=self.switch_var_quad,
+            onvalue="on", offvalue="off")
         self.switch_quad.grid(row=5, column=0, padx=5, pady=4, sticky="w")
 
         self.switch_var_seno = ctk.StringVar(value="off")
-        self.switch_seno = ctk.CTkSwitch(master=self.frame_controle,
-                                         text="Ond. Seno",
-                                         width=40,
-                                         switch_height=25,
-                                         switch_width=40,
-                                         progress_color=("#2CC985", "orange"),
-                                         command=self.switch_event_seno,
-                                         font=ctk.CTkFont(size=15,
-                                                          weight="normal"),
-                                         variable=self.switch_var_seno,
-                                         onvalue="on", offvalue="off")
+        self.switch_seno = ctk.CTkSwitch(
+            master=self.frame_controle,
+            text="Onda Senoidal",
+            width=40,
+            switch_height=25,
+            switch_width=40,
+            progress_color=("#2CC985", "orange"),
+            command=self.switch_event_seno,
+            font=ctk.CTkFont(size=15,
+                             weight="normal"),
+            variable=self.switch_var_seno,
+            onvalue="on", offvalue="off")
         self.switch_seno.grid(row=6, column=0, padx=5, pady=4, sticky="w")
 
         self.lista_usb = ListaPortasUsb(self.usb_menu, self.set_usb_port)

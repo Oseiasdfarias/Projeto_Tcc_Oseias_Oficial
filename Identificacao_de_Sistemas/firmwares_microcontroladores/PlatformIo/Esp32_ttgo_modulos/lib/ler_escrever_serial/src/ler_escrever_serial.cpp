@@ -41,7 +41,8 @@ void enviar_dados_serial(int *valorAD_POT, float *sinal_ref, float *theta_saida,
     Serial.println(*t, 3);
 }
 
-void ler_dados_serial(float *ampl, float *freq_ref, float *offset)
+void ler_dados_serial(float *ampl, float *freq_ref,
+                      float *offset, int *selecionar_onda)
 {
     /* Leitura dos dados da porta serial. */
     float rlen = Serial.parseFloat();
@@ -60,5 +61,17 @@ void ler_dados_serial(float *ampl, float *freq_ref, float *offset)
     else if (3001.0 < rlen && rlen < 4001.0)
     {
         *offset = (((rlen * 120.0) / 1000.0) - 360.0);
+    }
+    else if (rlen == 7000.0)  // switch_event_den_serra
+    {
+        *selecionar_onda = 2;
+    }
+    else if (rlen == 8000.0)  // referencia_seno
+    {
+        *selecionar_onda = 1;
+    }
+    else if (rlen == 9000.0)  // referencia_onda_quadrada
+    {
+        *selecionar_onda = 0;
     }
 }

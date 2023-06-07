@@ -37,7 +37,8 @@ float sinal_ref = 0.0,   // Setpoint.
       sinal_controle = 0.0;
 
 /* Parâmetros do sinal de referência */
-float ampl = 0.0, freq_ref = 0.5, offset = 30.0;
+float ampl = 0.2, freq_ref = 0.2, offset = 30.0;
+int selecionar_onda = 0;
 
 /* Tempo de amostragem e Período. */
 float t = 0.0, Ts = 0.02; // ms
@@ -72,9 +73,12 @@ void setup()
 void loop()
 {
   /* Sinal de referência */
-  // sinal_ref = sref.referencia_seno(freq_ref, ampl, offset, t);
-  // sinal_ref = sref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
-  sinal_ref = gerar_ref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
+  if (selecionar_onda == 0)
+    sinal_ref = gerar_ref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
+  else if (selecionar_onda == 1)
+    sinal_ref = gerar_ref.referencia_seno(freq_ref, ampl, offset, t);
+  else if (selecionar_onda == 2)
+    sinal_ref = gerar_ref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
 
   /* Sinal de tensão no potenciômetro. */
   valorAD_POT = analogRead(pinAD_POT);
@@ -100,7 +104,7 @@ void loop()
   delay(1000 * Ts);
   if (Serial.available() > 0)
   {
-    ler_dados_serial(&ampl, &freq_ref, &offset);
+    ler_dados_serial(&ampl, &freq_ref, &offset, &selecionar_onda);
   }
   t += Ts;
 }
