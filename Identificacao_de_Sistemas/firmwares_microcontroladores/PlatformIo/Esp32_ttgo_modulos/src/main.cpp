@@ -82,9 +82,9 @@ void loop()
 
   /* Sinal de tensão no potenciômetro. */
   valorAD_POT = analogRead(pinAD_POT);
-  /* Sinal de tensão no potenciômetro. */
+
+  /* Sinal de tensão no potenciômetro convertido para ângulo rad/s. */
   theta_saida = conv.converte_escala(valorAD_POT);
-  //theta_saida = map(valorAD_POT, 528., 3235., 0., 180.);
 
   // Sinal de erro calculado, caso seja menor que zero, desliga o Motor.
   erro = sinal_ref - theta_saida;
