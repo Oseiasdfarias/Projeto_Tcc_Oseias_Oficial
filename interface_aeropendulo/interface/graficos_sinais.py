@@ -24,7 +24,8 @@ matplotlib.use('TkAgg')
 
 class GraficosSinais(object):
 
-    def __init__(self, markersize: float = 3.0, grid: bool = True):
+    def __init__(self, markersize: float = 3.0,
+                 grid: bool = True) -> None:
         self.grid = grid
         self.markersize = markersize
         self.fig = plt.figure(figsize=(9.85, 6.45))
@@ -37,7 +38,7 @@ class GraficosSinais(object):
     def get_fig_axes_ln(self):
         return self.fig, self.ax, self.ln
 
-    def config_axes(self):
+    def config_axes(self) -> None:
         self.ax1 = self.fig.add_subplot(221)
         self.ax1.set_title("Referência + Ângulo (Graus)",
                            color="#3B4252", fontsize=12)

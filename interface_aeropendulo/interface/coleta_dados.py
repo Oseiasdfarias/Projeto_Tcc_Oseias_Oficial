@@ -21,6 +21,7 @@ from threading import Thread
 import datetime as dt
 import os
 import logging
+import numpy.typing as npt
 
 logger = logging.getLogger(__name__)
 
@@ -32,28 +33,29 @@ class ColetaDados:
     param: baud_rate=115200
 
     """
-    def __init__(self, amostras, porta="/dev/ttyUSB0", baud_rate=115200):
+    def __init__(self, amostras: int = 50, porta: str = "/dev/ttyUSB0",
+                 baud_rate: int = 115200) -> None:
         self.amostras = amostras
         self.flag_salvar_dados = False
         os.chdir("interface")
         self.porta = porta
         self.baud_rate = baud_rate
-        self.fila = np.array(
+        self.fila: npt.ArrayLike = np.array(
             [[], [], [], [], [], [], []]).astype(object)
-        self.salvar_dados = np.array(
+        self.salvar_dados: npt.ArrayLike = np.array(
             [[], [], [], [], [], [], []]).astype(object)
         self.dados_atuais = None
         self.__init_thread()
 
-    def get_dados(self):
+    def get_dados(self) -> npt.ArrayLike:
         return self.fila
 
-    def set_amplitude(self, amplitude):
+    def set_amplitude(self, amplitude: str) -> None:
         data = ((float(amplitude)*1000.)/30.) + 1000.
-        data = f"{int(data)}"
-        print(f"Ampl.: {data}")
+        data_conv = f"{int(data)}"
+        print(f"Ampl.: {data_conv}")
         self.disp.reset_input_buffer()
-        if self.disp.write(data.encode("utf-8")):
+        if self.disp.write(data_conv.encode("utf-8")):
             self.disp.flush()
             return
         else:
@@ -61,13 +63,13 @@ class ColetaDados:
             self.disp.flush()
             self.set_amplitude(amplitude)
 
-    def set_frequencia(self, frequencia):
+    def set_frequencia(self, frequencia: str) -> None:
         print(f"Dado entrada freq: {float(frequencia)}")
         data = ((float(frequencia)*1000.)/5.) + 2000.
-        data = f"{int(data)}"
-        print(f"Freq.: {data}")
+        data_conv = f"{int(data)}"
+        print(f"Freq.: {data_conv}")
         self.disp.reset_input_buffer()
-        if self.disp.write(data.encode("utf-8")):
+        if self.disp.write(data_conv.encode("utf-8")):
             self.disp.flush()
             return
         else:
@@ -75,12 +77,12 @@ class ColetaDados:
             self.disp.flush()
             self.set_frequencia(frequencia)
 
-    def set_offset(self, offset):
+    def set_offset(self, offset: str) -> None:
         data = ((float(offset)*1000.)/120.) + 3000.
-        data = f"{int(data)}"
-        print(f"Offset: {data}")
+        data_conv = f"{int(data)}"
+        print(f"Offset: {data_conv}")
         self.disp.reset_input_buffer()
-        if self.disp.write(data.encode("utf-8")):
+        if self.disp.write(data_conv.encode("utf-8")):
             self.disp.flush()
             return
         else:
@@ -88,7 +90,7 @@ class ColetaDados:
             self.disp.flush()
             self.set_offset(offset)
 
-    def set_sinal(self, sinal):
+    def set_sinal(self, sinal: str) -> None:
         self.disp.reset_input_buffer()
         if self.disp.write(sinal.encode("utf-8")):
             self.disp.flush()
@@ -98,7 +100,7 @@ class ColetaDados:
             self.disp.flush()
             self.set_sinal(sinal)
 
-    def listar_dir(self):
+    def listar_dir(self) -> None:
         pastas = os.listdir()
         diretorio = "dados_de_ensaio"
         file = False
@@ -124,7 +126,7 @@ class ColetaDados:
         self.disp.flush()
         self.disp.reset_input_buffer()
 
-    def __init_thread(self):
+    def __init_thread(self) -> None:
         self.new_thread = Thread(target=self.__coleta_dados)
         self.new_thread.daemon = True
         self.new_thread.start()

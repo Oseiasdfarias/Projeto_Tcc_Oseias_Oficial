@@ -28,12 +28,13 @@ from interface.lista_portas_usb import ListaPortasUsb
 
 
 class InterfaceAeropendulo:
-    def __init__(self, baud_rate: int = 115200, amostras: float = 50.0,
+    """Classe que constroi o FrontEnd do App Aeropendulo."""
+    def __init__(self, baud_rate: int = 115200, amostras: int = 50,
                  Ts: float = 0.02, tela_fixa: bool = False):
         self.tela_fixa = tela_fixa
 
         # Objeto para coletar dados do sensor
-        self.usb_port = None
+        self.usb_port = ""
         self.baud_rate = baud_rate
 
         self.amostras = amostras
@@ -47,7 +48,7 @@ class InterfaceAeropendulo:
         # Inicializa a interface gráfica
         self.start_gui()
 
-    def quit(self):
+    def quit(self) -> None:
         self.root.quit()
         self.root.destroy()
         if os.name == "nt":
@@ -56,14 +57,14 @@ class InterfaceAeropendulo:
         else:
             _ = os.system("clear")
 
-    def set_usb_port(self, porta_atual):
+    def set_usb_port(self, porta_atual: str) -> None:
         self.usb_port = porta_atual
 
     @staticmethod
-    def aparencia_event(new_appearance_mode):
+    def aparencia_event(new_appearance_mode: str) -> None:
         ctk.set_appearance_mode(new_appearance_mode)
 
-    def init(self):
+    def init(self) -> None:
         for i in range(4):
             if i < 1:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
@@ -87,7 +88,7 @@ class InterfaceAeropendulo:
             ax.set_ydata(dados[i])
         return self.ln
 
-    def run_graph(self):
+    def run_graph(self) -> None:
         if self.executar:
             if self.usb_port:
                 self.coleta_dados = ColetaDados(
@@ -97,11 +98,11 @@ class InterfaceAeropendulo:
                                          init_func=self.init,
                                          cache_frame_data=False,
                                          interval=20, blit=True)
-                sleep(2)
+                sleep(1)
                 # self.__init_thread_att_label()
                 self.executar = False
 
-    def switch_event_den_serra(self):
+    def switch_event_den_serra(self) -> None:
         if self.switch_var_den_serra.get() == "on":
             self.switch_quad.deselect(0)
             self.switch_seno.deselect(0)
@@ -110,7 +111,7 @@ class InterfaceAeropendulo:
         else:
             self.switch_den_serra.select(1)
 
-    def switch_event_seno(self):
+    def switch_event_seno(self) -> None:
         if self.switch_var_seno.get() == "on":
             self.switch_den_serra.deselect(0)
             self.switch_quad.deselect(0)
@@ -119,7 +120,7 @@ class InterfaceAeropendulo:
         else:
             self.switch_seno.select(1)
 
-    def switch_event_quad(self):
+    def switch_event_quad(self) -> None:
         if self.switch_var_quad.get() == "on":
             self.switch_den_serra.deselect(0)
             self.switch_seno.deselect(0)
@@ -128,7 +129,7 @@ class InterfaceAeropendulo:
         else:
             self.switch_quad.select(1)
 
-    def switch_event_sdados(self):
+    def switch_event_sdados(self) -> None:
         if self.executar:
             self.switch_salve.deselect(0)
             return
@@ -141,7 +142,7 @@ class InterfaceAeropendulo:
             self.salvar_dados = np.array([[], [], [],
                                           [], [], [], []]).astype(object)
 
-    def get_data_emtry_ampl1(self):
+    def get_data_emtry_ampl1(self) -> None:
         data = self.emtry_ampl1.get()
         isnum = data.replace('.', '', 1).isdigit()
         if not self.executar and isnum:
@@ -151,7 +152,7 @@ class InterfaceAeropendulo:
                 self.coleta_dados.set_amplitude(data)
         self.emtry_ampl1.delete(0, len(data))
 
-    def get_data_emtry_freq1(self):
+    def get_data_emtry_freq1(self) -> None:
         data = self.emtry_freq1.get()
         print(f"Dado entrada freq 1: {data.isdigit()}")
         isnum = data.replace('.', '', 1).isdigit()
@@ -162,7 +163,7 @@ class InterfaceAeropendulo:
                 self.coleta_dados.set_frequencia(data)
         self.emtry_freq1.delete(0, len(data))
 
-    def get_data_emtry_offset1(self):
+    def get_data_emtry_offset1(self) -> None:
         data = self.emtry_offset1.get()
         isnum = data.replace('.', '', 1).isdigit()
         if not self.executar and isnum:
@@ -172,7 +173,7 @@ class InterfaceAeropendulo:
                 self.coleta_dados.set_offset(data)
         self.emtry_offset1.delete(0, len(data))
 
-    def start_gui(self):
+    def start_gui(self) -> None:
         """
             Componentes da interface GUI.
         """
