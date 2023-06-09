@@ -18,9 +18,7 @@ from matplotlib.animation import FuncAnimation
 from threading import Thread
 from time import sleep
 import os
-# from PIL import Image
 
-# import tkinter as tk
 import customtkinter as ctk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
@@ -180,6 +178,7 @@ class InterfaceAeropendulo:
         """
         ctk.set_default_color_theme("green")
         self.root = ctk.CTk()
+        ctk.set_appearance_mode("Dark")
         self.root.title("Interface Aeropêndulo")
         self.root.geometry("1270x700+40+5")
         if self.tela_fixa:
@@ -273,7 +272,7 @@ class InterfaceAeropendulo:
                                                 font=ctk.CTkFont(
                                                      size=15,
                                                      weight="bold"),
-                                                values=["Light", "Dark"],
+                                                values=["Dark", "Light"],
                                                 command=self.aparencia_event)
 
         self.aparencia_menu.grid(row=6, column=0, padx=10, pady=4, sticky="w")
@@ -451,7 +450,7 @@ class InterfaceAeropendulo:
         self.switch_var_den_serra = ctk.StringVar(value="on")
         self.switch_den_serra = ctk.CTkSwitch(
             master=self.frame_controle,
-            text="Onda Dente Serra",
+            text="Dente Serra",
             width=40,
             switch_height=25,
             switch_width=40,
@@ -466,7 +465,7 @@ class InterfaceAeropendulo:
         self.switch_var_quad = ctk.StringVar(value="off")
         self.switch_quad = ctk.CTkSwitch(
             master=self.frame_controle,
-            text="Onda Quadrada",
+            text="Quadrada",
             width=40,
             switch_height=25,
             switch_width=40,
@@ -481,7 +480,7 @@ class InterfaceAeropendulo:
         self.switch_var_seno = ctk.StringVar(value="off")
         self.switch_seno = ctk.CTkSwitch(
             master=self.frame_controle,
-            text="Onda Senoidal",
+            text="Senoidal",
             width=40,
             switch_height=25,
             switch_width=40,
