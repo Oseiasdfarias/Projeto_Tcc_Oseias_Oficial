@@ -27,12 +27,14 @@ logger = logging.getLogger(__name__)
 
 
 class ColetaDados:
-    """Coleta os dados do Aeropêndulo para plotagem.
-
-    param: porta='/dev/ttyUSB0'
-    param: baud_rate=115200
-
     """
+        Coleta os dados do Aeropêndulo para plotagem.
+
+        param: amostras: int = 50
+        param: porta: str = "/dev/ttyUSB0"
+        param: baud_rate: int = 115200
+    """
+
     def __init__(self, amostras: int = 50, porta: str = "/dev/ttyUSB0",
                  baud_rate: int = 115200) -> None:
         self.amostras = amostras
