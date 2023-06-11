@@ -13,14 +13,12 @@
 
 #include <math.h>
 #include "Arduino.h"
-// #include "referencia.h"
 
 class SinaisRefs
 {
     public:
         float TEMP = 0.0;
         float SOMA = 0.0;
-        //SinaisRefs(){};
         float referencia_seno(float freq, float ampl,
                               float offset, float t);
         float referencia_onda_quadrada(float freq, float ampl,
@@ -28,8 +26,6 @@ class SinaisRefs
         float referencia_onda_dente_serra(float freq, float ampl,
                                  float offset, float Ts);
 };
-
-// SinaisRefs::SinaisRefs(){};
 
 /* Gráfico de uma Onda senoidal */
 float SinaisRefs::referencia_seno(

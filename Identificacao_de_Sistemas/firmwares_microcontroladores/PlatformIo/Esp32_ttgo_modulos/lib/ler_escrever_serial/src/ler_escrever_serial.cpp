@@ -14,8 +14,9 @@
 #include "Arduino.h"
 #include "ler_escrever_serial.h"
 
-void enviar_dados_serial(int *valorAD_POT, float *sinal_ref, float *theta_saida,
-                         float *erro, float *sinal_controle, float *ampl, float *t)
+void enviar_dados_serial(int *valorAD_POT, float *sinal_ref,
+                         float *theta_saida, float *erro,
+                         float *sinal_controle, float *ampl, float *t)
 {
     /* Sinal de Referência. */
     Serial.print(*sinal_ref, 3);
@@ -62,15 +63,15 @@ void ler_dados_serial(float *ampl, float *freq_ref,
     {
         *offset = (((rlen * 120.0) / 1000.0) - 360.0);
     }
-    else if (rlen == 7000.0)  // switch_event_den_serra
+    else if (rlen == 7000.0) // switch_event_den_serra
     {
         *selecionar_onda = 2;
     }
-    else if (rlen == 8000.0)  // referencia_seno
+    else if (rlen == 8000.0) // referencia_seno
     {
         *selecionar_onda = 1;
     }
-    else if (rlen == 9000.0)  // referencia_onda_quadrada
+    else if (rlen == 9000.0) // referencia_onda_quadrada
     {
         *selecionar_onda = 0;
     }

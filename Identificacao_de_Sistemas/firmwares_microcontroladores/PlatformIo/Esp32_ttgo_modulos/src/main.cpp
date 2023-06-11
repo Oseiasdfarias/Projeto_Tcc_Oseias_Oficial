@@ -1,4 +1,4 @@
-/* ************************  | |  ****************************
+/* ************************  |  ****************************
       * Universidade Federal do Pará
       * Campus Universitário de Tucuruí
       * Faculdade de Engenharia Elétrica
@@ -25,16 +25,16 @@ const int pinSentido1 = 32;
 const int pinSentido2 = 33;
 
 // Configurações do Sinal PWM
-const int pinPWM    = 25;    // pino para sinal PWM.
-const int freq_pwm  = 500; // Frequência do sinal PWM.
+const int pinPWM = 25;    // pino para sinal PWM.
+const int freq_pwm = 500; // Frequência do sinal PWM.
 const int canal_pwm = 0;  // Canal para o sinal PWM (0-15).
 const int resolucao = 8;  // Resolução do sinal PWM.
-int ciclo_trabalho  = 0; // Ciclo de trabalho.
+int ciclo_trabalho = 0;   // Ciclo de trabalho.
 
-float sinal_ref = 0.0,   // Setpoint.
-      erro = 0.0,        // Sinal de Erro do sistema em Malha Fechada.
-      theta_saida = 0.0, // Ângulo theta.
-      sinal_controle = 0.0;
+float sinal_ref = 0.0, // Setpoint.
+    erro = 0.0,        // Sinal de Erro do sistema em Malha Fechada.
+    theta_saida = 0.0, // Ângulo theta.
+    sinal_controle = 0.0;
 
 /* Parâmetros do sinal de referência */
 float ampl = 0.2, freq_ref = 0.2, offset = 30.0;
@@ -86,10 +86,10 @@ void loop()
   /* Sinal de tensão no potenciômetro convertido para ângulo rad/s. */
   theta_saida = conv.converte_escala(valorAD_POT);
 
-  // Sinal de erro calculado, caso seja menor que zero, desliga o Motor.
+  /* Sinal de erro calculado, caso seja menor que zero, desliga o Motor. */
   erro = sinal_ref - theta_saida;
 
-  // Sinal de Controle calculado.
+  /* Sinal de Controle calculado.*/
   sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
 
   if (0.0 <= sinal_controle <= 3.3)
