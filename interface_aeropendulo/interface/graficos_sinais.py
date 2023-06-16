@@ -29,9 +29,8 @@ plt.rcParams.update({
     'text.color': "black",
     'axes.labelcolor': "black",
     'axes.titlecolor': "#000000",
-    'axes.titleweight': "bold"})          # specify font size here
+    'axes.titleweight': "bold"})
 
-# matplotlib.style.use("Solarize_Light2")
 mpl.use('TkAgg')
 
 
@@ -44,7 +43,6 @@ class GraficosSinais(object):
         self.fig = plt.figure(figsize=(9.85, 6.45))
         self.config_axes()
 
-        # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)
         self.fig.subplots_adjust(wspace=0.3, hspace=0.4, left=0.08,
                                  top=0.93, right=0.971, bottom=0.08)
 
