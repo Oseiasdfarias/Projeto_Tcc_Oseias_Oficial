@@ -12,7 +12,7 @@
 
 ### Estrutura do Projeto
 
-<img src="utils/estrutura_projeto.png" width="50%" title="" alt="" data-align="center">
+<img src="utils/estrutura_projeto.png" width="30%" title="" alt="" data-align="center">
 
 <img src="utils/demo_interface_dark.png" title="" alt="" data-align="center">
 
