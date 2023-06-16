@@ -10,7 +10,7 @@
 
 ## Interface Aeropêndulo
 
-### Estrutura do Projeto
+### Estrutura do Projeto da Interface Gráfica
 
 ```
 .
