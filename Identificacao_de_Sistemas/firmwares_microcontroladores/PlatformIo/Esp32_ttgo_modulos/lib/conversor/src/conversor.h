@@ -17,14 +17,14 @@
 
 class Conversor
 {
-    public:
-        float x_min, x_max,
-              y_min, y_max, offset;
+public:
+      float x_min, x_max,
+          y_min, y_max, offset;
 
-        Conversor(float _x_min, float _x_max,
-                      float _y_min, float _y_max, float _offset);
-        
-        float converte_escala(float x_converter);
+      Conversor(float _x_min, float _x_max,
+                float _y_min, float _y_max, float _offset);
 
+      float converte_escala(float x_converter);
+      float converte_tensao_ciclo(float sinal_controle);
 };
 #endif // CONVERSOR_H_INCLUDED

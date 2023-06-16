@@ -31,17 +31,24 @@ const int canal_pwm = 0;  // Canal para o sinal PWM (0-15).
 const int resolucao = 8;  // Resolução do sinal PWM.
 int ciclo_trabalho = 0;   // Ciclo de trabalho.
 
-float sinal_ref = 0.0, // Setpoint.
-    erro = 0.0,        // Sinal de Erro do sistema em Malha Fechada.
-    theta_saida = 0.0, // Ângulo theta.
+float sinal_ref = 0.0,      // Setpoint.
+    sinal_entrada_ma = 0.0, // Sinal de entrada em malha aberta
+    erro = 0.0,             // Sinal de Erro do sistema em Malha Fechada.
+    theta_saida = 0.0,      // Ângulo theta.
     sinal_controle = 0.0;
 
 /* Parâmetros do sinal de referência */
-float ampl = 0.2, freq_ref = 0.2, offset = 30.0;
+float ampl = 0.2,
+      freq_ref = 0.2,
+      offset = 30.0;
 int selecionar_onda = 0;
 
 /* Tempo de amostragem e Período. */
-float t = 0.0, Ts = 0.02; // ms
+float t = 0.0,
+      Ts = 0.02; // ms
+
+// definir sistema em malha fechada ou malha aberta
+bool conf_sistema = false;
 
 /* Iniciando uma instáncia do gerador de sinais e do controlador PID. */
 SinaisRefs gerar_ref;
@@ -72,39 +79,49 @@ void setup()
 
 void loop()
 {
-  /* Sinal de referência */
-  if (selecionar_onda == 0)
-    sinal_ref = gerar_ref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
-  else if (selecionar_onda == 1)
-    sinal_ref = gerar_ref.referencia_seno(freq_ref, ampl, offset, t);
-  else if (selecionar_onda == 2)
-    sinal_ref = gerar_ref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
-
-  /* Sinal de tensão no potenciômetro. */
+  /* Sinal de saída - Sinal de tensão no potenciômetro. */
   valorAD_POT = analogRead(pinAD_POT);
 
-  /* Sinal de tensão no potenciômetro convertido para ângulo rad/s. */
+  /* Sinal de saída - Sinal de tensão no potenciômetro convertido para ângulo Graus. */
   theta_saida = conv.converte_escala(valorAD_POT);
 
-  /* Sinal de erro calculado, caso seja menor que zero, desliga o Motor. */
-  erro = sinal_ref - theta_saida;
+  if (conf_sistema)
+  {
+    /* ###### Define o sistema em malha fechada ###### */
+    /* Sinal de referência */
+    if (selecionar_onda == 0)
+      sinal_ref = gerar_ref.referencia_onda_quadrada(freq_ref, ampl, offset, Ts);
+    else if (selecionar_onda == 1)
+      sinal_ref = gerar_ref.referencia_seno(freq_ref, ampl, offset, t);
+    else if (selecionar_onda == 2)
+      sinal_ref = gerar_ref.referencia_onda_dente_serra(freq_ref, ampl, offset, Ts);
 
-  /* Sinal de Controle calculado.*/
-  sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
+    /* Sinal de erro calculado, caso seja menor que zero, desliga o Motor. */
+    erro = sinal_ref - theta_saida;
 
-  if (0.0 <= sinal_controle <= 3.3)
-    ciclo_trabalho = (sinal_controle * 255.0) / 3.3;
-  else if (sinal_controle > 3.3)
-    ciclo_trabalho = 255;
+    /* Sinal de Controle calculado.*/
+    sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
+    /* Converte o nível de tensão de controle para nível PWM */
+    ciclo_trabalho = conv.converte_tensao_ciclo(sinal_controle);
+  }
+  else
+  {
+    /* ###### Define o sistema em malha aberta ###### */
+    sinal_entrada_ma = gerar_ref.referencia_onda_quadrada(0.2, 0.5, 1.0, Ts);
+    sinal_ref = 0.0;
+    sinal_controle = 0.0;
+    erro = 0.0;
+    ciclo_trabalho = conv.converte_tensao_ciclo(sinal_entrada_ma);
+  }
 
   ledcWrite(canal_pwm, ciclo_trabalho);
 
-  enviar_dados_serial(&valorAD_POT, &sinal_ref,
-                      &theta_saida, &erro, &sinal_controle, &ampl, &t);
+  enviar_dados_serial(&sinal_ref, &theta_saida, &erro, &sinal_controle, &sinal_entrada_ma, &t);
   delay(1000 * Ts);
+
   if (Serial.available() > 0)
   {
-    ler_dados_serial(&ampl, &freq_ref, &offset, &selecionar_onda);
+    ler_dados_serial(&ampl, &freq_ref, &offset, &selecionar_onda, &conf_sistema);
   }
   t += Ts;
 }

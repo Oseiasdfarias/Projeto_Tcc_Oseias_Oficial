@@ -72,7 +72,7 @@ class GraficosSinais(object):
         self.ax3.grid(self.grid)
 
         self.ax4 = self.fig.add_subplot(224)
-        self.ax4.set_title("Sinal de Controle PWM (Volts RMS)",
+        self.ax4.set_title("Sinal Entrada Malha Aberta (Volts RMS)",
                            color="#3B4252", fontsize=12)
         self.ax4.set_xlabel("Tempo")
         self.ax4.set_ylabel("Amplitude")

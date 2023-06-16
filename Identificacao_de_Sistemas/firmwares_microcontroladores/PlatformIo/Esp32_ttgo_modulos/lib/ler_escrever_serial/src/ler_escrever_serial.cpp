@@ -14,8 +14,7 @@
 #include "Arduino.h"
 #include "ler_escrever_serial.h"
 
-void enviar_dados_serial(int *valorAD_POT, float *sinal_ref,
-                         float *theta_saida, float *erro,
+void enviar_dados_serial(float *sinal_ref, float *theta_saida, float *erro,
                          float *sinal_controle, float *ampl, float *t)
 {
     /* Sinal de Referência. */
@@ -43,7 +42,7 @@ void enviar_dados_serial(int *valorAD_POT, float *sinal_ref,
 }
 
 void ler_dados_serial(float *ampl, float *freq_ref,
-                      float *offset, int *selecionar_onda)
+                      float *offset, int *selecionar_onda, bool *conf_sistema)
 {
     /* Leitura dos dados da porta serial. */
     float rlen = Serial.parseFloat();
@@ -74,5 +73,13 @@ void ler_dados_serial(float *ampl, float *freq_ref,
     else if (rlen == 9000.0) // referencia_onda_quadrada
     {
         *selecionar_onda = 0;
+    }
+    else if (rlen == 10000.0) // referencia_onda_quadrada
+    {
+        *conf_sistema = true;
+    }
+    else if (rlen == 11000.0) // referencia_onda_quadrada
+    {
+        *conf_sistema = false;
     }
 }

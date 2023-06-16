@@ -73,9 +73,14 @@ class InterfaceAeropendulo:
                 if i == 2:
                     self.ax[i].set_xlim(0, self.amostras*self.Ts)
                     self.ax[i].set_ylim(-5, 5)
+                if i == 3:
+                    self.ax[i].set_xlim(0, self.amostras*self.Ts)
+                    self.ax[i].set_ylim(-0.1, 3)
+                    
                 else:
                     self.ax[i].set_xlim(0, self.amostras*self.Ts)
                     self.ax[i].set_ylim(-60, 60)
+
             self.ax[i].axhline(0.0, color="black", lw=1.2)
             self.ax[i].axvline(0.01, color="black", lw=1.2)
         return self.ln
@@ -128,6 +133,14 @@ class InterfaceAeropendulo:
                 self.coleta_dados.set_sinal("9000")
         else:
             self.switch_quad.select(1)
+
+    def switch_event_mamb(self) -> None:
+        if self.switch_var_mamf.get() == "on":
+            if not self.executar:
+                self.coleta_dados.set_sinal("10000")
+        else:
+            if not self.executar:
+                self.coleta_dados.set_sinal("11000")
 
     def switch_event_sdados(self) -> None:
         if self.executar:
@@ -237,6 +250,21 @@ class InterfaceAeropendulo:
                                    command=self.run_graph)
         button_run.grid(row=2, column=0, padx=10, pady=4, sticky="w")
 
+        self.switch_var_mamf = ctk.StringVar(value="off")
+        self.switch_mamf = ctk.CTkSwitch(master=self.frame_menu,
+                                         text="MA/MF",
+                                         width=40,
+                                         switch_height=25,
+                                         switch_width=40,
+                                         progress_color=("#2CC985", "orange"),
+                                         command=self.switch_event_mamb,
+                                         font=ctk.CTkFont(size=15,
+                                                          weight="normal"),
+                                         variable=self.switch_var_mamf,
+                                         onvalue="on", offvalue="off")
+
+        self.switch_mamf.grid(row=3, column=0, padx=10, pady=4, sticky="w")
+
         self.switch_var_sdados = ctk.StringVar(value="off")
         self.switch_salve = ctk.CTkSwitch(master=self.frame_menu,
                                           text="Salvar Dados",
@@ -250,13 +278,7 @@ class InterfaceAeropendulo:
                                           variable=self.switch_var_sdados,
                                           onvalue="on", offvalue="off")
 
-        self.switch_salve.grid(row=3, column=0, padx=10, pady=4, sticky="w")
-
-        # button_usb = ctk.CTkButton(master=self.frame_menu, height=30,
-        #                            font=ctk.CTkFont(size=15, weight="bold"),
-        #                            text="Salvar Dados", border_width=1,
-        #                            command=self.set_usb_port)
-        # button_usb.grid(row=3, column=0, padx=10, pady=4, sticky="w")
+        self.switch_salve.grid(row=4, column=0, padx=10, pady=4, sticky="w")
 
         self.usb_menu = ctk.CTkOptionMenu(
                             master=self.frame_menu,
@@ -285,7 +307,7 @@ class InterfaceAeropendulo:
                                text_color=("white", "white"),
                                hover_color=("#C11C1C", "#C11C1C"),
                                command=self.quit)
-        button.grid(row=14, column=0,
+        button.grid(row=7, column=0,
                     padx=10, pady=10, sticky="w")
 
         # ================================================================
