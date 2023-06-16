@@ -18,42 +18,42 @@
 #include "conversor.h"
 
 const int pinAD_POT = 2; // Valor do potenciômetro.
-int valorAD_POT = 0;     // Valor de tensão (potenciômetro) lido pela conversor ADC.
+int valorAD_POT     = 0; // Valor de tensão (potenciômetro) lido pela conversor ADC.
 
 // Define a direção de rotação do motor.
 const int pinSentido1 = 32;
 const int pinSentido2 = 33;
 
 // Configurações do Sinal PWM
-const int pinPWM = 25;    // pino para sinal PWM.
-const int freq_pwm = 500; // Frequência do sinal PWM.
-const int canal_pwm = 0;  // Canal para o sinal PWM (0-15).
-const int resolucao = 8;  // Resolução do sinal PWM.
-int ciclo_trabalho = 0;   // Ciclo de trabalho.
+const int pinPWM    = 25;    // pino para sinal PWM.
+const int freq_pwm  = 500;   // Frequência do sinal PWM.
+const int canal_pwm = 0;     // Canal para o sinal PWM (0-15).
+const int resolucao = 8;     // Resolução do sinal PWM.
+int ciclo_trabalho  = 0;     // Ciclo de trabalho.
 
-float sinal_ref = 0.0,      // Setpoint.
-    sinal_entrada_ma = 0.0, // Sinal de entrada em malha aberta
-    erro = 0.0,             // Sinal de Erro do sistema em Malha Fechada.
-    theta_saida = 0.0,      // Ângulo theta.
-    sinal_controle = 0.0;
+float sinal_ref      = 0.0,  // Setpoint.
+    sinal_entrada_ma = 0.0,  // Sinal de entrada em malha aberta
+    erro             = 0.0,  // Sinal de Erro do sistema em Malha Fechada.
+    theta_saida      = 0.0,  // Ângulo theta.
+    sinal_controle   = 0.0;
 
 /* Parâmetros do sinal de referência */
-float ampl = 0.2,
-      freq_ref = 0.2,
-      offset = 30.0;
+float ampl          = 0.2,
+      freq_ref      = 0.2,
+      offset        = 30.0;
 int selecionar_onda = 0;
 
 /* Tempo de amostragem e Período. */
-float t = 0.0,
+float t  = 0.0,
       Ts = 0.02; // ms
 
-// definir sistema em malha fechada ou malha aberta
+/* definir sistema em malha fechada ou malha aberta */
 bool conf_sistema = false;
 
 /* Iniciando uma instáncia do gerador de sinais e do controlador PID. */
-SinaisRefs gerar_ref;
-PID mypid(0.02, 0.025, 0.4);
-Conversor conv(0.0, 4095., 0.0, 270.0, 528.0);
+SinaisRefs gerar_ref;         // Gerador de sinais
+Conversor conv;               // Converte escalas
+PID mypid(0.02, 0.025, 0.4);  // Controlador PID
 
 void setup()
 {
@@ -83,7 +83,7 @@ void loop()
   valorAD_POT = analogRead(pinAD_POT);
 
   /* Sinal de saída - Sinal de tensão no potenciômetro convertido para ângulo Graus. */
-  theta_saida = conv.converte_escala(valorAD_POT);
+  theta_saida = conv.converte_escala(valorAD_POT, 0.0, 4095., 0.0, 270.0, 528.0);
 
   if (conf_sistema)
   {
@@ -114,6 +114,7 @@ void loop()
     ciclo_trabalho = conv.converte_tensao_ciclo(sinal_entrada_ma);
   }
 
+  // Escrevendo sinal PWM na GPIO
   ledcWrite(canal_pwm, ciclo_trabalho);
 
   enviar_dados_serial(&sinal_ref, &theta_saida, &erro, &sinal_controle, &sinal_entrada_ma, &t);
