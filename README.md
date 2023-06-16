@@ -12,7 +12,28 @@
 
 ### Estrutura do Projeto
 
-<img src="utils/estrutura_projeto.png" width="30%" title="" alt="" data-align="center">
+```
+.
+├── design_interface
+│   ├── demo_interface_dark.png
+│   ├── demo_interface_light.png
+│   ├── Design_interface.pdf
+│   ├── Design_interface.xopp
+│   └── interface.png
+├── interface
+│   ├── coleta_dados.py
+│   ├── graficos_sinais.py
+│   ├── __init__.py
+│   ├── interface_grafica.py
+│   ├── lista_portas_usb.py
+│   ├── __pycache__
+│   ├── test_serial.py
+│   └── utils
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+└── rungui.py
+```
 
 <img src="utils/demo_interface_dark.png" title="" alt="" data-align="center">
 
