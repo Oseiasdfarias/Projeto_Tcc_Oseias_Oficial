@@ -13,13 +13,26 @@
 #  ----------------------------------------------------
 #
 
-import matplotlib
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import scienceplots  # noqa: F401
+from mplfonts import use_font
 
-plt.style.use('science')
+plt.style.use(['science', 'no-latex'])
+
+use_font('Fira Code')
+
+plt.rcParams.update({
+    "font.size": 12,
+    'text.color': "black",
+    'axes.labelcolor': "black",
+    'text.color': "black",
+    'axes.labelcolor': "black",
+    'axes.titlecolor': "#000000",
+    'axes.titleweight': "bold"})          # specify font size here
+
 # matplotlib.style.use("Solarize_Light2")
-matplotlib.use('TkAgg')
+mpl.use('TkAgg')
 
 
 class GraficosSinais(object):
@@ -32,7 +45,7 @@ class GraficosSinais(object):
         self.config_axes()
 
         # fig.suptitle('Gráficos Sensor MPU6050', fontsize=19)
-        self.fig.subplots_adjust(wspace=0.25, hspace=0.3, left=0.08,
+        self.fig.subplots_adjust(wspace=0.3, hspace=0.4, left=0.08,
                                  top=0.93, right=0.971, bottom=0.08)
 
     def get_fig_axes_ln(self):

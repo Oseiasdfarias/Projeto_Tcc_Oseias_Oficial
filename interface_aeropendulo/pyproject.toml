@@ -14,6 +14,7 @@ customtkinter = "^5.1.2"
 pyudev = "^0.24.1"
 pandas = "^2.0.1"
 scienceplots = "^2.1.0"
+mplfonts = "^0.0.8"
 
 
 [build-system]

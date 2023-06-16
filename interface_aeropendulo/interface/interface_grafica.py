@@ -21,7 +21,7 @@ import os
 import customtkinter as ctk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-# Modulos criados
+# Módulos criados
 from interface import (ColetaDados, GraficosSinais)
 from interface.lista_portas_usb import ListaPortasUsb
 
