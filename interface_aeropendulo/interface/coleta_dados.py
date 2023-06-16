@@ -53,7 +53,7 @@ class ColetaDados:
         return self.fila
 
     def set_amplitude(self, amplitude: str) -> None:
-        data = ((float(amplitude)*1000.)/30.) + 1000.
+        data = ((float(amplitude) * 1000.) / 30.) + 1000.
         data_conv = f"{int(data)}"
         print(f"Ampl.: {data_conv}")
         self.disp.reset_input_buffer()
@@ -67,7 +67,7 @@ class ColetaDados:
 
     def set_frequencia(self, frequencia: str) -> None:
         print(f"Dado entrada freq: {float(frequencia)}")
-        data = ((float(frequencia)*1000.)/5.) + 2000.
+        data = ((float(frequencia) * 1000.) / 5.) + 2000.
         data_conv = f"{int(data)}"
         print(f"Freq.: {data_conv}")
         self.disp.reset_input_buffer()
@@ -80,7 +80,7 @@ class ColetaDados:
             self.set_frequencia(frequencia)
 
     def set_offset(self, offset: str) -> None:
-        data = ((float(offset)*1000.)/120.) + 3000.
+        data = ((float(offset) * 1000.) / 120.) + 3000.
         data_conv = f"{int(data)}"
         print(f"Offset: {data_conv}")
         self.disp.reset_input_buffer()

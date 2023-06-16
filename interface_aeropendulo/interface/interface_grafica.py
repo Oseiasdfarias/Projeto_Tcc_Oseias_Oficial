@@ -15,7 +15,6 @@
 
 import numpy as np
 from matplotlib.animation import FuncAnimation
-from threading import Thread
 from time import sleep
 import os
 
@@ -53,7 +52,7 @@ class InterfaceAeropendulo:
         self.root.destroy()
         if os.name == "nt":
             _ = os.system("cls")
-        # for mac and linux(here, os.name is 'posix')
+        # para mac e linux(aqui, os.name é 'posix')
         else:
             _ = os.system("clear")
 
@@ -66,20 +65,21 @@ class InterfaceAeropendulo:
 
     def init(self) -> None:
         for i in range(4):
-            if i < 1:
+            if i == 0:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
                 self.ax[i].set_ylim(-60, 180)
-            if i >= 1:
-                if i == 2:
-                    self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                    self.ax[i].set_ylim(-5, 5)
-                if i == 3:
-                    self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                    self.ax[i].set_ylim(-0.1, 3)
-                    
-                else:
-                    self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                    self.ax[i].set_ylim(-60, 60)
+            elif i == 1:
+                self.ax[i].set_xlim(0, self.amostras*self.Ts)
+                self.ax[i].set_ylim(-60, 60)
+            elif i == 2:
+                self.ax[i].set_xlim(0, self.amostras*self.Ts)
+                self.ax[i].set_ylim(-4, 4)
+            elif i == 3:
+                self.ax[i].set_xlim(0, self.amostras*self.Ts)
+                self.ax[i].set_ylim(-0.1, 3)
+            else:
+                self.ax[i].set_xlim(0, self.amostras*self.Ts)
+                self.ax[i].set_ylim(-60, 60)
 
             self.ax[i].axhline(0.0, color="black", lw=1.2)
             self.ax[i].axvline(0.01, color="black", lw=1.2)
@@ -104,7 +104,6 @@ class InterfaceAeropendulo:
                                          cache_frame_data=False,
                                          interval=20, blit=True)
                 sleep(1)
-                # self.__init_thread_att_label()
                 self.executar = False
 
     def switch_event_den_serra(self) -> None:
@@ -135,12 +134,16 @@ class InterfaceAeropendulo:
             self.switch_quad.select(1)
 
     def switch_event_mamb(self) -> None:
-        if self.switch_var_mamf.get() == "on":
-            if not self.executar:
-                self.coleta_dados.set_sinal("10000")
+        if not self.executar:
+            if self.switch_var_mamf.get() == "on":
+                if not self.executar:
+                    self.coleta_dados.set_sinal("10000")
+            else:
+                if not self.executar:
+                    self.coleta_dados.set_sinal("11000")
         else:
-            if not self.executar:
-                self.coleta_dados.set_sinal("11000")
+            self.switch_mamf.deselect(0)
+            return
 
     def switch_event_sdados(self) -> None:
         if self.executar:
@@ -470,7 +473,7 @@ class InterfaceAeropendulo:
         self.emtry_offset1.grid(row=3, column=1,
                                 padx=(0, 5), pady=4, sticky="s")
 
-        self.switch_var_den_serra = ctk.StringVar(value="on")
+        self.switch_var_den_serra = ctk.StringVar(value="off")
         self.switch_den_serra = ctk.CTkSwitch(
             master=self.frame_controle,
             text="Dente Serra",
@@ -485,7 +488,7 @@ class InterfaceAeropendulo:
             onvalue="on", offvalue="off")
         self.switch_den_serra.grid(row=4, column=0, padx=5, pady=4, sticky="w")
 
-        self.switch_var_quad = ctk.StringVar(value="off")
+        self.switch_var_quad = ctk.StringVar(value="on")
         self.switch_quad = ctk.CTkSwitch(
             master=self.frame_controle,
             text="Quadrada",
@@ -520,25 +523,6 @@ class InterfaceAeropendulo:
         # for windows
         if os.name == "nt":
             _ = os.system("cls")
-        # for mac and linux(here, os.name is 'posix')
+        # para mac e linux(aqui, os.name é 'posix')
         else:
             _ = os.system("clear")
-
-    def atualiza_labels(self):
-        self.lista_label = [self.ampl_label1, self.freq_label1,
-                            self.offset_label1, self.label_erro1]
-        while True:
-            self.ampl_label1.configure(
-                text=f"{self.coleta_dados.dados_atuais[0][0]:.1f}°")
-            self.freq_label1.configure(
-                text=f"{self.coleta_dados.dados_atuais[1][0]:.1f}º")
-            self.offset_label1.configure(
-                text=f"{self.coleta_dados.dados_atuais[2][0]:.1f}V")
-            self.label_erro1.configure(
-                text=f"{self.coleta_dados.dados_atuais[3][0]:.1f}°")
-            sleep(0.04)
-
-    def __init_thread_att_label(self):
-        self.thread_att_labels = Thread(target=self.atualiza_labels)
-        self.thread_att_labels.daemon = True
-        self.thread_att_labels.start()
