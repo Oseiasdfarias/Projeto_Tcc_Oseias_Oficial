@@ -2,11 +2,17 @@
 
 <img title="" src="utils/favicon_aeropendulo_png.png" alt="" data-align="center" width="111">
 
+
 ### Identificação de Sistemas, Simulador Gráfico e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
 
 <br><br>
 
+
 ## Interface Aeropêndulo
+
+### Estrutura do Projeto
+
+<img src="utils/estrutura_projeto.png" title="" alt="" data-align="center">
 
 <img src="utils/demo_interface_dark.png" title="" alt="" data-align="center">
 
