@@ -17,6 +17,6 @@
 void enviar_dados_serial(float *sinal_ref, float *theta_saida, float *erro,
                          float *sinal_controle, float *ampl, float *t);
 
-void ler_dados_serial(float *ampl, float *freq_ref,
-                      float *offset, int *selecionar_onda, bool *conf_sistema);
+void ler_dados_serial(float *ampl, float *freq_ref, float *offset,
+                      int *selecionar_onda, bool *conf_sistema, bool *executar);
 #endif // LER_ESCREVER_SERIAL_H_INCLUDED

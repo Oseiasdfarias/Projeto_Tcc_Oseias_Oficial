@@ -41,8 +41,8 @@ void enviar_dados_serial(float *sinal_ref, float *theta_saida, float *erro,
     Serial.println(*t, 3);
 }
 
-void ler_dados_serial(float *ampl, float *freq_ref,
-                      float *offset, int *selecionar_onda, bool *conf_sistema)
+void ler_dados_serial(float *ampl, float *freq_ref, float *offset,
+                      int *selecionar_onda, bool *conf_sistema, bool *executar)
 {
     /* Leitura dos dados da porta serial. */
     float rlen = Serial.parseFloat();
@@ -81,5 +81,9 @@ void ler_dados_serial(float *ampl, float *freq_ref,
     else if (rlen == 11000.0) // referencia_onda_quadrada
     {
         *conf_sistema = false;
+    }
+    else if (rlen == 12000.0) // referencia_onda_quadrada
+    {
+        *executar = true;
     }
 }

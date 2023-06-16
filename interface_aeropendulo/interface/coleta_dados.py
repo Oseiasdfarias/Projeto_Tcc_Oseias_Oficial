@@ -144,6 +144,7 @@ class ColetaDados:
                 self.disp.reset_input_buffer()
                 self.disp.flush()
                 print(f"Reconectado!!! >> ID: {self.porta}\n")
+                self.set_sinal("12000")
             sleep(1)
         except serial.SerialException:
             pass

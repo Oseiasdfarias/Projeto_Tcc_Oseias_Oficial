@@ -99,11 +99,13 @@ class InterfaceAeropendulo:
                 self.coleta_dados = ColetaDados(
                     self.amostras, porta=self.usb_port,
                     baud_rate=self.baud_rate)
+                sleep(0.5)
+                self.coleta_dados.set_sinal("12000")
                 self.ani = FuncAnimation(self.fig, self.update,
                                          init_func=self.init,
                                          cache_frame_data=False,
                                          interval=20, blit=True)
-                sleep(1)
+                sleep(0.5)
                 self.executar = False
 
     def switch_event_den_serra(self) -> None:
