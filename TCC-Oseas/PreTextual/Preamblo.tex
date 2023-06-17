@@ -56,6 +56,26 @@
            {abntex2cite}
 
 
+% $$$$$$$$$$$$$$$$$ Modificado Oséias  $$$$$$$$$$$$$$$$$
+\usepackage[brazilian,hyperpageref]{backref}
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+% $$$$$$$$$$$$$$$$$
+
+
 \input{PreTextual/Formatacao.tex}
 \setlength{\parindent}{1.3cm} % Identação do primeiro parágrafo;
 \setlength{\parskip}{0.2cm} % Distancia entre parágrafos.
