@@ -17,19 +17,19 @@
 #include "controlador_pid.h"
 #include "conversor.h"
 
-const int pinAD_POT = 2; // Valor do potenciômetro.
-int valorAD_POT = 0;     // Valor de tensão (potenciômetro) lido pela conversor ADC.
+const int pinAD_POT = 2;    // Valor do potenciômetro.
+int valorAD_POT = 0;        // Valor de tensão (potenciômetro) lido pela conversor ADC.
 
-// Define a direção de rotação do motor.
+/* Define a direção de rotação do motor. */
 const int pinSentido1 = 32;
 const int pinSentido2 = 33;
 
-// Configurações do Sinal PWM
-const int pinPWM = 25;    // pino para sinal PWM.
-const int freq_pwm = 500; // Frequência do sinal PWM.
-const int canal_pwm = 0;  // Canal para o sinal PWM (0-15).
-const int resolucao = 8;  // Resolução do sinal PWM.
-int ciclo_trabalho = 0;   // Ciclo de trabalho.
+/*  Configurações do Sinal PWM */
+const int pinPWM = 25;      // pino para sinal PWM.
+const int freq_pwm = 500;   // Frequência do sinal PWM.
+const int canal_pwm = 0;    // Canal para o sinal PWM (0-15).
+const int resolucao = 8;    // Resolução do sinal PWM.
+int ciclo_trabalho = 0;     // Ciclo de trabalho.
 
 float sinal_ref = 0.0,      // Setpoint.
     sinal_entrada_ma = 0.0, // Sinal de entrada em malha aberta
@@ -52,9 +52,9 @@ bool conf_sistema = false;
 bool executar = false;
 
 /* Iniciando uma instáncia do gerador de sinais e do controlador PID. */
-SinaisRefs gerar_ref;        // Gerador de sinais
-Conversor conv;              // Converte escalas
-PID mypid(0.02, 0.025, 0.4); // Controlador PID
+SinaisRefs gerar_ref;         // Gerador de sinais
+Conversor conv;               // Converte escalas
+PID mypid(0.02, 0.025, 0.4);  // Controlador PID
 
 void setup()
 {
