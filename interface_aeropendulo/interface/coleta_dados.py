@@ -145,7 +145,7 @@ class ColetaDados:
                 self.disp.flush()
                 print(f"Reconectado!!! >> ID: {self.porta}\n")
                 self.set_sinal("12000")
-            sleep(1)
+            sleep(2)
         except serial.SerialException:
             pass
             # logger.exception(e)
@@ -185,6 +185,7 @@ class ColetaDados:
                     print(f"Erro: {erro1}")
                     sleep(0.02)
             except serial.SerialException:
+                sleep(1)
                 print("erro de leitura")
                 self.reconectar()
 
