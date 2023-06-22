@@ -17,13 +17,15 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import scienceplots  # noqa: F401
 from mplfonts import use_font
+import numpy as np
+
 
 plt.style.use(['science', 'no-latex'])
 
 use_font('Fira Code')
 
 plt.rcParams.update({
-    "font.size": 12,
+    "font.size": 11,
     'text.color': "black",
     'axes.labelcolor': "black",
     'text.color': "black",
@@ -43,8 +45,8 @@ class GraficosSinais(object):
         self.fig = plt.figure(figsize=(9.85, 6.45))
         self.config_axes()
 
-        self.fig.subplots_adjust(wspace=0.3, hspace=0.4, left=0.08,
-                                 top=0.93, right=0.971, bottom=0.08)
+        self.fig.subplots_adjust(wspace=0.2, hspace=0.45, left=0.08,
+                                 top=0.93, right=0.971, bottom=0.12)
 
     def get_fig_axes_ln(self):
         return self.fig, self.ax, self.ln
@@ -61,6 +63,10 @@ class GraficosSinais(object):
         self.ln1, = self.ax1.plot([], [], lw=1.2, marker=".",
                                   markersize=self.markersize,
                                   label="Saída", color="sienna")
+        plt.yticks(np.arange(-50, 176, 25), rotation=45)
+        plt.xticks(rotation=45)
+        self.ax1.tick_params(axis='both', which='major', labelsize=9)
+        self.ax1.tick_params(axis='both', which='minor', labelsize=7)
         self.ax1.grid(self.grid)
         plt.legend()
 
@@ -71,6 +77,10 @@ class GraficosSinais(object):
         self.ax2.set_ylabel("Amplitude")
         self.ln2, = self.ax2.plot([], [], lw=1.2, marker=".",
                                   markersize=self.markersize, color="green")
+        plt.yticks(np.arange(-60, 61, 15), rotation=45)
+        plt.xticks(rotation=45)
+        self.ax2.tick_params(axis='both', which='major', labelsize=9)
+        self.ax2.tick_params(axis='both', which='minor', labelsize=7)
         self.ax2.grid(self.grid)
 
         self.ax3 = self.fig.add_subplot(223)
@@ -80,6 +90,10 @@ class GraficosSinais(object):
         self.ax3.set_ylabel("Amplitude")
         self.ln3, = self.ax3.plot([], [], lw=1.2, marker=".",
                                   markersize=self.markersize, color="purple")
+        plt.yticks(np.arange(0, 4.5, 0.5), rotation=45)
+        plt.xticks(rotation=45)
+        self.ax3.tick_params(axis='both', which='major', labelsize=9)
+        self.ax3.tick_params(axis='both', which='minor', labelsize=7)
         self.ax3.grid(self.grid)
 
         self.ax4 = self.fig.add_subplot(224)
@@ -90,6 +104,10 @@ class GraficosSinais(object):
         self.ln4, = self.ax4.plot([], [], marker=".",
                                   markersize=self.markersize,
                                   lw=1.2, color="orange")
+        plt.yticks(np.arange(0, 3.5, 0.5), rotation=45)
+        plt.xticks(rotation=45)
+        self.ax4.tick_params(axis='both', which='major', labelsize=9)
+        self.ax4.tick_params(axis='both', which='minor', labelsize=7)
         self.ax4.grid(self.grid)
 
         # Axis que para plotar os gráficos
