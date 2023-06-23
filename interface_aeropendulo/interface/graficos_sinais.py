@@ -42,7 +42,7 @@ class GraficosSinais(object):
                  grid: bool = True) -> None:
         self.grid = grid
         self.markersize = markersize
-        self.fig = plt.figure(figsize=(9.85, 6.45))
+        self.fig = plt.figure(figsize=(9.85, 6.45), facecolor="#FFFFFF")
         self.config_axes()
 
         self.fig.subplots_adjust(wspace=0.2, hspace=0.45, left=0.08,
@@ -54,7 +54,7 @@ class GraficosSinais(object):
     def config_axes(self) -> None:
         self.ax1 = self.fig.add_subplot(221)
         self.ax1.set_title("Referência + Ângulo (Graus)",
-                           color="#3B4252", fontsize=12)
+                           color="#3B4252", fontsize=10)
         self.ax1.set_xlabel("Tempo")
         self.ax1.set_ylabel("Amplitude")
         self.ln_1, = self.ax1.plot([], [], marker=".",
@@ -67,12 +67,15 @@ class GraficosSinais(object):
         plt.xticks(rotation=45)
         self.ax1.tick_params(axis='both', which='major', labelsize=9)
         self.ax1.tick_params(axis='both', which='minor', labelsize=7)
+
+        plt.grid(which='major', color='#CCCCCC', linestyle='-', alpha=1)
+        plt.grid(which='minor', color='#CCCCCC', linestyle=':', alpha=0.5)
         self.ax1.grid(self.grid)
         plt.legend()
 
         self.ax2 = self.fig.add_subplot(222)
         self.ax2.set_title("Sinal de Erro (Graus)",
-                           color="#3B4252", fontsize=12)
+                           color="#3B4252", fontsize=10)
         self.ax2.set_xlabel("Tempo")
         self.ax2.set_ylabel("Amplitude")
         self.ln2, = self.ax2.plot([], [], lw=1.2, marker=".",
@@ -81,11 +84,14 @@ class GraficosSinais(object):
         plt.xticks(rotation=45)
         self.ax2.tick_params(axis='both', which='major', labelsize=9)
         self.ax2.tick_params(axis='both', which='minor', labelsize=7)
+
+        plt.grid(which='major', color='#CCCCCC', linestyle='-', alpha=1)
+        plt.grid(which='minor', color='#CCCCCC', linestyle=':', alpha=0.5)
         self.ax2.grid(self.grid)
 
         self.ax3 = self.fig.add_subplot(223)
         self.ax3.set_title("Sinal de Controle (Volts)",
-                           color="#3B4252", fontsize=12)
+                           color="#3B4252", fontsize=10)
         self.ax3.set_xlabel("Tempo")
         self.ax3.set_ylabel("Amplitude")
         self.ln3, = self.ax3.plot([], [], lw=1.2, marker=".",
@@ -94,11 +100,14 @@ class GraficosSinais(object):
         plt.xticks(rotation=45)
         self.ax3.tick_params(axis='both', which='major', labelsize=9)
         self.ax3.tick_params(axis='both', which='minor', labelsize=7)
+
+        plt.grid(which='major', color='#CCCCCC', linestyle='-', alpha=1)
+        plt.grid(which='minor', color='#CCCCCC', linestyle=':', alpha=0.5)
         self.ax3.grid(self.grid)
 
         self.ax4 = self.fig.add_subplot(224)
         self.ax4.set_title("Sinal Entrada Malha Aberta (Volts RMS)",
-                           color="#3B4252", fontsize=12)
+                           color="#3B4252", fontsize=10)
         self.ax4.set_xlabel("Tempo")
         self.ax4.set_ylabel("Amplitude")
         self.ln4, = self.ax4.plot([], [], marker=".",
@@ -108,6 +117,9 @@ class GraficosSinais(object):
         plt.xticks(rotation=45)
         self.ax4.tick_params(axis='both', which='major', labelsize=9)
         self.ax4.tick_params(axis='both', which='minor', labelsize=7)
+
+        plt.grid(which='major', color='#CCCCCC', linestyle='-', alpha=1)
+        plt.grid(which='minor', color='#CCCCCC', linestyle=':', alpha=0.5)
         self.ax4.grid(self.grid)
 
         # Axis que para plotar os gráficos
