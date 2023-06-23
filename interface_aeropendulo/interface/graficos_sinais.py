@@ -30,7 +30,7 @@ plt.rcParams.update({
     'axes.labelcolor': "black",
     'text.color': "black",
     'axes.labelcolor': "black",
-    'axes.titlecolor': "#000000",
+    'axes.titlecolor': "#2B2B2B",
     'axes.titleweight': "bold"})
 
 mpl.use('TkAgg')
@@ -54,9 +54,9 @@ class GraficosSinais(object):
     def config_axes(self) -> None:
         self.ax1 = self.fig.add_subplot(221)
         self.ax1.set_title("Referência + Ângulo (Graus)",
-                           color="#3B4252", fontsize=10)
-        self.ax1.set_xlabel("Tempo")
-        self.ax1.set_ylabel("Amplitude")
+                           color="#2B2B2B", fontsize=9)
+        self.ax1.set_xlabel("Tempo", color="#2B2B2B", fontsize=9)
+        self.ax1.set_ylabel("Amplitude", color="#2B2B2B", fontsize=9)
         self.ln_1, = self.ax1.plot([], [], marker=".",
                                    markersize=self.markersize,
                                    lw=1.2, label="Ref.", color="red")
@@ -75,9 +75,9 @@ class GraficosSinais(object):
 
         self.ax2 = self.fig.add_subplot(222)
         self.ax2.set_title("Sinal de Erro (Graus)",
-                           color="#3B4252", fontsize=10)
-        self.ax2.set_xlabel("Tempo")
-        self.ax2.set_ylabel("Amplitude")
+                           color="#2B2B2B", fontsize=9)
+        self.ax2.set_xlabel("Tempo", color="#2B2B2B", fontsize=9)
+        self.ax2.set_ylabel("Amplitude", color="#2B2B2B", fontsize=9)
         self.ln2, = self.ax2.plot([], [], lw=1.2, marker=".",
                                   markersize=self.markersize, color="green")
         plt.yticks(np.arange(-60, 61, 15), rotation=45)
@@ -91,9 +91,9 @@ class GraficosSinais(object):
 
         self.ax3 = self.fig.add_subplot(223)
         self.ax3.set_title("Sinal de Controle (Volts)",
-                           color="#3B4252", fontsize=10)
-        self.ax3.set_xlabel("Tempo")
-        self.ax3.set_ylabel("Amplitude")
+                           color="#2B2B2B", fontsize=9)
+        self.ax3.set_xlabel("Tempo", color="#2B2B2B", fontsize=9)
+        self.ax3.set_ylabel("Amplitude", color="#2B2B2B", fontsize=9)
         self.ln3, = self.ax3.plot([], [], lw=1.2, marker=".",
                                   markersize=self.markersize, color="purple")
         plt.yticks(np.arange(0, 4.5, 0.5), rotation=45)
@@ -107,9 +107,9 @@ class GraficosSinais(object):
 
         self.ax4 = self.fig.add_subplot(224)
         self.ax4.set_title("Sinal Entrada Malha Aberta (Volts RMS)",
-                           color="#3B4252", fontsize=10)
-        self.ax4.set_xlabel("Tempo")
-        self.ax4.set_ylabel("Amplitude")
+                           color="#2B2B2B", fontsize=9)
+        self.ax4.set_xlabel("Tempo", color="#2B2B2B", fontsize=9)
+        self.ax4.set_ylabel("Amplitude", color="#2B2B2B", fontsize=9)
         self.ln4, = self.ax4.plot([], [], marker=".",
                                   markersize=self.markersize,
                                   lw=1.2, color="orange")
