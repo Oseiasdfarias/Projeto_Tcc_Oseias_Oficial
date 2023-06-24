@@ -101,9 +101,9 @@ private:
 /* Gráfico de uma Onda Quadrada */
 float OndaPrbs::onda_prbs()
 {
-    float vTs[6] = {this->Tsf_init, this->Tsf_init / 1.5,
-                    this->Tsf_init / 2.0, this->Tsf_init / 2.2,
-                    this->Tsf_init / 2.5, this->Tsf_init / 3.0};
+    float vTs[4] = {this->Tsf_init, this->Tsf_init / 1.5,
+                    this->Tsf_init / 2.0, this->Tsf_init / 2.5};//,
+                    // this->Tsf_init / 2.5, this->Tsf_init / 3.0};
 
     if (this->TEMP <= (this->Tsf / 2.0))
         this->sinal = this->ampl + this->offset;
@@ -123,7 +123,7 @@ float OndaPrbs::onda_prbs()
 
 float OndaPrbs::sortear(float vTs[])
 {
-    int flag = random(7);
+    int flag = random(5);
     float valor = vTs[flag];
     return valor;
 }

@@ -56,9 +56,9 @@ bool executar = false;
 /* Iniciando uma instáncia do
    gerador de sinais e do controlador PID. */
 SinaisRefs gerar_ref; // Gerador de sinais
-OndaPrbs sinal_prbs(0.4, 0.5, 1.0, Ts);
-Conversor conv;              // Converte escalas
-PID mypid(0.02, 0.025, 0.4); // Controlador PID
+OndaPrbs sinal_prbs(0.5, 0.5, 1.0, Ts);
+Conversor conv;               // Converte escalas
+PID mypid(0.02, 0.025, 0.4);  // Controlador PID
 
 void setup()
 {
