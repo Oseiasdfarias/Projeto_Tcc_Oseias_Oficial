@@ -4,7 +4,8 @@
 
 Inteface para plotagem dos gráficos dos estados do sistema.
 
-<div>
+
+
 <center>
 <div class="figure" >
   <img src="design_interface/demo_interface_dark.png"
@@ -21,4 +22,3 @@ Inteface para plotagem dos gráficos dos estados do sistema.
 </div>
 </center>
 </div>
-
