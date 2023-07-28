@@ -1,12 +1,10 @@
 # Trabalho de Conclusão de Curso [ Oséias Farias ]
 
-<img title="" src="utils/favicon_aeropendulo_png.png" alt="" data-align="center" width="111">
-
+<img title="" src="utils/diagrama_aeropendulo.png" alt="" data-align="center" width="304">
 
 ### Identificação de Sistemas, Simulador Gráfico e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
 
 <br><br>
-
 
 ## Interface Aeropêndulo
 
@@ -38,8 +36,6 @@
 <img src="utils/demo_interface_dark.png" title="" alt="" data-align="center">
 
 <img src="utils/demo_interface_light.png" title="" alt="" data-align="center">
-
-
 
 ## Protótipo Aeropêndulo
 
