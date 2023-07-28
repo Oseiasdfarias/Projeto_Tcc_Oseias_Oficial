@@ -1,6 +1,6 @@
 # Trabalho de Conclusão de Curso [ Oséias Farias ]
 
-<img title="" src="utils/diagrama_aeropendulo.png" alt="" data-align="center" width="304">
+<img title="" src="utils/favicon_aeropendulo_png.png" alt="" data-align="center" width="111">
 
 ### Identificação de Sistemas, Simulador Gráfico e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
 

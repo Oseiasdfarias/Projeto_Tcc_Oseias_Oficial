@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-07-28T22:31:06.619Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="FWFUWww-NlqdfPq32f6j" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2023-07-28T22:31:23.443Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="s3BQtnpVcXdlDblT2-di" version="21.6.5" type="device">
   <diagram id="BB-P8LQBv9p690ByxCHv" name="Página-1">
     <mxGraphModel dx="880" dy="258" grid="1" gridSize="1" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="413" pageHeight="291" background="none" math="1" shadow="1">
       <root>
@@ -69,7 +69,7 @@
         <mxCell id="15" value="Ângulo do braço do Aeropêndulo, sinal de saída do modelo." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontStyle=0;fontSize=15;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="540" y="639" width="181" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="xDvWY9CC_lDF_F3b0lNS-16" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="xDvWY9CC_lDF_F3b0lNS-16" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;opacity=70;" vertex="1" parent="1">
           <mxGeometry x="110" y="433" width="622" height="279" as="geometry" />
         </mxCell>
       </root>
