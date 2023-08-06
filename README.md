@@ -6,6 +6,12 @@
 
 <br><br>
 
+<center>
+  <img src="utils/img_aeropendulo.png"> 
+<center/>
+
+<br><br>
+
 ## Interface Aeropêndulo
 
 ### Estrutura do Projeto da Interface Gráfica
@@ -40,13 +46,6 @@
 ## Protótipo Aeropêndulo
 
 <br>
-
-<center>
-  <img src="utils/img_aeropendulo.png"> 
-<center/>
-
-<br><br>
-
 ## Simulador Aeropêndulo
 
 <br>
