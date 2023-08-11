@@ -1,0 +1,24 @@
+Projeto de Desenvolvimento (PD) - 50%
+
+Etapa 3 - Agente Reativo (versão 2)
+
+o
+
+o
+
+Esta versão engloba a versão 1 e, mais, aos moldes do “Modelo Linear de Estruturas de Agentes”;
+
+Estrutura de memória, que pode ser: uma lista; uma matriz - réplica do ambiente, com anotações
+feitas pelo agente; ou, outra estrutura de dados definida como mais adequada pela equipe;
+
+Mecanismo mais inteligente para escolha da regra a ser aplicada, em caso de duas ou mais
+possíveis de serem utilizadas em determinado instante. Na primeira versão foi utilizada a Estratégia
+Aleatória. Logo, há liberdade para definir a melhor estratégia para essa finalidade;
+
+Além disso, uso do conhecimento registrado na memória para auxiliar o processo de escolha da
+regra a ser aplicada (Inferência? Planejamento?);
+
+E o que mais a equipe deseje projetar: “- Usem as vossas criatividades”
+
+Ao final, após o projeto deste Agente, pede-se que este seja classificado de acordo com as
+estruturas de agentes e justificada a classificação.

@@ -1,0 +1,21 @@
+Projeto de Desenvolvimento (PD) - 50%
+
+Etapa 2 - Agente Reativo (versão 1)
+
+o
+
+O comportamento do Agente é definido a partir de seu conjunto de regras:
+Se <percepções> então <ação>;
+
+Este conjunto de regras (ou Base de Conhecimento) deve ser especificado por meio de uma
+tabela, aos moldes da que foi especificada, inicialmente, na “Aula 04';
+
+A partir da especificação, o próximo passo é codificar o Agente e integrar ao “Gerador
+Aleatório de Ambientes, de forma a possibilitar a realização de testes de validação para
+posterior avaliação de performance;
+
+Obs.: Serão projetadas várias versões deste Agente. Nesta primeira versão, ele utiliza
+apenas o conjunto de regras como base de conhecimento. Ou seja, não tem memória e
+nenhum outro mecanismo mais sofisticado para escolher qual das possíveis regras utilizar.
+Para isto, deve ser uma escolha aleatória. Além disso, ele tem apenas uma única flecha.
+
