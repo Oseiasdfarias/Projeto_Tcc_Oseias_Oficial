@@ -103,7 +103,8 @@ void loop()
     /* Sinal de saída - Sinal de tensão no
        potenciômetro convertido para ângulo Graus. */
     theta_saida = conv.converte_escala(
-        valorAD_POT, 0.0, 4095., 0.0, 270.0, 528.0);
+        valorAD_POT, 0.0, 4095., 0.0, 270.0, 528.0
+      );
 
     if (conf_sistema)
     {
