@@ -15,9 +15,10 @@
 #
 import vpython as vp
 from typing import Tuple
+from interfaces.graficos_aeropendulo import GraficosInterface
 
 
-class Graficos:
+class Graficos(GraficosInterface):
     """
     Gráfico para plotagem dos dados dos estados do Aeropéndulo.
     """

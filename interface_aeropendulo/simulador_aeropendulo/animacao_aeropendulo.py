@@ -14,9 +14,10 @@
 #  ----------------------------------------------------
 #
 import vpython as vp
+from interfaces.animacao_aeropendulo import AnimacaoAeropenduloInterface
 
 
-class AnimacaoAeropendulo:
+class AnimacaoAeropendulo(AnimacaoAeropenduloInterface):
     """
     Classe que implementa a aminação do Aeropêndulo.
 
