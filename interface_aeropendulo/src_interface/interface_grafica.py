@@ -22,13 +22,16 @@ import customtkinter as ctk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # Módulos criados
-from interface import (ColetaDados, GraficosSinais)
-from interface.lista_portas_usb import ListaPortasUsb
+from src_interface import ColetaDados
+from src_interface.lista_portas_usb import ListaPortasUsb
+
+from src_interface.interfaces.graficos_sinais import GraficosSinaisInterface
 
 
 class InterfaceAeropendulo:
     """Classe que constroi o FrontEnd do App Aeropendulo."""
-    def __init__(self, baud_rate: int = 115200, amostras: int = 50,
+    def __init__(self, graficos_sinais: GraficosSinaisInterface,
+                 baud_rate: int = 115200, amostras: int = 50,
                  Ts: float = 0.02, tela_fixa: bool = False):
         self.tela_fixa = tela_fixa
 
@@ -41,8 +44,8 @@ class InterfaceAeropendulo:
 
         # Graficos
         self.executar = True
-        graficos_sinais = GraficosSinais()
-        self.fig, self.ax, self.ln = graficos_sinais.get_fig_axes_ln()
+        self.graficos_sinais = graficos_sinais()
+        self.fig, self.ax, self.ln = self.graficos_sinais.get_fig_axes_ln()
 
         # Inicializa a interface gráfica
         self.start_gui()

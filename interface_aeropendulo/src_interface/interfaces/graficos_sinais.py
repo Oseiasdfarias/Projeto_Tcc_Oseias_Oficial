@@ -5,22 +5,20 @@
 # Trabalho de Conclusão de Curso - Aeropêndulo
 # -----------------------------------------------------
 #
-# Título : Classe para criar a Interface Gráfica do Aeropêndulo
+# Título : Classe para criar os gráficos da aplicação
 # Professor Orientador: Raphael Teixeira
 # Autor: Oséias Farias
 #
 # Data: 2023
 #  ----------------------------------------------------
 #
-
-from src_interface import InterfaceAeropendulo
-from src_interface.graficos_sinais import GraficosSinais
+from abc import ABC, abstractmethod
 
 
-def runinterface():
-    InterfaceAeropendulo(GraficosSinais, baud_rate=115200,
-                         amostras=80.0, tela_fixa=True)
+class GraficosSinaisInterface(ABC):
 
+    @abstractmethod
+    def get_fig_axes_ln(self): ...
 
-if __name__ == "__main__":
-    runinterface()
+    @abstractmethod
+    def config_axes(self) -> None: ...

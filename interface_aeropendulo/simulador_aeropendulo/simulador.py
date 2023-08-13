@@ -15,11 +15,8 @@
 #
 
 import vpython as vp
-# import numpy as np
-from simulador_aeropendulo import (
-    Graficos,
-    AnimacaoAeropendulo
-)
+from simulador_aeropendulo import (Graficos, AnimacaoAeropendulo)
+
 from interfaces.graficos_aeropendulo import GraficosInterface
 from interfaces.animacao_aeropendulo import AnimacaoAeropenduloInterface
 
@@ -67,4 +64,4 @@ class Simulador:
 
 if __name__ == "__main__":
     simulador = Simulador(Graficos(), AnimacaoAeropendulo())
-    simulador.atualizar_estados([1, 2, 3])
+    simulador.atualizar_estados(estados=[1, 2, 3])

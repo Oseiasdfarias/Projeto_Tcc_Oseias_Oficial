@@ -19,6 +19,7 @@ import scienceplots  # noqa: F401
 from mplfonts import use_font
 import numpy as np
 
+from src_interface.interfaces.graficos_sinais import GraficosSinaisInterface
 
 plt.style.use(['science', 'no-latex'])
 
@@ -36,7 +37,7 @@ plt.rcParams.update({
 mpl.use('TkAgg')
 
 
-class GraficosSinais(object):
+class GraficosSinais(GraficosSinaisInterface):
 
     def __init__(self, markersize: float = 3.0,
                  grid: bool = True) -> None:

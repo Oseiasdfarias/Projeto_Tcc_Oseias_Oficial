@@ -23,10 +23,12 @@ import os
 import logging
 import numpy.typing as npt
 
+from .interfaces.coleta_dados import ColetaDadosInterface
+
 logger = logging.getLogger(__name__)
 
 
-class ColetaDados:
+class ColetaDados(ColetaDadosInterface):
     """
         Coleta os dados do Aeropêndulo para plotagem.
 
@@ -39,7 +41,7 @@ class ColetaDados:
                  baud_rate: int = 115200) -> None:
         self.amostras = amostras
         self.flag_salvar_dados = False
-        os.chdir("interface")
+        os.chdir("src_interface")
         self.porta = porta
         self.baud_rate = baud_rate
         self.fila: npt.ArrayLike = np.array(
