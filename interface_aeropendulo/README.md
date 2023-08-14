@@ -5,7 +5,6 @@
 Inteface para plotagem dos gráficos dos estados do sistema.
 
 
-
 <center>
 <div class="figure" >
   <img src="design_interface/demo_interface_dark.png"
