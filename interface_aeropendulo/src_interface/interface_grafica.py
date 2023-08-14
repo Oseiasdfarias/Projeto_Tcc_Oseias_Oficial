@@ -14,6 +14,7 @@
 #
 
 import numpy as np
+from typing import Union
 from matplotlib.animation import FuncAnimation
 from time import sleep
 import os
@@ -29,11 +30,13 @@ from src_interface.interfaces.graficos_sinais import GraficosSinaisInterface
 
 from simulador_aeropendulo.interfaces.simulador import SimuladorInterface
 
+SimuladorInterfaceOrNone = Union[SimuladorInterface, None]
+
 
 class InterfaceAeropendulo:
     """Classe que constroi o FrontEnd do App Aeropendulo."""
     def __init__(self, graficos_sinais: GraficosSinaisInterface,
-                 simulador: SimuladorInterface, baud_rate: int = 115200,
+                 simulador: SimuladorInterfaceOrNone, baud_rate: int = 115200,
                  amostras: int = 50, Ts: float = 0.02,
                  tela_fixa: bool = False):
         self.tela_fixa = tela_fixa
@@ -53,6 +56,10 @@ class InterfaceAeropendulo:
 
         # Inicializa a interface gráfica
         self.start_gui()
+
+    def atualizar_simulador(self, estados):
+        if isinstance(self.simulador, SimuladorInterface):
+            self.simulador.atualizar_estados(estados)
 
     def quit(self) -> None:
         self.root.quit()
@@ -94,6 +101,7 @@ class InterfaceAeropendulo:
 
     def update(self, frame):
         dados = self.coleta_dados.get_dados()
+        self.atualizar_simulador(dados[0][-1])
         t = np.arange(0, 0.02*len(dados[0]), 0.02)
         for i, ax in enumerate(self.ln):
             ax.set_xdata(t)
