@@ -17,11 +17,12 @@
 import vpython as vp
 from simulador_aeropendulo import (Graficos, AnimacaoAeropendulo)
 
-from interfaces.graficos_aeropendulo import GraficosInterface
-from interfaces.animacao_aeropendulo import AnimacaoAeropenduloInterface
+from .interfaces.graficos_aeropendulo import GraficosInterface
+from .interfaces.animacao_aeropendulo import AnimacaoAeropenduloInterface
+from .interfaces.simulador import SimuladorInterface
 
 
-class Simulador:
+class Simulador(SimuladorInterface):
 
     def __init__(self, graficos: GraficosInterface,
                  animacao_aeropendulo: AnimacaoAeropenduloInterface) -> None:

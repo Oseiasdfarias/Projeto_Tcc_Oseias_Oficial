@@ -14,7 +14,7 @@
 #  ----------------------------------------------------
 #
 import vpython as vp
-from interfaces.animacao_aeropendulo import AnimacaoAeropenduloInterface
+from .interfaces.animacao_aeropendulo import AnimacaoAeropenduloInterface
 
 
 class AnimacaoAeropendulo(AnimacaoAeropenduloInterface):

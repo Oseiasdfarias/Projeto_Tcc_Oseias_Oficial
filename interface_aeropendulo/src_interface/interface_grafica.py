@@ -27,12 +27,15 @@ from src_interface.lista_portas_usb import ListaPortasUsb
 
 from src_interface.interfaces.graficos_sinais import GraficosSinaisInterface
 
+from simulador_aeropendulo.interfaces.simulador import SimuladorInterface
+
 
 class InterfaceAeropendulo:
     """Classe que constroi o FrontEnd do App Aeropendulo."""
     def __init__(self, graficos_sinais: GraficosSinaisInterface,
-                 baud_rate: int = 115200, amostras: int = 50,
-                 Ts: float = 0.02, tela_fixa: bool = False):
+                 simulador: SimuladorInterface, baud_rate: int = 115200,
+                 amostras: int = 50, Ts: float = 0.02,
+                 tela_fixa: bool = False):
         self.tela_fixa = tela_fixa
 
         # Objeto para coletar dados do sensor
@@ -42,6 +45,7 @@ class InterfaceAeropendulo:
         self.amostras = amostras
         self.Ts = Ts
 
+        self.simulador = simulador
         # Graficos
         self.executar = True
         self.graficos_sinais = graficos_sinais()

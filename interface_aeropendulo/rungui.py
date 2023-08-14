@@ -16,9 +16,14 @@
 from src_interface import InterfaceAeropendulo
 from src_interface.graficos_sinais import GraficosSinais
 
+from simulador_aeropendulo.simulador import Simulador
+from simulador_aeropendulo.graficos_aeropendulo import Graficos
+from simulador_aeropendulo import AnimacaoAeropendulo
+
 
 def runinterface():
-    InterfaceAeropendulo(GraficosSinais, baud_rate=115200,
+    simulador = Simulador(Graficos(), AnimacaoAeropendulo())
+    InterfaceAeropendulo(GraficosSinais, simulador, baud_rate=115200,
                          amostras=80.0, tela_fixa=True)
 
 

@@ -15,7 +15,7 @@
 #
 import vpython as vp
 from typing import Tuple
-from interfaces.graficos_aeropendulo import GraficosInterface
+from .interfaces.graficos_aeropendulo import GraficosInterface
 
 
 class Graficos(GraficosInterface):
