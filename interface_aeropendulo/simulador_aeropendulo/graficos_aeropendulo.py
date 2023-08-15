@@ -42,19 +42,19 @@ class Graficos(GraficosInterface):
                                 background=vp.vector(0.95, 0.95, 0.95))
 
         self.curva1 = vp.gcurve(color=vp.color.blue, width=3,
-                                markers=False, label="Posição Angular (rad)",
+                                markers=False, label="Posição Angular (Graus)",
                                 dot=True, dot_color=vp.color.blue)
 
         self.curva2 = vp.gcurve(color=vp.color.black, width=3, markers=False,
-                                label="Referência Angular(rad)", dot=True,
+                                label="Referência Angular(Graus)", dot=True,
                                 dot_color=vp.color.black)
 
-        self.curva3 = vp.gcurve(color=vp.color.red, width=3, markers=False,
-                                label="Velocidade Angular (rad/s)", dot=True,
-                                dot_color=vp.color.red)
+        # self.curva3 = vp.gcurve(color=vp.color.red, width=3, markers=False,
+        #                         label="Velocidade Angular (rad/s)", dot=True,
+        #                         dot_color=vp.color.red)
 
-        self.curva4 = vp.gcurve(color=vp.color.orange, width=3, markers=False,
-                                label="Sinal de Controle (V)", dot=True,
-                                dot_color=vp.color.orange)
+        # self.curva4 = vp.gcurve(color=vp.color.orange, width=3,markers=False,
+        #                         label="Sinal de Controle (V)", dot=True,
+        #                         dot_color=vp.color.orange)
 
-        return self.grafico, self.curva1, self.curva2, self.curva3, self.curva4
+        return self.grafico, self.curva1, self.curva2

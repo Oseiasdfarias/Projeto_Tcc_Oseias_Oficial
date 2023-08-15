@@ -103,7 +103,7 @@ class InterfaceAeropendulo:
 
     def update(self, frame):
         dados = self.coleta_dados.get_dados()
-        self.atualizar_simulador(dados[-1][-1], dados[1][-1], dados[3][-1])
+        self.atualizar_simulador(dados[-1][-1], dados[1][-1], dados[0][-1])
         t = np.arange(0, 0.02*len(dados[0]), 0.02)
         for i, ax in enumerate(self.ln):
             ax.set_xdata(t)

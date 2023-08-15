@@ -38,7 +38,7 @@ class Simulador(SimuladorInterface):
         # Instanciando um objeto para plotagem dos gráficos dinâmicos dos
         # estados do Aeropêndulo
         self.g = graficos
-        self.graf, self.plot1, self.plot2, self.plot3, self.plot4 = self.g.graficos()  # noqa
+        self.graf, self.plot1, self.plot2 = self.g.graficos()  # noqa
 
     def grau2rad(self, graus):
         return (graus)*(vp.pi/180.0)
