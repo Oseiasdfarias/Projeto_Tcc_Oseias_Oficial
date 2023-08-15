@@ -73,10 +73,7 @@ class Simulador(SimuladorInterface):
         self.plot1.plot(t, theta)
         # Gráfico do sinal de referência
         self.plot2.plot(t, ref)
-        # Gráfico da velocidade ângular.
-        # self.plot3.plot(t, x[0])
-        # Gráfico do sinal de controle
-        # self.plot4.plot(t, u)
+
         self.t_ant = t
         self.theta_rad_ant = self.theta_rad
 
