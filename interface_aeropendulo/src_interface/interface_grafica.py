@@ -49,6 +49,7 @@ class InterfaceAeropendulo:
         self.Ts = Ts
 
         self.simulador = simulador
+        # self.simulador.rotate(30)
         # Graficos
         self.executar = True
         self.graficos_sinais = graficos_sinais()
@@ -57,9 +58,9 @@ class InterfaceAeropendulo:
         # Inicializa a interface gráfica
         self.start_gui()
 
-    def atualizar_simulador(self, estados):
+    def atualizar_simulador(self, t, theta, ref):
         if isinstance(self.simulador, SimuladorInterface):
-            self.simulador.atualizar_estados(estados)
+            self.simulador.atualizar_estados(t, theta, ref)
 
     def quit(self) -> None:
         self.root.quit()
@@ -101,7 +102,7 @@ class InterfaceAeropendulo:
 
     def update(self, frame):
         dados = self.coleta_dados.get_dados()
-        self.atualizar_simulador(dados[0][-1])
+        self.atualizar_simulador(dados[-1][-1], dados[1][-1], dados[3][-1])
         t = np.arange(0, 0.02*len(dados[0]), 0.02)
         for i, ax in enumerate(self.ln):
             ax.set_xdata(t)

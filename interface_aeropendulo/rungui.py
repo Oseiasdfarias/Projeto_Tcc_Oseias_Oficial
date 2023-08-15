@@ -35,7 +35,6 @@ class RunInterface:
                                         python rungui.py -simular sim""")
         args = parser.parse_args()
         if args.Output == "sim":
-            print("Diplaying Output as: % s" % args.Output)
             return True
         else:
             return False

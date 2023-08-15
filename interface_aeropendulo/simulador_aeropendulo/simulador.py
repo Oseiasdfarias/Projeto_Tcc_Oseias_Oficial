@@ -29,7 +29,9 @@ class Simulador(SimuladorInterface):
         self.t = 0
         self.t_ant = 0
         self.ts = 0
-        self.x = [0, 0]
+        self.theta_rad = 0
+        self.theta_rad_ant = 0
+        self.dtheta_rad = 0
         # Instanciando um objeto AeropenduloAaeropendulo()
         self.animacao_aeropendulo = animacao_aeropendulo
 
@@ -38,31 +40,46 @@ class Simulador(SimuladorInterface):
         self.g = graficos
         self.graf, self.plot1, self.plot2, self.plot3, self.plot4 = self.g.graficos()  # noqa
 
-    def atualizar_estados(self, estados):
-        # print(x[1]*(180/np.pi))
-        self.t_ant = estados[0]
-        self.t += self.ts
-        self.x[0] = estados[1]
+    def grau2rad(self, graus):
+        return (graus)*(vp.pi/180.0)
+
+    def rotate(self, angle) -> None:
+        self.valor_angle = self.grau2rad(angle)
+        self.animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
+                                                     angle=self.valor_angle,
+                                                     origin=vp.vec(0, 5.2, 0))
+        self.animacao_aeropendulo.set_posicao_helice(self.valor_angle)
+
+    def atualizar_estados(self, t, theta, ref):
+        self.t = t
+        self.ts = self.t - self.t_ant
+        self.theta_rad = self.grau2rad(theta)
+        # print(theta)
+        self.dtheta_rad = (self.theta_rad - self.theta_rad_ant)/self.ts
+        print(self.dtheta_rad)
         # Atualiza o ângulo do Aeropêndulo
         self.animacao_aeropendulo.aeropendulo.rotate(
-            axis=vp.vec(0, 0, 1),
-            angle=self.x[0]*self.ts,
-            origin=vp.vec(0, 5.2, 0))
+                        axis=vp.vec(0, 0, 1),
+                        angle=self.dtheta_rad*self.ts,
+                        origin=vp.vec(0, 5.2, 0))
 
         # Animação da dinâmica da Hélice
-        self.animacao_aeropendulo.update_helice(self.x[0], self.ts)
+        self.animacao_aeropendulo.update_helice(self.dtheta_rad, self.ts)
 
         # print(x[1] + interface.valor_angle)
         # Gráfico do ângulo.
-        # self.plot1.plot(t, x[1] + interface.valor_angle)
+        self.plot1.plot(t, self.theta_rad)
         # Gráfico do sinal de referência
-        # self.plot2.plot(t, controlador.r + interface.valor_angle)
+        self.plot2.plot(t, self.grau2rad(ref))
         # Gráfico da velocidade ângular.
         # self.plot3.plot(t, x[0])
         # Gráfico do sinal de controle
         # self.plot4.plot(t, u)
+        self.t_ant = t
+        self.theta_rad_ant = self.theta_rad
 
 
 if __name__ == "__main__":
     simulador = Simulador(Graficos(), AnimacaoAeropendulo())
-    simulador.atualizar_estados(estados=[1, 2, 3])
+    # simulador.rotate(45)
+    simulador.atualizar_estados(1, 2, 3)

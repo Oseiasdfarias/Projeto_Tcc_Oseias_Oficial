@@ -82,7 +82,7 @@ def run_aeropendulo():
             # print(x[1]*(180/np.pi))
             t_ant = t
             t += ts
-            print("Angulo: ", x[0]*ts)
+            print("Angulo: ", x[0])
             # Atualiza o ângulo do Aeropêndulo
             animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
                                                     angle=x[0]*ts,
