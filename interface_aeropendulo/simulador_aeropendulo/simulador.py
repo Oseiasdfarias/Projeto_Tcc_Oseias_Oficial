@@ -54,9 +54,11 @@ class Simulador(SimuladorInterface):
         self.t = t
         self.ts = self.t - self.t_ant
         self.theta_rad = self.grau2rad(theta)
-        # print(theta)
-        self.dtheta_rad = (self.theta_rad - self.theta_rad_ant)/self.ts
-        print(self.dtheta_rad)
+        try:
+            self.dtheta_rad = (self.theta_rad - self.theta_rad_ant)/self.ts
+        except Exception as exception:
+            print(exception)
+
         # Atualiza o ângulo do Aeropêndulo
         self.animacao_aeropendulo.aeropendulo.rotate(
                         axis=vp.vec(0, 0, 1),
@@ -68,9 +70,9 @@ class Simulador(SimuladorInterface):
 
         # print(x[1] + interface.valor_angle)
         # Gráfico do ângulo.
-        self.plot1.plot(t, self.theta_rad)
+        self.plot1.plot(t, theta)
         # Gráfico do sinal de referência
-        self.plot2.plot(t, self.grau2rad(ref))
+        self.plot2.plot(t, ref)
         # Gráfico da velocidade ângular.
         # self.plot3.plot(t, x[0])
         # Gráfico do sinal de controle

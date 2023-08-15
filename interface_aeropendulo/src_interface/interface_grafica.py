@@ -61,6 +61,7 @@ class InterfaceAeropendulo:
     def atualizar_simulador(self, t, theta, ref):
         if isinstance(self.simulador, SimuladorInterface):
             self.simulador.atualizar_estados(t, theta, ref)
+            self.simulador.animacao_aeropendulo.pause_giro()
 
     def quit(self) -> None:
         self.root.quit()
@@ -82,7 +83,7 @@ class InterfaceAeropendulo:
         for i in range(4):
             if i == 0:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                self.ax[i].set_ylim(-60, 180)
+                self.ax[i].set_ylim(-5, 60)
             elif i == 1:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
                 self.ax[i].set_ylim(-60, 60)
