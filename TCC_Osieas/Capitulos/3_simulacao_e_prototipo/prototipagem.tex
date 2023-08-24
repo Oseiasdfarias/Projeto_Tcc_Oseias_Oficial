@@ -5,8 +5,8 @@
 \begin{figure}[!h]
 	\centering
 	\caption{Chapas de compensado.}
-	\includegraphics[width=0.6\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/compensado.eps}
-	\caption*{Fonte $-$ Autor.}
+	\includegraphics[width=0.6\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/compensado.pdf}
+	\caption*{Fonte: Autor.}
 	\label{fig3:image_02}
 \end{figure}
 
@@ -17,26 +17,25 @@
 \begin{figure}[!h]
 	\centering
 	\caption{Tubo de Fibra de Vidro de Carbono 3x3x2mm.}
-	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/carbono2x2mm.eps}
-	\caption*{Fonte $-$ Autor.}
+	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/carbono2x2mm.pdf}
+	\caption*{Fonte: Autor.}
 	\label{fig3:image_03}
 \end{figure}
 
 
 \subsection{Parte Elétrica do sistema}
 
-Os componentes eletrônicos usados foram 1 Potenciômetro $50k\Omega$, 1 Placa de desenvolvimento Esp32, 1 Módulo Driver L298n, 
-Conjunto suporte motor cw/ccw hélice para drones fpv racing quadcopter e componentes eletrônicos (resistor, capacitor).
+Foram empregados os seguintes componentes eletrônicos no projeto: um Potenciômetro $50k\Omega$, uma Placa de desenvolvimento Esp32, um Módulo Driver L298n, um Conjunto (suporte/motor/hélice para drones fpv racing quadcopter) e componentes eletrônicos (resistor, capacitor).
 
 \subsubsection{Potenciômetro $50k\Omega$}
 
-O potenciômetro e o \textit{enconder} para se obter o ângulo do braço do Aeropêndulo, isso é possível, pois a medida que o braço se move, a resistência do potenciômetro varia e com ela a tensão nos terminais dele, com isso é possível obter uma relação entre a variação da tensão e o ângulo do braço do Aeropêndulo.
+O potenciômetro desempenha o papel de \textit{encoder} ao obter o ângulo de inclinação do braço do Aeropêndulo. Essa funcionalidade é viabilizada pelo fato de que, conforme o braço se movimenta, a resistência do potenciômetro se altera, resultando em uma variação na tensão registrada em seus terminais. Essa interação permite estabelecer uma correlação entre a mudança na tensão elétrica e o ângulo de inclinação do braço do Aeropêndulo de maneira precisa e controlada.
 
 \begin{figure}[!h]
 	\centering
 	\caption{Potenciômetro $50k\Omega$.}
-	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/pote.eps}
-	\caption*{Fonte $-$ Autor.}
+	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/pote.pdf}
+	\caption*{Fonte: Autor.}
 	\label{fig3:image_04}
 \end{figure}
 
@@ -45,58 +44,111 @@ O potenciômetro e o \textit{enconder} para se obter o ângulo do braço do Aero
 
 \subsubsection{Placa de desenvolvimento Esp32}
 
-A placa de desenvolvimento ESP32 é uma poderosa e versátil plataforma que integra o popular microcontrolador ESP32 desenvolvido pela empresa  \textit{Espressif}. Projetada para atender às demandas de projetos de Internet das Coisas (IoT) e aplicações de conectividade sem fio, a ESP32 oferece uma vasta gama de recursos e funcionalidades. Equipada com um processador dual-core de 32 bits, Wi-Fi, Bluetooth, interfaces GPIO, I2C, SPI e UART, bem como suporte para memória externa, essa placa é um verdadeiro trampolim para desenvolvedores que desejam criar soluções conectadas de forma eficiente. Além disso, a ESP32 possui uma comunidade ativa de desenvolvedores, uma ampla documentação e é compatível com várias plataformas e ambientes de desenvolvimento, tornando-a uma escolha de primeira linha para aqueles que desejam embarcar em projetos inovadores e robustos de IoT.
+A placa de desenvolvimento ESP32 é uma poderosa e versátil plataforma que integra o popular microcontrolador ESP32 desenvolvido pela empresa  \textit{Espressif}. Projetada para atender às demandas de projetos de Internet das Coisas (IoT) e aplicações de conectividade sem fio, a ESP32 oferece uma vasta gama de recursos e funcionalidades. Equipada com um processador dual-core de 32 bits, Wi-Fi, Bluetooth, interfaces GPIO, I2C, SPI e UART, bem como suporte para memória externa.
+
+A placa desempenhará uma função central no projeto, servindo tanto para a implementação do controlador discreto quanto para a obtenção de dados em tempo real relacionados aos estados do sistema. Esses estados incluem a leitura do sensor de ângulo do braço, a aquisição do sinal de controle e o cálculo do sinal de erro. Adicionalmente, a placa será empregada na geração dos sinais de referência necessários para o funcionamento ideal do sistema, A figura \ref{fig3:image_05} ilustra a placa de desenvolvimento Esp32.
 
 \begin{figure}[!h]
 	\centering
 	\caption{Placa de desenvolvimento Esp32.}
-	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f1_esp32.eps}
-	\caption*{Fonte $-$ Autor.}
+	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f1_esp32.pdf}
+	\caption*{Fonte: Autor.}
 	\label{fig3:image_05}
 \end{figure}
 
 
 \subsubsection{Fonte Chaveada 2A, 5V, 25W}
 
+Para a alimentação do motor CC série, foi usado uma fonte de alimentação de 5V/5A, Figura \ref{fig3:image_06}.
+
 \begin{figure}[!h]
 	\centering
 	\caption{Fonte Chaveada 2A, 5V, 25W.}
-	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f1_fonte.eps}
-	\caption*{Fonte $-$ Autor.}
+	\includegraphics[width=0.45\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f1_fonte.pdf}
+	\caption*{Fonte: Autor.}
 	\label{fig3:image_06}
 \end{figure}
 
+
+
 \subsubsection{Módulo Driver L298n}
+
+Para regular a velocidade no eixo do Motor CC série, empregou-se um Módulo Driver L298n, o qual possibilita controlar a injeção de potência entregue ao motor mediante a aplicação de um sinal PWM em sua entrada. Dessa forma, ao ajustar o sinal PWM, é possível obter uma tensão controlada aplicada de maneira precisa aos terminais do motor. A Figura \ref{fig3:image_07} ilustra o componente em questão.
 
 \begin{figure}[!h]
 	\centering
 	\caption{Módulo Driver L298n.}
-	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f4_ponteH.eps}
-	\caption*{Fonte $-$ Autor.}
+	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f4_ponteH.pdf}
+	\caption*{Fonte: Autor.}
 	\label{fig3:image_07}
 \end{figure}
 
 
-\subsubsection{Conjunto suporte motor cw/ccw hélice para drones fpv racing quadcopter}
+\subsubsection{Conjunto (suporte motor cw/ccw hélice) para drones fpv racing quadcopter}
+
+Para obter-se a força de empuxo na extremidade do braço do Aeropêndulo foi usado um Conjunto (suporte/motor/hélice) para drones fpv racing quadcopter. A Figura \ref{fig3:image_08} ilustra o componente em questão.
+
 
 \begin{figure}[!h]
 	\centering
-	\caption{Conjunto suporte motor cw/ccw hélice.}
-	\includegraphics[width=0.6\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f1_braco_aerop.eps}
-	\caption*{Fonte $-$ Autor.}
+	\caption{Conjunto (suporte motor cw/ccw hélice).}
+	\includegraphics[width=0.6\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f1_braco_aerop.pdf}
+	\caption*{Fonte: Autor.}
 	\label{fig3:image_08}
 \end{figure}
 
-\subsubsection{Componentes eletrônicos (resistor, capacitor)}
+\newpage
+\subsubsection{Componentes eletrônicos (resistivos e capacitivos)}
+
+Por fim, para que o sinal do sensor (Potenciômetro) seja de boa qualidade, foi usado um filtro RC série, dessa forma, empregou-se um capacitor de um resistor na implementar do filtro. A Figura \ref{fig3:image_09} corresponde aos componentes resistivos e a Figura \ref{fig3:image_10} aos componentes capacitivos.
 
 \begin{figure}[!h]
-	\centering
-	\caption{componentes eletrônicos (resistor, capacitor).}
-	\includegraphics[width=0.5\textwidth]{Capitulos/3_simulacao_e_prototipo/3_figuras/f1_cap.eps}
-	\caption*{Fonte $-$ Autor.}
-	\label{fig3:image_09}
+     \centering
+     \caption{Componentes eletrônicos.}
+     \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+         \caption{Resistores.}
+         \includegraphics[width=\textwidth, page=1]{Capitulos/3_simulacao_e_prototipo/3_figuras/res_cap.pdf}
+         \caption*{Fonte: Autor.}
+         \label{fig3:image_09}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+         \caption{Capacitores.}
+         \includegraphics[width=\textwidth, page=2]{Capitulos/3_simulacao_e_prototipo/3_figuras/res_cap.pdf}
+         \caption*{Fonte: Autor.}
+         \label{fig3:image_10}
+     \end{subfigure}
 \end{figure}
 
 
-
 \subsection{Montagem do Protótipo}
+
+\subsection{Parte Física}
+
+O protótipo foi concebido visando a desmontagem da estrutura, permitindo um transporte mais conveniente. A construção física compreende três componentes com pontos de conexão estratégicos. Ademais, o braço do aeropêndulo pode ser facilmente desacoplado no ponto de pivô, onde se conecta ao eixo do potenciômetro.
+
+\subsection{Parte Elétrica}
+
+
+A Figura \ref{fig3:image_11} ilustra a dinâmica do fluxo de interligação do sistema elétrico do Aeropêndulo. Notavelmente, o microcontrolador desempenha um papel central ao gerar o sinal de controle PWM, realiza a leitura do sinal filtrado proveniente do sensor (Potenciômetro) e estabelecer comunicação com o computador através da interface serial. Adicionalmente, o driver é alimentado por uma fonte de tensão contínua de 5V, o qual amplifica e aplica o sinal de controle ao motor CC Série. Esta ação, por sua vez, resulta em uma variação angular no braço do Aeropêndulo por conta do empuxo gerado pelas hélices, impactando diretamente o estado do sensor (Potenciômetro) e sua saída correspondente.
+
+\begin{figure}[!h]
+	\centering
+	\caption{Diagrama de comunicação do Aeropêndulo.}
+	\includegraphics[width=1\textwidth, page=1]{Capitulos/3_simulacao_e_prototipo/3_figuras/diag_aerop.pdf}
+	\caption*{Fonte: elaborado pelo autor (2023).}
+	\label{fig3:image_11}
+\end{figure}
+
+
+O esquema de ligação dos componentes do sistema elétrico é exemplificado na Figura \ref{fig3:image_12}.
+
+\begin{figure}[!h]
+	\centering
+	\caption{Esquema de conexões do Aeropêndulo.}
+	\includegraphics[width=1.1\textwidth, page=1]{Capitulos/3_simulacao_e_prototipo/3_figuras/esquema_eletrico_aerop.pdf}
+	\caption*{Fonte: elaborado pelo autor (2023).}
+	\label{fig3:image_12}
+\end{figure}
