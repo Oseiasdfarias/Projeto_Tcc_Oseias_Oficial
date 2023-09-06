@@ -53,8 +53,8 @@ public:
         ampl = ampl_;
         offset = offset_;
         Ts = Ts_;
-        Tsf = 1.0 / freq;
-        Tsf_init = 1.0 / freq;
+        Tsf = (float)1.0 / freq;
+        Tsf_init = (float)1.0 / freq;
         sinal = 0.0;
     }
 
