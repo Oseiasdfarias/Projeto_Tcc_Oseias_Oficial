@@ -17,6 +17,10 @@
 #ifndef REFERENCIA_H_INCLUDED
 #define REFERENCIA_H_INCLUDED
 
+
+/* Sinais de Referências para aplicar ao sistema
+    em malha fechda com controlador porjetado.
+*/
 class SinaisRefs
 {
 public:
@@ -31,6 +35,8 @@ public:
                                       float offset, float Ts);
 };
 
+
+/* Sinal PRBS para identificação de sistema. */
 class OndaPrbs
 {
 public:
