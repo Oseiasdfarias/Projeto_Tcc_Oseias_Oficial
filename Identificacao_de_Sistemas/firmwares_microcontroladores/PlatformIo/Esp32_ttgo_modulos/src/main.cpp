@@ -65,7 +65,7 @@ SinaisRefs gerar_ref; // Gerador de sinais
   Posição 3: Offset (V), ponto de opração do Aeropêndulo
   Posição 4: Periodo de amostragem do simal
 */
-OndaPrbs sinal_prbs(0.3, 0.2, 1.0, Ts);
+OndaPrbs sinal_prbs(0.3, 0.3, 1.0, Ts);
 
 Conversor conv;              // Converte escalas
 PID mypid(0.02, 0.025, 0.4); // Controlador PID
