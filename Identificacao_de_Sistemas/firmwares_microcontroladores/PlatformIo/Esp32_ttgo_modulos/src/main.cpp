@@ -63,7 +63,7 @@ SinaisRefs gerar_ref; // Gerador de sinais
   Posição 1: Frequência máxima do sinal PRBS
   Posição 2: Amplitude (V) do sinal PRBS
   Posição 3: Offset (V), ponto de opração do Aeropêndulo
-  Posição 4: Periodo de amostragem do simal
+  Posição 4: Periodo de amostragem do sinal
 */
 OndaPrbs sinal_prbs(0.4, 0.3, 1.0, Ts);
 
