@@ -23,8 +23,7 @@ public:
     float SOMA = 0.0;
     float referencia_seno(float freq, float ampl,
                           float offset, float t);
-    float referencia_onda_quadrada(float freq, float ampl,
-                                   float offset, float Ts);
+    float referencia_onda_quadrada(float freq, float ampl, float Ts);
     float referencia_onda_dente_serra(float freq, float ampl,
                                       float offset, float Ts);
 };
@@ -40,14 +39,14 @@ float SinaisRefs::referencia_seno(
 
 /* Gráfico de uma Onda Quadrada */
 float SinaisRefs::referencia_onda_quadrada(
-    float freq, float ampl, float offset, float Ts)
+    float freq, float ampl, float Ts)
 {
     float Tsf = 1.0 / freq;
     static float sinal;
     if (this->TEMP <= (Tsf / 2.0))
-        sinal = ampl + offset;
+        sinal = ampl;
     else
-        sinal = offset;
+        sinal = 0.0;
     if (this->TEMP >= Tsf)
         this->TEMP = 0.0;
     this->TEMP += Ts;
@@ -89,9 +88,9 @@ public:
         ampl = ampl_;
         offset = offset_;
         Ts = Ts_;
-        Tsf = 1.0 / freq;
-        Tsf_init = 1.0 / freq;
-        sinal = 0.0;
+        Tsf = (float)1.0 / freq;
+        Tsf_init = (float)1.0 / freq;
+        sinal = (float)0.0;
     }
 
 private:
@@ -101,18 +100,18 @@ private:
 /* Gráfico de uma Onda Quadrada */
 float OndaPrbs::onda_prbs()
 {
-    float vTs[4] = {this->Tsf_init, this->Tsf_init / 1.5,
-                    this->Tsf_init / 2.0, this->Tsf_init / 2.5};//,
+    float vTs[4] = {this->Tsf_init, this->Tsf_init / (float)1.5,
+                    this->Tsf_init / (float)2.0, this->Tsf_init / (float)2.5}; //,
                     // this->Tsf_init / 2.5, this->Tsf_init / 3.0};
 
-    if (this->TEMP <= (this->Tsf / 2.0))
+    if (this->TEMP <= (this->Tsf / (float)2.0))
         this->sinal = this->ampl + this->offset;
     else
         this->sinal = this->offset;
 
     if (this->TEMP >= this->Tsf)
     {
-        this->TEMP = 0.0;
+        this->TEMP = (float)0.0;
         this->Tsf = this->sortear(vTs);
         Serial.println(this->Tsf);
     }

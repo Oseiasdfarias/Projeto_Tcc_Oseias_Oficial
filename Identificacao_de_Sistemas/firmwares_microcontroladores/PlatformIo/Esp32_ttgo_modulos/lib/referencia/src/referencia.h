@@ -29,8 +29,7 @@ public:
     // SinaisRefs();
     float referencia_seno(float freq, float ampl,
                           float offset, float t);
-    float referencia_onda_quadrada(float freq, float ampl,
-                                   float offset, float Ts);
+    float referencia_onda_quadrada(float freq, float ampl, float Ts);
     float referencia_onda_dente_serra(float freq, float ampl,
                                       float offset, float Ts);
 };

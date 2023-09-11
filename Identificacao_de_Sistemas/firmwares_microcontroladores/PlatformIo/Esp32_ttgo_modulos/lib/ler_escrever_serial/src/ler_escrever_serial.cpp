@@ -15,12 +15,16 @@
 
 #include "Arduino.h"
 #include "ler_escrever_serial.h"
+#include "conversor.h"
+
+
+Conversor conv1;             // Converte escalas
 
 void enviar_dados_serial(float *sinal_ref, float *theta_saida, float *erro,
                          float *sinal_controle, float *ampl, float *t)
 {
     /* Sinal de Referência. */
-    Serial.print(*sinal_ref, 3);
+    Serial.print(*sinal_ref + 17.5, 3);
     Serial.print(",");
 
     /* Sinal de tensão no potenciômetro. */
@@ -28,6 +32,7 @@ void enviar_dados_serial(float *sinal_ref, float *theta_saida, float *erro,
     Serial.print(",");
 
     /* Sinal de Erro. */
+    //Serial.print(conv1.rad2grau(*erro), 3);
     Serial.print(*erro, 3);
     Serial.print(",");
 

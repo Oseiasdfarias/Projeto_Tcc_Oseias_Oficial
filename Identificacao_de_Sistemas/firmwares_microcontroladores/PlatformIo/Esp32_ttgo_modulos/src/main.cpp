@@ -17,6 +17,7 @@
 #include "ler_escrever_serial.h"
 #include "referencia.h"
 #include "controlador_pid.h"
+#include "controladores.h"
 #include "conversor.h"
 
 const int pinAD_POT = 2; // Valor do potenciômetro.
@@ -42,7 +43,7 @@ float sinal_ref = 0.0,      // Setpoint.
 /* Parâmetros do sinal de referência */
 float ampl = 0.2,
       freq_ref = 0.2,
-      offset = 30.0;
+      offset = 0.85;
 int selecionar_onda = 0;
 
 /* Tempo de amostragem e Período. */
@@ -67,9 +68,10 @@ SinaisRefs gerar_ref; // Gerador de sinais
 */
 OndaPrbs sinal_prbs(0.4, 0.3, 1.0, Ts);
 
-Conversor conv;              // Converte escalas
-PID mypid(0.02, 0.025, 0.4); // Controlador PID
+Conversor conv;             // Converte escalas
+PID mypid(0.02, 0.04, 0.4); // Controlador PID
 
+Controladores controle;
 
 void setup()
 {
@@ -94,7 +96,6 @@ void setup()
   ledcAttachPin(pinPWM, canal_pwm);
 }
 
-
 void loop()
 {
   if (executar)
@@ -105,8 +106,7 @@ void loop()
     /* Sinal de saída - Sinal de tensão no
        potenciômetro convertido para ângulo Graus. */
     theta_saida = conv.converte_escala(
-        valorAD_POT, 0.0, 4095., 0.0, 270.0, 528.0
-      );
+        valorAD_POT, 0.0, 4095., 0.0, 270.0, 528.0);
 
     if (conf_sistema)
     {
@@ -114,7 +114,7 @@ void loop()
       /* Sinal de referência */
       if (selecionar_onda == 0)
         sinal_ref = gerar_ref.referencia_onda_quadrada(
-            freq_ref, ampl, offset, Ts);
+            freq_ref, ampl, Ts);
       else if (selecionar_onda == 1)
         sinal_ref = gerar_ref.referencia_seno(
             freq_ref, ampl, offset, t);
@@ -123,19 +123,24 @@ void loop()
             freq_ref, ampl, offset, Ts);
 
       /* Sinal de erro calculado, caso seja menor que zero, desliga o Motor. */
-      erro = sinal_ref - theta_saida;
+      erro = sinal_ref - (theta_saida - 17.5);  // Para controlador PID
 
       /* Sinal de Controle calculado.*/
-      sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
+      //sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
+      sinal_controle = controle.controlador_1(conv.grau2rad(erro));
       /* Converte o nível de tensão de controle para nível PWM */
-      ciclo_trabalho = conv.converte_tensao_ciclo(sinal_controle);
+
+      ciclo_trabalho = conv.converte_tensao_ciclo(sinal_controle + offset);
     }
     else
     {
       /* ###### Define o sistema em malha aberta ###### */
       // sinal_entrada_ma = gerar_ref.referencia_onda_quadrada(
       //                      0.2, 0.5, 1.0, Ts);
-      sinal_entrada_ma = sinal_prbs.onda_prbs();
+      sinal_entrada_ma = 0.85; //+ gerar_ref.referencia_onda_quadrada(
+                               //     0.4, 0.3, Ts);
+
+      // sinal_entrada_ma = sinal_prbs.onda_prbs();
       sinal_ref = 0.0;
       sinal_controle = 0.0;
       erro = 0.0;
