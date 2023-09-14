@@ -24,7 +24,7 @@ void enviar_dados_serial(float *sinal_ref, float *theta_saida, float *erro,
                          float *sinal_controle, float *ampl, float *t)
 {
     /* Sinal de Referência. */
-    Serial.print(*sinal_ref + 17.5, 3);
+    Serial.print(*sinal_ref + 31, 3);
     Serial.print(",");
 
     /* Sinal de tensão no potenciômetro. */

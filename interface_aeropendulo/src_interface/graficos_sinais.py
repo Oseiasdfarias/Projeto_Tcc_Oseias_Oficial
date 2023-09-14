@@ -97,7 +97,7 @@ class GraficosSinais(GraficosSinaisInterface):
         self.ax3.set_ylabel("Amplitude", color="#2B2B2B", fontsize=9)
         self.ln3, = self.ax3.plot([], [], lw=1.2, marker=".",
                                   markersize=self.markersize, color="purple")
-        plt.yticks(np.arange(0, 4.5, 0.5), rotation=45)
+        plt.yticks(np.arange(-1, 2, 0.5), rotation=45)
         plt.xticks(rotation=45)
         self.ax3.tick_params(axis='both', which='major', labelsize=9)
         self.ax3.tick_params(axis='both', which='minor', labelsize=7)

@@ -43,7 +43,7 @@ float sinal_ref = 0.0,      // Setpoint.
 /* Parâmetros do sinal de referência */
 float ampl = 0.2,
       freq_ref = 0.2,
-      offset = 0.85;
+      offset = 1.0;
 int selecionar_onda = 0;
 
 /* Tempo de amostragem e Período. */
@@ -68,8 +68,15 @@ SinaisRefs gerar_ref; // Gerador de sinais
 */
 OndaPrbs sinal_prbs(0.4, 0.3, 1.0, Ts);
 
-Conversor conv;             // Converte escalas
-PID mypid(0.02, 0.04, 0.4); // Controlador PID
+Conversor conv; // Converte escalas
+
+/*
+  ########### Controlador PID ###########
+  Posição 1: Kp Ganho Proporcional
+  Posição 2: Ki Ganho Integral
+  Posição 3: Kd Ganho Derivativo
+*/
+PID mypid(0.02, 0.055, 0.35); // Controlador PID
 
 Controladores controle;
 
@@ -123,11 +130,11 @@ void loop()
             freq_ref, ampl, offset, Ts);
 
       /* Sinal de erro calculado, caso seja menor que zero, desliga o Motor. */
-      erro = sinal_ref - (theta_saida - 17.5);  // Para controlador PID
+      erro = sinal_ref - (theta_saida - 31); // Para controlador PID
 
       /* Sinal de Controle calculado.*/
-      //sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
-      sinal_controle = controle.controlador_1(conv.grau2rad(erro));
+      sinal_controle = mypid.atualiza_pid(erro, theta_saida, Ts);
+      // sinal_controle = controle.controlador_1(conv.grau2rad(erro));
       /* Converte o nível de tensão de controle para nível PWM */
 
       ciclo_trabalho = conv.converte_tensao_ciclo(sinal_controle + offset);
@@ -137,8 +144,8 @@ void loop()
       /* ###### Define o sistema em malha aberta ###### */
       // sinal_entrada_ma = gerar_ref.referencia_onda_quadrada(
       //                      0.2, 0.5, 1.0, Ts);
-      sinal_entrada_ma = 0.85; //+ gerar_ref.referencia_onda_quadrada(
-                               //     0.4, 0.3, Ts);
+      sinal_entrada_ma = 1.0; //+ gerar_ref.referencia_onda_quadrada(
+                              //     0.4, 0.3, Ts);
 
       // sinal_entrada_ma = sinal_prbs.onda_prbs();
       sinal_ref = 0.0;
