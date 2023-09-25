@@ -23,5 +23,7 @@ public:
       float converte_escala(float x_converter, float x_min, float x_max,
                             float y_min, float y_max, float offset);
       float converte_tensao_ciclo(float sinal_controle);
+      float grau2rad(float angulo);
+      float rad2grau(float angulo);
 };
 #endif // CONVERSOR_H_INCLUDED

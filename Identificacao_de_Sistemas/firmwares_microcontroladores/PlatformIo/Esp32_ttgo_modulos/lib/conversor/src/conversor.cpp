@@ -12,17 +12,18 @@
  * Arquivo: main.cpp - Data: 2023
  *
  ****************************************************** */
-
+#include <math.h>
 #include "Arduino.h"
 
 class Conversor
 {
 public:
     float converte_escala(float x_converter, float x_min, float x_max,
-                    float y_min, float y_max, float offset);
+                          float y_min, float y_max, float offset);
     float converte_tensao_ciclo(float sinal_controle);
+    float grau2rad(float angulo);
+    float rad2grau(float angulo);
 };
-
 
 float Conversor::converte_escala(float x_converter, float x_min, float x_max,
                                  float y_min, float y_max, float offset)
@@ -59,4 +60,14 @@ float Conversor::converte_tensao_ciclo(float sinal_controle)
     else if (sinal_controle > 3.3)
         ciclo_trabalho = 255;
     return ciclo_trabalho;
+}
+
+float Conversor::grau2rad(float angulo)
+{
+    return angulo * (M_PI / (float)180.0);
+}
+
+float Conversor::rad2grau(float angulo)
+{
+    return (float)180.0 * (M_PI / angulo);
 }

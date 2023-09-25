@@ -17,6 +17,10 @@
 #ifndef REFERENCIA_H_INCLUDED
 #define REFERENCIA_H_INCLUDED
 
+
+/* Sinais de Referências para aplicar ao sistema
+    em malha fechda com controlador porjetado.
+*/
 class SinaisRefs
 {
 public:
@@ -25,12 +29,13 @@ public:
     // SinaisRefs();
     float referencia_seno(float freq, float ampl,
                           float offset, float t);
-    float referencia_onda_quadrada(float freq, float ampl,
-                                   float offset, float Ts);
+    float referencia_onda_quadrada(float freq, float ampl, float Ts);
     float referencia_onda_dente_serra(float freq, float ampl,
                                       float offset, float Ts);
 };
 
+
+/* Sinal PRBS para identificação de sistema. */
 class OndaPrbs
 {
 public:
@@ -47,8 +52,8 @@ public:
         ampl = ampl_;
         offset = offset_;
         Ts = Ts_;
-        Tsf = 1.0 / freq;
-        Tsf_init = 1.0 / freq;
+        Tsf = (float)1.0 / freq;
+        Tsf_init = (float)1.0 / freq;
         sinal = 0.0;
     }
 

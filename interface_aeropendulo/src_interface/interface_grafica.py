@@ -89,10 +89,10 @@ class InterfaceAeropendulo:
                 self.ax[i].set_ylim(-60, 60)
             elif i == 2:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                self.ax[i].set_ylim(-0.1, 4)
+                self.ax[i].set_ylim(-1, 2)
             elif i == 3:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
-                self.ax[i].set_ylim(-0.1, 3)
+                self.ax[i].set_ylim(-0.1, 2)
             else:
                 self.ax[i].set_xlim(0, self.amostras*self.Ts)
                 self.ax[i].set_ylim(-60, 60)
