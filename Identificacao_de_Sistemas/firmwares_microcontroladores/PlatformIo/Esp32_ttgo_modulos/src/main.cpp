@@ -18,7 +18,7 @@
 #include "referencia.h"
 #include "controlador_pid.h"
 #include "controladores.h"
-#include "conversor.h"
+#include "  .h"
 
 const int pinAD_POT = 2; // Valor do potenciômetro.
 int valorAD_POT = 0;     // Valor de tensão (potenciômetro) lido pela conversor ADC.
@@ -76,6 +76,7 @@ Conversor conv; // Converte escalas
   Posição 2: Ki Ganho Integral
   Posição 3: Kd Ganho Derivativo
 */
+
 PID mypid(0.02, 0.055, 0.35); // Controlador PID
 
 Controladores controle;
