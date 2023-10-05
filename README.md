@@ -6,6 +6,10 @@
 
 <br><br>
 
+## Protótipo Aeropêndulo
+
+<br>
+
 <center>
   <img src="utils/img_aeropendulo.png"> 
 <center/>
@@ -43,9 +47,6 @@
 
 <img src="utils/demo_interface_light.png" title="" alt="" data-align="center">
 
-## Protótipo Aeropêndulo
-
-<br>
 
 ## Simulador Aeropêndulo
 
