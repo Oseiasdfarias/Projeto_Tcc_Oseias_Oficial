@@ -18,7 +18,7 @@
 #include "referencia.h"
 #include "controlador_pid.h"
 #include "controladores.h"
-#include "  .h"
+#include "conversor.h"
 
 const int pinAD_POT = 2; // Valor do potenciômetro.
 int valorAD_POT = 0;     // Valor de tensão (potenciômetro) lido pela conversor ADC.
