@@ -51,5 +51,5 @@
 <br>
 
 <center>
-  <img src="https://github.com/Oseiasdfarias/LabVirtual/blob/dev/simulacao_modelagem_aeropendulo/utils/simulacao.png?raw=true"> 
+  <img src="https://github.com/Oseiasdfarias/LabVirtual/blob/dev/simulacao_modelagem_aeropendulo/utils/gemeo_digital.png?raw=true"> 
 <center/>
