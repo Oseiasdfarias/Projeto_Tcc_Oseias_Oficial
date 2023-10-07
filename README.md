@@ -70,7 +70,7 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 
 Aplicação para o microcontrolador com finalidade de desenvolver as funcionalidades de comunicação com a interface gráfico do computador e implementar controlador para o sistema em malha fechada, além disso, o usuário pode incrementar outras funcionalidades.
 
-<img src="utils/arquitetura_firmware.svg" title="" alt="" data-align="center">
+<img src="utils/arquitetura_firmware-1.png" title="" alt="" data-align="center">
 
 
 
