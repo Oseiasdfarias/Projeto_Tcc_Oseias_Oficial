@@ -74,11 +74,10 @@ Aplicação para o microcontrolador com finalidade de desenvolver as funcionalid
 
 
 
-
 ## Simulador Aeropêndulo - (Gêmeo Digital)
 
 <br>
 
 <center>
-  <img src="https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial/blob/dev/utils/gemeo_digital.png?raw=true"> 
+  <img src="utils/gemeo_digital.png"> 
 <center/>
