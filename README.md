@@ -66,6 +66,14 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 
 <img src="utils/demo_interface_light.png" title="" alt="" data-align="center">
 
+## Firmware do Aeropêndulo
+
+Aplicação para o microcontrolador com finalidade de desenvolver as funcionalidades de comunicação com a interface gráfico do computador e implementar controlador para o sistema em malha fechada, além disso, o usuário pode incrementar outras funcionalidades.
+
+<img src="utils/arquitetura_firmware.svg" title="" alt="" data-align="center">
+
+
+
 
 ## Simulador Aeropêndulo - (Gêmeo Digital)
 
