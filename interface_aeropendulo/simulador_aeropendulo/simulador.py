@@ -15,8 +15,8 @@
 #
 
 import vpython as vp
-from simulador_aeropendulo import (Graficos, AnimacaoAeropendulo)
 
+# Módulos do Gêmeo Digital desenvolvidos
 from .interfaces.graficos_aeropendulo import GraficosInterface
 from .interfaces.animacao_aeropendulo import AnimacaoAeropenduloInterface
 from .interfaces.simulador import SimuladorInterface
@@ -24,8 +24,9 @@ from .interfaces.simulador import SimuladorInterface
 
 class Simulador(SimuladorInterface):
 
-    def __init__(self, graficos: GraficosInterface,
-                 animacao_aeropendulo: AnimacaoAeropenduloInterface) -> None:
+    def __init__(
+            self, graficos: GraficosInterface,
+            animacao_aeropendulo: AnimacaoAeropenduloInterface) -> None:
         self.t = 0
         self.t_ant = 0
         self.ts = 0
@@ -45,9 +46,10 @@ class Simulador(SimuladorInterface):
 
     def rotate(self, angle) -> None:
         self.valor_angle = self.grau2rad(angle)
-        self.animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
-                                                     angle=self.valor_angle,
-                                                     origin=vp.vec(0, 5.2, 0))
+        self.animacao_aeropendulo.aeropendulo.rotate(
+            axis=vp.vec(0, 0, 1),
+            angle=self.valor_angle,
+            origin=vp.vec(0, 5.2, 0))
         self.animacao_aeropendulo.set_posicao_helice(self.valor_angle)
 
     def atualizar_estados(self, t, theta, ref):
@@ -55,7 +57,9 @@ class Simulador(SimuladorInterface):
         self.ts = self.t - self.t_ant
         self.theta_rad = self.grau2rad(theta)
         try:
-            self.dtheta_rad = (self.theta_rad - self.theta_rad_ant)/self.ts
+            self.dtheta_rad = (
+                self.theta_rad - self.theta_rad_ant
+                )/self.ts
         except Exception as exception:
             print(exception)
 
@@ -76,9 +80,3 @@ class Simulador(SimuladorInterface):
 
         self.t_ant = t
         self.theta_rad_ant = self.theta_rad
-
-
-if __name__ == "__main__":
-    simulador = Simulador(Graficos(), AnimacaoAeropendulo())
-    # simulador.rotate(45)
-    simulador.atualizar_estados(1, 2, 3)

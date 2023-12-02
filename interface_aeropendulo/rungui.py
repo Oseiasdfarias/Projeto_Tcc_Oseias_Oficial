@@ -44,7 +44,8 @@ class RunInterface:
             simulador = Simulador(Graficos(), AnimacaoAeropendulo())
         else:
             simulador = None
-        InterfaceAeropendulo(GraficosSinais, simulador, baud_rate=115200,
+        InterfaceAeropendulo(GraficosSinais,
+                             simulador, baud_rate=115200,
                              amostras=80.0, tela_fixa=True)
 
 
