@@ -1,0 +1,60 @@
+<mxfile host="Electron" modified="2023-07-28T21:13:04.350Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="-h_dEX8T2Qq_yy936JnN" version="21.6.5" type="device">
+  <diagram id="BB-P8LQBv9p690ByxCHv" name="Página-1">
+    <mxGraphModel dx="1760" dy="1098" grid="1" gridSize="1" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="850" background="none" math="1" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0LmL37Ir94_41o80-0yw-11" value="\(V\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=32;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="94" y="387" width="79" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="0LmL37Ir94_41o80-0yw-32" value="\(\theta\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=32;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="1133" y="390" width="138" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-18" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.rect;fillColor2=none;strokeWidth=1;size=20;indent=5;fillColor=none;gradientColor=#BFBFBF;gradientDirection=east;" parent="1" vertex="1">
+          <mxGeometry x="244" y="373" width="553" height="164" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-20" value="Motor CC Série" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;" parent="1" vertex="1">
+          <mxGeometry x="314" y="300" width="328" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.001;entryY=0.522;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" parent="1" source="A-deuu8fjJRP9eRivGjl-22" target="A-deuu8fjJRP9eRivGjl-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-22" value="\(\dfrac{2 K_{0} \sqrt{\dfrac{b x^{0}_{1}}{K_{0}}}}{J_m L s^{2} + 3 K_{0} b x^{0}_{1} + R b + s \left(J_m K_{0} x^{0}_{1} + J_m R + L b\right)}\)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" parent="1" vertex="1">
+          <mxGeometry x="243" y="389" width="554" height="133" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-23" value="\(G(s)\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=27;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="566" y="300" width="104" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-25" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.rect;fillColor2=none;strokeWidth=1;size=20;indent=5;fillColor=none;gradientColor=#BFBFBF;gradientDirection=east;" parent="1" vertex="1">
+          <mxGeometry x="910" y="369" width="235" height="164" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="A-deuu8fjJRP9eRivGjl-26" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1220" y="452.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-26" value="\(\dfrac{\dfrac{K_m}{J_b}}{s^2 + s\dfrac{c}{J_b} +\dfrac{mgd}{J_b}}\)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" parent="1" vertex="1">
+          <mxGeometry x="912" y="386" width="234" height="133" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-27" value="Braço do Aeropêndulo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=27;" parent="1" vertex="1">
+          <mxGeometry x="767" y="285" width="446" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-28" value="\(H(s)\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=27;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="1111" y="298" width="103" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-30" value="\(\dot{\omega}\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=32;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="722" y="465" width="240" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-37" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.002;entryY=0.512;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" parent="1" target="A-deuu8fjJRP9eRivGjl-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="128" y="457" as="sourcePoint" />
+            <mxPoint x="175" y="447" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A-deuu8fjJRP9eRivGjl-38" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="90" y="255" width="1171" height="343" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,78 @@
+<mxfile host="Electron" modified="2023-07-28T22:31:06.619Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="FWFUWww-NlqdfPq32f6j" version="21.6.5" type="device">
+  <diagram id="BB-P8LQBv9p690ByxCHv" name="Página-1">
+    <mxGraphModel dx="880" dy="258" grid="1" gridSize="1" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="413" pageHeight="291" background="none" math="1" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0LmL37Ir94_41o80-0yw-11" value="\(V\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=19;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="158" y="524" width="55" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="" style="edgeStyle=none;html=1;shadow=0;" parent="1" source="0LmL37Ir94_41o80-0yw-22" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0LmL37Ir94_41o80-0yw-22" value="MOTOR" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;shadow=0;fillColor=#F2F2F2;" parent="1" vertex="1">
+          <mxGeometry x="258" y="540" width="77" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="0LmL37Ir94_41o80-0yw-32" value="\(\theta\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="589" y="564" width="93" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="6" style="edgeStyle=none;html=1;shadow=0;" parent="1" source="2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="654" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2" value="BRAÇO AEROPÊNDULO" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;shadow=0;fillColor=#F2F2F2;" parent="1" vertex="1">
+          <mxGeometry x="447" y="541" width="167" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;shadow=0;" parent="1" target="0LmL37Ir94_41o80-0yw-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="196" y="559" as="sourcePoint" />
+            <mxPoint x="399" y="544" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5" value="\(Torque\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=0;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="348" y="564" width="87" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="8" style="html=1;dashed=1;shadow=0;opacity=60;fillColor=#eeeeee;strokeColor=#242629;" parent="1" source="7" target="0LmL37Ir94_41o80-0yw-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Subsistema  - Motor" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Times New Roman;fontStyle=0;fontSize=15;shadow=0;fontColor=default;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="227" y="454" width="136" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="10" style="html=1;dashed=1;shadow=0;opacity=60;fillColor=#eeeeee;strokeColor=#242629;" parent="1" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="531" y="495" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="Subsistema&amp;nbsp; - Braço do Aeropêndulo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontStyle=0;fontSize=15;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="462" y="457" width="136" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="12" style="html=1;dashed=1;shadow=0;opacity=60;fillColor=#eeeeee;strokeColor=#242629;" parent="1" source="11" target="0LmL37Ir94_41o80-0yw-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="Tensão aplicada aos terminais do Motor." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontStyle=0;fontSize=15;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="611" width="131" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="14" style="html=1;dashed=1;shadow=0;opacity=60;fillColor=#eeeeee;strokeColor=#242629;" parent="1" source="13" target="5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="376" y="605" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="Torque produzido pelas hélices acopladas ao eixo do Motor&lt;br style=&quot;font-size: 15px;&quot;&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontStyle=0;fontSize=15;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="290" y="648" width="203" height="33" as="geometry" />
+        </mxCell>
+        <mxCell id="16" style="html=1;dashed=1;entryX=0.445;entryY=1.111;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;opacity=60;fillColor=#eeeeee;strokeColor=#242629;" parent="1" source="15" target="0LmL37Ir94_41o80-0yw-32" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="574" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="Ângulo do braço do Aeropêndulo, sinal de saída do modelo." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontStyle=0;fontSize=15;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="540" y="639" width="181" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="xDvWY9CC_lDF_F3b0lNS-16" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="110" y="433" width="622" height="279" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,64 @@
+ 
+1. PROPELLER LEVITATED ARM SIMULATION
+
+Im this section, you are going to simulate a Propeller Levitated Arm (PLA). The
+system is illustrated in Fig. 3.
+
+
+Figure 3
+
+where THETA is angular position ofthe arm, Mm is the total mass of the propeller and DC
+motor, L is length of the arm, Cs viscous damping coefficient, G is gravitational
+acceleration and U is thrust produced by the propeller. (Note that the =rm is
+assumed to be massless.)
+
+[a] Opern a new Simulink model. Create a subsystem, [3], whose input is thrust
+force and output iz angular position. Do NOT linearize the dynamics of the
+system given in (2). Submit this model for Question 2.
+
+HiyT: A PARTIALLY COMSTRUCTED MODEL DE THE PLA WHERE SOME BLOCKS ARE MOT SHONEN 15
+DEMOMSTRATED IN Fis.
+
+(bh) What do X, Y and Z signals in Fig. 4 stand for in the real system?
+   
+
+móspraiios
+
+
+Figure 4
+
+[e] Is this model valid for all values of the state vector? Or is there a range of THETA
+for the model to be consistent with real dynamics of the system?
+
+Set m=1kg, L=2m, g=92.8i m/s, c=0.5 kgm2/s, then run two separate simulations
+one for an input force of 14Nm and the other for 15Nm., Record the
+angularpositionofthearm in degreesandput theminto yourreport. Why is a slight difference
+im the thrust resulted in such = drastic change in the response of the system
+
+
+################################  TRADUÇÃO  ###################################
+
+
+1. SIMULAÇÃO DE BRAÇO LEVITADO DE HÉLICE
+
+Nesta seção, você vai simular um Propeller Levitated Arm (PLA). O sistema é ilustrado na Fig. 3.
+
+ 
+Figura 3
+
+onde THETA é a posição angular do braço, M é a massa total da hélice e do motor DC, L é o comprimento do braço, Cs coeficiente de amortecimento viscoso, G é a aceleração gravitacional e U é o empuxo produzido pela hélice. (Observe que o braço é considerado sem massa.)
+
+[a] Abra um novo modelo Simulink. Crie um subsistema, [3], cuja entrada é a força de empuxo e a saída é a posição angular. NÃO linearize a dinâmica do sistema dado em (2). Envie este modelo para a Questão 2.
+
+HiyT: UM MODELO PARCIALMENTE CONSTRUÍDO DE PLA ONDE ALGUNS BLOCOS SÃO MOT SHONEN 15 DEMONSTRADOS NA Fis.
+
+(bh) O que os sinais X, Y e Z na Fig. 4 representam no sistema real?
+  
+
+mospraiios
+
+Figura 4
+
+[e] Este modelo é válido para todos os valores do vetor de estado? Ou existe uma faixa de THETA para que o modelo seja coerente com a dinâmica real do sistema?
+
+Defina m=1kg, L=2m, g=92,8i m/s, c=0,5 kgm2/s, então execute duas simulações separadas uma para uma força de entrada de 14Nm e a outra para 15Nm., Registre a posição angular do braço em graus e coloque-os em nosso relatório. Por que uma pequena diferença no empuxo resultou em uma mudança tão drástica na resposta do sistema.

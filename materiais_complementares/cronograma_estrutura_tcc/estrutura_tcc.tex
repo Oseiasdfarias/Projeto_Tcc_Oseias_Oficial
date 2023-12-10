@@ -1,0 +1,117 @@
+\documentclass[12pt,oneside,a4paper,brazil]{article}
+% pacotes
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{graphicx}
+% \usepackage[sfdefault]{roboto}
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=10mm,
+}
+% cores
+\definecolor{normal}{RGB}{ 50, 50, 50 }
+\definecolor{green}{RGB}{ 43, 180, 54 }
+\definecolor{blue}{RGB}{ 2, 69, 156 }
+\definecolor{red}{RGB}{ 255, 60, 0 }
+
+\begin{document}
+	\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+	\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+	\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
+	\section*{Estrutura do Tcc}
+	\color{normal}
+	
+	\begin{enumerate}
+		\item \textbf{Introdução}
+		\begin{enumerate}
+			\item Justificativa
+			\item Objetivos
+			\item Escopo do Trabalho
+		\end{enumerate}
+
+
+% ####################### Revisão Bibliográfica ##########################
+		\item \textbf{Revisão Bibliográfica}
+		\begin{enumerate}
+			\item Modelagem e Controle de Sistemas
+			\begin{enumerate}
+				\item Transformada Laplace
+				\item Espaço de Estados
+				\item Transformada Z
+			\end{enumerate}
+			\item Identificação de Sistemas
+		\end{enumerate}
+
+
+% ####################### Simulador e Protótipo do Aeropêndulo ##########################
+		\item \textbf{Simulador e Protótipo do Aeropêndulo}
+		\begin{enumerate}
+			\item Prototipagem
+			\begin{enumerate}
+				\item Parte estrutural do sistema
+				\item Parte Elétrica do sistema
+				\item Montagem do Protótipo
+			\end{enumerate}
+			\item Simulador usando Python
+		\end{enumerate}
+	
+% ####################### Desenvolvimento ##########################
+		\item \textbf{Desenvolvimento}
+		\begin{enumerate}
+			\item Fundamentação Teórica
+			\item Modelagem Matemática
+			\begin{enumerate}
+				\item Modelo Matemático do Motor CC Série
+					\begin{enumerate}
+					\item Aplicando a técnica de Identificação de sistemas para obter os parâmetros do Motor CC Série
+					\end{enumerate}
+				\item Modelo Matemático do Aeropêndulo
+					\begin{enumerate}
+						\item Aplicando a técnica de Identificação de sistemas para obter os parâmetros do Aeropêndulo
+					\end{enumerate}
+				\item Junção dos dois Modelos
+			\end{enumerate}
+			
+
+		\end{enumerate}
+	
+% ####################### Controlador ##########################
+		\item \textbf{Projeto de Controle}
+			\begin{enumerate}
+			\item Projeto de Controle usando diferentes técnicas
+			\begin{enumerate}
+				\item Projeto de Controle por Função de Transferência
+				\item Projeto de Controle no Espaço de Estados
+				\item Discretização dos controladores Transformada Z
+			\end{enumerate}
+			
+			
+			\item Implementação do Sistema de Controle e Interface Gráfica
+			\begin{enumerate}
+				\item Desenvolvimento do Firmware do Microcontrolador (Implementação do Controlador)
+				\item Desenvolvimento do software de visualização gráfica dos dados
+			\end{enumerate}
+			\end{enumerate}
+		
+		\item \textbf{Resultados e Discussões}
+		
+		
+		\item \textbf{Conclusão}
+		\begin{enumerate}
+			\item Considerações Finais
+			\item Trabalhos Futuros
+		\end{enumerate}
+		
+		\item \textbf{Referências Bibliográficas}
+		\item \textbf{Apêndices}
+		\item \textbf{Anexos}
+		\item \textbf{Glossário}
+	\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,43 @@
+<mxfile host="Electron" modified="2023-09-25T21:49:54.523Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="w3GgNwvvYSunY1UUinXh" version="21.6.5" type="device">
+  <diagram id="BB-P8LQBv9p690ByxCHv" name="Página-1">
+    <mxGraphModel dx="1764" dy="1830" grid="1" gridSize="1" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="1" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;" edge="1" parent="1" source="-30fClsxpA420VmR24vq-1" target="yjedkWmNv5tH6gOJPxaj-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-30fClsxpA420VmR24vq-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1751" y="356" width="512" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="HCi2yKMFjKcAmUGEoa8m-4" value="Módulo Animação 3D" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" parent="1" vertex="1">
+          <mxGeometry x="1787" y="379" width="458" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;" edge="1" parent="1" source="yjedkWmNv5tH6gOJPxaj-1" target="yjedkWmNv5tH6gOJPxaj-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2430" y="355" width="512" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-2" value="Módulo Gráficos de Linha" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="2466" y="378" width="458" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;" edge="1" parent="1" source="yjedkWmNv5tH6gOJPxaj-3" target="yjedkWmNv5tH6gOJPxaj-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2089" y="718" width="512" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-4" value="Módulo Simulador" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="2125" y="741" width="458" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2090" y="967" width="512" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="yjedkWmNv5tH6gOJPxaj-8" value="Interface Gráfica Aeropêndulo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="2077" y="994" width="535" height="79" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

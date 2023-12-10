@@ -1,0 +1,77 @@
+<mxfile host="Electron" modified="2023-10-13T01:31:17.743Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="FJQZxhye7lvk--QiayyF" version="21.6.5" type="device">
+  <diagram id="BB-P8LQBv9p690ByxCHv" name="Página-1">
+    <mxGraphModel dx="2200" dy="1373" grid="1" gridSize="1" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="1" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-16" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="368" y="132" width="607" height="507" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;" edge="1" parent="1" source="sQG5xDFyCRSMDVJOcQBe-25" target="sQG5xDFyCRSMDVJOcQBe-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-25" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="468" y="265" width="414" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1552" y="266" width="512" height="331" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1656" y="414" width="304" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-4" value="Firmaware" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="439" width="260" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1477" y="133" width="664" height="507" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-6" value="Microcontrolador ESP32" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="1593" y="316" width="452" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-7" value="Aeropêndulo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="1588" y="159" width="452" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-11" value="Interface Gráfica" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="481" y="290" width="383" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-12" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="468" y="484" width="414" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-13" value="Gêmeo Digital" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="506" y="508" width="335" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;startArrow=classic;startFill=1;endArrow=classic;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.267;entryY=0.696;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="sQG5xDFyCRSMDVJOcQBe-25" target="sQG5xDFyCRSMDVJOcQBe-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="939" y="330" />
+              <mxPoint x="939" y="386" />
+              <mxPoint x="1519" y="386" />
+              <mxPoint x="1519" y="486" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-17" value="Notebook" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="434" y="151" width="452" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-21" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=4;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1011" y="348" as="sourcePoint" />
+            <mxPoint x="1188" y="348" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-22" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=4;startArrow=classic;startFill=1;endFill=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1225" y="432" as="sourcePoint" />
+            <mxPoint x="1444" y="432" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-23" value="Dados de &lt;br&gt;Configuração" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="966" y="240" width="305" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="sQG5xDFyCRSMDVJOcQBe-24" value="Sinais do Sistema" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=37;" vertex="1" parent="1">
+          <mxGeometry x="1143" y="427" width="305" height="79" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
