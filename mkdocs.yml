@@ -1,0 +1,64 @@
+site_name: Documentação PenduLab
+
+repo_url: https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial
+repo_name: Projeto_Tcc_Oseias_Oficial
+
+theme:
+  logo: favicon_aeropendulo_png.png
+  icon:
+    repo: fontawesome/brands/github 
+  name: "material"
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - navigation.tracking
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - header.autohide
+  palette:
+    - scheme: default
+      primary: blue
+      toggle:
+        icon: material/brightness-7
+        name: Modo Noturno
+    - scheme: slate
+      primary: deep blue
+      toggle:
+        icon: material/brightness-4
+        name: Modo Claro
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.tasklist       # suporte a lista de tarefas
+  - pymdownx.mark           # suporte a mrcações
+  - pymdownx.tilde          # suporte a tachado
+  - pymdownx.highlight      # suporte a código
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.betterem
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:          # suporte a emojis
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - search:
+  - mkdocstrings:
+      handlers:
+        python:
+          import:
+          - https://docs.python-requests.org/en/master/objects.inv
+
+copyright: Copyright &copy; 2023 Oséias Farias
