@@ -23,6 +23,7 @@ hide:
 
 # Documentação PenduLab
 
+## Aeropêndulo: Implementação de um Laboratório Virtual para Estudos de Modelagem e Controle de Sistemas Dinâmicos
 
 ## **Membros Atuais** ✨
 
