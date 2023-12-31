@@ -45,7 +45,7 @@ hide:
 
 
 
-## Demostração Simulador
+## Demostração Pendulab
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/893039111?h=80089a63c1&autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:90%;height:90%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
@@ -79,7 +79,7 @@ Projeto no GitHub</a>
 
 # Ferramentas Desenvolvidas
 
-#### Protótipo Aeropêndulo
+### Protótipo Aeropêndulo
 
 Implementa um aeropêndulo real, pode ser usado para estudos e testes de controladores e identificação de sistemas etc.
 
@@ -88,7 +88,7 @@ Implementa um aeropêndulo real, pode ser usado para estudos e testes de control
 </figure>
 
 
-#### Gêmeo Digital
+### Gêmeo Digital
 Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 
 <figure markdown>
@@ -96,14 +96,14 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 </figure>
 
 
-#### Interface Gráfica de Usuário
+### Interface Gráfica de Usuário
 Usada para iteragir em tempo real com o protótipo, esse sistema plotado os gráficos da posição angular, erro, sinal de referência, sinal PRBS e sinal de controle em malha fechada.
 
 <figure markdown>
 <img src="https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial/blob/main/utils/demo_interface_light.png?raw=true" alt="Interface Gráfica de Usuário" style="height: 70%; width:70%;"/>
 </figure>
 
-#### Firmware
+### Firmware
 Implementa o controlador, envio e recebimento de dados inteface gráfica / microcontrolador, geração de sinal de referência, leitura do sensor potenciômetro.
 
 <figure markdown>

@@ -1,6 +1,6 @@
 # Docs Módulo graficos_aeropendulo
 
-::: labvirtual.simulador_aeropendulo.graficos_aeropendulo.Graficos
+::: softwares_aeropendulo.simulador_aeropendulo.graficos_aeropendulo.Graficos
     handler: python
     options:
         members:

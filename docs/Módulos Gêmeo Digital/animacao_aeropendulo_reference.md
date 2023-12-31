@@ -1,6 +1,6 @@
 # Docs Módulo animacao_aeropendulo
 
-::: labvirtual.simulador_aeropendulo.animacao_aeropendulo.AnimacaoAeropendulo
+::: softwares_aeropendulo.simulador_aeropendulo.animacao_aeropendulo.AnimacaoAeropendulo
     handler: python
     options:
         members:

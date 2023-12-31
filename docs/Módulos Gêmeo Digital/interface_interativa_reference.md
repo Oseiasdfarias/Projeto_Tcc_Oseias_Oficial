@@ -1,6 +1,6 @@
 # Docs Módulo interface_interativa
 
-::: labvirtual.simulador_aeropendulo.interface_interativa.Interface
+::: softwares_aeropendulo.simulador_aeropendulo.interface_interativa.Interface
     handler: python
     options:
         members:
