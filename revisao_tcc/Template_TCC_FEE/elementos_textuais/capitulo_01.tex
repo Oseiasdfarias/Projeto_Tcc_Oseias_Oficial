@@ -1,0 +1,55 @@
+% INTRODUÇÃO------------------------------------------------------
+
+\chapter{INTRODUÇÃO}\label{cap1}
+
+Recentemente, tem-se notado um aumento significativo no número de aplicações que demandam cada vez mais processamento de dados, tais como mapeamento genético, computação gráfica, previsões meteorológicas e programas com grande quantidade de variáveis de entrada. \citeonline{dowd2010high} descrevem que a computação de alto desempenho é uma área que se preocupa em criar condições para executar processamentos com carga computacional elevada em intervalos de tempo viáveis.
+
+Quando uma aplicação exige mais capacidade de processamento do que os computadores convencionais podem oferecer, é necessário buscar alternativas para criar sistemas de alto desempenho. Essa busca por soluções de processamento de alta performance é essencial para possibilitar a execução de programas complexos em um intervalo de tempo aceitável, e vem impulsionando o desenvolvimento de novas tecnologias de hardware e software. O uso de técnicas de processamento paralelo, computação distribuída e processamento em nuvem são exemplos de abordagens que visam a criação de sistemas computacionais de alto desempenho \cite{dowd2010high}. Essas tecnologias permitem que programas que levariam anos para fornecerem resultados em máquinas comuns possam ser executados em muito menos tempo, em questão de horas ou dias.
+
+Uma abordagem diferente é a que consiste em construir circuitos orientados a aplicação, que são capazes de fornecer um bom desempenho para essa aplicação específica, ou seja, construir um hardware dedicado a essa aplicação. Por exemplo, é possível projetar e fabricar um circuito integrado específico (ASIC do inglês, \textit{Application Specific Integrated Circuit}) com o controle e as unidades funcionais personalizadas e otimizadas para uma dada aplicação. Com essa técnica de hardware dedicado pode-se atingir resultados muito bons com menos recursos de hardware \cite{Hager2017}. O ASIC é um circuito integrado para uma aplicação específica, tendo por objetivo solucionar demandas do mercado. Entretanto, cada projeto exige alto investimento, requerendo meses ou anos para ser desenvolvido, e fica limitado a uma dada aplicação. O desenvolvimento de ASICs é justificado comercialmente com um alto volume de produção, ou aplicações muito específicas, como em medicina (por exemplo, marcapasso) ou em aplicações militares.
+
+Outra opção de dispositivo reconfigurável, é o FPGA (do inglês \textit{Field-programmable Gate Array}). Este é um dispositivo que permite a implementação de aplicações específicas. E contrastando com o ASICs, a implementação em FPGAs não é permanente, podendo ser reconfigurada de forma barata e fácil. Como vantagem, este apresenta baixa granularidade, permitindo a configuração em nível de porta lógica. Isso significa que é possível criar virtualmente qualquer circuito digital a partir de uma descrição em HDL (do inglês, \textit{Hardware Description Language}). 
+
+Assim como um computador, o FPGA é capaz de executar milhões de operações simultâneas, tornando-o potencialmente centenas de vezes mais rápido do que projetos baseados em microprocessadores, devido à possibilidade de explorar o paralelismo espacial oferecido pelos elementos configuráveis presentes nos dispositivos atuais. 
+
+FPGAs podem ser utilizados em diversas aplicações de sistemas embarcados, como no setor automotivo, médico, industrial, equipamentos de imagem e telecomunicações, por exemplo. Compete ao meio acadêmico e a indústria realizar estudos e incentivos para utilizar a combinação: lógica programável com processadores embarcados. Dado o crescente destaque deste campo de atuação, é interessante que conceitos de programação reconfigurável sejam introduzidos ao ensino de automação e eletrônica. Desta forma, este trabalho busca contribuir com o ensino de Engenharia, utilizando o kit FPGA DE2-115 da Altera, por meio de uma abordagem pratica obtida pela criação e execução de roteiros aplicáveis em sala de aula. O DE2-115 é uma placa de desenvolvimento que incorpora uma FPGA da Altera, juntamente com uma variedade de periféricos e interfaces, tornando-o ideal para projetos de automação. Isso permite que os estudantes aprendam conceitos importantes, como programação em VHDL (VHSIC\textit{ Hardware Description Language}), design de sistemas digitais, interfaceamento com sensores e atuadores, e implementação de lógica de controle em hardware. Os estudantes podem projetar e implementar sistemas de automação em tempo real, utilizando a plataforma FPGA para desenvolver circuitos personalizados e reconfiguráveis.
+
+Através do ensino de automação utilizando o DE2-115, os estudantes podem adquirir habilidades práticas e relevantes para a indústria, como design de sistemas embarcados, programação de dispositivos reconfiguráveis, desenvolvimento de algoritmos de controle em hardware e integração de sistemas de automação com o mundo físico. Além disso, o uso do DE2-115 pode incentivar a criatividade e a inovação, permitindo que os estudantes projetem soluções personalizadas para problemas específicos de automação.
+
+
+\section {Justificativa}
+
+O uso de hardware reconfigurável permite a operação dedicada a um objetivo específico, sem influência de outros processos em concorrência, o que resulta em ganho de desempenho e processamento dedicado para a execução de algoritmos. É essencial que os profissionais de engenharia elétrica sejam introduzidos a ferramentas de programação digital, especialmente para análise e aplicação em campos como telecomunicações. No entanto, muitos estudantes enfrentam dificuldades nesses temas de estudo devido à escassez de materiais de ensino disponíveis. Portanto, esse trabalho propõe o desenvolvimento de material de ensino da linguagem VHDL, visando sua implementação em componentes curriculares de eletrônica digital e telecomunicações. 
+ 
+
+\section{Objetivos}
+
+Este trabalho tem como objetivo, propor a criação de material didático, e de fácil compreensão, para ensino de automação a partir de Dispositivos Lógicos Programáveis, utilizando um Kit de Aprendizado e Desenvolvimento FPGA (DE2-115), programado via VHDL.
+
+Para alcançar o objetivo proposto, foram definidas seguintes metas:
+
+\begin{enumerate}[label={\noNalph{enumi})}]
+    \item Realizar uma revisão bibliográfica sobre os fundamentos de sistemas digitais e lógica de programação;
+    \item Estudar a implementação de códigos em VHDL;
+    \item Estudar o funcionamento do FPGA DE2-115 da Altera;
+    \item Propor roteiros experimentais para estudo de lógica combinacional e sequencial;
+    \item Documentar os resultados obtidos, contribuindo com o ensino de sistemas digitais e eletrônica reconfigurável.”
+\end{enumerate}
+
+\section{Estrutura da Monografia}
+Este trabalho está estruturado em seis capítulos.
+
+O capítulo \ref{cap1} é introdutório, neste são apresentados a justificativa, objetivos e estrutura do trabalho desenvolvido.
+
+No capítulo 2 é apresentada a fundamentação teórica sobre sistemas digitais, lógica programável e dispositivos lógicos programáveis.
+
+O capítulo 3 reúne as principais partes e funcionamento do kit FPGA DE2-115 da Altera.
+
+No capítulo 4 são apresentados os roteiros experimentais que poderão ser aplicados para ensino de automação utilizando sistemas lógicos programáveis.
+
+O capítulo 5 apresenta os resultados obtidos a partir da execução dos experimentos descritos no capítulo 4.
+
+Finalmente, no capítulo 6 são apresentadas as considerações finais e perspectivas de trabalhos futuros
+
+%==============================================================%
+

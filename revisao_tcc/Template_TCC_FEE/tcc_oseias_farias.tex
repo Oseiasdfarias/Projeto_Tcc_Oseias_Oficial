@@ -1,0 +1,141 @@
+% -------------------------------------------------------------------------------------------------
+% Atualizado para atender o Guia de Trabalhos Acadêmicos da UFPA - 2022, e as normas da ABNT. Editado por André Cruz em 28/05/2023.
+% -------------------------------------------------------------------------------------------------
+% Template para Trabalho de Conclusão de Curso - Modelo da Faculdade de Engenharia Elétrica - CAMTUC
+% Não altere as linhas 1 a 35, a menos que precise inserir um novo package, no arquivo de pacotes. 
+\documentclass[
+%% -- Opções da classe memoir --
+	12pt,				% Tamanho da fonte
+	%openright,			% Capítulos começam em pág ímpar (insere página vazia caso preciso)
+	%twoside,			% Para impressão em recto e verso.
+	oneside,			% Para impressão em verso e anverso.
+	a4paper,			% Tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% Títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% Títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% Títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% Títulos de subsubseções convertidos em letras maiúsculas
+%% -- Opções do pacote babel --
+	english,			% Idioma adicional para hifenização
+	%french,		    % Idioma adicional para hifenização
+	%spanish,			% Idioma adicional para hifenização
+	brazil				% O último idioma é o principal do documento
+   ]{classes/UFPA-FEE-abntex2}     % O "classes" chama os arquivos de estilo da pasta classes
+
+% -------------------------------------------------------------------------------------------------
+% Insere os pacotes (package)
+\input{entradas/pacotes.tex}
+% Insere as definições básicas
+\input{entradas/definicoes.tex}
+% Insere as configurações de paginas e do pdf em sua versão final
+\input{entradas/config_de_paginas.tex}
+% -------------------------------------------------------------------------------------------------
+% -------------------------------------------------------------------------------------------------
+
+
+% As edições normais neste Template devem iniciar a partir da linha 40 
+% -------------------------------------------------------------------------------------------------
+% Insere as definições da Capa do TCC
+\input{parte_externa/capa_folharosto.tex}
+% -------------------------------------------------------------------------------------------------
+
+
+
+\begin{document} %%Inicio do documento
+\imprimircapa %Imprime a capa do TCC [Modificar informações em: parte_externa/capa_folharosto.tex]
+\imprimirfolhaderosto %Imprime a folha de rosoto [Modificar em: parte_externa/capa_folharosto.tex]
+\newpage\includepdf[pages=-]{elementos_pretextuais/ficha_catalografica_UPFA.pdf}
+%-------------------------------------Elementos pré-textuais:-------------------------------------
+% Inserir folha de aprovação e ata de defesa
+\input{elementos_pretextuais/folha_de_aprovacao.tex}
+\newpage\includepdf[pages=-]{elementos_pretextuais/ata_defesa_TCC.pdf}
+%---
+% Inserir folha de dedicatória:
+\include{elementos_pretextuais/dedicatoria}  
+%---
+% Inserir folha de agradecimentos:
+\include{elementos_pretextuais/agradecimentos}
+%---
+% Inserir folha de epigrafe:
+\include{elementos_pretextuais/epigrafe}
+%---
+% Inserir Resumo e abstract:
+\include{elementos_pretextuais/resumo}
+\include{elementos_pretextuais/abstract}
+%---
+% Inserir lista de ilustrações (para remover a cor azul das partes com com hiperlink, modificar em "config_de_paginas.tex"):
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage 
+%---
+% Inserir lista de tabelas (para remover a cor azul das partes com com hiperlink, modificar em "config_de_paginas.tex"):
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
+%---
+%Inserir lista de quadros:
+%\renewcommand{\listquadroname}{\textbf{LISTA DE QUADROS}}
+%\renewcommand{\cftquadroname}{\quadroname\space} 
+%\renewcommand*{\cftquadroaftersnum}{~~--}
+%\counterwithout{quadro}{chapter}
+%%---\pdfbookmark[0]{\listofquadrosname}{loq}
+%\listofquadros*
+%\cleardoublepage
+%% --
+% Inserir lista de abreviaturas e siglas, e simbolos:
+%\input{elementos_pretextuais/siglas.tex}
+%\input{elementos_pretextuais/simbolos.tex}
+% -------------------------------------------------------------------------------------------------
+
+% -----------------------------------------Inserir o sumario---------------------------------------
+% Obs1: Para remover a cor azul das partes com com hiperlink, modificar em "config_de_paginas.tex"
+% Obs2: Na versão final do trabalho, basta descomentar as linhas de 92 a 95 para incluir o sumário. Irá aparecer um erro devido a atualização de um dos pacotes, mesmo assim, após compilar duas vezes o código, o pdf será emitido noramalmente.
+\pdfbookmark[0]{\contentsname}{toc}
+\renewcommand\contentsname{\normalsize \textbf{SUMÁRIO}}
+\tableofcontents*
+\cleardoublepage
+% -------------------------------------------------------------------------------------------------
+% -------------------------------------------------------------------------------------------------
+
+%-------------------------------------Elementos textuais:-------------------------------------
+\textual
+% ---
+% Capítulo 01 - Introdução
+%\include{elementos_textuais/capitulo_01}
+\include{elementos_textuais/Cap_1_introducao}
+% ---
+% Capítulo 02 - Resumo Teórico
+%\include{elementos_textuais/capitulo_02}
+\input{Capitulos/Cap_2_Desenvolvimento}
+
+\input{Capitulos/Cap_3_Resultados_e_Discussoes}
+
+\input{Capitulos/Cap_4_ Conclusao}
+% ---
+% Capítulo 03 - Desenvolvimento
+%\include{elementos_textuais/capitulo_03}
+% ---
+
+
+%-------------------------------------Elementos pós-textuais:-------------------------------------
+\postextual
+%Referências Bibliográficas:
+%Opção 1 - Preenchendo manualmente as referências:
+%\include{elementos_postextuais/referencias} 
+%.................................................................................................
+%Opção 2 - Utilizando Bibtex (Melhor opção):
+\bibliographystyle{abntex2-alf} % Define o estilo ABNT para formatar a lista de referências 
+\bibliography{bibtex-referencias}
+%Passos: Abrir o arquivo bib_tex-referencias, adcionar as referências a partir do Google Acadêmico, pressionar F11 duas vezes.  Antes de compilar o arquivo tex. pressionar F11 duas vezes para rodar o arquivo bib, e então compilar, de preferências duas vezes.
+
+%.................................................................................................
+% ---
+%Insere os apêndices:
+\include{elementos_postextuais/apendices}             		   
+% ---
+% Insere os anexos:
+%\include{elementos_postextuais/anexos}               		  
+% ---
+%Para conhecimento: Apêndices são textos elaborados pelo autor a fim de complementar sua argumentação. Anexos são os documentos não elaborados pelo autor, que servem de fundamentação, comprovação ou ilustração, como mapas, leis, estatutos etc.
+% -------------------------------------------------------------------------------------------------
+\end{document}

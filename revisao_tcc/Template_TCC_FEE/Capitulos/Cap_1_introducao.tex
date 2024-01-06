@@ -1,0 +1,72 @@
+
+\chapter{Introdução}
+\label{ch:intro}
+
+\section{Justificativa}
+
+Os sistemas de controle desempenham um papel fundamental na sociedade contemporânea, permeando uma ampla gama de aplicações ao nosso redor. Desde o lançamento de foguetes e o decolamento do ônibus espacial até processos de usinagem automatizados, onde peças metálicas são trabalhadas envoltas em jatos de água de resfriamento, até veículos autônomos que distribuem materiais em oficinas aeroespaciais, a presença e a influência dos sistemas de controle automático são evidentes, \cite{nise2013}. É crucial ressaltar que, ao realizar análises e projetar controladores eficazes para tais sistemas, é necessário realizar uma abstração desses sistemas físicos por meio de equações matemáticas. Essa prática, embora essencial, pode tornar a interpretação desafiadora para iniciantes na área devido à complexidade intrínseca das formulações matemáticas envolvidas.
+
+Além disso, a implementação de controladores requer competência em diferentes áreas da engenharia, tais como eletrônica analógica e digital, programação, processamento de sinais, circuitos elétricos, entre outras. Dessa forma, torna-se necessário integrar conhecimentos multidisciplinares para a implementação bem-sucedida de controladores em sistemas reais.
+
+Um sistema de controle é composto por subsistemas e processos, concebidos com a finalidade de alcançar uma saída desejada com um desempenho específico, considerando uma entrada predefinida, \cite{nise2013}.
+
+A abordagem convencional no ensino das disciplinas teóricas em cursos de Engenharia representa um desafio significativo, dada a dificuldade dos alunos em estabelecer conexões entre o conteúdo teórico e a aplicação prática nos sistemas físicos. A introdução de tecnologias de apoio tem proporcionado avanços, mas persistem desafios, como a carência de estrutura operacional e a necessidade de atualização nas metodologias de ensino. A incorporação de simulações computacionais aliadas a animações emerge como uma estratégia promissora para acelerar esse processo, oferecendo uma ponte eficaz entre a teoria e a compreensão prática, \cite{yuri_tcc}.
+
+No entanto, no estudo de sistemas de controle, é comum que os discentes enfrentem desafios em seu primeiro contato com a área, especialmente devido à necessidade de aplicar abstrações matemáticas para representar a dinâmica de sistemas físicos. Essa etapa inicial pode parecer complexa, porém é crucial para a compreensão e domínio dos conceitos fundamentais envolvidos na análise e controle de sistemas.
+
+Uma das principais razões pelas quais os estudantes encontram dificuldades é a transição do mundo físico para o mundo matemático abstrato, onde os sistemas são modelados por equações diferenciais, transformadas de Laplace e outros formalismos matemáticos. Para muitos, essa mudança pode parecer distante da realidade observada, o que pode causar alguma resistência inicial.
+
+Assim, buscando superar essa barreira de aprendizagem, é fundamental desenvolver métodos que possibilitem aos discentes visualizar a dinâmica desses sistemas na prática. Uma abordagem promissora é a utilização de protótipos, que permitem aos alunos observar a dinâmica analisada matematicamente no mundo real. Essa aplicação prática fornece uma conexão mais tangível entre os conceitos abstratos e suas aplicações concretas, tornando o aprendizado mais envolvente e compreensível.
+
+Adicionalmente, o uso de simuladores pode ser altamente benéfico. Ao inserir as respostas obtidas por meio dos modelos matemáticos como entrada nos simuladores, o processo de aprendizado integra ferramentas matemáticas e de visualização. Dessa forma, os alunos podem interagir com os sistemas em diferentes cenários, observando como as variáveis influenciam o comportamento dos sistemas de controle. Essa abordagem interativa e experimental ajuda a solidificar conceitos e aprimorar a compreensão do funcionamento desses sistemas complexos.
+
+Ao combinar a teoria matemática com a prática através de protótipos e simuladores, o processo de aprendizado torna-se mais fluido e estimulante. Os alunos podem perceber a relevância das abstrações matemáticas na resolução de problemas reais, o que reduzirá a resistência inicial e aumentará o interesse pela área de sistemas de controle.
+
+A proposta deste trabalho consiste no desenvolvimento de um protótipo que utiliza um conjunto de softwares para criar um laboratório virtual. Essa abordagem possibilita que os estudantes construam seu próprio laboratório de maneira ágil e flexível, utilizando componentes acessíveis e softwares de código aberto, sem custos adicionais. Dessa forma, os estudantes têm a oportunidade de aprimorar seus conhecimentos e aprofundar tanto a teoria quanto a prática de forma complementar, resultando em uma base de aprendizado mais sólida.
+
+O projeto compreende um protótipo de Aeropêndulo composto por firmware para o microcontrolador, software de usuário e um simulador 3D. Este protótipo foi concebido com a premissa de ter o menor custo possível, visando proporcionar aos interessados uma implementação acessível com gastos mínimos em componentes. O algoritmo do firmware foi desenvolvido em linguagens C e C++, utilizando o Framework do Arduino em conjunto com o PlatformIO e o microcontrolador ESP32.
+
+A interface do usuário foi projetada com o objetivo de simplificar a interação em tempo real, permitindo ajustes nos parâmetros do sinal de referência durante a execução do sistema. Por fim, foi criado um gêmeo digital do protótipo físico, possibilitando a observação da dinâmica do sistema físico por meio de um simulador 3D. Este simulador replica o comportamento do protótipo em tempo real, proporcionando uma integração eficaz entre o mundo real e o computacional.
+
+Conforme destacado por Grieves (2014) em sua pesquisa pioneira na Universidade de Michigan, o conceito de 'gêmeo digital' permeia todas as fases do ciclo de vida de um produto, desde o protótipo até a operação, proporcionando uma abordagem abrangente para avaliar a performance e desgaste no mundo real. Este estudo concentra-se na aplicação deste conceito na etapa de operação e manutenção, enquanto ressalta a relevância de explorar seu potencial em outras fases do ciclo de vida do produto\cite{quinalha2018gemeos}.
+
+
+\section{Objetivos}
+
+\subsection{Objetivos Gerais}
+
+Este trabalho tem como objetivo desenvolver um laboratório virtual abrangente para o estudo de sistemas de controle. Para alcançar esse propósito, será criado um projeto que integra um protótipo, simulador e uma interface gráfica, possibilitando sua utilização na investigação de diversos aspectos e subáreas relacionadas a sistemas de controle. Isso inclui a identificação de sistemas, o desenvolvimento de controladores, a otimização de controladores, bem como a aplicação de Inteligência Artificial em sistemas de controle, entre outros tópicos.
+
+Além disso, a proposta envolve a aplicação prática dos conhecimentos adquiridos durante a graduação, unindo técnicas de sistemas de controle, eletrônica analógica e digital, programação, física e cálculo em uma configuração de sistema físico. O principal objetivo é criar um ambiente que permita ao pesquisador aplicar e aprimora seus conhecimentos e observar o comportamento da dinâmica do sistema em um ambiente real. Para realizar essa tarefa, será necessário combinar tecnologias de diversas disciplinas do curso de Engenharia Elétrica, tornando o projeto ainda mais intrigante e desafiador.
+
+
+\subsection{Objetivos Específicos}
+
+\begin{itemize}
+        \setlength{\itemsep}{-2pt}
+	\item \textbf{Desenvolver o protótipo do Aeropêndulo}: Projetar a estrutura física e elétrica do sistema;
+        \item \textbf{Desenvolver um simulador 3D (Gêmeo Digital)}: programar o simulador usando a linguagem de programação Python em conjunto com a biblioteca VPython;
+        \item \textbf{Interface de Usuário}: Desenvolver uma interface gráfica com menu para manipular o comportamento do sistema em tempo real, salvar dados de ensaio e testar o sistema em malha fechada;
+        \item \textbf{Aplicar Identificação de sistema a Planta}: Obter um modelo da planta usando função de transferência discreta  por identificação de sistemas usando o método dos mínimos quadrados;
+        \item \textbf{Testar o sistema  em Malha Fechada}: Implementar um controlador PID junto do firmware e realizar testes para validar o sistema em malha fechada;
+\end{itemize}
+
+
+\section{Escopo do Trabalho}
+
+O projeto parte de uma modelagem matemática usando como base os princípios da física newtoniana com o intuito de demostrar que para sistemas relativamente complexos, essa técnica de modelagem pode se tornar trabalhosa e por muitas vezes impraticáveis, a partir dessa premissa parte-se para o desenvolvimento do protótipo, o objetivo está na utilização do sistema físico para aplicar o método de identificação de sistema que consiste em obter um modelo matemático, que descreva a dinâmica do sistema físico de forma aproximada, a partir dos dados de entrada e saída do protótipo.
+
+No processo de condução dos ensaios e na aquisição dos dados essenciais para a realização dos estudos, o projeto inclui o desenvolvimento de uma interface gráfica. Esta interface capacita o pesquisador a executar ensaios e a armazenar os dados obtidos, viabilizando a subsequente modelagem e análise do comportamento do sistema em estudo. Adicionalmente, a interface é equipada com um menu que permite a configuração em tempo real dos ensaios para diferentes sinais de entrada, além da configuração dos parâmetros de frequência, amplitude e offset. Essa funcionalidade dinâmica e flexível aprimora significativamente a condução da pesquisa, tornando-a mais produtiva e eficiente.
+
+Além da interface gráfica executada no computador, é fundamental o desenvolvimento de um firmware que gerencie aspectos cruciais, como a comunicação, aquisição de dados e controle do Aeropêndulo. Essas funcionalidades são implementadas por um microcontrolador. Este microcontrolador não apenas estabelece a comunicação com a interface gráfica através da conexão USB, mas também desempenha um papel vital na geração dos sinais de entrada para a planta e na leitura do ângulo do braço do Aeropêndulo.
+
+
+Além disso, o projeto incorpora um gêmeo digital do sistema físico, na forma de um simulador 3D do Aeropêndulo. Essa abordagem permite a integração da dinâmica do sistema real com o ambiente computacional, possibilitando a recriação em tempo real da planta de forma virtual. Essa simulação em 3D não apenas enriquece a experiência de aprendizado, mas também oferece aos estudantes a oportunidade de se envolver em um processo de aprendizado prático que se assemelha significativamente às condições do mundo real. Isso resulta em um processo educacional mais imersivo e eficaz, capacitando os alunos a compreender e explorar a complexidade dos sistemas de controle de maneira mais aprofundada.
+
+A seção \ref{fundamentacao_teorica} desenvolve a fundamentação teórica focando na modelagem matemática do sistema, a seção \ref{implementacao_prototipo} implementa o protótipo de Aeropêndulo mostrando passo a passo o processo de desenvolvimento até a concepção da planta, para o desenvolvimento dos softwares a seção \ref{dev_softwares} descreve as etapas do desenvolvimento das aplicações, finalizando o capítulo \ref{cap_desenvolvimento} a seção \ref{flu_lab_virtual} descreve as partes do laboratório a partir de um fluxograma do sistema.
+
+O capítulo \ref{cap_3} aborda os resultados e discussões obtidos ao término do projeto. Na seção \ref{indentificacao}, emprega-se o método de identificação de sistemas para validar a estrutura de obtenção e armazenamento dos dados de ensaio. Adicionalmente, a seção \ref{malha_fechada} implementa um controlador PID simples com o propósito de validar a infraestrutura física e de software desenvolvida para os testes de controladores na planta física.
+
+Por fim, o capítulo \ref{cap_conclusao} consolida os avanços alcançados no projeto, destacando perspectivas futuras para sua aplicação. Na seção \ref{concideracoes_finais}, são apresentadas considerações finais sobre a implementação realizada. Além disso, a seção \ref{trabalhos_futuros} oferece uma visão prospectiva sobre possíveis trabalhos futuros que podem adotar o projeto desenvolvido neste trabalho como ambiente de estudo.
+
+

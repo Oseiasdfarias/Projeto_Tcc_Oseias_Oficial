@@ -1,0 +1,103 @@
+\documentclass[12pt,
+               openright,
+               oneside,
+               english,
+               brazil]{abntex2}
+
+\usepackage{enumitem}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{efbox, graphicx}
+
+\usepackage{pythonhighlight}
+
+\efboxsetup{linecolor=gray,linewidth=1.2pt}
+%Preamblo
+\input{PreTextual/Preamblo.tex}
+
+
+
+\begin{document}
+		
+	\setcounter{page}{1}
+	\input{PreTextual/CapaContracapa}
+	\newpage
+	\input{PreTextual/FolhaBancaAprovacao}	
+	\newpage
+
+        % Início da dedicatória - Elemento opcional
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                \begin{dedicatoria}
+                \vspace*{\fill}
+                \begin{flushright}
+                \begin{minipage}{8.1cm}\footnotesize
+                  Dedico a minha mãe, meu pai e a minhas irmãs, além de todas as pessoas que me apoiaram nessa fase crucial da minha vida.
+        	\end{minipage}
+            \end{flushright}
+                \end{dedicatoria}
+    
+        % Início dos agradecimentos - elemento opcional
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        \begin{agradecimentos}
+        À minha mãe e meu pai que dedicaram suas vidas por esse propósito;\\
+        Aos professores do curso pela dedicação em simplificar o complexo, em especial aos professores da área de sistema de controle;\\
+        Finalmente, ao meu orientador Prof. Dr. Raphael Teixeira pela sua orientação e paciência.
+        \end{agradecimentos}
+
+        \newpage
+        % Início da epígrafe - opcional
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{epigrafe}
+        \vspace*{\fill}
+        \begin{flushright}
+        \begin{minipage}{8.1cm}\footnotesize
+                      \textit{``Demore o tempo que for para decidir o que você quer da vida, e depois que decidir não recue ante nenhum pretexto, porque o mundo tentará te dissuadir.''\\ (Friedrich Wilhelm Nietzsche )}
+            	\end{minipage}
+        \end{flushright}
+        \end{epigrafe}
+
+        \newpage
+	\addcontentsline{toc}{chapter}{Resumo}
+	\input{PreTextual/Resumo}
+	\newpage
+	\addcontentsline{toc}{chapter}{Abstract}
+	\input{PreTextual/Abstract}
+	\newpage
+        
+        %\renewcommand{\listadesiglasname}{Lista de Siglas}
+        %\input{PreTextual/lista_siglas}
+
+        %\newpage
+	%\renewcommand{\listofsimblos}{Lista de símbolos}
+	%\addcontentsline{toc}{chapter}{Lista de símbolos}
+        %\input{PreTextual/lista_de_simbolos}
+        %\newpage
+	\renewcommand{\listfigurename}{Lista de figuras}
+	\listoffigures
+
+	\newpage
+	\tableofcontents 
+	\newpage
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\textual
+	\input{Capitulos/Cap_1_introducao}
+        \input{Capitulos/Cap_2_Desenvolvimento}
+        \input{Capitulos/Cap_3_Resultados_e_Discussoes}
+        \input{Capitulos/Cap_4_ Conclusao}
+
+    
+	\renewcommand{\appendixtocname}{APÊNDICES}
+	\renewcommand{\appendixpagename}{Apêndices}
+	\begin{appendices}
+	\addappheadtotoc
+	\clearpage
+        \input{Ap1.tex}
+        \end{appendices}
+	
+	
+	\bibliography{Capitulos/Referencias}
+
+
+\end{document}

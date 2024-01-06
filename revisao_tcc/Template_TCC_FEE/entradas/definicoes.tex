@@ -1,0 +1,228 @@
+%%%%%% Ambientes %%%%%%%%%%%%%%%
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{cor}[teo]{Corolário}
+
+%%%%%% Ambientes %%%%%%%%%%%%%%%
+%\newcommand{\cc}[1]{[\citeonline{#1}]}
+
+%%%%%% Ambientes %%%%%%%%%%%%%%%
+% Traduz o sen
+\renewcommand{\sin}{\,\mathrm{sen}\,}
+% transforma o deg em º
+\renewcommand{\deg}{\mathrm{^{o}}\,}
+
+%%%%%% COMANDOS %%%%%%%%%%%%%%%%
+% Derivadas
+
+% Operador del
+\def\del{\partial}
+
+%derivadas como Diff
+\newcommand{\diff}[2]{\ensuremath{\frac{d#1}{d#2}}} 
+%derivadas como Diff versão2
+\newcommand{\diffs}[2]{\ensuremath{\frac{d}{d#2}\lco #1 \rco}}
+
+\newcommand{\pdiff}[2]{\ensuremath{\frac{\del #1}{\del #2}}}
+\newcommand{\pdiffa}[2]{\ensuremath{\frac{\del}{\del#2}\lco #1 \rco}}
+\newcommand{\pdiffb}[2]{\ensuremath{\frac{\del}{\del#2} #1}}
+
+% Brackets
+\newcommand{\bra}[1]{\ensuremath{\left< #1 \right|}}
+\newcommand{\ket}[1]{\ensuremath{ \left| #1 \right>}}
+\newcommand{\braket}[2]{\ensuremath{\left< #1 \vphantom{#2} \right| \left. #2 \vphantom{#1} \right>}}
+\newcommand{\braketop}[3]{\ensuremath{\left< #1 \vphantom{#3} \right| #2 \left| \vphantom{#1} #3 \right>}}
+\newcommand{\ketbra}[2]{\ensuremath{\left| #1 \vphantom{#2} \right> \left< #2 \vphantom{#1} \right|}}
+
+% Unidades
+%Traço da matriz
+\newcommand{\trace}[1]{\,\mathrm{Tr}\left[ #1 \right]}
+% m/s
+\def\mps{\,\mathrm{m/s}}
+% eV
+\def\ev{\,\mathrm{eV}}
+\def\um{\,\mathrm{\mu m}}
+\def\A0{\,\mathrm{\angstom}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% DEFINIÇÕES %%%%%%%%%%%%%%
+%%% Capitulo 1
+%\newcommand{\raiz}[1]{\ensuremath{\sqrt{#1}}
+
+\def\d{\mathrm{d}}
+
+\def\ni{\noindent}
+
+\def\lco{\left[}
+\def\rco{\right]}
+
+\def\lp{\left(}
+\def\rp{\right)}
+
+\def\lch{\left\{}
+\def\rch{\right\}}
+
+\def\lbar{\left|}
+\def\rbar{\right|}
+
+\def\lnda{\left.}
+\def\rnda{\right.}
+\def\h{\hbar}
+
+\def\grad{\nabla}
+\def\div{\nabla\cdot}
+\def\rot{\nabla\times}
+
+\def\exp{e^}
+
+\def\meio{{1\over 2}}
+
+\def\h2L{{\hbar\over{2L}}}
+
+\def\limit {\lim\limits}
+
+%%%%%%% Capítulo 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ax{\frac{a\sqrt{3}}{2}}
+
+\def\ic{\hat{i}}
+\def\jc{\hat{j}}
+\def\kc{\hat{k}}
+
+\def\acc{a_{cc}}
+
+\def\ay{\frac{a}{2}}
+
+%%%%%%% Apendice 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ror{\ensuremath{\rho(\vr)}}
+\def\H{\ensuremath{\hat{H}}}
+\def\T{\ensuremath{\hat{T}}}
+\def\V{\ensuremath{\hat{V}}}
+\def\U{\ensuremath{\hat{U}}}
+\def\TUV{\T+\U+\V}
+
+\def\intd3r{\int{d^3r}}
+\def\deltari{\delta(\vr-\vr_i)}
+
+\def\tb{\textit{tight-binding }}
+\def\abi{\textit{ab-initio }}
+\def\ef{\epsilon_f}
+\def\1/N{\frac{1}{\sqrt{N}}}
+\def\sch{Schrödinger }
+
+\def\vk{\vec{k}}
+\def\vK{\vec{K}}
+\def\vr{\vec{r}}
+\def\vR{\vec{R}}
+\def\vS{\vec{S}}
+
+\def\Psikr{\Psi(\vec{k},\vec{r})}
+
+\def\PhiAkr{\Phi_A(\vec{k},\vec{r})}
+\def\PhiA{\Phi_A}
+\def\PhiAconj{\Phi_A ^{\ast}}
+
+\def\PhiBkr{\Phi_B(\vec{k},\vec{r})}
+\def\PhiB{\Phi_B}
+\def\PhiBconj{\Phi_B ^{\ast}}
+
+\def\vRAi{\vec{R} _{A_{i}}}
+\def\vRAj{\vec{R} _{A_{j}}}
+\def\vRAl{\vec{R} _{A_{l}}}
+\def\vRAm{\vec{R} _{A_{m}}}
+\def\vRAs{\vec{R} _{A_{s}}}
+
+\def\vRBj{\vec{R} _{B_{j}}}
+\def\vRBl{\vec{R} _{B_{l}}}
+\def\vRBm{\vec{R} _{B_{m}}}
+\def\vRBs{\vec{R} _{B_{s}}}
+
+\def\Hij{H_{ij}}
+\def\HAA{H_{AA}}
+\def\HAB{H_{AB}}
+\def\HBA{H_{BA}}
+\def\HBB{H_{BB}}
+
+\def\Hijconj{H_{ij}^{\ast}}
+\def\HAAconj{H_{AA}^{\ast}}
+\def\HABconj{H_{AB}^{\ast}}
+\def\HBAconj{H_{BA}^{\ast}}
+\def\HBBconj{H_{BB}^{\ast}}
+
+\def\Sij{S_{ij}}
+\def\SAA{S_{AA}}
+\def\SAB{S_{AB}}
+\def\SBA{S_{BA}}
+\def\SBB{S_{BB}}
+
+\def\Sijconj{S_{ij}^{\ast}}
+\def\SAAconj{S_{AA}^{\ast}}
+\def\SABconj{S_{AB}^{\ast}}
+\def\SBAconj{S_{BA}^{\ast}}
+\def\SBBconj{S_{BB}^{\ast}}
+
+\def\kxax{k_x\ax}
+\def\kyay{k_y\ay}
+\def\kya{ak_y}
+
+\def\dg{\ensuremath{^{\dagger}}}
+\def\inv{\ensuremath{^{-1}\vphantom{01}}}
+
+\def\KS{Kohn-Sham}
+\def\ro{\ensuremath{[\rho]}}
+
+\def\nn{\nonumber}
+
+\def\hbardm{\frac{\hbar ^2}{2m}}
+
+\def\psiir{\psi_i\lp\vec{r}\rp}
+\def\psiirl{\psi_i\lp\vec{r}\,'\rp}
+\def\psiirconj{\psi_i^{\ast}\lp\vec{r}\rp}
+\def\psiirlconj{\psi_i^{\ast}\lp\vec{r}\,'\rp}
+
+%%% ====================================================================
+% \simb[entrada na lista de símbolos]{símbolo}:
+% Escreve o simbolo no texto e uma entrada na Lista de S´?mbolos.
+% Se o par^ametro opcional ´e omitido, usa-se o par^ametro obrigat´orio.
+\newcommand{\simb}[2][]{%
+\ifthenelse{\equal{#1}{}}
+{\addcontentsline{los}{simbolo}{\ensuremath{#2}}}
+{\addcontentsline{los}{simbolo}{#1}}
+\ensuremath{#2}}
+\makeatletter % para aceitar comandos com @ (at) no nome
+
+% \listadesimbolos: comando que imprime a lista de simbolos
+\newcommand{\listadesimbolos}{
+	\pretextualchapter{Lista de Símbolos}
+	{\setlength{\parindent}{0cm}
+	\@starttoc{los}}
+}
+% como a entrada será impressa
+\newcommand\l@simbolo[2]{\par #1, p.\thinspace#2}
+\makeatother
+%%% ====================================================================
+
+%%% ====================================================================
+% \simb[entrada na lista de símbolos]{símbolo}:
+% Escreve o simbolo no texto e uma entrada na Lista de S´?mbolos.
+% Se o par^ametro opcional ´e omitido, usa-se o par^ametro obrigat´orio.
+\newcommand{\sig}[2][]{%
+\ifthenelse{\equal{#1}{}}
+{\addcontentsline{lsig}{sigla}{#2}}
+{\addcontentsline{lsig}{sigla}{#1}}
+\ensuremath{#2}}
+\makeatletter % para aceitar comandos com @ (at) no nome
+
+% \listadesimbolos: comando que imprime a lista de simbolos
+\newcommand{\listadesiglas}{
+	\pretextualchapter{Lista de Siglas}
+	{\setlength{\parindent}{0cm}
+	\@starttoc{lsig}}
+}
+% como a entrada será impressa
+\newcommand\l@sigla[2]{\par #1, p.\thinspace#2}
+\makeatother
+%%% ====================================================================
+
+\DeclareRobustCommand{\noNalph}[1]{\ifnum\value{#1}=15 \refstepcounter{#1}\fi \alph{#1}}
+\counterwithout{equation}{chapter}
+
+%%%%%% FIM %%%%%%%
