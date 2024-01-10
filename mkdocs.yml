@@ -19,15 +19,15 @@ theme:
     - navigation.top
     - header.autohide
   palette:
-    - scheme: default
-      primary: blue
+    - scheme: light
+      primary: white
       toggle:
-        icon: material/brightness-7
+        icon: material/lightbulb-outline
         name: Modo Noturno
     - scheme: slate
-      primary: deep blue
+      primary: custom
       toggle:
-        icon: material/brightness-4
+        icon: material/lightbulb
         name: Modo Claro
 extra_css:
   - stylesheets/extra.css

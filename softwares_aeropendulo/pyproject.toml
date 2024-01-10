@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "softwares_aeropendulo"
 version = "0.2.0"
-description = "Interface para interagit com o Aeropêndulo"
+description = "Interface para interagir com o protótipon do Aeropêndulo"
 authors = ["Oseiasdfarias <oseias.dfarias@gmail.com>"]
 readme = "README.md"
 
