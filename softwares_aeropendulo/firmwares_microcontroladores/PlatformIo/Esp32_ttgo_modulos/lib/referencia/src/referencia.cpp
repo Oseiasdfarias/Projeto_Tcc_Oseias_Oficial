@@ -73,6 +73,7 @@ float SinaisRefs::referencia_onda_dente_serra(
     return sinal;
 }
 
+
 class OndaPrbs
 {
 public:

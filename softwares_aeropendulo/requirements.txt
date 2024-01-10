@@ -37,7 +37,6 @@ hyperlink==21.0.0
 idna==3.4
 importlib-metadata==6.8.0
 importlib-resources==5.12.0
--e git+ssh://git@github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial.git@5838a174d607d87076637324a034b687802a4cdd#egg=interface&subdirectory=softwares_aeropendulo
 ipykernel==6.25.1
 ipython==8.12.2
 ipython-genutils==0.2.0

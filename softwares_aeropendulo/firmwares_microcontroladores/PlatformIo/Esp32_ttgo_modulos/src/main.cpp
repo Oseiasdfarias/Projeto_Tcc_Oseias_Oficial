@@ -145,10 +145,10 @@ void loop()
       /* ###### Define o sistema em malha aberta ###### */
       // sinal_entrada_ma = gerar_ref.referencia_onda_quadrada(
       //                      0.2, 0.5, 1.0, Ts);
-      sinal_entrada_ma = 1.0 + gerar_ref.referencia_onda_quadrada(
-                               0.4, 0.3, Ts);
+      // sinal_entrada_ma = 1.0 + gerar_ref.referencia_onda_quadrada(
+      //                         0.4, 0.3, Ts);
 
-      // sinal_entrada_ma = sinal_prbs.onda_prbs();
+      sinal_entrada_ma = sinal_prbs.onda_prbs();
       sinal_ref = 0.0;
       sinal_controle = 0.0;
       erro = 0.0;
