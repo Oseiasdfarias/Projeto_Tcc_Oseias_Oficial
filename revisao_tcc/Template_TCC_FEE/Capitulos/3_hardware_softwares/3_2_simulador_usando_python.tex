@@ -1,6 +1,6 @@
 Nesta seção, será elaborado o Gêmeo Digital do Aeropêndulo. O Gêmeo Digital representa um sistema gráfico computacional que reproduz em tempo real a dinâmica do protótipo. Isso permite a virtualização do Aeropêndulo, possibilitando a observação da mesma dinâmica do sistema físico, agora em um ambiente gráfico computacional 3D. Essa virtualização é viabilizada pela obtenção do estado atual do braço do Aeropêndulo por meio de comunicação serial.
 
-Para o desenvolvimento do Gêmeo Digital, utilizou-se a biblioteca VPython, essa biblioteca possui um conjunto de funções que permite criar objetos 3D capazes de realizar movimentos rotacionais de translacionais, além disso, é possível plotar gráficos em tempo real. A Figura \ref{fig3:image_13_1} ilustra a interface do simulador já finalizado, pode-se observar que a interface é composta de duas partes principais, uma que implementa o ambiente 3D com o Aeropêndulo e a outra gera os gráficos do sinal de referência e de saída.
+Para o desenvolvimento do Gêmeo Digital, utilizou-se a biblioteca VPython, essa biblioteca possui um conjunto de funções que permite criar objetos 3D capazes de realizar movimentos rotacionais de translacionais, além disso, é possível plotar gráficos em tempo real. A figura \ref{fig3:image_13_1} ilustra a interface do simulador já finalizado, pode-se observar que a interface é composta de duas partes principais, uma que implementa o ambiente 3D com o Aeropêndulo e a outra gera os gráficos do sinal de referência e de saída.
 
 Com a finalidade de atualizar os estados dos gráficos e a posição angular do gêmeo digital em tempo real a aplicação se comunica com a interface gráfica, subseção \ref{interface_graica}, com isso é possível realizar a atualização dos estados do gráfico assim como do gêmeo digital tendo como entrada os sinais dos estados do protótipo.
 
@@ -18,14 +18,14 @@ Com a finalidade de atualizar os estados dos gráficos e a posição angular do 
 \newpage
 \subsubsection{Biblioteca VPython}
 
-Conforme o site oficial \cite{vpython}, "O VPython, por ser desenvolvido com a linguagem Python, é uma ferramenta versátil para a criação de animações 3D navegáveis. Ele é fácil de aprender e usar, mesmo para pessoas com pouca experiência em programação. No entanto, ele também oferece uma ampla gama de recursos para programadores e pesquisadores experientes."
+Conforme o site oficial \cite{vpython}, O VPython, por ser desenvolvido com a linguagem Python, é uma ferramenta versátil para a criação de animações 3D navegáveis. Ele é fácil de aprender e usar, mesmo para pessoas com pouca experiência em programação. No entanto, ele também oferece uma ampla gama de recursos para programadores e pesquisadores experientes.
 
 Ao criar uma simulação com VPython e executá-la, o simulador será renderizado no navegador de internet padrão do sistema operacional.
 
 
 \subsubsection{Arquitetura do Gêmeo Digital}
 
-Para implementar o simulador a arquitetura do sistema consiste de um módulo para gerar os gráficos de linha e outro para desenhar o simulador 3D, existe um módulo que integra e atualiza os estados dos gráficos de linha e do simulador 3D, a Figura \ref{fig3:image_13} mostra como a estrutura do simulador foi pensada, o último bloco é a interface gráfica, subseção \ref{interface_graica}, responsável por obter os estados do sistema real, com isso, é possível usar a velocidade angular real do protótipo como entrada para o gêmeo digital, isso faz com que a dinâmica do protótipo seja reproduzida no gêmeo digital, além disse, é possível obter os sinais de referência e de saída e atualizar os gráfios que compõem a interface do simulador.
+Para implementar o simulador a arquitetura do sistema consiste de um módulo para gerar os gráficos de linha e outro para desenhar o simulador 3D, existe um módulo que integra e atualiza os estados dos gráficos de linha e do simulador 3D, a figura \ref{fig3:image_13} mostra como a estrutura do simulador foi pensada, o último bloco é a interface gráfica, subseção \ref{interface_graica}, responsável por obter os estados do sistema real, com isso, é possível usar a velocidade angular real do protótipo como entrada para o gêmeo digital, isso faz com que a dinâmica do protótipo seja reproduzida no gêmeo digital, além disse, é possível obter os sinais de referência e de saída e atualizar os gráfios que compõem a interface do simulador.
 
 \begin{figure}[!h]
 	\centering

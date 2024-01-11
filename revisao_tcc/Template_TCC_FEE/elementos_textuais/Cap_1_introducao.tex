@@ -4,13 +4,13 @@
 
 \section{Justificativa}
 
-Os sistemas de controle desempenham um papel fundamental na sociedade contemporânea, permeando uma ampla gama de aplicações ao nosso redor. Desde o lançamento de foguetes e o decolamento do ônibus espacial até processos de usinagem automatizados, onde peças metálicas são trabalhadas envoltas em jatos de água de resfriamento, até veículos autônomos que distribuem materiais em oficinas aeroespaciais, a presença e a influência dos sistemas de controle automático são evidentes, \cite{nise2013}. É crucial ressaltar que, ao realizar análises e projetar controladores eficazes para tais sistemas, é necessário realizar uma abstração desses sistemas físicos por meio de equações matemáticas. Essa prática, embora essencial, pode tornar a interpretação desafiadora para iniciantes na área devido à complexidade intrínseca das formulações matemáticas envolvidas.
+Os sistemas de controle desempenham um papel fundamental na sociedade contemporânea, permeando uma ampla gama de aplicações ao nosso redor. Desde o lançamento de foguetes e o decolamento do ônibus espacial até processos de usinagem automatizados, onde peças metálicas são trabalhadas envoltas em jatos de água de resfriamento, até veículos autônomos que distribuem materiais em oficinas aeroespaciais, a presença e a influência dos sistemas de controle automático são evidentes \cite{nise2013}. É crucial ressaltar que, ao realizar análises e projetar controladores eficazes para tais sistemas, é necessário realizar uma abstração desses sistemas físicos por meio de equações matemáticas. Essa prática, embora essencial, pode tornar a interpretação desafiadora para iniciantes na área devido à complexidade intrínseca das formulações matemáticas envolvidas.
 
 Além disso, a implementação de controladores requer competência em diferentes áreas da engenharia, tais como eletrônica analógica e digital, programação, processamento de sinais, circuitos elétricos, entre outras. Dessa forma, torna-se necessário integrar conhecimentos multidisciplinares para a implementação bem-sucedida de controladores em sistemas reais.
 
-Um sistema de controle é composto por subsistemas e processos, concebidos com a finalidade de alcançar uma saída desejada com um desempenho específico, considerando uma entrada predefinida, \cite{nise2013}.
+Um sistema de controle é composto por subsistemas e processos, concebidos com a finalidade de alcançar uma saída desejada com um desempenho específico, considerando uma entrada predefinida \cite{nise2013}.
 
-A abordagem convencional no ensino das disciplinas teóricas em cursos de Engenharia representa um desafio significativo, dada a dificuldade dos alunos em estabelecer conexões entre o conteúdo teórico e a aplicação prática nos sistemas físicos. A introdução de tecnologias de apoio tem proporcionado avanços, mas persistem desafios, como a carência de estrutura operacional e a necessidade de atualização nas metodologias de ensino. A incorporação de simulações computacionais aliadas a animações emerge como uma estratégia promissora para acelerar esse processo, oferecendo uma ponte eficaz entre a teoria e a compreensão prática, \cite{yuri_tcc}.
+A abordagem convencional no ensino das disciplinas teóricas em cursos de Engenharia representa um desafio significativo, dada a dificuldade dos alunos em estabelecer conexões entre o conteúdo teórico e a aplicação prática nos sistemas físicos. A introdução de tecnologias de apoio tem proporcionado avanços, mas persistem desafios, como a carência de estrutura operacional e a necessidade de atualização nas metodologias de ensino. A incorporação de simulações computacionais aliadas a animações emerge como uma estratégia promissora para acelerar esse processo, oferecendo uma ponte eficaz entre a teoria e a compreensão prática \cite{yuri_tcc}.
 
 No entanto, no estudo de sistemas de controle, é comum que os discentes enfrentem desafios em seu primeiro contato com a área, especialmente devido à necessidade de aplicar abstrações matemáticas para representar a dinâmica de sistemas físicos. Essa etapa inicial pode parecer complexa, porém é crucial para a compreensão e domínio dos conceitos fundamentais envolvidos na análise e controle de sistemas.
 
@@ -35,21 +35,22 @@ Conforme destacado por Grieves (2014) em sua pesquisa pioneira na Universidade d
 
 \subsection{Objetivos Gerais}
 
-Este trabalho tem como objetivo desenvolver um laboratório virtual abrangente para o estudo de sistemas de controle. Para alcançar esse propósito, será criado um projeto que integra um protótipo, simulador e uma interface gráfica, possibilitando sua utilização na investigação de diversos aspectos e subáreas relacionadas a sistemas de controle. Isso inclui a identificação de sistemas, o desenvolvimento de controladores, a otimização de controladores, bem como a aplicação de Inteligência Artificial em sistemas de controle, entre outros tópicos.
+Este trabalho tem como objetivo desenvolver um laboratório virtual abrangente para o estudo de sistemas de controle. Para alcançar esse propósito, foi desenvolvido um projeto que integra um protótipo, simulador e uma interface gráfica, possibilitando sua utilização na investigação de diversos aspectos e subáreas relacionadas a sistemas de controle. Isso inclui a identificação de sistemas, o desenvolvimento de controladores, a otimização de controladores, bem como a aplicação de Inteligência Artificial em sistemas de controle, entre outros tópicos.
 
 Além disso, a proposta envolve a aplicação prática dos conhecimentos adquiridos durante a graduação, unindo técnicas de sistemas de controle, eletrônica analógica e digital, programação, física e cálculo em uma configuração de sistema físico. O principal objetivo é criar um ambiente que permita ao pesquisador aplicar e aprimora seus conhecimentos e observar o comportamento da dinâmica do sistema em um ambiente real. Para realizar essa tarefa, será necessário combinar tecnologias de diversas disciplinas do curso de Engenharia Elétrica, tornando o projeto ainda mais intrigante e desafiador.
 
 
 \subsection{Objetivos Específicos}
 
-\begin{itemize}
+
+\begin{enumerate}[label=\textbf{\alph*.}]
         \setlength{\itemsep}{-2pt}
 	\item \textbf{Desenvolver o protótipo do Aeropêndulo}: Projetar a estrutura física e elétrica do sistema;
         \item \textbf{Desenvolver um simulador 3D (Gêmeo Digital)}: programar o simulador usando a linguagem de programação Python em conjunto com a biblioteca VPython;
         \item \textbf{Interface de Usuário}: Desenvolver uma interface gráfica com menu para manipular o comportamento do sistema em tempo real, salvar dados de ensaio e testar o sistema em malha fechada;
         \item \textbf{Aplicar Identificação de sistema a Planta}: Obter um modelo da planta usando função de transferência discreta  por identificação de sistemas usando o método dos mínimos quadrados;
         \item \textbf{Testar o sistema  em Malha Fechada}: Implementar um controlador PID junto do firmware e realizar testes para validar o sistema em malha fechada;
-\end{itemize}
+\end{enumerate}
 
 
 \section{Escopo do Trabalho}

@@ -1,5 +1,5 @@
 
-Para realizar a modelagem do Aeropêndulo pode-se aplicar diferentes métodos, uma abordagem inicial para modelar sistemas físicos consiste em empregar as leis fundamentais da física. Além disso, em situações mais complexas, é viável decompor o sistema em subsistemas menores e, em seguida, desenvolver modelos para cada um deles. Por fim, é possível conectar esses modelos, de forma a obter uma representação aproximada do sistema real. Dessa maneira, podemos obter uma compreensão mais aprofundada e abrangente da dinâmica do sistema em questão. A Figura \ref{fig4:image_01} mostra um diagrama da representação do Aeropêndulo como um conjunto de subsistemas.
+Para realizar a modelagem do Aeropêndulo pode-se aplicar diferentes métodos, uma abordagem inicial para modelar sistemas físicos consiste em empregar as leis fundamentais da física. Além disso, em situações mais complexas, é viável decompor o sistema em subsistemas menores e, em seguida, desenvolver modelos para cada um deles. Por fim, é possível conectar esses modelos, de forma a obter uma representação aproximada do sistema real. Dessa maneira, podemos obter uma compreensão mais aprofundada e abrangente da dinâmica do sistema em questão. A figura \ref{fig4:image_01} mostra um diagrama da representação do Aeropêndulo como um conjunto de subsistemas.
 
 
 \begin{figure}[!h]
@@ -47,7 +47,7 @@ O modelo matemático do braço do Aeropêndulo é derivado a partir das leis de 
         \item  $d$: a distância entre o centro de massa e o ponto de pivô
 \end{itemize}
 
-A entrada do subsistema do braço do Aeropêndulo é a força de empuxo proporcionada pela hélice, porém, o modelo do motor CC Série tem como saída a velocidade angular, dessa forma é preciso encontrar uma relação entre a velocidade $\dot{\omega}$ e o empuxo $F_e$, essa relação é não linear como mostra $[xx]$, $F_e = K_m\dot{\omega}^2$, porém é possível aproximar por uma relação linear,  $F_e = K_m\dot{\omega}$. Com isso, pode-se relacionar a velocidade angular $\dot{\omega}$  com o empuxo $F_e$ gerado pela hélice do Aeropêndulo.
+A entrada do subsistema do braço do Aeropêndulo é a força de empuxo proporcionada pela hélice, porém, o modelo do motor CC Série tem como saída a velocidade angular, dessa forma é preciso encontrar uma relação entre a velocidade $\omega$ e o empuxo $F_e$, essa relação é não linear, $F_e = K_m\omega^2$, porém é possível aproximar por uma relação linear,  $F_e = K_m\omega$, em que $K_m$ é um ganho que relaciona a velocidade angular com o empuxo. Com isso, pode-se relacionar a velocidade angular $\omega$  com o empuxo $F_e$ gerado pela hélice do Aeropêndulo.
 
 O modelo encontrado tem uma parcela não linear dada por $\sin{\theta}$, para aplicar técnicas de projeto de controle é preciso obter o modelo linearizado da planta, isso pode ser feito considerando $\sin{\theta} \approx \theta$ para pequenas variações em torno de $\theta$. dessa forma, temos a seguinte linearização:
 \begin{align}
@@ -64,12 +64,12 @@ Aplicando a transformada de Laplace para encontrar a função de transferência 
 \end{align}
 
 
-Agora que foi obtido o modelo do braço do Aeropêndulo, pode-se usar a relação linearizada $F_e = K_m\dot{\omega}$ para usar a saída do modelo do motor cc série como entrada do modelo do braço do Aeropêndulo, como mostrado na equação \ref{eq4:eq46}.
+Agora que foi obtido o modelo do braço do Aeropêndulo, pode-se usar a relação linearizada $F_e = K_m\omega$ para usar a saída do modelo do motor cc série como entrada do modelo do braço do Aeropêndulo, como mostrado na equação \ref{eq4:eq46}.
 
 \begin{align}
-    \dfrac{\theta(s)}{K_m\dot{\omega}(s)} &= \dfrac{1}{J_bs^2 + cs +mgd} \label{eq4:eq44}\\
-    \dfrac{\theta(s)}{\dot{\omega}(s)} &= \dfrac{K_m}{J_bs^2 + cs +mgd} \label{eq4:eq45}\\
-    H(s) = \dfrac{\theta(s)}{\dot{\omega}(s)} &= \dfrac{\dfrac{K_m}{J_b}}{s^2 + \dfrac{c}{J_b}s +\dfrac{mgd}{J_b}} \label{eq4:eq46}
+    \dfrac{\theta(s)}{K_m\omega(s)} &= \dfrac{1}{J_bs^2 + cs +mgd} \label{eq4:eq44}\\
+    \dfrac{\theta(s)}{\omega(s)} &= \dfrac{K_m}{J_bs^2 + cs +mgd} \label{eq4:eq45}\\
+    H(s) = \dfrac{\theta(s)}{\omega(s)} &= \dfrac{\dfrac{K_m}{J_b}}{s^2 + \dfrac{c}{J_b}s +\dfrac{mgd}{J_b}} \label{eq4:eq46}
 \end{align}
 
 
@@ -82,12 +82,12 @@ A equação \ref{eq4:eq46} representa a função de transferência que descreve 
 Os motores CC série tem como principal característica possuir o enrolamento de campo em série com o enrolamento de armadora, essa configuração resulta em um motor com torque de partida alto, porém, o torque reduz a medida que a velocidade aumenta devido ao aumento da Força Eletromotriz FEM. Por conta desse aumento de FEM os motores CC Séries tem uma regulação de velocidade ruim, quando se aumenta a carga no eixo do motor a velocidade é reduzida que por sua vez reduz a FEM e então o torque aumenta para conseguir atuar na carga.
 
 
-No contexto dos motores série, observamos que o aumento da carga resulta em incrementos na corrente, na Força Magnetomotriz (FMM) da armadura e no fluxo do campo do estator, contanto que o ferro não atinja a saturação completa. À medida que o fluxo aumenta com a carga, a velocidade do motor série deve diminuir para manter um equilíbrio adequado entre a tensão aplicada e a força contraeletromotriz. Além disso, o aumento na corrente de armadura, ocasionado pelo acréscimo no conjugado, é menor em comparação com o motor em derivação, devido ao aumento no fluxo. Dessa forma, o motor série é caracterizado como um motor de velocidade variável., \citeonline[p.~410]{umans2014}.
+No contexto dos motores série, observamos que o aumento da carga resulta em incrementos na corrente, na Força Magnetomotriz (FMM) da armadura e no fluxo do campo do estator, contanto que o ferro não atinja a saturação completa. À medida que o fluxo aumenta com a carga, a velocidade do motor série deve diminuir para manter um equilíbrio adequado entre a tensão aplicada e a força contraeletromotriz. Além disso, o aumento na corrente de armadura, ocasionado pelo acréscimo no conjugado, é menor em comparação com o motor em derivação, devido ao aumento no fluxo. Dessa forma, o motor série é caracterizado como um motor de velocidade variável \citeonline[p.~410]{umans2014}.
 
 
 No entanto, mesmo motores cc série com dimensões reduzidas geram torques altos com baixo consumo de corrente. Visando melhorar seu desempenho, é possível projetar controladores de malha fechada capazes de tornar esses motores mais eficientes na regulação de velocidade.
 
-Para realizar a modelagem o motor CC série, foi usado a base teórica de \cite{jesus}, A Figura \ref{fig4:image_02} mostra um diagrama da configuração do motor CC Série, no qual o enrolamento de campo está conectado em série com o enrolamento de armadura, dessa forma, a  corrente de campo é igual a corrente de armadura $ i = i_f = i_a$.
+Para realizar a modelagem o motor CC série, foi usado a base teórica de \cite{jesus}, A figura \ref{fig4:image_02} mostra um diagrama da configuração do motor CC Série, no qual o enrolamento de campo está conectado em série com o enrolamento de armadura, dessa forma, a  corrente de campo é igual a corrente de armadura $ i = i_f = i_a$.
 
 
 \begin{figure}[!h]
@@ -98,7 +98,7 @@ Para realizar a modelagem o motor CC série, foi usado a base teórica de \cite{
 	\label{fig4:image_02}
 \end{figure}
 
-Na Figura \ref{fig4:image_03}, mostra o diagrama eletromecânico do motor, nele pode-se observar que os componentes elétricos estão todos em série, no qual o enrolamento de campo possui uma parte resistiva e outra indutiva, assim como o enrolamento de armadura, já a parte mecânica possui uma velocidade angular dada por $\dot{\omega}$, torque eletromagnético do motor dado por $T_e$ e torque da Carga $T_c$.
+Na figura \ref{fig4:image_03}, mostra o diagrama eletromecânico do motor, nele pode-se observar que os componentes elétricos estão todos em série, no qual o enrolamento de campo possui uma parte resistiva e outra indutiva, assim como o enrolamento de armadura, já a parte mecânica possui uma velocidade angular dada por $\omega$, torque eletromagnético do motor dado por $T_e$ e torque da Carga $T_c$.
 
 
 \begin{figure}[!h]
@@ -239,7 +239,7 @@ Para projetos de controle lineares é preciso linearizar o modelo encontrado, pa
     \dfrac{d}{dt}i(t) &= \dfrac{R}{L}i(t)- \dfrac{K_0}{L}\dot{\omega}(t)i(t) +\dfrac{1}{L}V(t) \label{eq4:eq18}
 \end{align}
 
-reescrevendo as equações de estados na forma matricial,
+Reescrevendo as equações de estados na forma matricial,
 
 \begin{align}
     x_1 = \dot{\omega}  \label{eq4:eq19}\\
