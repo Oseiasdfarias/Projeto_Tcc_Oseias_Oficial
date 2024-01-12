@@ -31,7 +31,7 @@ Esse projeto surgia do desenvolvimento de um trabalho de conclusão de curso, in
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/893039111?h=80089a63c1&autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:90%;height:90%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
-<center>
+
 
 ### <a href="https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial" target="_blank">
 Projeto no GitHub</a>
