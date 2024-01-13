@@ -3,13 +3,13 @@
 
 \section{Desenvolvimento do Protótipo e Softwares}
 
-Os sistemas propostos tanto físico quanto softwares foram desenvolvidos de forma exitosa, os procedimentos para a implementação se deu a partir de uma pesquisa bibliográfica e criativa, tendo como resultado o protótipo, figura \ref{fig3:image_01}, e os softwares, figuras \ref{fig3:image_13}, \ref{fig3:image_13} e \ref{fig3:image_16}.
+Os sistemas propostos tanto físico quanto softwares foram desenvolvidos de forma exitosa, os procedimentos para a implementação se deu a partir de uma pesquisa bibliográfica e criativa, tendo como resultado o protótipo, figura \ref{fig3:image_01}, e os softwares, figuras \ref{fig3:image_13_1}, \ref{fig3:image_14} e \ref{fig3:image_16}.
 
 
 \section{Identificação de sistema aplicado ao Aeropêndulo}
 \label{indentificacao}
 
-Com os subsistemas desenvolvidos, foram realizados alguns testes para validá-los, assim, o primeiro teste aplicado ao conjunto se tratou da identificação de sistemas. Após a identificação realizou-se uma simulação de modo a comparar o sinal de saída real com o simulado, visando visualizar a dinâmica do sistema identificado e poder comparar com o sistema real.
+Com os subsistemas desenvolvidos, foram realizados alguns testes para validá-los, assim, o primeiro teste aplicado ao conjunto se tratou da identificação de sistemas. Após a identificação realizou-se uma simulação de modo a comparar o sinal de saída real com o simulado, com o intuito de analisar a dinâmica do sistema identificado e poder comparar com o sistema real.
 
 A partir do ecossistema desenvolvido para o projeto é possível usá-lo para estudar diferentes aspectos na área de sistemas de controle, uma delas e a identificação de sistemas, para esse trabalho o método em questão foi usado para avaliar o correto funcionamento projeto. Desa forma, o trabalho \cite{tcc_klarissa_ufpa} foi usando como base teórica para implementar o método.
 
@@ -65,7 +65,7 @@ Para realizar o cálculo numérico usando a base de dados do ensaio foi usando a
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Importação das Bibliotecas usadas para identificação de sistemas.}]
 import numpy as np 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -76,7 +76,7 @@ No segundo passo foi feito o carregamento dos dados de ensaio PRBS e realizada a
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py4, caption={Carregando os dados do ensaio e realizando pré-processamento.}]
 file = "caminho completo dos  dados/arquivo_9_9_2023_13_33_24.csv"
 dados_malha_aberta_prbs = pd.read_csv(file, header=None, sep=',').values
 dados_malha_aberta_prbs[0][0] = 0.0
@@ -98,7 +98,7 @@ Além disso, é necessário remover as primeiras amostras por conter o transitó
 \vspace{0.5cm}
 
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Centralizando os sinais de entrada e daída em zero.}]
 u1 = sinal_prbs_entrada[50:] - np.mean(sinal_prbs_entrada[50:])
 yout = sinal_saida[50:] - np.mean((sinal_saida[50:]))
 t = tempo[50:]
@@ -123,7 +123,7 @@ Para aplicar o método dos mínimos quadrados e obter os coeficientes da funçã
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Estruturando os dados para aplicar o método dos mínimos quadrados.}]
 # Matriz de regressao:
 nb = 3; na = 2
 ni = np.arange(na, Ni + na)
@@ -144,7 +144,7 @@ Com as matrizes de regressores definidas, foi realizada a aplicação do método
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Método dos mínimos quadrados.}]
 # Minimos quadrados
 thetaA = np.linalg.inv(M.T @ M) @ M.T @ yout[ni]
 thetaA
@@ -154,7 +154,7 @@ Para a função de transferência de segunda ordem escolhida, equação \ref{eq3
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Salvando os coeficientes em variáveis e obtendo a função de transferência.}]
 a1, a2 = thetaA[:2]
 b0, b1, b2 = thetaA[2:]
 
@@ -177,7 +177,7 @@ A biblioteca Python-control possibilita simular a dinâmica de um sistema a part
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Obtendo a resposta forçada da função de transferência obtida.}]
 _, yp = ct.forced_response(Hz, U=u1)
 \end{lstlisting}
 
@@ -202,7 +202,7 @@ Assim, foi ajustado o algorítimo para identificar o sistema a partir da estrutu
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Estruturando os dados para aplicar o método dos mínimos quadrados.}]
 # Matriz de regressao:
 nb = 4
 na = 10
@@ -225,7 +225,7 @@ Com as matrizes de regressores ajustada para um sistema de décima ordem, foi re
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Método dos mínimos quadrados.}]
 # Minimos quadrados
 thetaA = np.linalg.inv(M.T @ M) @ M.T @ yout[ni]
 thetaA
@@ -235,7 +235,7 @@ A equação \ref{eq3:eq3} possui 4 coeficientes no numerador e 10 no denominador
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Salvando os coeficientes em variáveis e obtendo a função de transferência.}]
 a1, a2, a3, a4, a5, a6, a7, a8, a9, a10 = thetaA[:10]
 b0, b1, b2, b3 = thetaA[10:]
 
@@ -255,7 +255,7 @@ Por fim, realizou-se novamente a simulação do modelo encontrado, com o propós
 
 \vspace{0.5cm}
 
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, numbers=left, label=py3, caption={Obtendo a resposta forçada da função de transferência obtida.}]
 _, yp = ct.forced_response(Hz, U=u1)
 \end{lstlisting}
 

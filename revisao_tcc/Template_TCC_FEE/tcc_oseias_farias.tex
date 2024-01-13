@@ -40,8 +40,11 @@
 % -------------------------------------------------------------------------------------------------
 
 
-
 \begin{document} %%Inicio do documento
+
+\counterwithout{lstlisting}{chapter}
+\renewcommand\thelstlisting{\arabic{lstlisting}}
+
 \imprimircapa %Imprime a capa do TCC [Modificar informações em: parte_externa/capa_folharosto.tex]
 \imprimirfolhaderosto %Imprime a folha de rosoto [Modificar em: parte_externa/capa_folharosto.tex]
 \newpage\includepdf[pages=-]{elementos_pretextuais/ficha_catalografica_UPFA.pdf}
