@@ -35,17 +35,8 @@ O modelo matemático do braço do Aeropêndulo é derivado a partir das leis de 
     F_e &= J_b\ddot{\theta} + c\dot{\theta} +mgd\sin{\theta}  \label{eq4:eq38}
 \end{align}
 
-\noindent Onde:
 
-\begin{itemize}
-        \setlength{\itemsep}{-2pt}
-	\item  $F_e$: Empuxo gerado pela hélice
-        \item  $J_b$: Momento de inércia do Braço
-        \item  $\theta$: posição angular do Aeropêndulo
-        \item  $c$: coeficiente de amortecimento viscoso
-        \item  $m$: massa do Aeropêndulo
-        \item  $d$: a distância entre o centro de massa e o ponto de pivô
-\end{itemize}
+Onde $F_e$ é o empuxo gerado pela hélice, $J_b$  é o momento de inércia do braço, $\theta$  é a posição angular do Aeropêndulo, $c$  é o coeficiente de amortecimento viscoso, $m$ é a massa do Aeropêndulo, $d$  é a distância entre o centro de massa e o ponto de pivô.
 
 A entrada do subsistema do braço do Aeropêndulo é a força de empuxo proporcionada pela hélice, porém, o modelo do motor CC Série tem como saída a velocidade angular, dessa forma é preciso encontrar uma relação entre a velocidade $\omega$ e o empuxo $F_e$, essa relação é não linear, $F_e = K_m\omega^2$, porém é possível aproximar por uma relação linear,  $F_e = K_m\omega$, em que $K_m$ é um ganho que relaciona a velocidade angular com o empuxo. Com isso, pode-se relacionar a velocidade angular $\omega$  com o empuxo $F_e$ gerado pela hélice do Aeropêndulo.
 
@@ -116,37 +107,28 @@ Na figura \ref{fig4:image_03}, mostra o diagrama eletromecânico do motor, nele 
 
 %\subsubsection{Modelagem da Parte Mecânica do Motor CC Série}
 
-Primeiramente a parte mecânica do motor foi modelada, um motor cc série é composto por uma parte rotativa "armadura", de modo que, essa parte, gera um momento de inércia $J_m$ no eixo do motor e um fator de amortecimento viscoso $b$, além disso, o eixo possui uma velocidade angular $\dot{\omega}$.
+Primeiramente a parte mecânica do motor foi modelada, um motor cc série é composto por uma parte rotativa "armadura", de modo que, essa parte, gera um momento de inércia $J_m$ no eixo do motor e um fator de amortecimento viscoso $b$, além disso, o eixo possui uma velocidade angular $\omega$.
 
 Assim, a equação \ref{eq4:eq1}, obtida a partir de \cite{jesus}, descreve o modelo mecânico do motor CC Série.
 
 \begin{align}
-	J_m\ddot{\omega}(t) &= T_e(t) - b\dot{\omega}(t) - T_c(t) \label{eq4:eq1}
+	J_m\dot{\omega}(t) &= T_e(t) - b\omega(t) - T_c(t) \label{eq4:eq1}
 \end{align}
 
 
 Ao expressar o torque $T_e(t)$ em função das outras variáveis, obtém-se a equação \ref{eq4:eq2}.
 
 \begin{align}
-	T_e(t) &= J_m\ddot{\omega}(t) + b\dot{\omega}(t) + T_c(t) \label{eq4:eq2}
+	T_e(t) &= J_m\dot{\omega}(t) + b\omega(t) + T_c(t) \label{eq4:eq2}
 \end{align}
 
 
-\noindent Onde:
-\begin{itemize}
-        \setlength{\itemsep}{-2pt}
-	\item $T_e$: Torque Eletromagnético produzido pelo Motor;
-	\item $J_m$: Momento de Inércia do Eixo do Motor;
-	\item $\ddot{\omega}$: Aceleração Angular do Eixo do Motor;
-	\item $\dot{\omega}$: Velocidade Angular do Eixo do Motor;
-	\item $b$: Fator de Amortecimento Viscoso;
-	\item $T_c$: Torque de Carga.
-\end{itemize}
+Onde $T_e$ é o torque eletromagnético produzido pelo Motor, $J_m$  é o momento de inércia do eixo do Motor, $\dot{\omega}$: Aceleração Angular do Eixo do Motor, $\omega$ é o a velocidade angular do eixo do Motor, $b$  é o fator de amortecimento viscoso, $T_c$ é o torque de Carga.
 
 Tanto a Força Eletromotriz $E_A(t)$ quanto o Torque Eletromagnético $T_e(t)$ dependem do fluxo magnético do entreferro $\Phi$, com isso, tem-se as equações \ref{eq4:eq3} e \ref{eq4:eq4}.
 
 \begin{align}
-	E_a(t) &= \dot{\omega}(t) \Phi{(i)} \label{eq4:eq3}\\
+	E_a(t) &= \omega(t) \Phi{(i)} \label{eq4:eq3}\\
 	T_e(t) &= i(t) \Phi{(i)}			\label{eq4:eq4}
 \end{align}
 
@@ -167,7 +149,7 @@ Substituindo \ref{eq4:eq7} em \ref{eq4:eq2}, é possível encontrar o modelo da 
 
 
 \begin{align}
-	K_0 i^2(t) &= J_m\ddot{\omega}(t) + b\dot{\omega}(t) + T_c(t) \label{eq4:eq8}
+	K_0 i^2(t) &= J_m\dot{\omega}(t) + b\omega(t) + T_c(t) \label{eq4:eq8}
 \end{align}
 
 
@@ -184,19 +166,9 @@ Para a parte elétrica, utilizou-se a lei de Kirchhoff das tensões para modelar
 	V(t) &= (R_a + R_f)i(t)+ (L_a + L_f)\dfrac{d}{dt}i(t) + E_a \label{eq4:eq9}
 \end{align}
 
-\noindent Onde:
 
-\begin{itemize}
-        \setlength{\itemsep}{-2pt}
-	\item $V$: Tensão da Fonte;
-	\item $R_a$: Resistência da Armadura;
-	\item $R_f$: Resistência de Campo;
-	\item $i_a$: Corrente da Armadura;
-	\item $i_f$: Corrente de Campo;
-	\item $E_A$: Tensão Contro Eletromotriz Gerada pela Armadura;
-	\item $L_a$: Impedância da Armadura;
-	\item $L_f$: Impedância de Campo.
-\end{itemize}
+Onde $V$ é a tensão da fonte, $R_a$ é a resistência da armadura, $R_f$ é a resistência de campo, $i_a$ é a corrente da armadura, $i_f$ é a corrente de campo, $E_A$ é a tensão contro eletromotriz gerada pela armadura, $L_a$ é a impedância da armadura, $L_f$ é o impedância de campo.
+
 
 Como os componentes elétricos então em série, pode-se obter uma resistência total assim como uma indutância:
 
@@ -385,3 +357,16 @@ A partir dos modelos encontrados nas subseções \ref{modelagem_motorccserie} e 
 
 
 A modelagem usando as leis físicas permite uma interpretação dos parâmetros da planta e ajuda a entender a influência deles na dinâmica do sistema, no entanto, ao utilizar esse método de modelagem surgi uma complexidade em obter os valores numéricos de alguns desses parâmetros, por exemplo, o Momento de Inércia do Eixo do Motor $J_m$ se torna complicado de se obter, assim como o Coeficiente de Amortecimento Viscoso $c$ do pivô do braço do Aeropêndulo entre outros parâmetros, com isso, surgi um método alternativo que permite modela um sistema usando dados de ensaios chamado de Identificação de Sistema, esse método usando os dados de entrada e saída e aproxima um modelo, com isso se obtêm uma função de transferência discreta.
+
+
+
+
+
+%################################ IDENTIFICAÇÃO DE SISTEMAS ################################
+
+% \section{Identificação de Sistemas}
+
+
+
+
+
