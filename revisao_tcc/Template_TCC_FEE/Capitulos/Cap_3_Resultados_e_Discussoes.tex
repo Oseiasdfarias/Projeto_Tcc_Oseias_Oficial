@@ -11,7 +11,7 @@ Os sistemas propostos tanto físico quanto softwares foram desenvolvidos de form
 
 Com os subsistemas desenvolvidos, foram realizados alguns testes para validá-los, assim, o primeiro teste aplicado ao conjunto se tratou da identificação de sistemas. Após a identificação realizou-se uma simulação de modo a comparar o sinal de saída real com o simulado, com o intuito de analisar a dinâmica do sistema identificado e poder comparar com o sistema real.
 
-A partir do ecossistema desenvolvido para o projeto é possível usá-lo para estudar diferentes aspectos na área de sistemas de controle, uma delas e a identificação de sistemas, para esse trabalho o método em questão foi usado para avaliar o correto funcionamento projeto. Desa forma, o trabalho \cite{tcc_klarissa_ufpa} foi usando como base teórica para implementar o método.
+A partir da estrutura desenvolvido para o projeto é possível usá-lo para estudar diferentes aspectos na área de sistemas de controle, uma delas e a identificação de sistemas, para esse trabalho o método em questão foi usado para avaliar o correto funcionamento projeto. Desa forma, o trabalho \cite{tcc_klarissa_ufpa} foi usando como base teórica para implementar o método.
 
 
 \subsubsection{Aplicação do Sinal PRBS na Entrada do Sistema}
@@ -191,10 +191,11 @@ Ao plotar os gráficos de saída real e simulada tem-se como resultado a figura 
 	\label{fig3:image_21}
 \end{figure}
 
-A partir de uma análise qualitativa, pode-se supor que o grau da função de transferência discreta escolhida não consegue aproximar a dinâmica real do aeropêndulo, dessa forma, foi realizado alguns testes e identificado que uma função de transferência discreta de décima ordem, equação \ref{eq3:eq3}, aproxima de forma aceitável o sistema real.
+A partir de uma análise qualitativa, pode-se supor que o grau da função de transferência discreta escolhida não consegue aproximar a dinâmica real do aeropêndulo, dessa forma, foi realizado alguns testes e identificado que uma função de transferência discreta de décima ordem, equação \ref{eq3:eq3}, aproxima de forma aceitável o sistema real.  Com numerador dados pelos por, $[b_1z^{-1}+b_2z^{-2}+b_2z^{-3}+b_2z^{-4}]$ e denominador dado pelos, $[1+a_1z^{-1}+a_2z^{-2}+a_2z^{-3}+a_2z^{-4}+a_2z^{-5}+a_2z^{-6}+a_2z^{-7}+a_2z^{-8}+a_2z^{-9}+a_2z^{-10}]$.
+
 
 \begin{align}
-H(z) = \frac{b_1z^{-1}+b_2z^{-2}+b_2z^{-3}+b_2z^{-4}}{1+a_1z^{-1}+a_2z^{-2}+a_2z^{-3}+a_2z^{-4}+a_2z^{-5}+a_2z^{-6}+a_2z^{-7}+a_2z^{-8}+a_2z^{-9}+a_2z^{-10}}\label{eq3:eq3}
+H(z) = \frac{numerador}{denominador}\label{eq3:eq3}
 \end{align}
 
 
@@ -245,10 +246,10 @@ Aa = [1, -a1, -a2, -a3, -a4, -a5, -a6, -a7, -a8, -a9, -a10]
 Hz = ct.tf(Ba, Aa, Ts)
 \end{lstlisting}
 
-Assim, obtém-se a função de transferência discreta, equação \ref{eq3:eq4}, com os valores encontrado a partir do método de mínimos quadrados, com período de amostragem de $dt = 0,02$ segundos.
+Assim, obtém-se a função de transferência discreta, equação \ref{eq3:eq4}, com os valores encontrado a partir do método de mínimos quadrados, com período de amostragem de $dt = 0,02$ segundos. Com numerador dados pelos valores, $[-0.0029 z^3 + 0.0023z^2 + 0.0016 z + 0.0097]$ e denominador dado pelos valores, $[z^{10} - 0.9 z^9 - 0.3 z^8 - 0.014 z^7 + 0.13 z^6 + 0.15 z^5 + 0.012 z^4 - 0.05 z^3 - 0.12 z^2 - 0.02 z + 0.15]$.
 
 \begin{align}
-Hz = \frac{-0.0029 z^3 + 0.0023z^2 + 0.0016 z + 0.0097}{z^{10} - 0.9 z^9 - 0.3 z^8 - 0.014 z^7 + 0.13 z^6 + 0.15 z^5 + 0.012 z^4 - 0.05 z^3 - 0.12 z^2 - 0.02 z + 0.15} \label{eq3:eq4}
+Hz = \frac{numerador}{denominador} \label{eq3:eq4}
 \end{align}
 
 Por fim, realizou-se novamente a simulação do modelo encontrado, com o propósito de compará-lo aos dados de saída obtidos durante o ensaio do sistema real, a célula de código abaixo implementa a simulação.
@@ -275,7 +276,7 @@ A partir de uma análise qualitativa entre o sinal de saída real e o simulado, 
 \section{Ensaio em Malha Fechada com Controlador PID}
 \label{malha_fechada}
 
-O ecossistema desenvolvido possibilita aplicar diferentes controladores, bastando implementá-lo no formato de uma biblioteca e chamá-la no código principal do firmware, passando como parâmetro o erro que é calculado subtraindo da referência o valor lido na saída do sistema, isso permite maior flexibilidade ao pesquisador, que pode projetar diferentes controladores e realizar seus testes sem que seja necessário sobrescrever o código de implementação do sistema de controle, ou seja, a equação do controlador.
+Com a arquitetura desenvolvida para o firmware do microcontrolador é possível aplicar diferentes controladores, bastando implementá-lo no formato de uma biblioteca e chamá-la no código principal do firmware, passando como parâmetro o erro que é calculado subtraindo da referência o valor lido na saída do sistema, isso permite maior flexibilidade ao pesquisador, que pode projetar diferentes controladores e realizar seus testes sem que seja necessário sobrescrever o código de implementação do sistema de controle, ou seja, a equação do controlador.
 
 Com  proposito de testar o sistema em malha fechada, foi desenvolvido um controlador PID simples, tendo apenas um requisito, erro nulo para o sinal degrau. A figura \ref{fig3:image_23} exibe o diagrama do controlador proposto.% A equação \ref{eq3:eq5} exibe a estrutura do controlado já com os ganhos.
 
