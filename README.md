@@ -1,24 +1,42 @@
+<p align="center">
+  <img height="60px" src="utils/favicon_aeropendulo_png.png">
+</p>
+
+
 # Trabalho de Conclusão de Curso [ Oséias Farias ]
 
-<img title="" src="utils/favicon_aeropendulo_png.png" alt="" data-align="center" width="111">
+
 
 ### Identificação de Sistemas, Simulador Gráfico e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
 
+```
+
+.
+├── docs
+├── materiais_complementares
+├── mkdocs.yml
+├── README.md
+├── revisao_tcc
+├── site
+├── softwares_aeropendulo
+└── utils
+```
+
 O projeto inclui 4 partes, sendo elas:
 
-> + Potótipo
+#### Potótipo
 
 Implementa um aeropêndulo real, pode ser usado para estudos e testes de controladores e identificação de sistemas etc.
 
-> + Interface gráfica
+#### Interface gráfica
 
 Usada para iteragir em tempo real com o protótipo, esse sistema plotado os gráficos da posição angular, erro, sinal de referência, sinal PRBS e sinal de controle em malha fechada.
 
-> + Firmware
+#### Firmware
 
 Implementa o controlador, envio e recebimento de dados inteface gráfica / microcontrolador, geração de sinal de referência, leitura do sensor potenciômetro.
 
-> + Gêmeo Digital
+#### Gêmeo Digital
 
 Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 
@@ -28,9 +46,10 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 
 <br>
 
-<center>
-  <img src="utils/img_aeropendulo.png"> 
-<center/>
+<p align="center">
+  <img height="60%" src="utils/img_aeropendulo.png">
+</p>
+
 
 <br><br>
 
@@ -38,43 +57,29 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 
 ### Estrutura do Projeto da Interface Gráfica
 
-```
-.
-├── design_interface
-│   ├── demo_interface_dark.png
-│   ├── demo_interface_light.png
-│   ├── Design_interface.pdf
-│   ├── Design_interface.xopp
-│   └── interface.png
-├── interface
-│   ├── coleta_dados.py
-│   ├── graficos_sinais.py
-│   ├── __init__.py
-│   ├── interface_grafica.py
-│   ├── lista_portas_usb.py
-│   ├── __pycache__
-│   ├── test_serial.py
-│   └── utils
-├── poetry.lock
-├── pyproject.toml
-├── README.md
-└── rungui.py
-```
 
-<img src="utils/demo_interface_dark1.png" title="" alt="" data-align="center">
+<p align="center">
+  <img height="60%" src="utils/demo_interface_dark1.png">
+</p>
 
-<img src="utils/demo_interface_light.png" title="" alt="" data-align="center">
+<p align="center">
+  <img height="60%" src="utils/demo_interface_light.png">
+</p>
+
 
 ## Firmware do Aeropêndulo
 
 Aplicação para o microcontrolador com finalidade de desenvolver as funcionalidades de comunicação com a interface gráfico do computador e implementar controlador para o sistema em malha fechada, além disso, o usuário pode incrementar outras funcionalidades.
 
-<img src="utils/arquitetura_firmware-1.png" title="" alt="" data-align="center">
+<p align="center">
+  <img height="60%" src="utils/arquitetura_firmware-1.png">
+</p>
+
 
 ## Simulador Aeropêndulo - (Gêmeo Digital)
 
 <br>
 
-<center>
-  <img src="utils/gemeo_digital.png"> 
-<center/>
+<p align="center">
+  <img height="60%" src="utils/gemeo_digital.png">
+</p>  

@@ -26,7 +26,6 @@ class ListaPortasUsb(object):
             no monento.
     param: set_porta_atual - Atualiza a variável usada para salvar a porta a
             ser usada no momento da conexão da interface com o dispositivo.
-
     """
     def __init__(self, atualiza_menu, set_porta_atual) -> None:
         self.set_porta_atual = set_porta_atual
