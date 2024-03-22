@@ -1,11 +1,11 @@
 <p align="center">
-  <img height="60px" src="utils/favicon_aeropendulo_png.png">
   <img height="60px" src="utils/logos_lg/logo_ufpa.png">
+  <img height="60px" src="utils/favicon_aeropendulo_png.png">
 </p>
 
 <p align="center">
-  <img height="30" src="./utils/logos_lg/UFPA-removebg-preview.png"> &
-  <img height="30" src="./utils/logos_lg/Pendulab_lg-removebg-preview.png">
+  <img height="20" src="./utils/logos_lg/UFPA-removebg-preview.png"> &
+  <img height="20" src="./utils/logos_lg/Pendulab_lg-removebg-preview.png">
 </p>
 
 <p align="center">
