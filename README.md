@@ -5,7 +5,7 @@
 
 <p align="center">
   <img height="20" src="./utils/logos_lg/UFPA-removebg-preview.png"> &
-  <img height="20" src="./utils/logos_lg/Pendulab_lg-removebg-preview.png">
+  <a href="https://oseiasdfarias.github.io/Projeto_Tcc_Oseias_Oficial/"><img height="20" src="./utils/logos_lg/Pendulab_lg-removebg-preview.png"></a>
 </p>
 
 <p align="center">
