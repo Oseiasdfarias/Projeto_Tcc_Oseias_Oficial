@@ -1,16 +1,26 @@
 <p align="center">
   <img height="60px" src="utils/favicon_aeropendulo_png.png">
+  <img height="60px" src="utils/logos_lg/logo_ufpa.png">
 </p>
 
+<p align="center">
+  <img height="30" src="./utils/logos_lg/UFPA-removebg-preview.png"> &
+  <img height="30" src="./utils/logos_lg/Pendulab_lg-removebg-preview.png">
+</p>
 
-# Trabalho de Conclusão de Curso [ Oséias Farias ]
+<p align="center">
+    <a href="#roadmap">Roadmap</a>
+  • <a href="#techs">Tecnologias</a> 
+  • <a href="#challenge">Desafios</a>
+</p>
+
+<h1 align=center>Trabalho de Conclusão de Curso [ Oséias Farias ]</h1>
 
 
 
 ### Identificação de Sistemas, Simulador Gráfico e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
 
 ```
-
 .
 ├── docs
 ├── materiais_complementares
