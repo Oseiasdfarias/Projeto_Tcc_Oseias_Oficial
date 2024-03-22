@@ -26,7 +26,7 @@
 
 
 
-### Identificação de Sistemas, Simulador Gráfico e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle
+<p align=center> <i><strong>Tema: Identificação de Sistemas, Simulador Gráfico e Prototipagem de um Aeropêndulo para estudos de Projetos de Controle</strong></i></p>
 
 ```
 .
