@@ -46,23 +46,6 @@ O projeto inclui 4 partes, sendo elas:
 
 Implementa um aeropêndulo real, pode ser usado para estudos e testes de controladores e identificação de sistemas etc.
 
-
-## Interface gráfica
-
-Usada para iteragir em tempo real com o protótipo, esse sistema plotado os gráficos da posição angular, erro, sinal de referência, sinal PRBS e sinal de controle em malha fechada.
-
-## Firmware
-
-Implementa o controlador, envio e recebimento de dados inteface gráfica / microcontrolador, geração de sinal de referência, leitura do sensor potenciômetro.
-
-## Gêmeo Digital
-
-Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
-
-<br><br>
-
-## Protótipo Aeropêndulo
-
 <br>
 
 <p align="center">
@@ -70,12 +53,9 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 </p>
 
 
-<br><br>
+## Interface gráfica
 
-## Interface Aeropêndulo
-
-### Estrutura do Projeto da Interface Gráfica
-
+Usada para iteragir em tempo real com o protótipo, esse sistema plotado os gráficos da posição angular, erro, sinal de referência, sinal PRBS e sinal de controle em malha fechada.
 
 <p align="center">
   <img height="60%" src="utils/demo_interface_dark1.png">
@@ -85,8 +65,7 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
   <img height="60%" src="utils/demo_interface_light.png">
 </p>
 
-
-## Firmware do Aeropêndulo
+## Firmware
 
 Aplicação para o microcontrolador com finalidade de desenvolver as funcionalidades de comunicação com a interface gráfico do computador e implementar controlador para o sistema em malha fechada, além disso, o usuário pode incrementar outras funcionalidades.
 
@@ -95,8 +74,10 @@ Aplicação para o microcontrolador com finalidade de desenvolver as funcionalid
 </p>
 
 
-## Simulador Aeropêndulo - (Gêmeo Digital)
 
+## Gêmeo Digital
+
+Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 <br>
 
 <p align="center">
