@@ -49,7 +49,7 @@ Implementa um aeropêndulo real, pode ser usado para estudos e testes de control
 <br>
 
 <p align="center">
-  <img height="60%" src="utils/img_aeropendulo.png">
+  <img width="60%" src="utils/img_aeropendulo.png">
 </p>
 
 
@@ -58,11 +58,11 @@ Implementa um aeropêndulo real, pode ser usado para estudos e testes de control
 Usada para iteragir em tempo real com o protótipo, esse sistema plotado os gráficos da posição angular, erro, sinal de referência, sinal PRBS e sinal de controle em malha fechada.
 
 <p align="center">
-  <img height="60%" src="utils/demo_interface_dark1.png">
+  <img width="60%" src="utils/demo_interface_dark1.png">
 </p>
 
 <p align="center">
-  <img height="60%" src="utils/demo_interface_light.png">
+  <img width="60%" src="utils/demo_interface_light.png">
 </p>
 
 ## Firmware
@@ -70,7 +70,7 @@ Usada para iteragir em tempo real com o protótipo, esse sistema plotado os grá
 Aplicação para o microcontrolador com finalidade de desenvolver as funcionalidades de comunicação com a interface gráfico do computador e implementar controlador para o sistema em malha fechada, além disso, o usuário pode incrementar outras funcionalidades.
 
 <p align="center">
-  <img height="60%" src="utils/arquitetura_firmware-1.png">
+  <img width="60%" src="utils/arquitetura_firmware-1.png">
 </p>
 
 
@@ -81,5 +81,5 @@ Usa o sinal de saída (ângulo) para realizar a dinâmica do sinulador.
 <br>
 
 <p align="center">
-  <img height="60%" src="utils/gemeo_digital.png">
+  <img width="60%" src="utils/gemeo_digital.png">
 </p>  
