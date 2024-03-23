@@ -1,18 +1,18 @@
 <p align="center">
-  <img height="60px" src="utils/logos_lg/logo_ufpa.png">
-  <img height="60px" src="utils/favicon_aeropendulo_png.png">
+  <img height="73px" src="utils/logos_lg/logo_ufpa.png">
+  <img height="70px" src="utils/favicon_aeropendulo_png.png">
 </p>
 
 <p align="center">
-  <img height="20" src="./utils/logos_lg/UFPA-removebg-preview.png"> &
-  <a href="https://oseiasdfarias.github.io/Projeto_Tcc_Oseias_Oficial/"><img height="20" src="./utils/logos_lg/Pendulab_lg-removebg-preview.png"></a>
+  <img height="30" src="./utils/logos_lg/UFPA-removebg-preview.png"> &
+  <a href="https://oseiasdfarias.github.io/Projeto_Tcc_Oseias_Oficial/"><img height="30" src="./utils/logos_lg/Pendulab_lg-removebg-preview.png"></a>
 </p>
 
 <p align="center">
-    <a href="#protótipo">Protótipo</a>
-  • <a href="#interface-gráfica">Interface gráfica</a> 
-  • <a href="#firmware">Firmware</a>
-  • <a href="#gêmeo-digital">Gêmeo Digital</a>
+    <a href="#protótipo"><strong>Protótipo</strong></a>
+  • <a href="#interface-gráfica"><strong>Interface gráfica</strong></a> 
+  • <a href="#firmware"><strong>Firmware</strong></a>
+  • <a href="#gêmeo-digital"><strong>Gêmeo Digital</strong></a>
 </p>
 
 <h3  id="techs">Tecnologias</h3>
