@@ -7,12 +7,9 @@ hide:
 <img src="https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial/blob/main/utils/favicon_aeropendulo_png.png?raw=true" alt="Protótipo Aeropêndulo" style="height: 10%; width:10%;"/>
 </p>
 
-<p align="center">
-  <img height="30" src=https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial/blob/main/utils/logos_lg/UFPA-removebg-preview.png?raw=true> &
-  <a href="https://oseiasdfarias.github.io/Projeto_Tcc_Oseias_Oficial/"><img height="30" src=https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial/blob/main/utils/logos_lg/Pendulab_lg-removebg-preview.png?raw=true></a>
+<p align="center" height="30px">
+  <img style="height: 30px" src="https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial/blob/main/utils/logos_lg/UFPA-removebg-preview.png?raw=true"> & <img style="height: 30px" src="https://github.com/Oseiasdfarias/Projeto_Tcc_Oseias_Oficial/blob/main/utils/logos_lg/Pendulab_lg-removebg-preview.png?raw=true">
 </p>
-
-
 
 <h1 align=center><strong>Documentação PenduLab</strong></h1>
 
@@ -21,8 +18,8 @@ Esse projeto surgiu do desenvolvimento de um <strong>trabalho de conclusão de c
 
 <h1 align=center><strong>Membros Atuais</strong> ✨</h1>
 
-<p align="center">
-<table>
+<div align="center">
+<table align="center">
       <tbody>
         <tr>
           <td align="center"><a href="https://github.com/raphateixeira"  target="_blank"><img src="https://avatars.githubusercontent.com/u/13009893?v=4?s=100" width="100px;" alt="Raphael"/><br /><sub><b>Raphael Teixeira</b></sub></a><br /><a href="https://github.com/raphateixeira/LabVirtual/commits?author=raphateixeira"  target="_blank" title="Code">⚡</a></td>
@@ -30,7 +27,7 @@ Esse projeto surgiu do desenvolvimento de um <strong>trabalho de conclusão de c
         </tr>
       </tbody>
     </table>
-</p>
+</div>
 
 ---
 
